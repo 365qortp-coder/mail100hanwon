@@ -99,10 +99,8 @@ export const metadata: Metadata = {
     icon: "/favicon.ico",
     apple: "/apple-touch-icon.png",
   },
-  other: {
-    "naver-site-verification": process.env.NEXT_PUBLIC_NAVER_VERIFICATION ?? "",
-    "google-site-verification":
-      process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION ?? "",
+  verification: {
+    google: "dpvKrv5OT1csWHy2WSDBoFPyjHsQ0w0Y6NVLD-GW8wE",
   },
 };
 

@@ -70,9 +70,5 @@ export function buildMetadata({
       description,
       images: ogImage ? [ogImage] : ["/og-default.png"],
     },
-    other: {
-      "naver-site-verification": process.env.NEXT_PUBLIC_NAVER_VERIFICATION ?? "",
-      "google-site-verification": process.env.NEXT_PUBLIC_GOOGLE_VERIFICATION ?? "",
-    },
   };
 }
