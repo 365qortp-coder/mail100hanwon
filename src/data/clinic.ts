@@ -22,6 +22,26 @@ export const clinic = {
     yearsMakingGongjindan: 7,
     dietConsults: 70000,
   },
+  philosophy: {
+    umbrella: "직접 해보고 효과 있는 치료만 합니다",
+    byTreatment: [
+      {
+        slug: "pain",
+        label: "통증",
+        quote: "정확하게 진단하고 끝까지 치료합니다",
+      },
+      {
+        slug: "diet",
+        label: "다이어트",
+        quote: "엄마들을 위한 쉽고 건강한 다이어트",
+      },
+      {
+        slug: "gongjindan",
+        label: "공진단",
+        quote: "직접 빚고, 직접 복용하고, 우리 아이도 먹입니다",
+      },
+    ],
+  },
   address: {
     full: "서울특별시 중랑구 공릉로 21",
     city: "서울특별시",

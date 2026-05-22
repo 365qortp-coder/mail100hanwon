@@ -22,6 +22,18 @@ export default function AboutPage() {
       </div>
 
       <Section bg="white">
+        <blockquote className="relative max-w-3xl mx-auto text-center mb-12 md:mb-16 px-6">
+          <span aria-hidden className="absolute -top-2 left-1/2 -translate-x-1/2 text-6xl md:text-7xl text-[var(--brand-primary)] leading-none font-serif">
+            &ldquo;
+          </span>
+          <p className="text-2xl md:text-3xl font-extrabold leading-tight pt-8">
+            {clinic.philosophy.umbrella}
+          </p>
+          <footer className="text-sm text-[var(--text-muted)] mt-4">
+            — {clinic.director.name} {clinic.director.title}
+          </footer>
+        </blockquote>
+
         <div className="grid md:grid-cols-[280px_1fr] gap-8 items-start mb-10">
           <DirectorPhoto
             src="/photos/director.webp"

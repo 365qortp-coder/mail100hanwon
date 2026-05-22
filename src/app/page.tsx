@@ -193,6 +193,43 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* PHILOSOPHY */}
+      <section className="bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-16 md:py-24">
+          <div className="relative max-w-3xl mx-auto text-center mb-12 md:mb-16">
+            <span aria-hidden className="absolute -top-4 left-1/2 -translate-x-1/2 text-6xl md:text-7xl text-[var(--brand-primary)] leading-none font-serif">
+              &ldquo;
+            </span>
+            <p className="text-2xl md:text-4xl font-extrabold leading-tight pt-6">
+              {clinic.philosophy.umbrella}
+            </p>
+            <p className="text-sm text-[var(--text-muted)] mt-4">
+              — {clinic.director.name} {clinic.director.title}
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-4 md:gap-5">
+            {clinic.philosophy.byTreatment.map((p) => (
+              <Link
+                key={p.slug}
+                href={`/treatments/${p.slug}`}
+                className="group block p-6 md:p-7 rounded-2xl border-2 border-[var(--border)] hover:border-[var(--brand-primary)] hover:shadow-lg bg-[var(--surface-muted)] transition"
+              >
+                <span className="text-[10px] tracking-[0.2em] font-bold text-[var(--brand-primary)] uppercase">
+                  {p.label}
+                </span>
+                <p className="text-lg md:text-xl font-extrabold leading-snug mt-3 mb-4 text-[var(--foreground)]">
+                  &ldquo;{p.quote}&rdquo;
+                </p>
+                <span className="inline-flex items-center gap-1 text-sm font-bold text-[var(--brand-primary)] group-hover:gap-2 transition-all">
+                  자세히 보기 <span aria-hidden>→</span>
+                </span>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* PRODUCTS */}
       <section className="bg-white">
         <div className="mx-auto max-w-6xl px-4 py-16 md:py-24">
