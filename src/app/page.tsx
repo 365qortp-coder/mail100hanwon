@@ -9,7 +9,6 @@ import { clinic } from "@/data/clinic";
 import { treatments } from "@/data/treatments";
 import { locations } from "@/data/locations";
 import { getAllColumns } from "@/lib/columns";
-import { media } from "@/data/media";
 import { faqs } from "@/data/faq";
 
 export const metadata: Metadata = buildMetadata({
@@ -36,7 +35,7 @@ const products = [
     title: "매일감비환",
     subtitle: "다이어트 한약",
     desc: "체질에 맞춘 한방 다이어트. 무리한 절식 아닌 체지방 위주의 감량과 6개월 요요 관리까지.",
-    image: media.diet.hero,
+    image: "/photos/diet-product.webp",
     href: "/treatments/diet",
   },
   {
@@ -44,8 +43,8 @@ const products = [
     badge: "GONGJINDAN",
     title: "공진단",
     subtitle: "정통 한방 보약",
-    desc: "사향·녹용·당귀·산수유를 한의원에서 직접 제조. 유튜브 채널 '직접 만든 진짜 공진단'에서 과정을 공개합니다.",
-    image: media.gongjindan.hero,
+    desc: "사향·녹용·당귀·산수유를 한의원에서 직접 제조. 원장이 직접 봉인한 인증서를 함께 드립니다.",
+    image: "/photos/gongjindan-hero.webp",
     href: "/treatments/gongjindan",
     dark: true,
   },
@@ -55,7 +54,7 @@ const products = [
     title: "총명공진단",
     subtitle: "수험생 한방 처방",
     desc: "전통 공진단 처방에 원지·석창포를 더한 매일백세한의원 특화 처방. 수능·시험 시즌 컨디션 관리.",
-    image: media.chongmyeong.hero,
+    image: "/photos/chongmyeong-product.webp",
     href: "/treatments/chongmyeong",
   },
 ];
@@ -138,7 +137,7 @@ export default function HomePage() {
 
           <div className="order-1 md:order-2 relative aspect-[4/5] md:aspect-square rounded-2xl overflow-hidden bg-[var(--brand-primary-light)]">
             <Image
-              src={media.diet.hero}
+              src="/photos/diet-product.webp"
               alt="매일감비환 다이어트 한약"
               fill
               priority
@@ -196,16 +195,27 @@ export default function HomePage() {
       {/* PHILOSOPHY */}
       <section className="bg-white">
         <div className="mx-auto max-w-6xl px-4 py-16 md:py-24">
-          <div className="relative max-w-3xl mx-auto text-center mb-12 md:mb-16">
-            <span aria-hidden className="absolute -top-4 left-1/2 -translate-x-1/2 text-6xl md:text-7xl text-[var(--brand-primary)] leading-none font-serif">
-              &ldquo;
-            </span>
-            <p className="text-2xl md:text-4xl font-extrabold leading-tight pt-6">
-              {clinic.philosophy.umbrella}
-            </p>
-            <p className="text-sm text-[var(--text-muted)] mt-4">
-              — {clinic.director.name} {clinic.director.title}
-            </p>
+          <div className="grid md:grid-cols-[200px_1fr] gap-6 md:gap-10 items-center max-w-4xl mx-auto mb-12 md:mb-16">
+            <div className="relative aspect-square md:aspect-[3/4] rounded-2xl overflow-hidden bg-[var(--surface-muted)] border border-[var(--border)] max-w-[200px] mx-auto md:mx-0 w-full">
+              <Image
+                src="/photos/director.webp"
+                alt={`${clinic.director.name} ${clinic.director.title}`}
+                fill
+                className="object-cover"
+                sizes="200px"
+              />
+            </div>
+            <div className="relative text-center md:text-left">
+              <span aria-hidden className="absolute -top-6 left-1/2 md:left-0 -translate-x-1/2 md:translate-x-0 text-6xl md:text-7xl text-[var(--brand-primary)] leading-none font-serif">
+                &ldquo;
+              </span>
+              <p className="text-2xl md:text-4xl font-extrabold leading-tight pt-6">
+                {clinic.philosophy.umbrella}
+              </p>
+              <p className="text-sm text-[var(--text-muted)] mt-4">
+                — {clinic.director.name} {clinic.director.title}
+              </p>
+            </div>
           </div>
 
           <div className="grid md:grid-cols-3 gap-4 md:gap-5">
