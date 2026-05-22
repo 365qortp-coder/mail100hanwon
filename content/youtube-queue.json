@@ -1,5 +1,18 @@
 {
   "_comment": "Add YouTube video URLs/IDs here. The daily automation will pick one unprocessed video at a time and convert it into a column. After processing, the entry is moved to the 'processed' array with the resulting column slug.",
-  "queue": [],
+  "queue": [
+    {
+      "url": "https://www.youtube.com/watch?v=AN394RRqLwQ",
+      "hint": "운동해도 살 안 빠져요 - 나잇살 해결법"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=TC4Na2R7bdU",
+      "hint": "다이어트 루틴 4주"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=Bg2_VU9h9J8",
+      "hint": "두 달 다이어트 사례"
+    }
+  ],
   "processed": []
 }
