@@ -2,10 +2,6 @@
   "_comment": "Add YouTube video URLs/IDs here. The daily automation will pick one unprocessed video at a time and convert it into a column. After processing, the entry is moved to the 'processed' array with the resulting column slug.",
   "queue": [
     {
-      "url": "https://www.youtube.com/watch?v=Bg2_VU9h9J8",
-      "hint": "두 달 다이어트 사례"
-    },
-    {
       "url": "https://www.youtube.com/watch?v=5mOQkLwYyWU",
       "hint": "[diet] 살 빼고 끝이 아니다 요요 막는 6주의 비밀"
     },
@@ -187,6 +183,12 @@
       "slug": "요요-없는-다이어트-엄마들을-위한-4주-루틴-식단법-TC4Na2",
       "title": "요요 없는 다이어트, 엄마들을 위한 4주 루틴 식단법",
       "at": "2026-05-22T10:09:41.109Z"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=Bg2_VU9h9J8",
+      "hint": "두 달 다이어트 사례",
+      "status": "no-transcript",
+      "at": "2026-05-22T22:52:24.748Z"
     }
   ]
 }
