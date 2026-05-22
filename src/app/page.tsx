@@ -6,7 +6,6 @@ import { buildMetadata } from "@/lib/seo";
 import { CTAButtons } from "@/components/CTAButtons";
 import { YouTubeThumbnailGallery } from "@/components/YouTubeThumbnailGallery";
 import { clinic } from "@/data/clinic";
-import { treatments } from "@/data/treatments";
 import { locations } from "@/data/locations";
 import { getAllColumns } from "@/lib/columns";
 import { faqs } from "@/data/faq";
@@ -103,7 +102,7 @@ export default function HomePage() {
   const latestColumns = getAllColumns().slice(0, 3);
   return (
     <>
-      {/* HERO */}
+      {/* 01 · HERO */}
       <section className="relative bg-white border-b border-[var(--border)]">
         <div className="mx-auto max-w-6xl px-4 py-14 md:py-24 grid md:grid-cols-2 gap-10 items-center">
           <div className="order-2 md:order-1">
@@ -162,7 +161,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* NEGATIVE HOOK STRIP */}
+      {/* 02 · NEGATIVE HOOK STRIP */}
       <section className="bg-[var(--brand-primary)] text-white">
         <div className="mx-auto max-w-6xl px-4 py-4 flex items-center justify-center gap-3 text-sm md:text-base font-semibold text-center">
           <span aria-hidden>✓</span>
@@ -175,25 +174,37 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* TRUST STRIP */}
-      <section className="bg-black text-white">
-        <div className="mx-auto max-w-6xl px-4 py-8 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
-          {[
-            { num: `${clinic.stats.yearsOpen}년`, label: "개원 후 연속 진료" },
-            { num: `${(clinic.stats.dietConsults / 10000).toFixed(0)}만건+`, label: "다이어트 진료 누적" },
-            { num: `${clinic.stats.yearsMakingGongjindan}년`, label: "공진단 원내 직접 조제" },
-            { num: "전국", label: "비대면 진료 처방" },
-          ].map((s) => (
-            <div key={s.label} className="border-l-2 border-[var(--brand-primary)] pl-4">
-              <p className="text-xl md:text-2xl font-extrabold text-white">{s.num}</p>
-              <p className="text-xs md:text-sm text-white/70 mt-1">{s.label}</p>
-            </div>
-          ))}
+      {/* 03 · PERSONAS (moved up from #6) */}
+      <section className="bg-[var(--surface-muted)] border-t border-[var(--border)]">
+        <div className="mx-auto max-w-6xl px-4 py-16 md:py-24">
+          <div className="text-center mb-12">
+            <p className="text-xs font-bold tracking-[0.2em] text-[var(--brand-primary)] uppercase mb-2">
+              For You
+            </p>
+            <h2 className="text-2xl md:text-4xl font-extrabold leading-tight">
+              이런 분들이 매일백세를 찾으십니다
+            </h2>
+            <p className="text-sm md:text-base text-[var(--text-muted)] mt-3 max-w-xl mx-auto">
+              해당되신다면 상담 한 번 받아보세요. 안 맞으면 권하지 않습니다.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {personas.map((p) => (
+              <div
+                key={p.title}
+                className="bg-white p-6 rounded-xl border border-[var(--border)] hover:border-[var(--brand-primary)] hover:shadow transition"
+              >
+                <div className="text-3xl mb-3" aria-hidden>{p.icon}</div>
+                <h3 className="font-extrabold leading-snug mb-2">{p.title}</h3>
+                <p className="text-sm text-[var(--text-muted)] leading-relaxed">{p.desc}</p>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
-      {/* PHILOSOPHY */}
-      <section className="bg-white">
+      {/* 04 · PHILOSOPHY */}
+      <section className="bg-white border-t border-[var(--border)]">
         <div className="mx-auto max-w-6xl px-4 py-16 md:py-24">
           <div className="grid md:grid-cols-[200px_1fr] gap-6 md:gap-10 items-center max-w-4xl mx-auto mb-12 md:mb-16">
             <div className="relative aspect-square md:aspect-[3/4] rounded-2xl overflow-hidden bg-[var(--surface-muted)] border border-[var(--border)] max-w-[200px] mx-auto md:mx-0 w-full">
@@ -240,8 +251,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* PRODUCTS */}
-      <section className="bg-white">
+      {/* 05 · PRODUCTS */}
+      <section className="bg-white border-t border-[var(--border)]">
         <div className="mx-auto max-w-6xl px-4 py-16 md:py-24">
           <div className="flex items-end justify-between mb-10 gap-4 flex-wrap">
             <div>
@@ -317,36 +328,73 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* PERSONAS */}
-      <section className="bg-[var(--surface-muted)] border-t border-[var(--border)]">
-        <div className="mx-auto max-w-6xl px-4 py-16 md:py-24">
-          <div className="text-center mb-12">
-            <p className="text-xs font-bold tracking-[0.2em] text-[var(--brand-primary)] uppercase mb-2">
-              For You
-            </p>
-            <h2 className="text-2xl md:text-4xl font-extrabold leading-tight">
-              이런 분들이 매일백세를 찾으십니다
-            </h2>
-            <p className="text-sm md:text-base text-[var(--text-muted)] mt-3 max-w-xl mx-auto">
-              해당되신다면 상담 한 번 받아보세요. 안 맞으면 권하지 않습니다.
-            </p>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {personas.map((p) => (
-              <div
-                key={p.title}
-                className="bg-white p-6 rounded-xl border border-[var(--border)] hover:border-[var(--brand-primary)] hover:shadow transition"
-              >
-                <div className="text-3xl mb-3" aria-hidden>{p.icon}</div>
-                <h3 className="font-extrabold leading-snug mb-2">{p.title}</h3>
-                <p className="text-sm text-[var(--text-muted)] leading-relaxed">{p.desc}</p>
+      {/* 06 · TRUST STRIP (moved down from #3) */}
+      <section className="bg-black text-white">
+        <div className="mx-auto max-w-6xl px-4 py-10 md:py-12">
+          <p className="text-[11px] tracking-[0.25em] font-bold text-[var(--brand-primary)] uppercase mb-5 text-center">
+            By the Numbers
+          </p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
+            {[
+              { num: `${clinic.stats.yearsOpen}년`, label: "개원 후 연속 진료" },
+              { num: `${(clinic.stats.dietConsults / 10000).toFixed(0)}만건+`, label: "다이어트 진료 누적" },
+              { num: `${clinic.stats.yearsMakingGongjindan}년`, label: "공진단 원내 직접 조제" },
+              { num: "전국", label: "비대면 진료 처방" },
+            ].map((s) => (
+              <div key={s.label} className="border-l-2 border-[var(--brand-primary)] pl-4">
+                <p className="text-xl md:text-2xl font-extrabold text-white">{s.num}</p>
+                <p className="text-xs md:text-sm text-white/70 mt-1">{s.label}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* CLINIC INTRO */}
+      {/* 07 · PROCESS (moved up from #9) */}
+      <section className="bg-white">
+        <div className="mx-auto max-w-6xl px-4 py-16 md:py-24">
+          <div className="text-center mb-12">
+            <p className="text-xs font-bold tracking-[0.2em] text-[var(--brand-primary)] uppercase mb-2">
+              Process
+            </p>
+            <h2 className="text-2xl md:text-4xl font-extrabold leading-tight">
+              처음이신가요?
+              <br />
+              진료 받으시는 4단계
+            </h2>
+            <p className="text-base text-[var(--text-muted)] mt-3 max-w-xl mx-auto">
+              구글 설문 작성 → 원장님 전화 상담 → 한약 택배 발송. 전국 어디서나
+              동일하게 진행됩니다.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+            {processSteps.map((s, i) => (
+              <div
+                key={s.step}
+                className="relative bg-white border border-[var(--border)] rounded-xl p-5 hover:border-[var(--brand-primary)] transition"
+              >
+                <span className="absolute -top-3 left-5 bg-[var(--brand-primary)] text-white text-xs font-bold px-2 py-1 rounded">
+                  STEP {s.step}
+                </span>
+                <h3 className="text-lg font-extrabold mt-3 mb-2">{s.title}</h3>
+                <p className="text-sm text-[var(--text-muted)] leading-relaxed">
+                  {s.desc}
+                </p>
+                {i < processSteps.length - 1 && (
+                  <span className="hidden md:block absolute top-1/2 -right-3 w-6 h-px bg-[var(--border)]" />
+                )}
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-10 max-w-2xl mx-auto">
+            <CTAButtons />
+          </div>
+        </div>
+      </section>
+
+      {/* 08 · CLINIC INTRO */}
       <section className="bg-white border-t border-[var(--border)]">
         <div className="mx-auto max-w-6xl px-4 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
           <div className="relative aspect-[4/5] md:aspect-[4/3] rounded-2xl overflow-hidden bg-[var(--surface-muted)] order-2 md:order-1">
@@ -418,7 +466,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* YOUTUBE */}
+      {/* 09 · YOUTUBE */}
       <section className="bg-[var(--surface-muted)]">
         <div className="mx-auto max-w-6xl px-4 py-16 md:py-24">
           <div className="flex items-end justify-between mb-10 gap-4 flex-wrap">
@@ -441,79 +489,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* PROCESS */}
-      <section className="bg-white">
-        <div className="mx-auto max-w-6xl px-4 py-16 md:py-24">
-          <div className="text-center mb-12">
-            <p className="text-xs font-bold tracking-[0.2em] text-[var(--brand-primary)] uppercase mb-2">
-              Process
-            </p>
-            <h2 className="text-2xl md:text-4xl font-extrabold leading-tight">
-              비대면 진료 4단계
-            </h2>
-            <p className="text-base text-[var(--text-muted)] mt-3 max-w-xl mx-auto">
-              구글 설문 작성 → 원장님 전화 상담 → 한약 택배 발송. 전국 어디서나
-              동일하게 진행됩니다.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {processSteps.map((s, i) => (
-              <div
-                key={s.step}
-                className="relative bg-white border border-[var(--border)] rounded-xl p-5 hover:border-[var(--brand-primary)] transition"
-              >
-                <span className="absolute -top-3 left-5 bg-[var(--brand-primary)] text-white text-xs font-bold px-2 py-1 rounded">
-                  STEP {s.step}
-                </span>
-                <h3 className="text-lg font-extrabold mt-3 mb-2">{s.title}</h3>
-                <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-                  {s.desc}
-                </p>
-                {i < processSteps.length - 1 && (
-                  <span className="hidden md:block absolute top-1/2 -right-3 w-6 h-px bg-[var(--border)]" />
-                )}
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-10 max-w-2xl mx-auto">
-            <CTAButtons />
-          </div>
-        </div>
-      </section>
-
-      {/* LOCATIONS */}
-      <section className="bg-[var(--surface-muted)]">
-        <div className="mx-auto max-w-6xl px-4 py-16 md:py-20">
-          <div className="text-center mb-10">
-            <p className="text-xs font-bold tracking-[0.2em] text-[var(--brand-primary)] uppercase mb-2">
-              Locations
-            </p>
-            <h2 className="text-2xl md:text-3xl font-extrabold leading-tight">
-              어느 지역에서 오시나요?
-            </h2>
-            <p className="text-sm md:text-base text-[var(--text-muted)] mt-3 max-w-xl mx-auto">
-              중랑·노원·동대문·광진·성북·남양주·구리·의정부에서 직접 찾아오시고,
-              그 외 지역은 비대면 진료로 전국 어디서나 처방받으십니다.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2">
-            {locations.slice(0, 18).map((loc) => (
-              <Link
-                key={loc.slug}
-                href={`/locations/${loc.slug}`}
-                className="px-3 py-2.5 bg-white rounded border border-[var(--border)] hover:border-black text-center text-sm font-medium transition"
-              >
-                {loc.name}
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* COLUMNS */}
+      {/* 10 · COLUMNS (moved up from #11) */}
       {latestColumns.length > 0 && (
         <section className="bg-white">
           <div className="mx-auto max-w-6xl px-4 py-16 md:py-20">
@@ -523,7 +499,7 @@ export default function HomePage() {
                   Columns
                 </p>
                 <h2 className="text-2xl md:text-3xl font-extrabold leading-tight">
-                  건강 칼럼
+                  매일 올라오는 한방 건강 정보
                 </h2>
               </div>
               <Link
@@ -560,8 +536,38 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* FAQ PREVIEW */}
+      {/* 11 · LOCATIONS (moved down from #10) */}
       <section className="bg-[var(--surface-muted)]">
+        <div className="mx-auto max-w-6xl px-4 py-16 md:py-20">
+          <div className="text-center mb-10">
+            <p className="text-xs font-bold tracking-[0.2em] text-[var(--brand-primary)] uppercase mb-2">
+              Locations
+            </p>
+            <h2 className="text-2xl md:text-3xl font-extrabold leading-tight">
+              어느 지역에서 오시나요?
+            </h2>
+            <p className="text-sm md:text-base text-[var(--text-muted)] mt-3 max-w-xl mx-auto">
+              중랑·노원·동대문·광진·성북·남양주·구리·의정부에서 직접 찾아오시고,
+              그 외 지역은 비대면 진료로 전국 어디서나 처방받으십니다.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2">
+            {locations.slice(0, 18).map((loc) => (
+              <Link
+                key={loc.slug}
+                href={`/locations/${loc.slug}`}
+                className="px-3 py-2.5 bg-white rounded border border-[var(--border)] hover:border-black text-center text-sm font-medium transition"
+              >
+                {loc.name}
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 12 · FAQ PREVIEW */}
+      <section className="bg-white border-t border-[var(--border)]">
         <div className="mx-auto max-w-4xl px-4 py-16 md:py-20">
           <div className="text-center mb-10">
             <p className="text-xs font-bold tracking-[0.2em] text-[var(--brand-primary)] uppercase mb-2">
@@ -575,7 +581,7 @@ export default function HomePage() {
             {faqs.slice(0, 5).map((f, i) => (
               <details
                 key={i}
-                className="group rounded-lg border border-[var(--border)] bg-white p-5 hover:border-[var(--brand-primary)] transition"
+                className="group rounded-lg border border-[var(--border)] bg-[var(--surface-muted)] p-5 hover:border-[var(--brand-primary)] transition"
               >
                 <summary className="cursor-pointer font-semibold flex items-start gap-2 list-none">
                   <span className="text-[var(--brand-primary)] font-bold">Q.</span>
@@ -596,7 +602,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* FINAL CTA */}
+      {/* 13 · FINAL CTA */}
       <section className="bg-black text-white">
         <div className="mx-auto max-w-4xl px-4 py-16 md:py-20 text-center">
           <p className="text-xs font-bold tracking-[0.2em] text-[var(--brand-primary)] uppercase mb-3">
