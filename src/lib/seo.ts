@@ -36,7 +36,7 @@ export function buildMetadata({
   ];
 
   return {
-    title: fullTitle,
+    title: { absolute: fullTitle },
     description,
     keywords: allKeywords,
     metadataBase: new URL(clinic.url),
