@@ -29,12 +29,12 @@ export function FloatingCTA() {
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
+          width="22"
+          height="22"
           viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
-          strokeWidth="2"
+          strokeWidth="2.2"
           strokeLinecap="round"
           strokeLinejoin="round"
         >
@@ -55,7 +55,7 @@ export function FloatingCTA() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="비대면 진료 신청"
-        className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[var(--brand-accent)] text-white flex items-center justify-center shadow-lg hover:brightness-95 transition"
+        className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-black text-white flex items-center justify-center shadow-lg hover:bg-[var(--brand-primary)] transition"
       >
         <span className="text-xs font-bold leading-tight text-center">
           비대면

@@ -2,17 +2,24 @@
 @plugin "@tailwindcss/typography";
 
 :root {
-  --background: #fafaf9;
-  --foreground: #1c1917;
-  --brand-primary: #15803d;
-  --brand-primary-dark: #14532d;
-  --brand-primary-light: #dcfce7;
-  --brand-accent: #b45309;
-  --brand-accent-light: #fef3c7;
+  /* Base */
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+
+  /* Brand */
+  --brand-primary: #c0252d;        /* logo red */
+  --brand-primary-dark: #8c1820;
+  --brand-primary-light: #fdecec;
+  --brand-accent: #0a0a0a;          /* black accent */
+  --brand-accent-light: #f5f5f5;
+
+  /* Surfaces */
   --surface: #ffffff;
-  --surface-muted: #f5f5f4;
-  --border: #e7e5e4;
-  --text-muted: #57534e;
+  --surface-muted: #fafafa;
+  --surface-dark: #0a0a0a;
+  --border: #e5e5e5;
+  --border-strong: #0a0a0a;
+  --text-muted: #525252;
 }
 
 @theme inline {
@@ -39,7 +46,6 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-pretendard), -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", system-ui, sans-serif;
-  font-feature-settings: "ss06";
   word-break: keep-all;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -47,23 +53,47 @@ body {
 
 h1, h2, h3, h4, h5 {
   word-break: keep-all;
+  letter-spacing: -0.02em;
 }
 
-/* CTA pulse for floating buttons */
+/* Subtle pulse only on phone CTA */
 @keyframes brand-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(21, 128, 61, 0.4); }
-  50% { box-shadow: 0 0 0 12px rgba(21, 128, 61, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(192, 37, 45, 0.35); }
+  50% { box-shadow: 0 0 0 12px rgba(192, 37, 45, 0); }
 }
+.cta-pulse { animation: brand-pulse 2s ease-out infinite; }
 
-.cta-pulse {
-  animation: brand-pulse 2s ease-out infinite;
-}
-
-/* Smooth scrolling for anchor links */
 html { scroll-behavior: smooth; }
 
-/* Focus styles for accessibility */
 *:focus-visible {
   outline: 2px solid var(--brand-primary);
   outline-offset: 2px;
+}
+
+/* Logo block (vertical "매일" red + horizontal 백세한의원 black) */
+.logo-mark {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  line-height: 1;
+}
+.logo-mark__badge {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--brand-primary);
+  color: #fff;
+  font-weight: 800;
+  padding: 0.35rem 0.45rem;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  border-radius: 2px;
+  font-size: 0.85rem;
+}
+.logo-mark__text {
+  font-weight: 800;
+  color: var(--foreground);
+  letter-spacing: -0.04em;
+  font-size: 1.15rem;
 }

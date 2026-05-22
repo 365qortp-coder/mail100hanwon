@@ -1,14 +1,17 @@
 import Link from "next/link";
 import { clinic } from "@/data/clinic";
+import { Logo } from "@/components/Logo";
 
 export function Footer() {
   return (
-    <footer className="bg-[var(--brand-primary-dark)] text-white mt-16">
-      <div className="mx-auto max-w-6xl px-4 py-12">
-        <div className="grid md:grid-cols-3 gap-8">
+    <footer className="bg-black text-white mt-20">
+      <div className="mx-auto max-w-6xl px-4 py-14">
+        <div className="grid md:grid-cols-3 gap-10">
           <div>
-            <h3 className="text-lg font-bold mb-3">{clinic.name}</h3>
-            <p className="text-sm text-white/80 leading-relaxed">
+            <div className="mb-4">
+              <Logo size="default" />
+            </div>
+            <p className="text-sm text-white/70 leading-relaxed">
               {clinic.address.full}
               <br />
               대표원장 {clinic.director.name}
@@ -16,7 +19,7 @@ export function Footer() {
               전화{" "}
               <a
                 href={`tel:${clinic.contact.phoneClean}`}
-                className="underline hover:text-white"
+                className="text-[var(--brand-primary)] font-semibold hover:text-white"
               >
                 {clinic.contact.phone}
               </a>
@@ -24,30 +27,30 @@ export function Footer() {
           </div>
 
           <div>
-            <h4 className="font-semibold mb-3">진료 시간</h4>
-            <dl className="text-sm text-white/80 space-y-1">
+            <h4 className="font-bold mb-3 text-white">진료 시간</h4>
+            <dl className="text-sm text-white/70 space-y-1.5">
               <div className="flex gap-3">
-                <dt>평일</dt>
+                <dt className="w-12">평일</dt>
                 <dd>{clinic.hours.weekday}</dd>
               </div>
               <div className="flex gap-3">
-                <dt>토요일</dt>
+                <dt className="w-12">토요일</dt>
                 <dd>{clinic.hours.saturday}</dd>
               </div>
               <div className="flex gap-3">
-                <dt>일요일</dt>
+                <dt className="w-12">일요일</dt>
                 <dd>{clinic.hours.sunday}</dd>
               </div>
               <div className="flex gap-3">
-                <dt>점심</dt>
+                <dt className="w-12">점심</dt>
                 <dd>{clinic.hours.lunch}</dd>
               </div>
             </dl>
           </div>
 
           <div>
-            <h4 className="font-semibold mb-3">진료 안내</h4>
-            <ul className="text-sm text-white/80 space-y-1.5">
+            <h4 className="font-bold mb-3 text-white">진료 안내</h4>
+            <ul className="text-sm text-white/70 space-y-2">
               <li>
                 <Link href="/treatments/diet" className="hover:text-white">
                   매일감비환 다이어트
@@ -82,7 +85,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-10 pt-6 border-t border-white/20 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs text-white/60">
+        <div className="mt-12 pt-6 border-t border-white/20 flex flex-col md:flex-row items-start md:items-center justify-between gap-4 text-xs text-white/50">
           <p>
             © {new Date().getFullYear()} {clinic.name}. All rights reserved.
             <br />
@@ -90,13 +93,13 @@ export function Footer() {
           </p>
           <div className="flex gap-4">
             <a href={clinic.youtube.diet} target="_blank" rel="noopener" className="hover:text-white">
-              유튜브 (다이어트)
+              YouTube 다이어트
             </a>
             <a href={clinic.youtube.gongjindan} target="_blank" rel="noopener" className="hover:text-white">
-              유튜브 (공진단)
+              YouTube 공진단
             </a>
             <a href={clinic.youtube.pain} target="_blank" rel="noopener" className="hover:text-white">
-              유튜브 (통증)
+              YouTube 통증
             </a>
           </div>
         </div>
