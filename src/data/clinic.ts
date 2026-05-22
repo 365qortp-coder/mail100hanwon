@@ -26,6 +26,7 @@ export const clinic = {
       "https://docs.google.com/forms/d/1g2IhZ3c4dqW5nhrYuZBgguIPKBULiZZWI_PgroqlseQ/viewform",
     onlineFormGongjindan:
       "https://docs.google.com/forms/d/1bY4A3UzxH1jkZQU6azXtrmVwtUxJwKYRRKDo5gLFqo0/viewform",
+    naverBooking: "https://naver.me/F88gzvcg",
   },
   domain: "mail100hanwon.co.kr",
   url: "https://mail100hanwon.co.kr",

@@ -8,18 +8,33 @@ const GONGJINDAN_PATHS = [
   "/treatments/chongmyeong",
   "/event/suneung",
 ];
+const PAIN_PATHS = ["/treatments/pain"];
 
-function pickForm(pathname: string | null) {
-  if (!pathname) return clinic.contact.onlineForm;
-  if (GONGJINDAN_PATHS.some((p) => pathname.startsWith(p))) {
-    return clinic.contact.onlineFormGongjindan;
+type ThirdCTA =
+  | { kind: "form"; url: string; label: string }
+  | { kind: "naver"; url: string };
+
+function pickThirdCTA(pathname: string | null): ThirdCTA {
+  if (pathname && PAIN_PATHS.some((p) => pathname.startsWith(p))) {
+    return { kind: "naver", url: clinic.contact.naverBooking };
   }
-  return clinic.contact.onlineForm;
+  if (pathname && GONGJINDAN_PATHS.some((p) => pathname.startsWith(p))) {
+    return {
+      kind: "form",
+      url: clinic.contact.onlineFormGongjindan,
+      label: "비대면\n신청",
+    };
+  }
+  return {
+    kind: "form",
+    url: clinic.contact.onlineForm,
+    label: "비대면\n신청",
+  };
 }
 
 export function FloatingCTA() {
   const pathname = usePathname();
-  const formUrl = pickForm(pathname);
+  const third = pickThirdCTA(pathname);
   return (
     <div className="fixed bottom-4 right-4 z-50 flex flex-col gap-2 md:bottom-6 md:right-6">
       <a
@@ -50,19 +65,33 @@ export function FloatingCTA() {
       >
         <span className="text-xs font-extrabold">카톡</span>
       </a>
-      <a
-        href={formUrl}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="비대면 진료 신청"
-        className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-black text-white flex items-center justify-center shadow-lg hover:bg-[var(--brand-primary)] transition"
-      >
-        <span className="text-xs font-bold leading-tight text-center">
-          비대면
-          <br />
-          신청
-        </span>
-      </a>
+      {third.kind === "naver" ? (
+        <a
+          href={third.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="네이버 예약"
+          className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#03C75A] text-white flex items-center justify-center shadow-lg hover:brightness-95 transition"
+        >
+          <span className="text-xs font-bold leading-tight text-center">
+            네이버
+            <br />
+            예약
+          </span>
+        </a>
+      ) : (
+        <a
+          href={third.url}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label="비대면 진료 신청"
+          className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-black text-white flex items-center justify-center shadow-lg hover:bg-[var(--brand-primary)] transition"
+        >
+          <span className="text-xs font-bold leading-tight text-center whitespace-pre-line">
+            {third.label}
+          </span>
+        </a>
+      )}
     </div>
   );
 }

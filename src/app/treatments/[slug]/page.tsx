@@ -17,11 +17,14 @@ import { treatments, getTreatment } from "@/data/treatments";
 import { pricing, formatPrice } from "@/data/pricing";
 import { clinic } from "@/data/clinic";
 
-function formUrlFor(category: string) {
-  if (category === "gongjindan" || category === "chongmyeong") {
-    return clinic.contact.onlineFormGongjindan;
+function ctaPropsFor(category: string) {
+  if (category === "pain") {
+    return { naverUrl: clinic.contact.naverBooking };
   }
-  return clinic.contact.onlineForm;
+  if (category === "gongjindan" || category === "chongmyeong") {
+    return { formUrl: clinic.contact.onlineFormGongjindan };
+  }
+  return { formUrl: clinic.contact.onlineForm };
 }
 
 type Params = Promise<{ slug: string }>;
@@ -93,7 +96,7 @@ export default async function TreatmentPage({ params }: { params: Params }) {
             {t.intro}
           </p>
           <div className="mt-8 max-w-2xl">
-            <CTAButtons formUrl={formUrlFor(t.category)} />
+            <CTAButtons {...ctaPropsFor(t.category)} />
           </div>
         </div>
       </section>
@@ -222,7 +225,7 @@ export default async function TreatmentPage({ params }: { params: Params }) {
         </div>
 
         <div className="mt-12">
-          <CTAButtons formUrl={formUrlFor(t.category)} />
+          <CTAButtons {...ctaPropsFor(t.category)} />
         </div>
       </Section>
     </>
