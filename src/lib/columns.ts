@@ -32,6 +32,14 @@ export function getColumnSlugs(): string[] {
     .map((f) => f.replace(/\.md$/, ""));
 }
 
+function decodeSlug(slug: string): string {
+  try {
+    return decodeURIComponent(slug);
+  } catch {
+    return slug;
+  }
+}
+
 function toDateString(v: unknown): string {
   if (!v) return new Date().toISOString().slice(0, 10);
   if (v instanceof Date) return v.toISOString().slice(0, 10);
@@ -39,6 +47,7 @@ function toDateString(v: unknown): string {
 }
 
 export function getColumnMeta(slug: string): ColumnMeta | null {
+  slug = decodeSlug(slug);
   const filePath = path.join(COLUMNS_DIR, `${slug}.md`);
   if (!fs.existsSync(filePath)) return null;
   const raw = fs.readFileSync(filePath, "utf8");
@@ -57,6 +66,7 @@ export function getColumnMeta(slug: string): ColumnMeta | null {
 }
 
 export async function getColumn(slug: string): Promise<Column | null> {
+  slug = decodeSlug(slug);
   const filePath = path.join(COLUMNS_DIR, `${slug}.md`);
   if (!fs.existsSync(filePath)) return null;
   const raw = fs.readFileSync(filePath, "utf8");
