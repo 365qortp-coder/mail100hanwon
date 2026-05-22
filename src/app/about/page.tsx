@@ -4,6 +4,7 @@ import { Section, SectionTitle } from "@/components/Section";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTAButtons } from "@/components/CTAButtons";
 import { KeyFactsBox } from "@/components/KeyFactsBox";
+import { DirectorPhoto } from "@/components/DirectorPhoto";
 import { clinic } from "@/data/clinic";
 
 export const metadata: Metadata = buildMetadata({
@@ -21,11 +22,19 @@ export default function AboutPage() {
       </div>
 
       <Section bg="white">
-        <SectionTitle
-          eyebrow="송원석 원장"
-          title="환자 한 분 한 분을 직접 상담합니다"
-          subtitle="매일백세한의원 송원석 원장은 모든 환자분의 체질과 증상을 직접 확인한 뒤 한약을 처방합니다. 매일감비환·공진단·총명공진단 모두 원장이 직접 제조 과정을 감독합니다."
-        />
+        <div className="grid md:grid-cols-[260px_1fr] gap-8 items-start mb-10">
+          <DirectorPhoto
+            alt={`${clinic.director.name} ${clinic.director.title}`}
+            className="w-full aspect-[3/4] rounded-2xl object-cover border border-[var(--border)]"
+          />
+          <div>
+            <SectionTitle
+              eyebrow={`${clinic.director.name} ${clinic.director.title}`}
+              title="환자 한 분 한 분을 직접 상담합니다"
+              subtitle="매일백세한의원 송원석 원장은 모든 환자분의 체질과 증상을 직접 확인한 뒤 한약을 처방합니다. 매일감비환·공진단·총명공진단 모두 원장이 직접 제조 과정을 감독합니다."
+            />
+          </div>
+        </div>
 
         <KeyFactsBox
           title="원장 약력 요약"
