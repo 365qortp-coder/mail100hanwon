@@ -67,6 +67,39 @@ const processSteps = [
   { step: "04", title: "한약 발송", desc: "한약 제조 후 영업일 2~5일 이내 택배 발송, 또는 직접 수령." },
 ];
 
+const personas = [
+  {
+    icon: "🍱",
+    title: "운동·식단 다 해봤는데 안 빠지시는 분",
+    desc: "기초대사가 떨어진 30~50대, 산후 엄마, 다이어트 정체기. 매일감비환으로 체질·대사부터 다시 잡습니다.",
+  },
+  {
+    icon: "💊",
+    title: "효과만 강조하는 한약 광고에 지치신 분",
+    desc: "단정적 효과 표현 대신, 체질에 맞는지 솔직하게 말씀드립니다. 안 맞으면 권하지 않습니다.",
+  },
+  {
+    icon: "🏥",
+    title: "한의원 멀어서 못 가셨던 분",
+    desc: "비대면 진료로 전국 어디서나 처방받으세요. 구글 설문 → 원장 전화 상담 → 한약 택배.",
+  },
+  {
+    icon: "📚",
+    title: "수험생 자녀 컨디션 걱정되시는 부모님",
+    desc: "수능·시험 3~6개월 전부터 시작하는 총명공진단. 원지·석창포를 더한 매일백세 특화 처방.",
+  },
+  {
+    icon: "🏋️",
+    title: "허리·어깨·관절 통증으로 일상이 힘드신 분",
+    desc: "침·약침·물리치료가 한 건물에서. 야간·토일·공휴일 진료로 직장인도 편하게 오십니다.",
+  },
+  {
+    icon: "🌿",
+    title: "정통 한방 보약을 받고 싶으신 분",
+    desc: "사향·녹용 직접 제조 공진단. 매일백세한의원이 한약재 입고부터 환 제조까지 직접 관리합니다.",
+  },
+];
+
 export default function HomePage() {
   const latestColumns = getAllColumns().slice(0, 3);
   return (
@@ -127,6 +160,19 @@ export default function HomePage() {
               </a>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* NEGATIVE HOOK STRIP */}
+      <section className="bg-[var(--brand-primary)] text-white">
+        <div className="mx-auto max-w-6xl px-4 py-4 flex items-center justify-center gap-3 text-sm md:text-base font-semibold text-center">
+          <span aria-hidden>✓</span>
+          <span>
+            안 맞는 한약은 권하지 않습니다 ·{" "}
+            <span className="opacity-90 font-normal">
+              체질에 맞는지 솔직하게 말씀드리는 한의원
+            </span>
+          </span>
         </div>
       </section>
 
@@ -224,6 +270,35 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* PERSONAS */}
+      <section className="bg-[var(--surface-muted)] border-t border-[var(--border)]">
+        <div className="mx-auto max-w-6xl px-4 py-16 md:py-24">
+          <div className="text-center mb-12">
+            <p className="text-xs font-bold tracking-[0.2em] text-[var(--brand-primary)] uppercase mb-2">
+              For You
+            </p>
+            <h2 className="text-2xl md:text-4xl font-extrabold leading-tight">
+              이런 분들이 매일백세를 찾으십니다
+            </h2>
+            <p className="text-sm md:text-base text-[var(--text-muted)] mt-3 max-w-xl mx-auto">
+              해당되신다면 상담 한 번 받아보세요. 안 맞으면 권하지 않습니다.
+            </p>
+          </div>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {personas.map((p) => (
+              <div
+                key={p.title}
+                className="bg-white p-6 rounded-xl border border-[var(--border)] hover:border-[var(--brand-primary)] hover:shadow transition"
+              >
+                <div className="text-3xl mb-3" aria-hidden>{p.icon}</div>
+                <h3 className="font-extrabold leading-snug mb-2">{p.title}</h3>
+                <p className="text-sm text-[var(--text-muted)] leading-relaxed">{p.desc}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
       {/* CLINIC INTRO */}
       <section className="bg-white border-t border-[var(--border)]">
         <div className="mx-auto max-w-6xl px-4 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
@@ -252,7 +327,7 @@ export default function HomePage() {
               있습니다. 야간 진료와 토요일·일요일·공휴일 진료도 운영하고 있어
               직장인·학부모분들도 편하게 오십니다.
             </p>
-            <dl className="grid grid-cols-2 gap-4 text-sm">
+            <dl className="grid grid-cols-2 gap-4 text-sm mb-6">
               <div>
                 <dt className="text-[var(--text-muted)] mb-1">평일</dt>
                 <dd className="font-bold">{clinic.hours.weekday}</dd>
@@ -274,6 +349,24 @@ export default function HomePage() {
                 <dd className="font-bold">먹골역 도보 5분</dd>
               </div>
             </dl>
+            <div className="flex flex-wrap gap-2">
+              <a
+                href={clinic.contact.naverBooking}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded bg-[#03C75A] text-white text-sm font-bold hover:brightness-95 transition"
+              >
+                네이버 예약하기
+              </a>
+              <a
+                href={clinic.contact.naverBooking}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2.5 rounded border-2 border-[#03C75A] text-[#03C75A] text-sm font-bold hover:bg-[#03C75A]/10 transition"
+              >
+                네이버 플레이스 리뷰 보기
+              </a>
+            </div>
           </div>
         </div>
       </section>
@@ -353,6 +446,10 @@ export default function HomePage() {
             <h2 className="text-2xl md:text-3xl font-extrabold leading-tight">
               어느 지역에서 오시나요?
             </h2>
+            <p className="text-sm md:text-base text-[var(--text-muted)] mt-3 max-w-xl mx-auto">
+              중랑·노원·동대문·광진·성북·남양주·구리·의정부에서 직접 찾아오시고,
+              그 외 지역은 비대면 진료로 전국 어디서나 처방받으십니다.
+            </p>
           </div>
 
           <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2">
