@@ -4,12 +4,13 @@ import type { Metadata } from "next";
 
 import { buildMetadata } from "@/lib/seo";
 import { CTAButtons } from "@/components/CTAButtons";
-import { YouTubeShowcase } from "@/components/YouTubeShowcase";
+import { YouTubeThumbnailGallery } from "@/components/YouTubeThumbnailGallery";
 import { clinic } from "@/data/clinic";
 import { treatments } from "@/data/treatments";
 import { locations } from "@/data/locations";
 import { getAllColumns } from "@/lib/columns";
 import { media } from "@/data/media";
+import { faqs } from "@/data/faq";
 
 export const metadata: Metadata = buildMetadata({
   title: `${clinic.name} | 매일감비환 다이어트·공진단·총명공진단`,
@@ -76,20 +77,29 @@ export default function HomePage() {
           <div className="order-2 md:order-1">
             <p className="inline-flex items-center gap-2 text-xs font-bold tracking-[0.18em] text-[var(--brand-primary)] uppercase mb-4">
               <span className="w-8 h-px bg-[var(--brand-primary)]" />
-              서울 중랑구 · 먹골역 도보 5분
+              서울 중랑구 · 비대면 진료 전국 가능
             </p>
             <h1 className="text-3xl md:text-5xl font-extrabold leading-[1.15] text-[var(--foreground)] mb-5">
-              매일감비환 다이어트
+              운동·식단 다 해봤는데
               <br />
-              공진단 · 총명공진단
+              <span className="text-[var(--brand-primary)]">살이 안 빠지시나요?</span>
               <br />
-              <span className="text-[var(--brand-primary)]">매일백세한의원</span>
+              <span className="text-2xl md:text-3xl font-bold text-[var(--text-muted)]">
+                매일백세한의원의 한방 다이어트
+              </span>
             </h1>
-            <p className="text-base md:text-lg text-[var(--text-muted)] leading-relaxed mb-8 max-w-lg">
-              송원석 원장이 직접 처방하는 한방 다이어트 한약, 정통 처방 그대로
-              직접 만든 공진단, 수험생 총명공진단까지. 비대면 진료로 전국
-              어디서나 처방받을 수 있습니다.
+            <p className="text-base md:text-lg text-[var(--text-muted)] leading-relaxed mb-6 max-w-lg">
+              송원석 원장이 체질을 직접 분석해 처방하는 <strong className="text-[var(--foreground)]">매일감비환</strong>.
+              한약으로 식욕·대사를 함께 잡고, 6개월 요요 관리까지.
+              <br />
+              비대면 진료로 한의원 방문 없이도 받아보실 수 있습니다.
             </p>
+            <ul className="mb-8 grid grid-cols-2 gap-2 max-w-md text-sm">
+              <li className="flex items-center gap-2"><Check />체질·대사 맞춤 처방</li>
+              <li className="flex items-center gap-2"><Check />무리한 절식 없이</li>
+              <li className="flex items-center gap-2"><Check />6개월 요요 관리</li>
+              <li className="flex items-center gap-2"><Check />전국 택배 발송</li>
+            </ul>
             <CTAButtons />
           </div>
 
@@ -214,6 +224,60 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* CLINIC INTRO */}
+      <section className="bg-white border-t border-[var(--border)]">
+        <div className="mx-auto max-w-6xl px-4 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
+          <div className="relative aspect-[4/5] md:aspect-[4/3] rounded-2xl overflow-hidden bg-[var(--surface-muted)] order-2 md:order-1">
+            <Image
+              src="/photos/clinic-exterior.webp"
+              alt="매일백세한의원 외관 - 서울 중랑구 공릉로 21"
+              fill
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 50vw"
+            />
+          </div>
+          <div className="order-1 md:order-2">
+            <p className="text-xs font-bold tracking-[0.2em] text-[var(--brand-primary)] uppercase mb-2">
+              About
+            </p>
+            <h2 className="text-2xl md:text-4xl font-extrabold leading-tight mb-5">
+              내원도 비대면도,
+              <br />
+              한 곳에서 받는 한방 진료
+            </h2>
+            <p className="text-base text-[var(--text-muted)] leading-relaxed mb-6">
+              서울 중랑구 공릉로 21, 먹골역 도보 5분 거리에 자리한
+              {" "}매일백세한의원입니다. 2~3층 한 건물에 진료실과 물리치료실이
+              나뉘어 있어 다이어트·공진단·통증 치료까지 한자리에서 받으실 수
+              있습니다. 야간 진료와 토요일·일요일·공휴일 진료도 운영하고 있어
+              직장인·학부모분들도 편하게 오십니다.
+            </p>
+            <dl className="grid grid-cols-2 gap-4 text-sm">
+              <div>
+                <dt className="text-[var(--text-muted)] mb-1">평일</dt>
+                <dd className="font-bold">{clinic.hours.weekday}</dd>
+              </div>
+              <div>
+                <dt className="text-[var(--text-muted)] mb-1">토요일</dt>
+                <dd className="font-bold">{clinic.hours.saturday}</dd>
+              </div>
+              <div>
+                <dt className="text-[var(--text-muted)] mb-1">전화</dt>
+                <dd className="font-bold">
+                  <a href={`tel:${clinic.contact.phoneClean}`} className="hover:text-[var(--brand-primary)]">
+                    {clinic.contact.phone}
+                  </a>
+                </dd>
+              </div>
+              <div>
+                <dt className="text-[var(--text-muted)] mb-1">교통</dt>
+                <dd className="font-bold">먹골역 도보 5분</dd>
+              </div>
+            </dl>
+          </div>
+        </div>
+      </section>
+
       {/* YOUTUBE */}
       <section className="bg-[var(--surface-muted)]">
         <div className="mx-auto max-w-6xl px-4 py-16 md:py-24">
@@ -227,9 +291,13 @@ export default function HomePage() {
                 <br />
                 운영하는 3개 채널
               </h2>
+              <p className="text-sm text-[var(--text-muted)] mt-2 max-w-md">
+                실제 진료실에서 다루는 한방 다이어트·공진단·통증 콘텐츠를
+                매일 영상으로 올립니다.
+              </p>
             </div>
           </div>
-          <YouTubeShowcase />
+          <YouTubeThumbnailGallery />
         </div>
       </section>
 
@@ -348,6 +416,42 @@ export default function HomePage() {
         </section>
       )}
 
+      {/* FAQ PREVIEW */}
+      <section className="bg-[var(--surface-muted)]">
+        <div className="mx-auto max-w-4xl px-4 py-16 md:py-20">
+          <div className="text-center mb-10">
+            <p className="text-xs font-bold tracking-[0.2em] text-[var(--brand-primary)] uppercase mb-2">
+              FAQ
+            </p>
+            <h2 className="text-2xl md:text-3xl font-extrabold leading-tight">
+              자주 묻는 질문
+            </h2>
+          </div>
+          <div className="space-y-3">
+            {faqs.slice(0, 5).map((f, i) => (
+              <details
+                key={i}
+                className="group rounded-lg border border-[var(--border)] bg-white p-5 hover:border-[var(--brand-primary)] transition"
+              >
+                <summary className="cursor-pointer font-semibold flex items-start gap-2 list-none">
+                  <span className="text-[var(--brand-primary)] font-bold">Q.</span>
+                  <span className="flex-1">{f.q}</span>
+                  <span className="text-[var(--text-muted)] group-open:rotate-180 transition shrink-0">▾</span>
+                </summary>
+                <p className="mt-3 text-sm text-[var(--text-muted)] leading-relaxed pl-6">
+                  {f.a}
+                </p>
+              </details>
+            ))}
+          </div>
+          <div className="mt-6 text-center">
+            <Link href="/faq" className="text-sm font-bold text-[var(--brand-primary)] hover:underline">
+              전체 FAQ 보기 →
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* FINAL CTA */}
       <section className="bg-black text-white">
         <div className="mx-auto max-w-4xl px-4 py-16 md:py-20 text-center">
@@ -369,5 +473,15 @@ export default function HomePage() {
         </div>
       </section>
     </>
+  );
+}
+
+function Check() {
+  return (
+    <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[var(--brand-primary)] text-white shrink-0">
+      <svg width="11" height="9" viewBox="0 0 11 9" fill="none" aria-hidden>
+        <path d="M1 4.5L4 7.5L10 1.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+      </svg>
+    </span>
   );
 }
