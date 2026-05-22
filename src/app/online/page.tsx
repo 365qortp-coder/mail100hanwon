@@ -91,17 +91,31 @@ export default function OnlinePage() {
                 비대면 진료 신청 (구글 설문)
               </h3>
               <p className="text-sm mb-4">
-                아래 버튼을 누르시면 구글 설문지로 이동합니다. 내용을 작성해
-                주시면 원장님이 확인 후 연락드립니다.
+                진료받으실 한약 종류에 맞는 설문지를 선택해 주세요.
               </p>
-              <a
-                href={clinic.contact.onlineForm}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center px-5 py-3 rounded-md bg-[var(--brand-primary)] text-white font-semibold hover:bg-[var(--brand-primary-dark)] transition"
-              >
-                📝 비대면 진료 신청하기
-              </a>
+              <div className="grid gap-2 mb-4">
+                <a
+                  href={clinic.contact.onlineFormDiet}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between px-4 py-3 rounded-md bg-[var(--brand-primary)] text-white font-semibold hover:bg-[var(--brand-primary-dark)] transition"
+                >
+                  <span>📝 다이어트 한약 (매일감비환) 신청</span>
+                  <span>→</span>
+                </a>
+                <a
+                  href={clinic.contact.onlineFormGongjindan}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center justify-between px-4 py-3 rounded-md bg-[var(--brand-accent)] text-white font-semibold hover:brightness-95 transition"
+                >
+                  <span>📝 공진단 · 총명공진단 신청</span>
+                  <span>→</span>
+                </a>
+              </div>
+              <p className="text-xs text-[var(--text-muted)]">
+                설문지를 작성해 주시면 송원석 원장님이 직접 확인 후 연락드립니다.
+              </p>
             </div>
 
             <div className="p-6 rounded-xl bg-[var(--brand-accent-light)] border border-[var(--border)]">

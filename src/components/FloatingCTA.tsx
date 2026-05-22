@@ -1,6 +1,25 @@
+"use client";
+
+import { usePathname } from "next/navigation";
 import { clinic } from "@/data/clinic";
 
+const GONGJINDAN_PATHS = [
+  "/treatments/gongjindan",
+  "/treatments/chongmyeong",
+  "/event/suneung",
+];
+
+function pickForm(pathname: string | null) {
+  if (!pathname) return clinic.contact.onlineForm;
+  if (GONGJINDAN_PATHS.some((p) => pathname.startsWith(p))) {
+    return clinic.contact.onlineFormGongjindan;
+  }
+  return clinic.contact.onlineForm;
+}
+
 export function FloatingCTA() {
+  const pathname = usePathname();
+  const formUrl = pickForm(pathname);
   return (
     <div className="fixed bottom-4 right-4 z-50 flex flex-col gap-2 md:bottom-6 md:right-6">
       <a
@@ -32,7 +51,7 @@ export function FloatingCTA() {
         <span className="text-xs font-extrabold">카톡</span>
       </a>
       <a
-        href={clinic.contact.onlineForm}
+        href={formUrl}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="비대면 진료 신청"

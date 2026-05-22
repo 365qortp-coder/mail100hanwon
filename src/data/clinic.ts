@@ -22,6 +22,10 @@ export const clinic = {
     kakao: "http://pf.kakao.com/_JEzRK/chat",
     onlineForm:
       "https://docs.google.com/forms/d/1g2IhZ3c4dqW5nhrYuZBgguIPKBULiZZWI_PgroqlseQ/viewform",
+    onlineFormDiet:
+      "https://docs.google.com/forms/d/1g2IhZ3c4dqW5nhrYuZBgguIPKBULiZZWI_PgroqlseQ/viewform",
+    onlineFormGongjindan:
+      "https://docs.google.com/forms/d/1bY4A3UzxH1jkZQU6azXtrmVwtUxJwKYRRKDo5gLFqo0/viewform",
   },
   domain: "mail100hanwon.co.kr",
   url: "https://mail100hanwon.co.kr",

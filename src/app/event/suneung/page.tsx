@@ -4,6 +4,7 @@ import { Section, SectionTitle } from "@/components/Section";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTAButtons } from "@/components/CTAButtons";
 import { KeyFactsBox } from "@/components/KeyFactsBox";
+import { clinic } from "@/data/clinic";
 
 export const metadata: Metadata = buildMetadata({
   title: "수능 총명공진단 안내",
@@ -47,7 +48,7 @@ export default function SuneungPage() {
             많습니다. 비대면 진료로 전국 어디서나 처방받으실 수 있습니다.
           </p>
           <div className="mt-8 max-w-2xl">
-            <CTAButtons />
+            <CTAButtons formUrl={clinic.contact.onlineFormGongjindan} />
           </div>
         </div>
       </section>
@@ -110,7 +111,7 @@ export default function SuneungPage() {
         </div>
 
         <div className="mt-12">
-          <CTAButtons />
+          <CTAButtons formUrl={clinic.contact.onlineFormGongjindan} />
         </div>
       </Section>
     </>
