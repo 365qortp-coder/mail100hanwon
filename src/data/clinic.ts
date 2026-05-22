@@ -1,0 +1,56 @@
+export const clinic = {
+  name: "매일백세한의원",
+  nameEn: "Mail100han Korean Medicine Clinic",
+  director: {
+    name: "송원석",
+    title: "원장",
+    description: "매일백세한의원 대표원장",
+  },
+  address: {
+    full: "서울특별시 중랑구 공릉로 21",
+    city: "서울특별시",
+    district: "중랑구",
+    street: "공릉로 21",
+    postalCode: "",
+    region: "서울",
+    country: "KR",
+  },
+  contact: {
+    phone: "02-2234-0102",
+    phoneClean: "0222340102",
+    phoneInternational: "+82-2-2234-0102",
+    kakao: "http://pf.kakao.com/_JEzRK/chat",
+    onlineForm:
+      "https://docs.google.com/forms/d/1g2IhZ3c4dqW5nhrYuZBgguIPKBULiZZWI_PgroqlseQ/viewform",
+  },
+  domain: "mail100hanwon.co.kr",
+  url: "https://mail100hanwon.co.kr",
+  brands: {
+    diet: "매일감비환",
+    chongmyeong: "총명공진단",
+    gongjindan: "공진단",
+  },
+  nearestStations: [
+    { name: "먹골역", line: "7호선", distance: "도보 5분" },
+    { name: "태릉입구역", line: "6·7호선", distance: "도보 10분" },
+    { name: "화랑대역", line: "6호선", distance: "차로 5분" },
+  ],
+  youtube: {
+    diet: "https://www.youtube.com/channel/UC6Mf-wiyKvWup51wgGzjE4A",
+    gongjindan:
+      "https://www.youtube.com/@%EC%A7%81%EC%A0%91%EB%A7%8C%EB%93%A0%EC%A7%84%EC%A7%9C%EA%B3%B5%EC%A7%84%EB%8B%A8",
+    pain: "https://www.youtube.com/@%EB%A7%A4%EC%9D%BC%EB%B0%B1%EC%84%B8%ED%95%9C%EC%9D%98%EC%9B%90_%ED%86%B5%EC%A6%9D",
+  },
+  hours: {
+    weekday: "09:30 - 18:30",
+    saturday: "09:30 - 13:00",
+    sunday: "휴진",
+    lunch: "13:00 - 14:00",
+  },
+  geo: {
+    latitude: 37.6094,
+    longitude: 127.0763,
+  },
+} as const;
+
+export type Clinic = typeof clinic;

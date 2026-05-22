@@ -1,0 +1,69 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+:root {
+  --background: #fafaf9;
+  --foreground: #1c1917;
+  --brand-primary: #15803d;
+  --brand-primary-dark: #14532d;
+  --brand-primary-light: #dcfce7;
+  --brand-accent: #b45309;
+  --brand-accent-light: #fef3c7;
+  --surface: #ffffff;
+  --surface-muted: #f5f5f4;
+  --border: #e7e5e4;
+  --text-muted: #57534e;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-brand: var(--brand-primary);
+  --color-brand-dark: var(--brand-primary-dark);
+  --color-brand-light: var(--brand-primary-light);
+  --color-accent: var(--brand-accent);
+  --color-accent-light: var(--brand-accent-light);
+  --color-surface: var(--surface);
+  --color-surface-muted: var(--surface-muted);
+  --color-border: var(--border);
+  --color-text-muted: var(--text-muted);
+  --font-sans: var(--font-pretendard);
+  --font-serif: var(--font-noto-serif-kr);
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-pretendard), -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Pretendard", "Noto Sans KR", system-ui, sans-serif;
+  font-feature-settings: "ss06";
+  word-break: keep-all;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5 {
+  word-break: keep-all;
+}
+
+/* CTA pulse for floating buttons */
+@keyframes brand-pulse {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(21, 128, 61, 0.4); }
+  50% { box-shadow: 0 0 0 12px rgba(21, 128, 61, 0); }
+}
+
+.cta-pulse {
+  animation: brand-pulse 2s ease-out infinite;
+}
+
+/* Smooth scrolling for anchor links */
+html { scroll-behavior: smooth; }
+
+/* Focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--brand-primary);
+  outline-offset: 2px;
+}

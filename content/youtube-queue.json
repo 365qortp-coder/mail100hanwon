@@ -1,0 +1,5 @@
+{
+  "_comment": "Add YouTube video URLs/IDs here. The daily automation will pick one unprocessed video at a time and convert it into a column. After processing, the entry is moved to the 'processed' array with the resulting column slug.",
+  "queue": [],
+  "processed": []
+}
