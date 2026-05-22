@@ -22,8 +22,9 @@ export default function AboutPage() {
       </div>
 
       <Section bg="white">
-        <div className="grid md:grid-cols-[260px_1fr] gap-8 items-start mb-10">
+        <div className="grid md:grid-cols-[280px_1fr] gap-8 items-start mb-10">
           <DirectorPhoto
+            src="/photos/director.webp"
             alt={`${clinic.director.name} ${clinic.director.title}`}
             className="w-full aspect-[3/4] rounded-2xl object-cover border border-[var(--border)]"
           />
@@ -31,21 +32,31 @@ export default function AboutPage() {
             <SectionTitle
               eyebrow={`${clinic.director.name} ${clinic.director.title}`}
               title="환자 한 분 한 분을 직접 상담합니다"
-              subtitle="매일백세한의원 송원석 원장은 모든 환자분의 체질과 증상을 직접 확인한 뒤 한약을 처방합니다. 매일감비환·공진단·총명공진단 모두 원장이 직접 제조 과정을 감독합니다."
+              subtitle="대전대학교 한의과대학을 졸업한 송원석 원장이 모든 환자분의 체질과 증상을 직접 확인한 뒤 한약을 처방합니다. 매일감비환·공진단·총명공진단 모두 원장이 직접 제조 과정을 감독합니다."
             />
           </div>
         </div>
 
         <KeyFactsBox
-          title="원장 약력 요약"
+          title="원장 약력"
           facts={[
-            { label: "한의원명", value: clinic.name },
-            { label: "원장", value: `${clinic.director.name} ${clinic.director.title}` },
-            { label: "진료 분야", value: "다이어트 한약, 공진단, 총명공진단, 통증 치료" },
-            { label: "유튜브 운영", value: "다이어트 / 공진단 / 통증 3개 채널" },
+            { label: "출신", value: clinic.director.school },
+            { label: "현직", value: `${clinic.name} 대표원장` },
+            { label: "경력", value: `개원 ${clinic.stats.yearsOpen}년차 · 다이어트 진료 ${(clinic.stats.dietConsults / 10000).toFixed(0)}만건 누적` },
+            { label: "공진단", value: `한의원 내 직접 조제 ${clinic.stats.yearsMakingGongjindan}년` },
+            { label: "학회·단체", value: "대한한방비만학회 · 대한상한금궤학회(교육위원 전) · 열린의사회 · 국경없는의사회" },
             { label: "진료 방식", value: "대면 + 비대면 (전국 처방 가능)" },
           ]}
         />
+
+        <div className="mt-8">
+          <h3 className="text-xl font-bold mb-4">상세 약력</h3>
+          <ul className="space-y-2 pl-5 list-disc text-[var(--foreground)]">
+            {clinic.director.credentials.map((c) => (
+              <li key={c}>{c}</li>
+            ))}
+          </ul>
+        </div>
 
         <div className="prose prose-lg max-w-none mt-8 text-[var(--foreground)] leading-relaxed">
           <h3 className="text-xl font-bold mt-8 mb-3">진료 철학</h3>

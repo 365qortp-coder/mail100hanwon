@@ -3,8 +3,24 @@ export const clinic = {
   nameEn: "Mail100han Korean Medicine Clinic",
   director: {
     name: "송원석",
-    title: "원장",
-    description: "매일백세한의원 대표원장",
+    title: "대표원장",
+    description:
+      "매일백세한의원 대표원장 송원석. 대전대학교 한의과대학 출신(05학번)으로, 한방 다이어트·공진단·통증 진료를 직접 처방합니다. 열린의사회·국경없는의사회 회원으로 의료 봉사 활동을 이어오고 있습니다.",
+    school: "대전대학교 한의과대학 (05학번)",
+    credentials: [
+      "매일백세한의원 대표원장",
+      "전) 365백세한의원 대표",
+      "전) 대한상한금궤학회 교육위원",
+      "전) 건강보험공단 등급판정의원",
+      "대한한방비만학회 회원",
+      "열린의사회 회원",
+      "국경없는의사회 회원",
+    ],
+  },
+  stats: {
+    yearsOpen: 11,
+    yearsMakingGongjindan: 7,
+    dietConsults: 70000,
   },
   address: {
     full: "서울특별시 중랑구 공릉로 21",

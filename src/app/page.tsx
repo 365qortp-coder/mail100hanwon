@@ -180,10 +180,10 @@ export default function HomePage() {
       <section className="bg-black text-white">
         <div className="mx-auto max-w-6xl px-4 py-8 grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
           {[
-            { num: "송원석", label: "대표원장 직접 처방" },
-            { num: "전국", label: "비대면 진료 가능" },
-            { num: "직접 제조", label: "사향·녹용 공진단" },
-            { num: "3개", label: "유튜브 채널 운영" },
+            { num: `${clinic.stats.yearsOpen}년`, label: "개원 후 연속 진료" },
+            { num: `${(clinic.stats.dietConsults / 10000).toFixed(0)}만건+`, label: "다이어트 진료 누적" },
+            { num: `${clinic.stats.yearsMakingGongjindan}년`, label: "공진단 원내 직접 조제" },
+            { num: "전국", label: "비대면 진료 처방" },
           ].map((s) => (
             <div key={s.label} className="border-l-2 border-[var(--brand-primary)] pl-4">
               <p className="text-xl md:text-2xl font-extrabold text-white">{s.num}</p>
@@ -380,13 +380,13 @@ export default function HomePage() {
                 YouTube
               </p>
               <h2 className="text-2xl md:text-4xl font-extrabold leading-tight">
-                송원석 원장이 직접
+                글로 다 못 담는 이야기는
                 <br />
-                운영하는 3개 채널
+                영상으로 보시면 됩니다
               </h2>
               <p className="text-sm text-[var(--text-muted)] mt-2 max-w-md">
-                실제 진료실에서 다루는 한방 다이어트·공진단·통증 콘텐츠를
-                매일 영상으로 올립니다.
+                다이어트·공진단 제조·통증 치료까지, 송원석 원장이
+                실제 진료실에서 다루는 한방 이야기.
               </p>
             </div>
           </div>
