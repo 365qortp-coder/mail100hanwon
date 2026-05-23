@@ -238,7 +238,30 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 04 · CLINIC INTRO */}
+      {/* 04 · YOUTUBE (단일 행) — moved above About */}
+      <section className="bg-[var(--surface-muted)] border-t border-[var(--border)]">
+        <div className="mx-auto max-w-6xl px-4 py-16 md:py-24">
+          <div className="flex items-end justify-between mb-10 gap-4 flex-wrap">
+            <div>
+              <p className="text-xs font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase mb-2">
+                YouTube
+              </p>
+              <h2 className="text-2xl md:text-4xl font-extrabold leading-tight">
+                글로 다 못 담는 이야기는
+                <br />
+                영상으로 보시면 됩니다
+              </h2>
+              <p className="text-sm text-[var(--text-muted)] mt-2 max-w-md">
+                다이어트·공진단 제조·통증 치료까지, 송원석 원장이
+                실제 진료실에서 다루는 한방 이야기.
+              </p>
+            </div>
+          </div>
+          <YouTubeThumbnailGallery limit={18} />
+        </div>
+      </section>
+
+      {/* 05 · CLINIC INTRO (About) — moved below YouTube */}
       <section className="bg-white border-t border-[var(--border)]">
         <div className="mx-auto max-w-6xl px-4 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
           <div className="relative aspect-[4/5] md:aspect-[4/3] rounded-2xl overflow-hidden bg-[var(--surface-muted)] order-2 md:order-1">
@@ -307,29 +330,6 @@ export default function HomePage() {
               </a>
             </div>
           </div>
-        </div>
-      </section>
-
-      {/* 05 · YOUTUBE (단일 행) */}
-      <section className="bg-[var(--surface-muted)]">
-        <div className="mx-auto max-w-6xl px-4 py-16 md:py-24">
-          <div className="flex items-end justify-between mb-10 gap-4 flex-wrap">
-            <div>
-              <p className="text-xs font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase mb-2">
-                YouTube
-              </p>
-              <h2 className="text-2xl md:text-4xl font-extrabold leading-tight">
-                글로 다 못 담는 이야기는
-                <br />
-                영상으로 보시면 됩니다
-              </h2>
-              <p className="text-sm text-[var(--text-muted)] mt-2 max-w-md">
-                다이어트·공진단 제조·통증 치료까지, 송원석 원장이
-                실제 진료실에서 다루는 한방 이야기.
-              </p>
-            </div>
-          </div>
-          <YouTubeThumbnailGallery limit={18} />
         </div>
       </section>
 
