@@ -2,16 +2,16 @@ import sharp from "sharp";
 import fs from "node:fs";
 import path from "node:path";
 
-const logoSvg = `<svg xmlns='http://www.w3.org/2000/svg' width='520' height='140' viewBox='0 0 520 140'>
+const logoSvg = `<svg xmlns='http://www.w3.org/2000/svg' width='600' height='140' viewBox='0 0 600 140'>
   <style>
     .badge { fill: #c0252d; }
-    .badge-text { fill: white; font-family: 'Malgun Gothic','Noto Sans KR',sans-serif; font-weight: 900; font-size: 44px; }
-    .main { fill: #111; font-family: 'Malgun Gothic','Noto Serif KR',serif; font-weight: 900; font-size: 82px; letter-spacing: -3px; }
+    .badge-text { fill: white; font-family: 'Malgun Gothic','Noto Sans KR',sans-serif; font-weight: 900; font-size: 42px; }
+    .main { fill: #111; font-family: 'Malgun Gothic','Noto Serif KR',serif; font-weight: 900; font-size: 92px; letter-spacing: -3px; }
   </style>
   <rect x='10' y='15' width='85' height='110' rx='7' class='badge'/>
-  <text x='52' y='66' text-anchor='middle' class='badge-text'>매</text>
-  <text x='52' y='115' text-anchor='middle' class='badge-text'>일</text>
-  <text x='112' y='105' class='main'>백세한의원</text>
+  <text x='52' y='60' text-anchor='middle' class='badge-text'>매</text>
+  <text x='52' y='110' text-anchor='middle' class='badge-text'>일</text>
+  <text x='112' y='108' class='main'>백세한의원</text>
 </svg>`;
 
 await sharp(Buffer.from(logoSvg)).png().toFile(path.join("public", "logo.png"));

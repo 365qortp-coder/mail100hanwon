@@ -7,21 +7,21 @@ type Size = "default" | "large" | "small";
 
 const dimensions: Record<Size, { w: number; h: number; cls: string; fallbackBadge: string; fallbackText: string }> = {
   small: {
-    w: 141,
+    w: 163,
     h: 38,
     cls: "h-8 w-auto",
     fallbackBadge: "text-[10px] px-1 py-0.5",
     fallbackText: "text-base",
   },
   default: {
-    w: 186,
+    w: 214,
     h: 50,
     cls: "h-10 w-auto",
     fallbackBadge: "text-xs px-1.5 py-1",
     fallbackText: "text-lg",
   },
   large: {
-    w: 260,
+    w: 300,
     h: 70,
     cls: "h-14 w-auto",
     fallbackBadge: "text-base px-2 py-1.5",
