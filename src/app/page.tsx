@@ -141,11 +141,10 @@ export default function HomePage() {
               <br />
               권해드립니다
             </h1>
-            <p className="text-base md:text-lg text-[var(--text-muted)] leading-relaxed mb-8 max-w-lg">
+            <p className="text-base md:text-lg text-[var(--text-muted)] leading-relaxed max-w-lg">
               다이어트·공진단·통증 모두 송원석 원장이 체질을 직접 확인한 뒤
               처방합니다. 비대면 진료로 한의원 방문 없이도 받아보실 수 있습니다.
             </p>
-            <CTAButtons />
           </div>
         </div>
       </section>
@@ -158,9 +157,9 @@ export default function HomePage() {
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {[
-              { num: `${clinic.stats.yearsOpen}년`, label: "개원" },
+              { num: `${clinic.stats.yearsOpen}년`, label: "2016년 개원" },
               { num: `${(clinic.stats.totalConsults / 10000).toFixed(0)}만건+`, label: "누적 진료" },
-              { num: `${clinic.stats.yearsMakingGongjindan}년`, label: "공진단 원내 직접 조제" },
+              { num: `${(clinic.stats.gongjindanUnits / 10000).toFixed(0)}만구+`, label: "공진단 원내 직접조제" },
               { num: "전국", label: "비대면 진료" },
             ].map((s) => (
               <div key={s.label} className="border-l-2 border-[var(--brand-primary)] pl-4">

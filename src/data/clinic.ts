@@ -19,7 +19,8 @@ export const clinic = {
   },
   stats: {
     yearsOpen: 11,
-    yearsMakingGongjindan: 7,
+    yearOpened: 2016,
+    gongjindanUnits: 30000,
     totalConsults: 820000,
   },
   philosophy: {
