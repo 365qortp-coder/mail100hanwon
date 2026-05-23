@@ -2,18 +2,6 @@
   "_comment": "Add YouTube video URLs/IDs here. The daily automation will pick one unprocessed video at a time and convert it into a column. After processing, the entry is moved to the 'processed' array with the resulting column slug.",
   "queue": [
     {
-      "url": "https://www.youtube.com/watch?v=yUC-uw4bGCQ",
-      "hint": "[diet] 탄수화물 완전 끊었더니 살이 더 찌는 이유"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=nsOc90ZQRX8",
-      "hint": "[diet] 근육 손실  = 내 몸의 대사 멈춤"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=rdPelMzjy_g",
-      "hint": "[diet] 기초대사량 회복이 먼저입니다. (3가지방법)"
-    },
-    {
       "url": "https://www.youtube.com/watch?v=Et8naTOnRB0",
       "hint": "[diet] 엄마들 뱃살 안 빠지는 진짜 이유는 따로 있어요"
     },
@@ -216,6 +204,24 @@
           "at": "2026-05-23T10:59:55.775Z"
         }
       ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=yUC-uw4bGCQ",
+      "hint": "[diet] 탄수화물 완전 끊었더니 살이 더 찌는 이유",
+      "status": "no-transcript",
+      "at": "2026-05-23T22:45:27.133Z"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=nsOc90ZQRX8",
+      "hint": "[diet] 근육 손실  = 내 몸의 대사 멈춤",
+      "status": "no-transcript",
+      "at": "2026-05-23T22:45:28.752Z"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=rdPelMzjy_g",
+      "hint": "[diet] 기초대사량 회복이 먼저입니다. (3가지방법)",
+      "status": "no-transcript",
+      "at": "2026-05-23T22:45:30.108Z"
     }
   ]
 }
