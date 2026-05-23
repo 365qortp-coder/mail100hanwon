@@ -2,14 +2,6 @@
   "_comment": "Add YouTube video URLs/IDs here. The daily automation will pick one unprocessed video at a time and convert it into a column. After processing, the entry is moved to the 'processed' array with the resulting column slug.",
   "queue": [
     {
-      "url": "https://www.youtube.com/watch?v=5mOQkLwYyWU",
-      "hint": "[diet] 살 빼고 끝이 아니다 요요 막는 6주의 비밀"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=I_RVkGSq83A",
-      "hint": "[diet] 살 안찌는 체질 만드는  핵심 식단 구성"
-    },
-    {
       "url": "https://www.youtube.com/watch?v=TN9-nZR083Y",
       "hint": "[diet] 폭식을 멈출 수 없게하는 공포의 호르몬 정체"
     },
@@ -189,6 +181,32 @@
       "hint": "두 달 다이어트 사례",
       "status": "no-transcript",
       "at": "2026-05-22T22:52:24.748Z"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=5mOQkLwYyWU",
+      "hint": "[diet] 살 빼고 끝이 아니다 요요 막는 6주의 비밀",
+      "videoId": "5mOQkLwYyWU",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "다이어트-후-안정화-기간이란-기본-안내와-적합-대상-총정리-intro-5mOQkL",
+          "title": "다이어트 후 안정화 기간이란? 기본 안내와 적합 대상 총정리",
+          "at": "2026-05-23T10:48:41.852Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=I_RVkGSq83A",
+      "hint": "[diet] 살 안찌는 체질 만드는  핵심 식단 구성",
+      "videoId": "I_RVkGSq83A",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "건강한-식습관이란-처음-시작하는-분을-위한-기본-안내-intro-I_RVkG",
+          "title": "건강한 식습관이란? 처음 시작하는 분을 위한 기본 안내",
+          "at": "2026-05-23T10:49:41.025Z"
+        }
+      ]
     }
   ]
 }
