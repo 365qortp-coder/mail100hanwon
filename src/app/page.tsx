@@ -27,7 +27,20 @@ export const metadata: Metadata = buildMetadata({
   ],
 });
 
-const products = [
+type Product = {
+  slug: string;
+  badge: string;
+  title: string;
+  subtitle: string;
+  desc: string;
+  image: string;
+  imagePosition?: string;
+  href: string;
+  external?: boolean;
+  dark?: boolean;
+};
+
+const products: Product[] = [
   {
     slug: "diet",
     badge: "DIET",
@@ -35,7 +48,8 @@ const products = [
     subtitle: "다이어트 한약",
     desc: "체질에 맞춘 한방 다이어트. 무리한 절식 아닌 체지방 위주의 감량과 6개월 요요 관리까지.",
     image: "/photos/diet-product.webp",
-    href: "/treatments/diet",
+    href: "https://mail100diet.com/",
+    external: true,
   },
   {
     slug: "gongjindan",
@@ -44,7 +58,8 @@ const products = [
     subtitle: "정통 한방 보약",
     desc: "사향·녹용·당귀·산수유를 한의원에서 직접 제조. 원장이 직접 봉인한 인증서를 함께 드립니다.",
     image: "/photos/gongjindan-hero.webp",
-    href: "/treatments/gongjindan",
+    href: "https://mail100gongjindan.imweb.me/",
+    external: true,
     dark: true,
   },
   {
@@ -54,15 +69,9 @@ const products = [
     subtitle: "한방 통증 진료",
     desc: "허리·어깨·관절 통증을 침·약침·물리치료와 한약 처방으로 진단부터 회복까지 함께 합니다.",
     image: "/photos/pain.webp",
+    imagePosition: "object-[center_20%]",
     href: "/treatments/pain",
   },
-];
-
-const processSteps = [
-  { step: "01", title: "문의", desc: "전화 또는 카카오톡 채널로 원하시는 진료를 알려주세요." },
-  { step: "02", title: "설문 작성", desc: "구글 설문지(비대면) 또는 내원으로 체질·증상을 확인합니다." },
-  { step: "03", title: "원장 상담", desc: "송원석 원장이 직접 전화 또는 대면 상담을 진행합니다." },
-  { step: "04", title: "한약 발송", desc: "한약 제조 후 영업일 2~5일 이내 택배 발송, 또는 직접 수령." },
 ];
 
 const personas = [
@@ -102,10 +111,10 @@ export default function HomePage() {
   const latestColumns = getAllColumns().slice(0, 3);
   return (
     <>
-      {/* 01 · HERO — 원장 + 우산 인용문 */}
+      {/* 01 · HERO */}
       <section className="relative bg-white border-b border-[var(--border)]">
         <div className="mx-auto max-w-6xl px-4 py-14 md:py-24 grid md:grid-cols-[minmax(260px,1fr)_1.2fr] gap-8 md:gap-14 items-center">
-          <div className="relative order-1 md:order-1 mx-auto md:mx-0 w-full max-w-sm md:max-w-none">
+          <div className="relative order-1 mx-auto md:mx-0 w-full max-w-sm md:max-w-none">
             <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-[var(--surface-muted)] border border-[var(--border)] shadow-sm">
               <Image
                 src="/photos/director.webp"
@@ -120,7 +129,7 @@ export default function HomePage() {
               {clinic.director.name} <span className="text-[var(--text-muted)] font-normal">{clinic.director.title}</span>
             </p>
           </div>
-          <div className="order-2 md:order-2">
+          <div className="order-2">
             <p className="inline-flex items-center gap-2 text-xs font-bold tracking-[0.18em] text-[var(--text-muted)] uppercase mb-5">
               <span className="w-8 h-px bg-[var(--border)]" />
               서울 중랑구 매일백세한의원
@@ -130,7 +139,7 @@ export default function HomePage() {
               <br />
               <span className="text-[var(--brand-primary)]">효과 있는 진료만</span>
               <br />
-              합니다
+              권해드립니다
             </h1>
             <p className="text-base md:text-lg text-[var(--text-muted)] leading-relaxed mb-8 max-w-lg">
               다이어트·공진단·통증 모두 송원석 원장이 체질을 직접 확인한 뒤
@@ -141,18 +150,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 02 · 부정 후킹 (톤다운: 라이트 베이지) */}
-      <section className="bg-[var(--surface-muted)] border-y border-[var(--border)]">
-        <div className="mx-auto max-w-6xl px-4 py-3 flex items-center justify-center gap-2 text-sm md:text-base font-medium text-center text-[var(--foreground)]">
-          <span className="text-[var(--brand-primary)] font-bold">·</span>
-          <span>
-            <strong className="text-[var(--brand-primary)]">안 맞는 한약은 권하지 않습니다</strong>
-            <span className="text-[var(--text-muted)]"> — 체질에 맞는지 솔직하게 말씀드리는 한의원</span>
-          </span>
-        </div>
-      </section>
-
-      {/* 03 · TRUST STRIP */}
+      {/* 02 · TRUST STRIP */}
       <section className="bg-black text-white">
         <div className="mx-auto max-w-6xl px-4 py-10 md:py-12">
           <p className="text-[11px] tracking-[0.25em] font-bold text-[var(--brand-primary)] uppercase mb-5 text-center">
@@ -160,10 +158,10 @@ export default function HomePage() {
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {[
-              { num: `${clinic.stats.yearsOpen}년`, label: "개원 후 연속 진료" },
-              { num: `${(clinic.stats.dietConsults / 10000).toFixed(0)}만건+`, label: "다이어트 진료 누적" },
+              { num: `${clinic.stats.yearsOpen}년`, label: "개원" },
+              { num: `${(clinic.stats.totalConsults / 10000).toFixed(0)}만건+`, label: "누적 진료" },
               { num: `${clinic.stats.yearsMakingGongjindan}년`, label: "공진단 원내 직접 조제" },
-              { num: "전국", label: "비대면 진료 처방" },
+              { num: "전국", label: "비대면 진료" },
             ].map((s) => (
               <div key={s.label} className="border-l-2 border-[var(--brand-primary)] pl-4">
                 <p className="text-xl md:text-2xl font-extrabold text-white">{s.num}</p>
@@ -174,7 +172,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 04 · PRODUCTS */}
+      {/* 03 · PRODUCTS */}
       <section className="bg-white">
         <div className="mx-auto max-w-6xl px-4 py-16 md:py-24">
           <div className="flex items-end justify-between mb-10 gap-4 flex-wrap">
@@ -195,84 +193,53 @@ export default function HomePage() {
           </div>
 
           <div className="grid md:grid-cols-3 gap-5">
-            {products.map((p) => (
-              <Link
-                key={p.slug}
-                href={p.href}
-                className={`group block rounded-2xl overflow-hidden border border-[var(--border)] hover:border-[var(--brand-primary)] hover:shadow-2xl hover:-translate-y-1 transition ${
-                  p.dark ? "bg-black text-white" : "bg-white"
-                }`}
-              >
-                <div className="relative aspect-[4/3] bg-[var(--surface-muted)] overflow-hidden">
-                  <Image
-                    src={p.image}
-                    alt={p.title}
-                    fill
-                    className="object-cover group-hover:scale-105 transition duration-500"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                </div>
-                <div className="p-6">
-                  <p className="text-[10px] tracking-[0.2em] font-bold mb-2 text-[var(--text-muted)]">
-                    {p.badge}
-                  </p>
-                  <h3 className="text-xl md:text-2xl font-extrabold mb-1">
-                    {p.title}
-                  </h3>
-                  <p
-                    className={`text-sm font-semibold mb-3 ${
-                      p.dark ? "text-white/70" : "text-[var(--text-muted)]"
-                    }`}
-                  >
-                    {p.subtitle}
-                  </p>
-                  <p
-                    className={`text-sm leading-relaxed mb-4 ${
-                      p.dark ? "text-white/80" : "text-[var(--foreground)]"
-                    }`}
-                  >
-                    {p.desc}
-                  </p>
-                  <span
-                    className={`inline-flex items-center gap-1.5 text-sm font-bold group-hover:gap-2.5 transition-all ${
-                      p.dark ? "text-white" : "text-[var(--brand-primary)]"
-                    }`}
-                  >
-                    자세히 보기 <span aria-hidden>→</span>
-                  </span>
-                </div>
-              </Link>
-            ))}
+            {products.map((p) => {
+              const cardClass = `group block rounded-2xl overflow-hidden border border-[var(--border)] hover:border-[var(--brand-primary)] hover:shadow-2xl hover:-translate-y-1 transition ${
+                p.dark ? "bg-black text-white" : "bg-white"
+              }`;
+              const content = (
+                <>
+                  <div className="relative aspect-[4/3] bg-[var(--surface-muted)] overflow-hidden">
+                    <Image
+                      src={p.image}
+                      alt={p.title}
+                      fill
+                      className={`object-cover ${p.imagePosition ?? ""} group-hover:scale-105 transition duration-500`}
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                    />
+                  </div>
+                  <div className="p-6">
+                    <p className="text-[10px] tracking-[0.2em] font-bold mb-2 text-[var(--text-muted)]">
+                      {p.badge}
+                    </p>
+                    <h3 className="text-xl md:text-2xl font-extrabold mb-1">{p.title}</h3>
+                    <p className={`text-sm font-semibold mb-3 ${p.dark ? "text-white/70" : "text-[var(--text-muted)]"}`}>
+                      {p.subtitle}
+                    </p>
+                    <p className={`text-sm leading-relaxed mb-4 ${p.dark ? "text-white/80" : "text-[var(--foreground)]"}`}>
+                      {p.desc}
+                    </p>
+                    <span className={`inline-flex items-center gap-1.5 text-sm font-bold group-hover:gap-2.5 transition-all ${p.dark ? "text-white" : "text-[var(--brand-primary)]"}`}>
+                      자세히 보기 <span aria-hidden>→</span>
+                    </span>
+                  </div>
+                </>
+              );
+              return p.external ? (
+                <a key={p.slug} href={p.href} target="_blank" rel="noopener noreferrer" className={cardClass}>
+                  {content}
+                </a>
+              ) : (
+                <Link key={p.slug} href={p.href} className={cardClass}>
+                  {content}
+                </Link>
+              );
+            })}
           </div>
         </div>
       </section>
 
-      {/* 05 · PHILOSOPHY TILES — 처방별 인용문 */}
-      <section className="bg-[var(--surface-muted)] border-t border-[var(--border)]">
-        <div className="mx-auto max-w-6xl px-4 py-16 md:py-20">
-          <div className="grid md:grid-cols-3 gap-4 md:gap-5">
-            {clinic.philosophy.byTreatment.map((p) => (
-              <Link
-                key={p.slug}
-                href={`/treatments/${p.slug}`}
-                className="group block p-6 md:p-7 rounded-2xl border border-[var(--border)] hover:border-[var(--brand-primary)] hover:shadow-lg bg-white transition"
-              >
-                <span className="text-[10px] tracking-[0.2em] font-bold text-[var(--text-muted)] uppercase">
-                  {p.label}
-                </span>
-                <p className="text-lg md:text-xl font-extrabold leading-snug mt-3 mb-4 text-[var(--foreground)]">
-                  &ldquo;{p.quote}&rdquo;
-                </p>
-                <span className="inline-flex items-center gap-1 text-sm font-bold text-[var(--brand-primary)] group-hover:gap-2 transition-all">
-                  자세히 보기 <span aria-hidden>→</span>
-                </span>
-              </Link>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* 06 · CLINIC INTRO */}
+      {/* 04 · CLINIC INTRO */}
       <section className="bg-white border-t border-[var(--border)]">
         <div className="mx-auto max-w-6xl px-4 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
           <div className="relative aspect-[4/5] md:aspect-[4/3] rounded-2xl overflow-hidden bg-[var(--surface-muted)] order-2 md:order-1">
@@ -344,49 +311,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 07 · DIET HOOK — 옛 히어로 카피, 유튜브 직전 위치 */}
-      <section className="bg-white border-t border-[var(--border)]">
-        <div className="mx-auto max-w-6xl px-4 py-16 md:py-24 grid md:grid-cols-2 gap-10 items-center">
-          <div>
-            <p className="text-xs font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase mb-3">
-              Diet
-            </p>
-            <h2 className="text-2xl md:text-4xl font-extrabold leading-tight mb-5">
-              운동·식단 다 해봤는데
-              <br />
-              <span className="text-[var(--brand-primary)]">살이 안 빠지시나요?</span>
-            </h2>
-            <p className="text-base text-[var(--text-muted)] leading-relaxed mb-6 max-w-lg">
-              송원석 원장이 체질을 직접 분석해 처방하는 <strong className="text-[var(--foreground)]">매일감비환</strong>.
-              한약으로 식욕·대사를 함께 잡고, 6개월 요요 관리까지.
-              비대면 진료로 한의원 방문 없이도 받아보실 수 있습니다.
-            </p>
-            <ul className="mb-6 grid grid-cols-2 gap-2 max-w-md text-sm">
-              <li className="flex items-center gap-2"><Check />체질·대사 맞춤 처방</li>
-              <li className="flex items-center gap-2"><Check />무리한 절식 없이</li>
-              <li className="flex items-center gap-2"><Check />6개월 요요 관리</li>
-              <li className="flex items-center gap-2"><Check />전국 택배 발송</li>
-            </ul>
-            <Link
-              href="/treatments/diet"
-              className="inline-flex items-center gap-2 text-sm font-bold text-[var(--brand-primary)] hover:underline"
-            >
-              매일감비환 자세히 보기 <span aria-hidden>→</span>
-            </Link>
-          </div>
-          <div className="relative aspect-square md:aspect-[4/5] rounded-2xl overflow-hidden bg-[var(--surface-muted)]">
-            <Image
-              src="/photos/diet-product.webp"
-              alt="매일감비환 다이어트 한약"
-              fill
-              className="object-cover"
-              sizes="(max-width: 768px) 100vw, 45vw"
-            />
-          </div>
-        </div>
-      </section>
-
-      {/* 08 · YOUTUBE */}
+      {/* 05 · YOUTUBE (단일 행) */}
       <section className="bg-[var(--surface-muted)]">
         <div className="mx-auto max-w-6xl px-4 py-16 md:py-24">
           <div className="flex items-end justify-between mb-10 gap-4 flex-wrap">
@@ -405,11 +330,11 @@ export default function HomePage() {
               </p>
             </div>
           </div>
-          <YouTubeThumbnailGallery />
+          <YouTubeThumbnailGallery limit={18} />
         </div>
       </section>
 
-      {/* 09 · PERSONAS (Process 바로 위로 이동) */}
+      {/* 06 · PERSONAS */}
       <section className="bg-white border-t border-[var(--border)]">
         <div className="mx-auto max-w-6xl px-4 py-16 md:py-24">
           <div className="text-center mb-12">
@@ -438,53 +363,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 10 · PROCESS */}
-      <section className="bg-[var(--surface-muted)] border-t border-[var(--border)]">
-        <div className="mx-auto max-w-6xl px-4 py-16 md:py-24">
-          <div className="text-center mb-12">
-            <p className="text-xs font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase mb-2">
-              Process
-            </p>
-            <h2 className="text-2xl md:text-4xl font-extrabold leading-tight">
-              처음이신가요?
-              <br />
-              진료 받으시는 4단계
-            </h2>
-            <p className="text-base text-[var(--text-muted)] mt-3 max-w-xl mx-auto">
-              구글 설문 작성 → 원장님 전화 상담 → 한약 택배 발송. 전국 어디서나
-              동일하게 진행됩니다.
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {processSteps.map((s, i) => (
-              <div
-                key={s.step}
-                className="relative bg-white border border-[var(--border)] rounded-xl p-5 hover:border-[var(--brand-primary)] transition"
-              >
-                <span className="absolute -top-3 left-5 bg-[var(--brand-primary)] text-white text-xs font-bold px-2 py-1 rounded">
-                  STEP {s.step}
-                </span>
-                <h3 className="text-lg font-extrabold mt-3 mb-2">{s.title}</h3>
-                <p className="text-sm text-[var(--text-muted)] leading-relaxed">
-                  {s.desc}
-                </p>
-                {i < processSteps.length - 1 && (
-                  <span className="hidden md:block absolute top-1/2 -right-3 w-6 h-px bg-[var(--border)]" />
-                )}
-              </div>
-            ))}
-          </div>
-
-          <div className="mt-10 max-w-2xl mx-auto">
-            <CTAButtons />
-          </div>
-        </div>
-      </section>
-
-      {/* 11 · COLUMNS */}
+      {/* 07 · COLUMNS */}
       {latestColumns.length > 0 && (
-        <section className="bg-white border-t border-[var(--border)]">
+        <section className="bg-[var(--surface-muted)] border-t border-[var(--border)]">
           <div className="mx-auto max-w-6xl px-4 py-16 md:py-20">
             <div className="flex items-end justify-between mb-10 gap-4 flex-wrap">
               <div>
@@ -508,7 +389,7 @@ export default function HomePage() {
                 <Link
                   key={c.slug}
                   href={`/columns/${c.slug}`}
-                  className="block p-6 bg-[var(--surface-muted)] rounded-xl border border-[var(--border)] hover:border-[var(--brand-primary)] transition"
+                  className="block p-6 bg-white rounded-xl border border-[var(--border)] hover:border-[var(--brand-primary)] transition"
                 >
                   <p className="text-[10px] tracking-widest text-[var(--text-muted)] font-bold mb-3">
                     {c.category.toUpperCase()}
@@ -529,8 +410,8 @@ export default function HomePage() {
         </section>
       )}
 
-      {/* 12 · LOCATIONS */}
-      <section className="bg-[var(--surface-muted)]">
+      {/* 08 · LOCATIONS */}
+      <section className="bg-white border-t border-[var(--border)]">
         <div className="mx-auto max-w-6xl px-4 py-16 md:py-20">
           <div className="text-center mb-10">
             <p className="text-xs font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase mb-2">
@@ -550,7 +431,7 @@ export default function HomePage() {
               <Link
                 key={loc.slug}
                 href={`/locations/${loc.slug}`}
-                className="px-3 py-2.5 bg-white rounded border border-[var(--border)] hover:border-black text-center text-sm font-medium transition"
+                className="px-3 py-2.5 bg-[var(--surface-muted)] rounded border border-[var(--border)] hover:border-black text-center text-sm font-medium transition"
               >
                 {loc.name}
               </Link>
@@ -559,8 +440,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 13 · FAQ */}
-      <section className="bg-white border-t border-[var(--border)]">
+      {/* 09 · FAQ */}
+      <section className="bg-[var(--surface-muted)] border-t border-[var(--border)]">
         <div className="mx-auto max-w-4xl px-4 py-16 md:py-20">
           <div className="text-center mb-10">
             <p className="text-xs font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase mb-2">
@@ -574,7 +455,7 @@ export default function HomePage() {
             {faqs.slice(0, 5).map((f, i) => (
               <details
                 key={i}
-                className="group rounded-lg border border-[var(--border)] bg-[var(--surface-muted)] p-5 hover:border-[var(--brand-primary)] transition"
+                className="group rounded-lg border border-[var(--border)] bg-white p-5 hover:border-[var(--brand-primary)] transition"
               >
                 <summary className="cursor-pointer font-semibold flex items-start gap-2 list-none">
                   <span className="text-[var(--brand-primary)] font-bold">Q.</span>
@@ -595,7 +476,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 14 · FINAL CTA */}
+      {/* 10 · FINAL CTA */}
       <section className="bg-black text-white">
         <div className="mx-auto max-w-4xl px-4 py-16 md:py-20 text-center">
           <p className="text-xs font-bold tracking-[0.2em] text-[var(--brand-primary)] uppercase mb-3">
@@ -616,15 +497,5 @@ export default function HomePage() {
         </div>
       </section>
     </>
-  );
-}
-
-function Check() {
-  return (
-    <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-[var(--brand-primary)] text-white shrink-0">
-      <svg width="11" height="9" viewBox="0 0 11 9" fill="none" aria-hidden>
-        <path d="M1 4.5L4 7.5L10 1.5" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
-      </svg>
-    </span>
   );
 }

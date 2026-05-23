@@ -20,10 +20,10 @@ export const clinic = {
   stats: {
     yearsOpen: 11,
     yearsMakingGongjindan: 7,
-    dietConsults: 70000,
+    totalConsults: 820000,
   },
   philosophy: {
-    umbrella: "직접 해보고 효과 있는 치료만 합니다",
+    umbrella: "직접 해보고 효과 있는 진료만 권해드립니다",
     byTreatment: [
       {
         slug: "pain",

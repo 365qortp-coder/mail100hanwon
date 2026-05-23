@@ -54,7 +54,7 @@ export default function AboutPage() {
           facts={[
             { label: "출신", value: clinic.director.school },
             { label: "현직", value: `${clinic.name} 대표원장` },
-            { label: "경력", value: `개원 ${clinic.stats.yearsOpen}년차 · 다이어트 진료 ${(clinic.stats.dietConsults / 10000).toFixed(0)}만건 누적` },
+            { label: "경력", value: `개원 ${clinic.stats.yearsOpen}년차 · 누적 진료 ${(clinic.stats.totalConsults / 10000).toFixed(0)}만건+` },
             { label: "공진단", value: `한의원 내 직접 조제 ${clinic.stats.yearsMakingGongjindan}년` },
             { label: "학회·단체", value: "대한한방비만학회 · 대한상한금궤학회(교육위원 전) · 열린의사회 · 국경없는의사회" },
             { label: "진료 방식", value: "대면 + 비대면 (전국 처방 가능)" },
