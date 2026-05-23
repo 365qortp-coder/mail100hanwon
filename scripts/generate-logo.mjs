@@ -36,5 +36,21 @@ const ogSvg = `<svg xmlns='http://www.w3.org/2000/svg' width='1200' height='630'
 
 await sharp(Buffer.from(ogSvg)).png().toFile(path.join("public", "og-default.png"));
 
-console.log("logo:", fs.statSync("public/logo.png").size, "bytes");
-console.log("og:  ", fs.statSync("public/og-default.png").size, "bytes");
+// Favicon — red circle + white ㅁㅇ (매일 initials)
+const faviconSvg = `<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'>
+  <circle cx='256' cy='256' r='256' fill='#c0252d'/>
+  <g font-family='Malgun Gothic,Noto Sans KR,sans-serif' font-weight='900' font-size='250' fill='white' text-anchor='middle'>
+    <text x='150' y='342'>ㅁ</text>
+    <text x='362' y='342'>ㅇ</text>
+  </g>
+</svg>`;
+
+await sharp(Buffer.from(faviconSvg)).resize(32, 32).png().toFile(path.join("public", "favicon.png"));
+await sharp(Buffer.from(faviconSvg)).resize(180, 180).png().toFile(path.join("public", "apple-touch-icon.png"));
+await sharp(Buffer.from(faviconSvg)).resize(512, 512).png().toFile(path.join("public", "icon-512.png"));
+
+console.log("logo:        ", fs.statSync("public/logo.png").size, "bytes");
+console.log("og:          ", fs.statSync("public/og-default.png").size, "bytes");
+console.log("favicon:     ", fs.statSync("public/favicon.png").size, "bytes");
+console.log("apple-touch: ", fs.statSync("public/apple-touch-icon.png").size, "bytes");
+console.log("icon-512:    ", fs.statSync("public/icon-512.png").size, "bytes");
