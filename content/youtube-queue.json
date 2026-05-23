@@ -2,10 +2,6 @@
   "_comment": "Add YouTube video URLs/IDs here. The daily automation will pick one unprocessed video at a time and convert it into a column. After processing, the entry is moved to the 'processed' array with the resulting column slug.",
   "queue": [
     {
-      "url": "https://www.youtube.com/watch?v=TN9-nZR083Y",
-      "hint": "[diet] 폭식을 멈출 수 없게하는 공포의 호르몬 정체"
-    },
-    {
       "url": "https://www.youtube.com/watch?v=yUC-uw4bGCQ",
       "hint": "[diet] 탄수화물 완전 끊었더니 살이 더 찌는 이유"
     },
@@ -205,6 +201,19 @@
           "slug": "건강한-식습관이란-처음-시작하는-분을-위한-기본-안내-intro-I_RVkG",
           "title": "건강한 식습관이란? 처음 시작하는 분을 위한 기본 안내",
           "at": "2026-05-23T10:49:41.025Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=TN9-nZR083Y",
+      "hint": "[diet] 폭식을 멈출 수 없게하는 공포의 호르몬 정체",
+      "videoId": "TN9-nZR083Y",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "매일감비환이란-처음-알아보는-분을-위한-기본-안내-intro-TN9-nZ",
+          "title": "매일감비환이란? 처음 알아보는 분을 위한 기본 안내",
+          "at": "2026-05-23T10:59:55.775Z"
         }
       ]
     }

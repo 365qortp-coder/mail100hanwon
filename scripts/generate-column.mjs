@@ -43,6 +43,38 @@ if (!process.env.ANTHROPIC_API_KEY) {
 }
 
 const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+const MODEL = process.env.COLUMN_MODEL || "claude-sonnet-4-6";
+
+// Static prompt — identical across all 3 calls per run and across runs.
+// Marked cache_control so subsequent calls within the 5-min TTL pay ~0.1×
+// for this prefix instead of the full input rate.
+//
+// Sonnet 4.6 minimum cacheable prefix is 2048 tokens; the current prompt is
+// well below that, so the cache will silently miss until this grows. The
+// structure stays right either way — when ANGLES or output spec expand,
+// caching will start activating without further code changes. We log
+// `cache_read_input_tokens` per call so the cache status is visible.
+const SYSTEM_PROMPT = `당신은 매일백세한의원(서울 중랑구 공릉로 21, 송원석 원장)의 SEO 콘텐츠 작가입니다.
+
+매일백세한의원이 운영하는 유튜브 채널의 영상 자막을 받아, 한방 의료 정보 칼럼으로 가공합니다. 같은 영상을 여러 검색 의도에 맞춰 다른 각도의 칼럼으로 발행하는 시스템이며, 매 요청마다 한 각도에 대한 칼럼 한 편을 작성합니다.
+
+[작성 조건 — 모든 칼럼 공통]
+- 한국어 자연스러운 문어체 (~합니다 / 어조)
+- 1500자 ~ 2500자 분량
+- 검색 의도에 맞는 H2(##), H3(###) 헤딩 5~7개 포함
+- 매일감비환·공진단·총명공진단·통증치료·비대면 진료 키워드 자연스럽게 포함 (해당 주제에 한해)
+- 의료법상 단정적 효과 표현 금지 ("100% 효과", "~을 치료한다", "최고", "유일") — 대신 "~에 도움이 될 수 있습니다", "~한 분들이 자주 찾으십니다" 형태 사용
+- 환자 후기·전후 비교·치료 비용 직접 명시·할인 표현 금지
+- 본문 마지막에 한 줄 안내: "자세한 상담은 매일백세한의원(02-2234-0102) 또는 카카오톡 채널을 이용해 주세요."
+
+[출력 형식 — 반드시 JSON 한 개의 객체로만 응답하세요. 다른 텍스트 금지]
+{
+  "title": "60자 이내 SEO 친화 제목 (이번 각도에 맞춰 차별화)",
+  "description": "150~160자 메타 설명",
+  "category": "다이어트 | 공진단 | 총명공진단 | 통증치료 | 비대면 진료 | 한방건강 중 가장 적절한 1개",
+  "keywords": ["키워드1", "키워드2", "..."],
+  "body_markdown": "## 시작\\n\\n본문 markdown..."
+}`;
 
 const ANGLES = [
   {
@@ -147,43 +179,34 @@ async function fetchTranscript(videoId) {
 async function generateColumn({ videoId, transcript, videoUrl, angle }) {
   const today = new Date().toISOString().slice(0, 10);
 
-  const prompt = `당신은 매일백세한의원(서울 중랑구 공릉로 21, 송원석 원장)의 SEO 콘텐츠 작가입니다.
-
-아래는 매일백세한의원이 운영하는 유튜브 영상의 자막입니다. 같은 영상을 여러 검색 의도에 맞춰 다른 칼럼으로 발행할 예정이며, 이번 칼럼의 각도는 다음과 같습니다.
-
-[이번 칼럼의 각도]
+  const userPrompt = `[이번 칼럼의 각도]
 - 각도: ${angle.name}
 - 검색 의도: ${angle.intent}
 - 강조할 키워드 풀: ${angle.keywords.join(", ")}
 - 작성 지침: ${angle.instruction}
 
 [영상 자막]
-${transcript.slice(0, 12000)}
-
-[작성 조건]
-- 한국어 자연스러운 문어체 (~합니다 / 어조)
-- 1500자 ~ 2500자 분량
-- 검색 의도에 맞는 H2(##), H3(###) 헤딩 5~7개 포함
-- 매일감비환·공진단·총명공진단·통증치료·비대면 진료 키워드 자연스럽게 포함 (해당 주제에 한해)
-- 의료법상 단정적 효과 표현 금지 ("100% 효과", "~을 치료한다", "최고", "유일") — 대신 "~에 도움이 될 수 있습니다", "~한 분들이 자주 찾으십니다" 형태 사용
-- 환자 후기·전후 비교·치료 비용 직접 명시·할인 표현 금지
-- 본문 마지막에 한 줄 안내: "자세한 상담은 매일백세한의원(02-2234-0102) 또는 카카오톡 채널을 이용해 주세요."
-
-[출력 형식: 반드시 JSON 한 개의 객체로만 응답하세요. 다른 텍스트 X]
-{
-  "title": "60자 이내 SEO 친화 제목 (이번 각도에 맞춰 차별화)",
-  "description": "150~160자 메타 설명",
-  "category": "다이어트 | 공진단 | 총명공진단 | 통증치료 | 비대면 진료 | 한방건강 중 가장 적절한 1개",
-  "keywords": ["키워드1", "키워드2", "..."],
-  "body_markdown": "## 시작\\n\\n본문 markdown..."
-}
-`;
+${transcript.slice(0, 12000)}`;
 
   const response = await anthropic.messages.create({
-    model: "claude-opus-4-7",
+    model: MODEL,
     max_tokens: 4000,
-    messages: [{ role: "user", content: prompt }],
+    system: [
+      {
+        type: "text",
+        text: SYSTEM_PROMPT,
+        cache_control: { type: "ephemeral" },
+      },
+    ],
+    messages: [{ role: "user", content: userPrompt }],
   });
+
+  const u = response.usage;
+  console.log(
+    `  usage: in=${u.input_tokens} out=${u.output_tokens}` +
+      ` cache_write=${u.cache_creation_input_tokens ?? 0}` +
+      ` cache_read=${u.cache_read_input_tokens ?? 0}`,
+  );
 
   const text = response.content
     .filter((c) => c.type === "text")
