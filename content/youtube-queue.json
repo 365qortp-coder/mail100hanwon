@@ -2,18 +2,6 @@
   "_comment": "Add YouTube video URLs/IDs here. The daily automation will pick one unprocessed video at a time and convert it into a column. After processing, the entry is moved to the 'processed' array with the resulting column slug.",
   "queue": [
     {
-      "url": "https://www.youtube.com/watch?v=Et8naTOnRB0",
-      "hint": "[diet] 엄마들 뱃살 안 빠지는 진짜 이유는 따로 있어요"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=n2fD_XnfPCo",
-      "hint": "[diet] 30대 후반부터 살이 갑자기 잘 찌는 이유"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=IX7-uHWcJ5I",
-      "hint": "[diet] 물만 마셔도 살찐다면 당신 몸이 변한 증거"
-    },
-    {
       "url": "https://www.youtube.com/watch?v=6SCVkUIu8Gc",
       "hint": "[diet] 굶어도 안 빠지는 살 기초대사량이 범인"
     },
@@ -212,6 +200,45 @@
     {
       "url": "https://www.youtube.com/watch?v=rdPelMzjy_g",
       "hint": "[diet] 기초대사량 회복이 먼저입니다. (3가지방법)"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=Et8naTOnRB0",
+      "hint": "[diet] 엄마들 뱃살 안 빠지는 진짜 이유는 따로 있어요",
+      "videoId": "Et8naTOnRB0",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "매일감비환이란-효능과-어떤-분께-도움이-되는지-기본-안내-intro-Et8naT",
+          "title": "매일감비환이란? 효능과 어떤 분께 도움이 되는지 기본 안내",
+          "at": "2026-05-24T08:36:43.531Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=n2fD_XnfPCo",
+      "hint": "[diet] 30대 후반부터 살이 갑자기 잘 찌는 이유",
+      "videoId": "n2fD_XnfPCo",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "근육-감소와-기초대사량-저하-한방으로-어떻게-접근할까-intro-n2fD_X",
+          "title": "근육 감소와 기초대사량 저하, 한방으로 어떻게 접근할까?",
+          "at": "2026-05-24T08:38:42.917Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=IX7-uHWcJ5I",
+      "hint": "[diet] 물만 마셔도 살찐다면 당신 몸이 변한 증거",
+      "videoId": "IX7-uHWcJ5I",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "매일감비환이란-효능과-어떤-분에게-적합한지-기본-안내-intro-IX7-uH",
+          "title": "매일감비환이란? 효능과 어떤 분에게 적합한지 기본 안내",
+          "at": "2026-05-24T08:40:23.576Z"
+        }
+      ]
     }
   ]
 }
