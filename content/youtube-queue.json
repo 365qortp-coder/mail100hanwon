@@ -2,20 +2,12 @@
   "_comment": "Add YouTube video URLs/IDs here. The daily automation will pick one unprocessed video at a time and convert it into a column. After processing, the entry is moved to the 'processed' array with the resulting column slug.",
   "queue": [
     {
-      "url": "https://www.youtube.com/watch?v=6SCVkUIu8Gc",
-      "hint": "[diet] 굶어도 안 빠지는 살 기초대사량이 범인"
-    },
-    {
       "url": "https://www.youtube.com/watch?v=9ZU4x2Z6Mio",
       "hint": "[diet] 굶어서 빼면 무조건 살 잘찌는 체질 됩니다"
     },
     {
       "url": "https://www.youtube.com/watch?v=Sw3PzLW82Z8",
       "hint": "[diet] 기초대사량 높이면 20대 처럼 빠집니다"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=rhMxltq0apY",
-      "hint": "[gongjindan] 공부체력 만드는 방법, 수험생 엄마라면 이렇게 챙겨주세"
     },
     {
       "url": "https://www.youtube.com/watch?v=kYnosy_Gebc",
@@ -72,10 +64,6 @@
     {
       "url": "https://www.youtube.com/watch?v=djzJKoMYv58",
       "hint": "[gongjindan] 지팡이 없이 걷게 된 공진단의 놀라운 효과"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=ET1NCKCVlto",
-      "hint": "[pain] 허리협착증 97%좋아지는 4가지 운동"
     },
     {
       "url": "https://www.youtube.com/watch?v=p_lRxblP3BI",
@@ -237,6 +225,45 @@
           "slug": "매일감비환이란-효능과-어떤-분에게-적합한지-기본-안내-intro-IX7-uH",
           "title": "매일감비환이란? 효능과 어떤 분에게 적합한지 기본 안내",
           "at": "2026-05-24T08:40:23.576Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=6SCVkUIu8Gc",
+      "hint": "[diet] 굶어도 안 빠지는 살 기초대사량이 범인",
+      "videoId": "6SCVkUIu8Gc",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "매일감비환이란-효능과-어떤-분에게-맞는지-한-번에-정리-intro-6SCVkU",
+          "title": "매일감비환이란? 효능과 어떤 분에게 맞는지 한 번에 정리",
+          "at": "2026-05-24T08:52:03.759Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=rhMxltq0apY",
+      "hint": "[gongjindan] 공부체력 만드는 방법, 수험생 엄마라면 이렇게 챙겨주세",
+      "videoId": "rhMxltq0apY",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "총명공진단이란-수험생-집중력공부-체력-기본-안내-intro-rhMxlt",
+          "title": "총명공진단이란? 수험생 집중력·공부 체력 기본 안내",
+          "at": "2026-05-24T08:52:44.856Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=ET1NCKCVlto",
+      "hint": "[pain] 허리협착증 97%좋아지는 4가지 운동",
+      "videoId": "ET1NCKCVlto",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "허리-협착증이란-증상원인한방-접근법-기본-안내-intro-ET1NCK",
+          "title": "허리 협착증이란? 증상·원인·한방 접근법 기본 안내",
+          "at": "2026-05-24T08:53:36.023Z"
         }
       ]
     }

@@ -259,32 +259,70 @@ ${transcript.slice(0, 12000)}`;
 
 /**
  * Pick the next units of work, where each unit is (entry, angle).
- * Order:
- *   1. Drain unstarted videos in queue.queue first (intro angle for each)
- *   2. Then revisit videos in queue.processed that still have unused angles
+ *
+ * Selection order:
+ *   1. Round-robin across channels (diet / gongjindan / pain / other) so a
+ *      single run publishes one of each — keeps topic variety on the feed.
+ *   2. Within a channel, drain unstarted queue.queue entries first (each
+ *      gets `intro` angle), then revisit queue.processed entries for any
+ *      angle that hasn't been used yet.
+ *
+ * Channel detection: the hint prefix from RSS-seeded entries (e.g.
+ *   "[diet] 엄마들 뱃살 안 빠지는 진짜 이유"). Manual entries without a
+ * prefix bucket as "other".
  */
+function channelOf(entry) {
+  const h = entry.hint || "";
+  if (/\[gongjindan\]/i.test(h)) return "gongjindan";
+  if (/\[pain\]/i.test(h)) return "pain";
+  if (/\[diet\]/i.test(h)) return "diet";
+  return "other";
+}
+
 function pickWork(queue, n) {
-  const work = [];
+  // Build per-(channel, priority) buckets so we can round-robin without
+  // re-scanning the whole queue every iteration. priority 0 = fresh video
+  // (queue.queue), priority 1 = revisit (queue.processed).
+  const buckets = {};
+  const push = (ch, prio, item) => {
+    const key = `${prio}:${ch}`;
+    (buckets[key] ||= []).push(item);
+  };
+
   for (const entry of queue.queue) {
-    if (work.length >= n) break;
     const id = extractVideoId(entry.url || entry.videoId);
     if (!id) continue;
     const used = new Set((entry.angles || []).map((a) => a.id));
     const next = ANGLES.find((a) => !used.has(a.id));
-    if (next) work.push({ source: "queue", entry, videoId: id, angle: next });
+    if (next) push(channelOf(entry), 0, { source: "queue", entry, videoId: id, angle: next });
   }
-  if (work.length >= n) return work;
   for (const entry of queue.processed) {
-    if (work.length >= n) break;
     if (entry.status === "no-transcript") continue;
     const id = entry.videoId || extractVideoId(entry.url);
     if (!id) continue;
     const used = new Set((entry.angles || []).map((a) => a.id));
-    const remaining = ANGLES.filter((a) => !used.has(a.id));
-    for (const angle of remaining) {
-      if (work.length >= n) break;
-      work.push({ source: "processed", entry, videoId: id, angle });
+    for (const angle of ANGLES.filter((a) => !used.has(a.id))) {
+      push(channelOf(entry), 1, { source: "processed", entry, videoId: id, angle });
     }
+  }
+
+  const channels = ["diet", "gongjindan", "pain", "other"];
+  const work = [];
+  // Try priority 0 first (fresh videos), then 1 (revisits)
+  for (const prio of [0, 1]) {
+    let progress = true;
+    while (work.length < n && progress) {
+      progress = false;
+      for (const ch of channels) {
+        if (work.length >= n) break;
+        const bucket = buckets[`${prio}:${ch}`];
+        if (bucket && bucket.length > 0) {
+          work.push(bucket.shift());
+          progress = true;
+        }
+      }
+    }
+    if (work.length >= n) break;
   }
   return work;
 }
