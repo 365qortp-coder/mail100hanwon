@@ -2,16 +2,8 @@
   "_comment": "Add YouTube video URLs/IDs here. The daily automation will pick one unprocessed video at a time and convert it into a column. After processing, the entry is moved to the 'processed' array with the resulting column slug.",
   "queue": [
     {
-      "url": "https://www.youtube.com/watch?v=9ZU4x2Z6Mio",
-      "hint": "[diet] 굶어서 빼면 무조건 살 잘찌는 체질 됩니다"
-    },
-    {
       "url": "https://www.youtube.com/watch?v=Sw3PzLW82Z8",
       "hint": "[diet] 기초대사량 높이면 20대 처럼 빠집니다"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=kYnosy_Gebc",
-      "hint": "[gongjindan] 체력 바닥난 수험생 주목 집중력 2배 올리는 꿀팁"
     },
     {
       "url": "https://www.youtube.com/watch?v=_duv78qTcDI",
@@ -64,10 +56,6 @@
     {
       "url": "https://www.youtube.com/watch?v=djzJKoMYv58",
       "hint": "[gongjindan] 지팡이 없이 걷게 된 공진단의 놀라운 효과"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=p_lRxblP3BI",
-      "hint": "[pain] 무릎통증 부위별 문제 해결 방법"
     },
     {
       "url": "https://www.youtube.com/watch?v=KO5LjDLM2MI",
@@ -264,6 +252,45 @@
           "slug": "허리-협착증이란-증상원인한방-접근법-기본-안내-intro-ET1NCK",
           "title": "허리 협착증이란? 증상·원인·한방 접근법 기본 안내",
           "at": "2026-05-24T08:53:36.023Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=9ZU4x2Z6Mio",
+      "hint": "[diet] 굶어서 빼면 무조건 살 잘찌는 체질 됩니다",
+      "videoId": "9ZU4x2Z6Mio",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "매일감비환이란-효능과-어떤-분에게-맞는지-기본-안내-intro-9ZU4x2",
+          "title": "매일감비환이란? 효능과 어떤 분에게 맞는지 기본 안내",
+          "at": "2026-05-24T09:53:52.239Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=kYnosy_Gebc",
+      "hint": "[gongjindan] 체력 바닥난 수험생 주목 집중력 2배 올리는 꿀팁",
+      "videoId": "kYnosy_Gebc",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "총명공진단이란-처음-알아보는-분을-위한-기본-안내와-적합-대상-intro-kYnosy",
+          "title": "총명공진단이란? 처음 알아보는 분을 위한 기본 안내와 적합 대상",
+          "at": "2026-05-24T09:54:27.088Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=p_lRxblP3BI",
+      "hint": "[pain] 무릎통증 부위별 문제 해결 방법",
+      "videoId": "p_lRxblP3BI",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "러닝-무릎-통증-장경인대증후군이란-무엇인가요-기본-안내-intro-p_lRxb",
+          "title": "러닝 무릎 통증, 장경인대증후군이란 무엇인가요? 기본 안내",
+          "at": "2026-05-24T09:55:18.331Z"
         }
       ]
     }
