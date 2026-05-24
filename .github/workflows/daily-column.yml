@@ -51,9 +51,16 @@ jobs:
             echo "pushed=false" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Notify Telegram
-        if: steps.commit.outputs.pushed == 'true'
+      - name: Notify Telegram (success)
+        if: success() && steps.commit.outputs.pushed == 'true'
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
         run: node scripts/notify-telegram.mjs
+
+      - name: Notify Telegram (failure or empty)
+        if: always() && (failure() || steps.commit.outputs.pushed != 'true')
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: node scripts/notify-telegram.mjs --failure
