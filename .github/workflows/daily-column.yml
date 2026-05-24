@@ -2,8 +2,8 @@ name: Daily Column Generation
 
 on:
   schedule:
-    # 매일 한국시간 오전 7시 (UTC 22:00 전날)
-    - cron: "0 22 * * *"
+    # 매일 한국시간 오후 3시 (UTC 06:00)
+    - cron: "0 6 * * *"
   workflow_dispatch:
 
 permissions:
@@ -26,6 +26,10 @@ jobs:
 
       - name: Install deps
         run: npm ci
+
+      - name: Prefetch transcripts (best-effort; cache fallback covers misses)
+        continue-on-error: true
+        run: node scripts/fetch-transcripts.mjs
 
       - name: Generate column from queue
         env:

@@ -35,6 +35,7 @@ const __dirname = path.dirname(__filename);
 const ROOT = path.resolve(__dirname, "..");
 const QUEUE_FILE = path.join(ROOT, "content", "youtube-queue.json");
 const COLUMNS_DIR = path.join(ROOT, "content", "columns");
+const TRANSCRIPTS_DIR = path.join(ROOT, "content", "transcripts");
 const COLUMNS_PER_RUN = parseInt(process.env.COLUMNS_PER_RUN || "3", 10);
 
 if (!process.env.ANTHROPIC_API_KEY) {
@@ -165,12 +166,23 @@ function slugFromTitle(title, videoId, angleId) {
 }
 
 async function fetchTranscript(videoId) {
-  for (const lang of ["ko", "en"]) {
+  // Disk cache first — populated by scripts/fetch-transcripts.mjs
+  const cacheFile = path.join(TRANSCRIPTS_DIR, `${videoId}.txt`);
+  if (fs.existsSync(cacheFile)) {
+    return fs.readFileSync(cacheFile, "utf8");
+  }
+  // Live fetch fallback (also caches result for next time)
+  for (const opts of [{ lang: "ko" }, { lang: "en" }, {}]) {
     try {
-      const items = await YoutubeTranscript.fetchTranscript(videoId, { lang });
-      if (items && items.length) return items.map((i) => i.text).join(" ");
+      const items = await YoutubeTranscript.fetchTranscript(videoId, opts);
+      if (items && items.length) {
+        const text = items.map((i) => i.text).join(" ");
+        fs.mkdirSync(TRANSCRIPTS_DIR, { recursive: true });
+        fs.writeFileSync(cacheFile, text, "utf8");
+        return text;
+      }
     } catch (err) {
-      console.warn(`  transcript fail lang=${lang}: ${err.message}`);
+      console.warn(`  transcript fail (${opts.lang || "default"}): ${err.message}`);
     }
   }
   return null;
