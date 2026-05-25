@@ -2,14 +2,6 @@
   "_comment": "Add YouTube video URLs/IDs here. The daily automation will pick one unprocessed video at a time and convert it into a column. After processing, the entry is moved to the 'processed' array with the resulting column slug.",
   "queue": [
     {
-      "url": "https://www.youtube.com/watch?v=Sw3PzLW82Z8",
-      "hint": "[diet] 기초대사량 높이면 20대 처럼 빠집니다"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=_duv78qTcDI",
-      "hint": "[gongjindan] 자도 자도 피곤할 때 몸의 이상 신호 2가지"
-    },
-    {
       "url": "https://www.youtube.com/watch?v=opVi_cKoLxc",
       "hint": "[gongjindan] 아침에 잘 못 일어나는 수험생 자녀를 뒀다면"
     },
@@ -56,10 +48,6 @@
     {
       "url": "https://www.youtube.com/watch?v=djzJKoMYv58",
       "hint": "[gongjindan] 지팡이 없이 걷게 된 공진단의 놀라운 효과"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=KO5LjDLM2MI",
-      "hint": "[pain] 소화 안 될 때 생기는 두통 위장 안 고치면 평생 가요"
     },
     {
       "url": "https://www.youtube.com/watch?v=FgiQlbAxz1Y",
@@ -291,6 +279,45 @@
           "slug": "러닝-무릎-통증-장경인대증후군이란-무엇인가요-기본-안내-intro-p_lRxb",
           "title": "러닝 무릎 통증, 장경인대증후군이란 무엇인가요? 기본 안내",
           "at": "2026-05-24T09:55:18.331Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=Sw3PzLW82Z8",
+      "hint": "[diet] 기초대사량 높이면 20대 처럼 빠집니다",
+      "videoId": "Sw3PzLW82Z8",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "매일감비환이란-효능과-어떤-분께-도움이-되는지-기본-안내-intro-Sw3PzL",
+          "title": "매일감비환이란? 효능과 어떤 분께 도움이 되는지 기본 안내",
+          "at": "2026-05-25T10:10:00.221Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=_duv78qTcDI",
+      "hint": "[gongjindan] 자도 자도 피곤할 때 몸의 이상 신호 2가지",
+      "videoId": "_duv78qTcDI",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "만성-피로소화불량-혹시-자율신경-문제일까-한방-기본-안내-intro-_duv78",
+          "title": "만성 피로·소화불량, 혹시 자율신경 문제일까? 한방 기본 안내",
+          "at": "2026-05-25T10:10:37.099Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=KO5LjDLM2MI",
+      "hint": "[pain] 소화 안 될 때 생기는 두통 위장 안 고치면 평생 가요",
+      "videoId": "KO5LjDLM2MI",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "소화불량성-두통이란-처음-알아보는-분을-위한-기본-안내-intro-KO5LjD",
+          "title": "소화불량성 두통이란? 처음 알아보는 분을 위한 기본 안내",
+          "at": "2026-05-25T10:11:15.524Z"
         }
       ]
     }
