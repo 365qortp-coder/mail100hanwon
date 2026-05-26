@@ -2,14 +2,6 @@
   "_comment": "Add YouTube video URLs/IDs here. The daily automation will pick one unprocessed video at a time and convert it into a column. After processing, the entry is moved to the 'processed' array with the resulting column slug.",
   "queue": [
     {
-      "url": "https://www.youtube.com/watch?v=opVi_cKoLxc",
-      "hint": "[gongjindan] 아침에 잘 못 일어나는 수험생 자녀를 뒀다면"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=VR6Njm--1m0",
-      "hint": "[gongjindan] 겉으론 멀쩡한 아이 스트레스 지수 100%"
-    },
-    {
       "url": "https://www.youtube.com/watch?v=Aa_BxvYF7O0",
       "hint": "[gongjindan] 공부 안 하는 우리 아이 의지 부족이 아니에요"
     },
@@ -48,10 +40,6 @@
     {
       "url": "https://www.youtube.com/watch?v=djzJKoMYv58",
       "hint": "[gongjindan] 지팡이 없이 걷게 된 공진단의 놀라운 효과"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=FgiQlbAxz1Y",
-      "hint": "[pain] MRI는 정상인데 머리는 왜 계속 아플까?"
     },
     {
       "url": "https://www.youtube.com/watch?v=dTe2N12uFk4",
@@ -318,6 +306,45 @@
           "slug": "소화불량성-두통이란-처음-알아보는-분을-위한-기본-안내-intro-KO5LjD",
           "title": "소화불량성 두통이란? 처음 알아보는 분을 위한 기본 안내",
           "at": "2026-05-25T10:11:15.524Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=opVi_cKoLxc",
+      "hint": "[gongjindan] 아침에 잘 못 일어나는 수험생 자녀를 뒀다면",
+      "videoId": "opVi_cKoLxc",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "총명공진단이란-처음-알아보는-분을-위한-기본-안내-intro-opVi_c",
+          "title": "총명공진단이란? 처음 알아보는 분을 위한 기본 안내",
+          "at": "2026-05-26T09:59:33.235Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=FgiQlbAxz1Y",
+      "hint": "[pain] MRI는 정상인데 머리는 왜 계속 아플까?",
+      "videoId": "FgiQlbAxz1Y",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "검사는-정상인데-두통이-계속되는-이유-한방으로-보는-원인과-접근법-intro-FgiQlb",
+          "title": "검사는 정상인데 두통이 계속되는 이유 — 한방으로 보는 원인과 접근법",
+          "at": "2026-05-26T10:00:14.220Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=VR6Njm--1m0",
+      "hint": "[gongjindan] 겉으론 멀쩡한 아이 스트레스 지수 100%",
+      "videoId": "VR6Njm--1m0",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "총명공진단이란-효능과-어떤-분에게-적합한지-기본-안내-intro-VR6Njm",
+          "title": "총명공진단이란? 효능과 어떤 분에게 적합한지 기본 안내",
+          "at": "2026-05-26T10:00:52.470Z"
         }
       ]
     }
