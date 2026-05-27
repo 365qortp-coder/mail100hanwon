@@ -42,10 +42,6 @@
       "hint": "[gongjindan] 지팡이 없이 걷게 된 공진단의 놀라운 효과"
     },
     {
-      "url": "https://www.youtube.com/watch?v=dTe2N12uFk4",
-      "hint": "[pain] 몇 개나 해당되나요? 만성 두통 체크리스트"
-    },
-    {
       "url": "https://www.youtube.com/watch?v=E28JHHCbq1I",
       "hint": "[pain] 검사해도 원인 모를 두통 반드시 '여기' 확인하세요"
     },
@@ -345,6 +341,19 @@
           "slug": "총명공진단이란-효능과-어떤-분에게-적합한지-기본-안내-intro-VR6Njm",
           "title": "총명공진단이란? 효능과 어떤 분에게 적합한지 기본 안내",
           "at": "2026-05-26T10:00:52.470Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=dTe2N12uFk4",
+      "hint": "[pain] 몇 개나 해당되나요? 만성 두통 체크리스트",
+      "videoId": "dTe2N12uFk4",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "만성-두통-한방-치료-기본-안내-원인효능적합-대상-한눈에-intro-dTe2N1",
+          "title": "만성 두통 한방 치료 기본 안내 — 원인·효능·적합 대상 한눈에",
+          "at": "2026-05-27T09:54:03.475Z"
         }
       ]
     }
