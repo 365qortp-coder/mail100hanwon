@@ -2,14 +2,6 @@
   "_comment": "Add YouTube video URLs/IDs here. The daily automation will pick one unprocessed video at a time and convert it into a column. After processing, the entry is moved to the 'processed' array with the resulting column slug.",
   "queue": [
     {
-      "url": "https://www.youtube.com/watch?v=fDtuC5gJLW0",
-      "hint": "[gongjindan] 간 나빠질까 걱정인가요? 오히려 간을 해독하는 공진단"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=Cb9hNoj23zU",
-      "hint": "[gongjindan] 비싼 공진단 효과를 2배로 올리는 복용법"
-    },
-    {
       "url": "https://www.youtube.com/watch?v=iRAdoNGDntQ",
       "hint": "[gongjindan] 나에게 맞는 공진단은? 실패 없는 공진단 고르기"
     },
@@ -32,10 +24,6 @@
     {
       "url": "https://www.youtube.com/watch?v=djzJKoMYv58",
       "hint": "[gongjindan] 지팡이 없이 걷게 된 공진단의 놀라운 효과"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=XMMsj1kSjEA",
-      "hint": "[pain] 물 마시다 컵 떨어뜨리면 뇌가 보내는 최후의 경고"
     },
     {
       "url": "https://www.youtube.com/watch?v=V0xQ-RA59b8",
@@ -381,6 +369,45 @@
           "slug": "만성-두통의-원인과-한방-치료-기본-안내-뇌는-정상인데-왜-아플까-intro-E28JHH",
           "title": "만성 두통의 원인과 한방 치료 기본 안내 — 뇌는 정상인데 왜 아플까?",
           "at": "2026-05-28T02:34:20.508Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=fDtuC5gJLW0",
+      "hint": "[gongjindan] 간 나빠질까 걱정인가요? 오히려 간을 해독하는 공진단",
+      "videoId": "fDtuC5gJLW0",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "공진단-부작용-걱정된다면-기본-안내와-적합-대상-총정리-intro-fDtuC5",
+          "title": "공진단 부작용 걱정된다면? 기본 안내와 적합 대상 총정리",
+          "at": "2026-05-28T10:05:00.436Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=XMMsj1kSjEA",
+      "hint": "[pain] 물 마시다 컵 떨어뜨리면 뇌가 보내는 최후의 경고",
+      "videoId": "XMMsj1kSjEA",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "두통과-감각-이상이-함께-뇌경색뇌출혈-의심-증상-기본-안내-intro-XMMsj1",
+          "title": "두통과 감각 이상이 함께? 뇌경색·뇌출혈 의심 증상 기본 안내",
+          "at": "2026-05-28T10:05:35.948Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=Cb9hNoj23zU",
+      "hint": "[gongjindan] 비싼 공진단 효과를 2배로 올리는 복용법",
+      "videoId": "Cb9hNoj23zU",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "공진단-처음-복용하는-분을-위한-기본-안내-효능과-복용법-intro-Cb9hNo",
+          "title": "공진단 처음 복용하는 분을 위한 기본 안내 — 효능과 복용법",
+          "at": "2026-05-28T10:06:11.117Z"
         }
       ]
     }
