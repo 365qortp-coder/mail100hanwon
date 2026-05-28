@@ -210,6 +210,26 @@ ${transcript.slice(0, 12000)}`;
         cache_control: { type: "ephemeral" },
       },
     ],
+    output_config: {
+      format: {
+        type: "json_schema",
+        schema: {
+          type: "object",
+          properties: {
+            title: { type: "string", description: "60자 이내 SEO 친화 제목" },
+            description: { type: "string", description: "150~160자 메타 설명" },
+            category: {
+              type: "string",
+              enum: ["다이어트", "공진단", "총명공진단", "통증치료", "비대면 진료", "한방건강"],
+            },
+            keywords: { type: "array", items: { type: "string" } },
+            body_markdown: { type: "string", description: "markdown 본문" },
+          },
+          required: ["title", "description", "category", "keywords", "body_markdown"],
+          additionalProperties: false,
+        },
+      },
+    },
     messages: [{ role: "user", content: userPrompt }],
   });
 
@@ -220,14 +240,13 @@ ${transcript.slice(0, 12000)}`;
       ` cache_read=${u.cache_read_input_tokens ?? 0}`,
   );
 
+  // With output_config.format=json_schema, the first text block is guaranteed
+  // to parse as the schema. No regex extraction, no JSON-repair workarounds.
   const text = response.content
     .filter((c) => c.type === "text")
     .map((c) => c.text)
-    .join("\n");
-
-  const jsonMatch = text.match(/\{[\s\S]*\}/);
-  if (!jsonMatch) throw new Error("Claude response did not contain a JSON object.");
-  const parsed = JSON.parse(jsonMatch[0]);
+    .join("");
+  const parsed = JSON.parse(text);
 
   const slug = slugFromTitle(parsed.title, videoId, angle.id);
   const filePath = path.join(COLUMNS_DIR, `${slug}.md`);
