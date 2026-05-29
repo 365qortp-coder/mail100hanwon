@@ -2,14 +2,6 @@
   "_comment": "Add YouTube video URLs/IDs here. The daily automation will pick one unprocessed video at a time and convert it into a column. After processing, the entry is moved to the 'processed' array with the resulting column slug.",
   "queue": [
     {
-      "url": "https://www.youtube.com/watch?v=iRAdoNGDntQ",
-      "hint": "[gongjindan] 나에게 맞는 공진단은? 실패 없는 공진단 고르기"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=v0t5yevY06Q",
-      "hint": "[gongjindan] 가짜 공진단 속지 마세요 진짜와 가짜 구별 방법"
-    },
-    {
       "url": "https://www.youtube.com/watch?v=8NdMtGce2ac",
       "hint": "[gongjindan] 성장 ⋅ 면역력 ⋅ 치매까지 한 번에 잡는 녹용의 힘"
     },
@@ -24,10 +16,6 @@
     {
       "url": "https://www.youtube.com/watch?v=djzJKoMYv58",
       "hint": "[gongjindan] 지팡이 없이 걷게 된 공진단의 놀라운 효과"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=V0xQ-RA59b8",
-      "hint": "[pain] 머릿속에 폭탄 터지면 무조건 119 불러야 해요"
     },
     {
       "url": "https://www.youtube.com/watch?v=yZccrn-9cYc",
@@ -408,6 +396,45 @@
           "slug": "공진단-처음-복용하는-분을-위한-기본-안내-효능과-복용법-intro-Cb9hNo",
           "title": "공진단 처음 복용하는 분을 위한 기본 안내 — 효능과 복용법",
           "at": "2026-05-28T10:06:11.117Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=iRAdoNGDntQ",
+      "hint": "[gongjindan] 나에게 맞는 공진단은? 실패 없는 공진단 고르기",
+      "videoId": "iRAdoNGDntQ",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "공진단-종류별-기본-안내-사양녹용총명공진단-차이와-적합-대상-intro-iRAdoN",
+          "title": "공진단 종류별 기본 안내 – 사양·녹용·총명공진단 차이와 적합 대상",
+          "at": "2026-05-29T09:56:42.335Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=V0xQ-RA59b8",
+      "hint": "[pain] 머릿속에 폭탄 터지면 무조건 119 불러야 해요",
+      "videoId": "V0xQ-RA59b8",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "벼락-두통이란-처음-겪는-극심한-두통의-원인과-대처법-intro-V0xQ-R",
+          "title": "벼락 두통이란? 처음 겪는 극심한 두통의 원인과 대처법",
+          "at": "2026-05-29T09:56:58.428Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=v0t5yevY06Q",
+      "hint": "[gongjindan] 가짜 공진단 속지 마세요 진짜와 가짜 구별 방법",
+      "videoId": "v0t5yevY06Q",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "공진단이란-효능성분어떤-분께-맞는지-한눈에-정리-intro-v0t5ye",
+          "title": "공진단이란? 효능·성분·어떤 분께 맞는지 한눈에 정리",
+          "at": "2026-05-29T09:57:34.493Z"
         }
       ]
     }
