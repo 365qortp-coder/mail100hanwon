@@ -2,24 +2,12 @@
   "_comment": "Add YouTube video URLs/IDs here. The daily automation will pick one unprocessed video at a time and convert it into a column. After processing, the entry is moved to the 'processed' array with the resulting column slug.",
   "queue": [
     {
-      "url": "https://www.youtube.com/watch?v=8NdMtGce2ac",
-      "hint": "[gongjindan] 성장 ⋅ 면역력 ⋅ 치매까지 한 번에 잡는 녹용의 힘"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=Wa4OKD5-dE0",
-      "hint": "[gongjindan] 한의사가 직접 추천하는 어르신 기력 원탑은?"
-    },
-    {
       "url": "https://www.youtube.com/watch?v=_t-GCauCH7g",
       "hint": "[gongjindan] 열 많은 체질이라면 흑염소 먹고 큰일납니다"
     },
     {
       "url": "https://www.youtube.com/watch?v=djzJKoMYv58",
       "hint": "[gongjindan] 지팡이 없이 걷게 된 공진단의 놀라운 효과"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=yZccrn-9cYc",
-      "hint": "[pain] 허리 박살내는 수면 자세 절대 이렇게 자지 마세요"
     },
     {
       "url": "https://www.youtube.com/watch?v=mRrCJbViw-g",
@@ -435,6 +423,45 @@
           "slug": "공진단이란-효능성분어떤-분께-맞는지-한눈에-정리-intro-v0t5ye",
           "title": "공진단이란? 효능·성분·어떤 분께 맞는지 한눈에 정리",
           "at": "2026-05-29T09:57:34.493Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=8NdMtGce2ac",
+      "hint": "[gongjindan] 성장 ⋅ 면역력 ⋅ 치매까지 한 번에 잡는 녹용의 힘",
+      "videoId": "8NdMtGce2ac",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "녹용이란-효능과-어떤-분에게-도움이-되는지-한눈에-정리-intro-8NdMtG",
+          "title": "녹용이란? 효능과 어떤 분에게 도움이 되는지 한눈에 정리",
+          "at": "2026-05-30T08:30:06.296Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=yZccrn-9cYc",
+      "hint": "[pain] 허리 박살내는 수면 자세 절대 이렇게 자지 마세요",
+      "videoId": "yZccrn-9cYc",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "잠자리-자세가-목허리-통증을-만든다-올바른-수면-자세-기본-안내-intro-yZccrn",
+          "title": "잠자리 자세가 목·허리 통증을 만든다? 올바른 수면 자세 기본 안내",
+          "at": "2026-05-30T08:30:53.190Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=Wa4OKD5-dE0",
+      "hint": "[gongjindan] 한의사가 직접 추천하는 어르신 기력 원탑은?",
+      "videoId": "Wa4OKD5-dE0",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "흑염소와-공진단-어떤-분께-맞을까-기본-안내-intro-Wa4OKD",
+          "title": "흑염소와 공진단, 어떤 분께 맞을까? 기본 안내",
+          "at": "2026-05-30T08:31:30.514Z"
         }
       ]
     }
