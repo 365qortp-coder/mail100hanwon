@@ -2,18 +2,6 @@
   "_comment": "Add YouTube video URLs/IDs here. The daily automation will pick one unprocessed video at a time and convert it into a column. After processing, the entry is moved to the 'processed' array with the resulting column slug.",
   "queue": [
     {
-      "url": "https://www.youtube.com/watch?v=_t-GCauCH7g",
-      "hint": "[gongjindan] 열 많은 체질이라면 흑염소 먹고 큰일납니다"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=djzJKoMYv58",
-      "hint": "[gongjindan] 지팡이 없이 걷게 된 공진단의 놀라운 효과"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=mRrCJbViw-g",
-      "hint": "[pain] 허리 통증 싹 없애는 기적의 수면 자세"
-    },
-    {
       "url": "https://www.youtube.com/watch?v=c7CcfYQ6HF4",
       "hint": "[pain] 자고 나도 계속 피곤할 때 이렇게 누워야 잠이 보약"
     },
@@ -462,6 +450,45 @@
           "slug": "흑염소와-공진단-어떤-분께-맞을까-기본-안내-intro-Wa4OKD",
           "title": "흑염소와 공진단, 어떤 분께 맞을까? 기본 안내",
           "at": "2026-05-30T08:31:30.514Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=_t-GCauCH7g",
+      "hint": "[gongjindan] 열 많은 체질이라면 흑염소 먹고 큰일납니다",
+      "videoId": "_t-GCauCH7g",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "흑염소-먹으면-안-되는-체질-따로-있다-기본-안내-intro-_t-GCa",
+          "title": "흑염소 먹으면 안 되는 체질 따로 있다? 기본 안내",
+          "at": "2026-05-31T08:47:32.512Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=mRrCJbViw-g",
+      "hint": "[pain] 허리 통증 싹 없애는 기적의 수면 자세",
+      "videoId": "mRrCJbViw-g",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "허리-통증-완화를-위한-올바른-수면-자세-기본-안내-intro-mRrCJb",
+          "title": "허리 통증 완화를 위한 올바른 수면 자세 기본 안내",
+          "at": "2026-05-31T08:48:07.493Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=djzJKoMYv58",
+      "hint": "[gongjindan] 지팡이 없이 걷게 된 공진단의 놀라운 효과",
+      "videoId": "djzJKoMYv58",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "공진단이란-효능과-어떤-분에게-맞는지-기본-안내-intro-djzJKo",
+          "title": "공진단이란? 효능과 어떤 분에게 맞는지 기본 안내",
+          "at": "2026-05-31T08:48:44.274Z"
         }
       ]
     }
