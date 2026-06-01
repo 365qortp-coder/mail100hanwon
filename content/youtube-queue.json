@@ -2,18 +2,6 @@
   "_comment": "Add YouTube video URLs/IDs here. The daily automation will pick one unprocessed video at a time and convert it into a column. After processing, the entry is moved to the 'processed' array with the resulting column slug.",
   "queue": [
     {
-      "url": "https://www.youtube.com/watch?v=c7CcfYQ6HF4",
-      "hint": "[pain] 자고 나도 계속 피곤할 때 이렇게 누워야 잠이 보약"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=GcsDzpG2G5M",
-      "hint": "[pain] 통증 치료하는 잠자는 자세 - 꼭 '이렇게' 주무세요"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=QIWJMok9Nso",
-      "hint": "[pain] 디스크 터뜨리는 잘못된 베개 사용법"
-    },
-    {
       "url": "https://www.youtube.com/watch?v=O7aI5-zqY4Q",
       "hint": "[pain] 거북목에 승모근 스트레칭  하면 안 되는 이유"
     },
@@ -489,6 +477,45 @@
           "slug": "공진단이란-효능과-어떤-분에게-맞는지-기본-안내-intro-djzJKo",
           "title": "공진단이란? 효능과 어떤 분에게 맞는지 기본 안내",
           "at": "2026-05-31T08:48:44.274Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=c7CcfYQ6HF4",
+      "hint": "[pain] 자고 나도 계속 피곤할 때 이렇게 누워야 잠이 보약",
+      "videoId": "c7CcfYQ6HF4",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "올바른-수면-자세가-목허리-통증에-미치는-영향-기본-안내-intro-c7CcfY",
+          "title": "올바른 수면 자세가 목·허리 통증에 미치는 영향 기본 안내",
+          "at": "2026-06-01T11:38:04.870Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=GcsDzpG2G5M",
+      "hint": "[pain] 통증 치료하는 잠자는 자세 - 꼭 '이렇게' 주무세요",
+      "videoId": "GcsDzpG2G5M",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "두통목통증에-좋은-수면-자세-기본-안내-올바른-숙면법-intro-GcsDzp",
+          "title": "두통·목통증에 좋은 수면 자세 기본 안내 — 올바른 숙면법",
+          "at": "2026-06-01T11:38:51.949Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=QIWJMok9Nso",
+      "hint": "[pain] 디스크 터뜨리는 잘못된 베개 사용법",
+      "videoId": "QIWJMok9Nso",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "거북목두통-유발-근육-집에서-10분-스트레칭으로-관리하는-법-intro-QIWJMo",
+          "title": "거북목·두통 유발 근육, 집에서 10분 스트레칭으로 관리하는 법",
+          "at": "2026-06-01T11:39:38.709Z"
         }
       ]
     }
