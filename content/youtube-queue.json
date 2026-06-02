@@ -1,15 +1,6 @@
 {
   "_comment": "Add YouTube video URLs/IDs here. The daily automation will pick one unprocessed video at a time and convert it into a column. After processing, the entry is moved to the 'processed' array with the resulting column slug.",
-  "queue": [
-    {
-      "url": "https://www.youtube.com/watch?v=O7aI5-zqY4Q",
-      "hint": "[pain] 거북목에 승모근 스트레칭  하면 안 되는 이유"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=LgIQ2A6PJSg",
-      "hint": "[pain] 거북목 두통 완화에 좋은 4가지 운동법"
-    }
-  ],
+  "queue": [],
   "processed": [
     {
       "url": "https://www.youtube.com/watch?v=AN394RRqLwQ",
@@ -36,6 +27,12 @@
           "slug": "다이어트-후-안정화-기간이란-기본-안내와-적합-대상-총정리-intro-5mOQkL",
           "title": "다이어트 후 안정화 기간이란? 기본 안내와 적합 대상 총정리",
           "at": "2026-05-23T10:48:41.852Z"
+        },
+        {
+          "id": "usage",
+          "slug": "매일감비환-복용-방법시기기간-완전-가이드-목표-체중-이후-관리법-usage-5mOQkL",
+          "title": "매일감비환 복용 방법·시기·기간 완전 가이드 | 목표 체중 이후 관리법",
+          "at": "2026-06-02T10:27:32.760Z"
         }
       ]
     },
@@ -516,6 +513,32 @@
           "slug": "거북목두통-유발-근육-집에서-10분-스트레칭으로-관리하는-법-intro-QIWJMo",
           "title": "거북목·두통 유발 근육, 집에서 10분 스트레칭으로 관리하는 법",
           "at": "2026-06-01T11:39:38.709Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=O7aI5-zqY4Q",
+      "hint": "[pain] 거북목에 승모근 스트레칭  하면 안 되는 이유",
+      "videoId": "O7aI5-zqY4Q",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "거북목-승모근-운동-스트레칭보다-수축-운동이-효과적인-이유-intro-O7aI5-",
+          "title": "거북목 승모근 운동, 스트레칭보다 수축 운동이 효과적인 이유",
+          "at": "2026-06-02T10:26:10.680Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=LgIQ2A6PJSg",
+      "hint": "[pain] 거북목 두통 완화에 좋은 4가지 운동법",
+      "videoId": "LgIQ2A6PJSg",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "두통-완화에-도움되는-4가지-운동-거북목굽은-등-증상-기본-안내-intro-LgIQ2A",
+          "title": "두통 완화에 도움되는 4가지 운동 — 거북목·굽은 등 증상 기본 안내",
+          "at": "2026-06-02T10:26:51.296Z"
         }
       ]
     }
