@@ -8,6 +8,8 @@ keywords:
   - 매일감비환
   - 공진단
   - 총명공진단
+image: "https://img.youtube.com/vi/unknown/maxresdefault.jpg"
+imageAlt: "welcome 관련 영상 썸네일"
 ---
 
 ## 매일백세한의원 공식 사이트가 오픈했습니다

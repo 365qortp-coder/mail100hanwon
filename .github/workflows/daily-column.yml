@@ -34,6 +34,8 @@ jobs:
       - name: Generate column from queue
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
+          COLUMNS_PER_RUN: "2"
         run: npm run generate:column
 
       - name: Commit and push

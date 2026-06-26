@@ -12,6 +12,8 @@ keywords:
   - "살이 안 빠지는 이유"
   - "중년 다이어트"
   - "한의원 다이어트"
+image: "https://img.youtube.com/vi/6SCVkUIu8Gc/maxresdefault.jpg"
+imageAlt: "매일감비환이란 효능과 어떤 분에게 맞는지 한 번에 정리 intro 6SCVkU 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=6SCVkUIu8Gc"

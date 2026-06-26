@@ -14,6 +14,8 @@ keywords:
   - "수험생 한방"
   - "체력 면역력 한약"
   - "매일백세한의원"
+image: "https://img.youtube.com/vi/VR6Njm--1m0/maxresdefault.jpg"
+imageAlt: "총명공진단이란 효능과 어떤 분에게 적합한지 기본 안내 intro VR6Njm 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=VR6Njm--1m0"

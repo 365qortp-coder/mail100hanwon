@@ -11,6 +11,8 @@ keywords:
   - "비대면 한의원"
   - "다이어트 한약 비대면"
   - "공진단 비대면"
+image: "https://img.youtube.com/vi/unknown/maxresdefault.jpg"
+imageAlt: "online 관련 영상 썸네일"
 ---
 
 ## 한약도 비대면으로 처방이 가능합니다

@@ -12,6 +12,8 @@ keywords:
   - "두통한의원"
   - "매일백세한의원"
   - "통증치료"
+image: "https://img.youtube.com/vi/dTe2N12uFk4/maxresdefault.jpg"
+imageAlt: "만성 두통 한방 치료 기본 안내 원인효능적합 대상 한눈에 intro dTe2N1 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=dTe2N12uFk4"

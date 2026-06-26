@@ -14,6 +14,8 @@ keywords:
   - "중둔근 협착증"
   - "한방 통증치료"
   - "매일백세한의원"
+image: "https://img.youtube.com/vi/ET1NCKCVlto/maxresdefault.jpg"
+imageAlt: "허리 협착증이란 증상원인한방 접근법 기본 안내 intro ET1NCK 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=ET1NCKCVlto"

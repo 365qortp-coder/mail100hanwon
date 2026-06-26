@@ -14,6 +14,8 @@ keywords:
   - "소화 수면 긴장 수험생"
   - "공진단 효능"
   - "매일백세한의원"
+image: "https://img.youtube.com/vi/jbgfvsZJhvg/maxresdefault.jpg"
+imageAlt: "총명공진단이란 수험생 공부 체력집중력 한방 기본 안내 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=jbgfvsZJhvg"

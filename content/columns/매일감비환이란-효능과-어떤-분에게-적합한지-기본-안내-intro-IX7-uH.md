@@ -12,6 +12,8 @@ keywords:
   - "중년 다이어트"
   - "한의원 다이어트"
   - "매일백세한의원"
+image: "https://img.youtube.com/vi/IX7-uHWcJ5I/maxresdefault.jpg"
+imageAlt: "매일감비환이란 효능과 어떤 분에게 적합한지 기본 안내 intro IX7 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=IX7-uHWcJ5I"

@@ -13,6 +13,8 @@ keywords:
   - "소화 두통 한방"
   - "머리 띵함"
   - "소화 안 될 때 두통"
+image: "https://img.youtube.com/vi/KO5LjDLM2MI/maxresdefault.jpg"
+imageAlt: "소화불량성 두통이란 처음 알아보는 분을 위한 기본 안내 intro KO5LjD 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=KO5LjDLM2MI"

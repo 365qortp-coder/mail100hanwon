@@ -17,6 +17,8 @@ export type ColumnMeta = {
   keywords: string[];
   source?: { type: "youtube" | "original"; url?: string; videoId?: string };
   image?: string;
+  imageAlt?: string;
+  imageCredit?: string;
 };
 
 export type Column = ColumnMeta & {
@@ -62,6 +64,8 @@ export function getColumnMeta(slug: string): ColumnMeta | null {
     keywords: data.keywords ?? [],
     source: data.source,
     image: data.image,
+    imageAlt: data.imageAlt,
+    imageCredit: data.imageCredit,
   };
 }
 
@@ -82,6 +86,8 @@ export async function getColumn(slug: string): Promise<Column | null> {
     keywords: data.keywords ?? [],
     source: data.source,
     image: data.image,
+    imageAlt: data.imageAlt,
+    imageCredit: data.imageCredit,
     content,
     contentHtml: processed.toString(),
   };

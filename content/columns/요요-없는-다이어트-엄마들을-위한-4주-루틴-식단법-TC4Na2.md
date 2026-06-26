@@ -11,6 +11,8 @@ keywords:
   - "매일감비환"
   - "한방다이어트"
   - "비대면진료"
+image: "https://img.youtube.com/vi/TC4Na2R7bdU/maxresdefault.jpg"
+imageAlt: "요요 없는 다이어트 엄마들을 위한 4주 루틴 식단법 TC4Na2 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=TC4Na2R7bdU"

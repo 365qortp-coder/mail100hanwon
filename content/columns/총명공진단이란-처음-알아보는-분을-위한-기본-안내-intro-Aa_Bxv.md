@@ -14,6 +14,8 @@ keywords:
   - "한방공부한약"
   - "총명공진단효능"
   - "매일백세한의원"
+image: "https://img.youtube.com/vi/Aa_BxvYF7O0/maxresdefault.jpg"
+imageAlt: "총명공진단이란 처음 알아보는 분을 위한 기본 안내 intro Aa_Bxv 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=Aa_BxvYF7O0"

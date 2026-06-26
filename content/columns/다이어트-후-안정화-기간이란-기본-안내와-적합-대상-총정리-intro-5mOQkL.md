@@ -12,6 +12,8 @@ keywords:
   - "기본 안내"
   - "효능"
   - "어떤 분에게"
+image: "https://img.youtube.com/vi/5mOQkLwYyWU/maxresdefault.jpg"
+imageAlt: "다이어트 후 안정화 기간이란 기본 안내와 적합 대상 총정리 intro 5mOQkL 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=5mOQkLwYyWU"

@@ -14,6 +14,8 @@ keywords:
   - "기초대사량"
   - "체지방 감량"
   - "매일백세한의원"
+image: "https://img.youtube.com/vi/9ZU4x2Z6Mio/maxresdefault.jpg"
+imageAlt: "매일감비환이란 효능과 어떤 분에게 맞는지 기본 안내 intro 9ZU4x2 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=9ZU4x2Z6Mio"

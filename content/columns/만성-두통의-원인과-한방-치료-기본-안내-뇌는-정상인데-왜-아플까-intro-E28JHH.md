@@ -14,6 +14,8 @@ keywords:
   - "두통 진통제"
   - "경추 두통"
   - "두통 치료 한의원"
+image: "https://img.youtube.com/vi/E28JHHCbq1I/maxresdefault.jpg"
+imageAlt: "만성 두통의 원인과 한방 치료 기본 안내 뇌는 정상인데 왜 아플까 intro E28JHH 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=E28JHHCbq1I"

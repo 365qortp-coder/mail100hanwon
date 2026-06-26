@@ -10,6 +10,8 @@ keywords:
   - "사향 공진단"
   - "녹용 공진단"
   - "한방 보약"
+image: "https://img.youtube.com/vi/unknown/maxresdefault.jpg"
+imageAlt: "gongjindan 관련 영상 썸네일"
 ---
 
 ## 공진단의 역사

@@ -11,6 +11,8 @@ keywords:
   - "매일감비환"
   - "다이어트 기본"
   - "매일백세한의원"
+image: "https://img.youtube.com/vi/I_RVkGSq83A/maxresdefault.jpg"
+imageAlt: "건강한 식습관이란 처음 시작하는 분을 위한 기본 안내 intro I_RVkG 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=I_RVkGSq83A"

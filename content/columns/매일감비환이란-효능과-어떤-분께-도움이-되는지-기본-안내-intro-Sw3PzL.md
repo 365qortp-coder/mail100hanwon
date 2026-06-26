@@ -14,6 +14,8 @@ keywords:
   - "체지방 감량"
   - "갱년기 다이어트"
   - "기초대사량 저하"
+image: "https://img.youtube.com/vi/Sw3PzLW82Z8/maxresdefault.jpg"
+imageAlt: "매일감비환이란 효능과 어떤 분께 도움이 되는지 기본 안내 intro Sw3PzL 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=Sw3PzLW82Z8"

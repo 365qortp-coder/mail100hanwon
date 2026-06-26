@@ -114,6 +114,10 @@ export default async function ColumnDetailPage({ params }: { params: Params }) {
           </div>
         )}
 
+        {col.imageCredit && (
+          <p className="mt-4 text-xs text-[var(--text-muted)]">{col.imageCredit}</p>
+        )}
+
         <div className="mt-10 p-6 rounded-xl bg-[var(--brand-primary-light)] border border-[var(--border)]">
           <h3 className="text-lg font-bold mb-3">상담·예약 안내</h3>
           <p className="text-sm mb-4 leading-relaxed">

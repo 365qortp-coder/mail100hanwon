@@ -12,6 +12,8 @@ keywords:
   - "식욕억제한방"
   - "매일백세한의원"
   - "다이어트한약"
+image: "https://img.youtube.com/vi/TN9-nZR083Y/maxresdefault.jpg"
+imageAlt: "매일감비환이란 처음 알아보는 분을 위한 기본 안내 intro TN9 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=TN9-nZR083Y"

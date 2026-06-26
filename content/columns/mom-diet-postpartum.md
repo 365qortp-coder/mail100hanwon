@@ -10,6 +10,8 @@ keywords:
   - "수유 중 다이어트"
   - "엄마 한약"
   - "매일감비환"
+image: "https://img.youtube.com/vi/unknown/maxresdefault.jpg"
+imageAlt: "mom 관련 영상 썸네일"
 ---
 
 ## 출산 후의 몸은 다릅니다

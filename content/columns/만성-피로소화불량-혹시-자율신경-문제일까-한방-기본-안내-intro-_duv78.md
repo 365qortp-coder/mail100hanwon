@@ -14,6 +14,8 @@ keywords:
   - "피로한의원"
   - "소화안됨"
   - "뇌피로"
+image: "https://img.youtube.com/vi/_duv78qTcDI/maxresdefault.jpg"
+imageAlt: "만성 피로소화불량 혹시 자율신경 문제일까 한방 기본 안내 intro _duv78 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=_duv78qTcDI"

@@ -14,6 +14,8 @@ keywords:
   - "내장지방"
   - "체중 관리"
   - "한의원 다이어트"
+image: "https://img.youtube.com/vi/n2fD_XnfPCo/maxresdefault.jpg"
+imageAlt: "근육 감소와 기초대사량 저하 한방으로 어떻게 접근할까 intro n2fD_X 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=n2fD_XnfPCo"

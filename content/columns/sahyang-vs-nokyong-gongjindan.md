@@ -9,6 +9,8 @@ keywords:
   - "공진단 종류"
   - "공진단 차이"
   - "공진단 비교"
+image: "https://img.youtube.com/vi/unknown/maxresdefault.jpg"
+imageAlt: "sahyang 관련 영상 썸네일"
 ---
 
 ## 공진단도 여러 종류가 있습니다

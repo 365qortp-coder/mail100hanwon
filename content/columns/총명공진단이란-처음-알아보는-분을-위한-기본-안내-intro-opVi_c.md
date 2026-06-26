@@ -12,6 +12,8 @@ keywords:
   - "공진단 수험생"
   - "한방 집중력"
   - "매일백세한의원"
+image: "https://img.youtube.com/vi/opVi_cKoLxc/maxresdefault.jpg"
+imageAlt: "총명공진단이란 처음 알아보는 분을 위한 기본 안내 intro opVi_c 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=opVi_cKoLxc"

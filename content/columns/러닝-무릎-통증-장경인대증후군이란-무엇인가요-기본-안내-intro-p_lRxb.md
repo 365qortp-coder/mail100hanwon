@@ -12,6 +12,8 @@ keywords:
   - "무릎 통증 원인"
   - "한방 통증치료"
   - "매일백세한의원"
+image: "https://img.youtube.com/vi/p_lRxblP3BI/maxresdefault.jpg"
+imageAlt: "러닝 무릎 통증 장경인대증후군이란 무엇인가요 기본 안내 intro p_lRxb 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=p_lRxblP3BI"

@@ -14,6 +14,8 @@ keywords:
   - "뇌 혈류 한방"
   - "수면 개선 한약"
   - "한방 피로 회복"
+image: "https://img.youtube.com/vi/kYnosy_Gebc/maxresdefault.jpg"
+imageAlt: "총명공진단이란 처음 알아보는 분을 위한 기본 안내와 적합 대상 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=kYnosy_Gebc"

@@ -13,6 +13,8 @@ keywords:
   - "두통 한의원"
   - "매일백세한의원"
   - "두통 치료"
+image: "https://img.youtube.com/vi/FgiQlbAxz1Y/maxresdefault.jpg"
+imageAlt: "검사는 정상인데 두통이 계속되는 이유 한방으로 보는 원인과 접근법 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=FgiQlbAxz1Y"

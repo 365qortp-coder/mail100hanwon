@@ -10,6 +10,8 @@ keywords:
   - "수험생 한약"
   - "고3 보약"
   - "집중력 한약"
+image: "https://img.youtube.com/vi/unknown/maxresdefault.jpg"
+imageAlt: "chongmyeong 관련 영상 썸네일"
 ---
 
 ## 수험생에게 필요한 것 두 가지

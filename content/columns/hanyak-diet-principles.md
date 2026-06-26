@@ -10,6 +10,8 @@ keywords:
   - "엄마 다이어트"
   - "산후 다이어트"
   - "매일감비환"
+image: "https://img.youtube.com/vi/unknown/maxresdefault.jpg"
+imageAlt: "hanyak 관련 영상 썸네일"
 ---
 
 ## 한방 다이어트는 식욕을 누르는 것이 전부가 아닙니다

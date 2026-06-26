@@ -14,6 +14,8 @@ keywords:
   - "엄마 다이어트"
   - "코티솔 복부지방"
   - "매일백세한의원"
+image: "https://img.youtube.com/vi/Et8naTOnRB0/maxresdefault.jpg"
+imageAlt: "매일감비환이란 효능과 어떤 분께 도움이 되는지 기본 안내 intro Et8naT 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=Et8naTOnRB0"

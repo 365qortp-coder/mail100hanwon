@@ -10,6 +10,8 @@ keywords:
   - "한약 다이어트 유지"
   - "매일감비환"
   - "체중 유지법"
+image: "https://img.youtube.com/vi/unknown/maxresdefault.jpg"
+imageAlt: "diet 관련 영상 썸네일"
 ---
 
 ## 요요현상은 왜 생길까

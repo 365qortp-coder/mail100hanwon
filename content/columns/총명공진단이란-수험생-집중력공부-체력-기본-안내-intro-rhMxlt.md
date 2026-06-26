@@ -14,6 +14,8 @@ keywords:
   - "공진단"
   - "집중력 저하"
   - "오후 집중력"
+image: "https://img.youtube.com/vi/rhMxltq0apY/maxresdefault.jpg"
+imageAlt: "총명공진단이란 수험생 집중력공부 체력 기본 안내 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=rhMxltq0apY"
