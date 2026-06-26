@@ -2,10 +2,6 @@
   "_comment": "Add YouTube video URLs/IDs here. The daily automation will pick one unprocessed video at a time and convert it into a column. After processing, the entry is moved to the 'processed' array with the resulting column slug.",
   "queue": [
     {
-      "url": "https://www.youtube.com/watch?v=Cb9hNoj23zU",
-      "hint": "[gongjindan] 비싼 공진단 효과를 2배로 올리는 복용법"
-    },
-    {
       "url": "https://www.youtube.com/watch?v=iRAdoNGDntQ",
       "hint": "[gongjindan] 나에게 맞는 공진단은? 실패 없는 공진단 고르기"
     },
@@ -28,10 +24,6 @@
     {
       "url": "https://www.youtube.com/watch?v=djzJKoMYv58",
       "hint": "[gongjindan] 지팡이 없이 걷게 된 공진단의 놀라운 효과"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=XMMsj1kSjEA",
-      "hint": "[pain] 물 마시다 컵 떨어뜨리면 뇌가 보내는 최후의 경고"
     },
     {
       "url": "https://www.youtube.com/watch?v=V0xQ-RA59b8",
@@ -396,6 +388,32 @@
           "slug": "공진단-복용-방법시기기간보관-완전-가이드-usage-fDtuC5",
           "title": "공진단 복용 방법·시기·기간·보관 완전 가이드",
           "at": "2026-06-26T04:58:23.714Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=Cb9hNoj23zU",
+      "hint": "[gongjindan] 비싼 공진단 효과를 2배로 올리는 복용법",
+      "videoId": "Cb9hNoj23zU",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "공진단이란-효능과-복용법적합-대상까지-한-번에-정리-intro-Cb9hNo",
+          "title": "공진단이란? 효능과 복용법·적합 대상까지 한 번에 정리",
+          "at": "2026-06-26T09:29:44.210Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=XMMsj1kSjEA",
+      "hint": "[pain] 물 마시다 컵 떨어뜨리면 뇌가 보내는 최후의 경고",
+      "videoId": "XMMsj1kSjEA",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "두통과-감각-이상이-함께-나타날-때-뇌경색뇌출혈-응급-신호-기본-안내-intro-XMMsj1",
+          "title": "두통과 감각 이상이 함께 나타날 때 – 뇌경색·뇌출혈 응급 신호 기본 안내",
+          "at": "2026-06-26T09:30:00.687Z"
         }
       ]
     }
