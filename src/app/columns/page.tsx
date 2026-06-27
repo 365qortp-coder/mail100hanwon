@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 import { buildMetadata } from "@/lib/seo";
@@ -58,18 +59,32 @@ export default function ColumnsListPage() {
                 <Link
                   key={c.slug}
                   href={`/columns/${c.slug}`}
-                  className="block p-6 bg-[var(--surface-muted)] rounded-xl border border-[var(--border)] hover:border-[var(--brand-primary)] hover:shadow transition"
+                  className="block bg-[var(--surface-muted)] rounded-xl border border-[var(--border)] hover:border-[var(--brand-primary)] hover:shadow transition overflow-hidden"
                 >
-                  <div className="flex items-center gap-2 text-xs text-[var(--text-muted)] mb-2">
-                    <span className="px-2 py-0.5 rounded bg-[var(--brand-primary-light)] text-[var(--brand-primary-dark)] font-semibold">
-                      {c.category}
-                    </span>
-                    <time dateTime={c.date}>{c.date}</time>
+                  {c.image && (
+                    <div className="relative aspect-video w-full bg-[var(--border)]">
+                      <Image
+                        src={c.image}
+                        alt={c.imageAlt ?? c.title}
+                        fill
+                        className="object-cover"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        unoptimized
+                      />
+                    </div>
+                  )}
+                  <div className="p-5">
+                    <div className="flex items-center gap-2 text-xs text-[var(--text-muted)] mb-2">
+                      <span className="px-2 py-0.5 rounded bg-[var(--brand-primary-light)] text-[var(--brand-primary-dark)] font-semibold">
+                        {c.category}
+                      </span>
+                      <time dateTime={c.date}>{c.date}</time>
+                    </div>
+                    <h3 className="text-lg font-bold mb-2 line-clamp-2">{c.title}</h3>
+                    <p className="text-sm text-[var(--text-muted)] line-clamp-2">
+                      {c.description}
+                    </p>
                   </div>
-                  <h3 className="text-lg font-bold mb-2 line-clamp-2">{c.title}</h3>
-                  <p className="text-sm text-[var(--text-muted)] line-clamp-2">
-                    {c.description}
-                  </p>
                 </Link>
               ))}
             </div>

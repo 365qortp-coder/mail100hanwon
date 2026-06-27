@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
+import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
 
@@ -88,6 +89,20 @@ export default async function ColumnDetailPage({ params }: { params: Params }) {
             작성: {clinic.director.name} {clinic.director.title} · {clinic.name}
           </p>
         </header>
+
+        {col.image && (
+          <div className="relative w-full aspect-video rounded-xl overflow-hidden mb-8 bg-[var(--border)]">
+            <Image
+              src={col.image}
+              alt={col.imageAlt ?? col.title}
+              fill
+              priority
+              className="object-cover"
+              sizes="(max-width: 768px) 100vw, 768px"
+              unoptimized
+            />
+          </div>
+        )}
 
         <div
           className="prose prose-lg max-w-none text-[var(--foreground)] leading-relaxed
