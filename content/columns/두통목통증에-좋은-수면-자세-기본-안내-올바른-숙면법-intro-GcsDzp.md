@@ -14,6 +14,8 @@ keywords:
   - "허리 통증"
   - "수면 자세 교정"
   - "매일백세한의원"
+image: "https://img.youtube.com/vi/GcsDzpG2G5M/maxresdefault.jpg"
+imageAlt: "두통목통증에 좋은 수면 자세 기본 안내 올바른 숙면법 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=GcsDzpG2G5M"

@@ -14,6 +14,9 @@ keywords:
   - "체질별다이어트"
   - "한방다이어트"
   - "산후엄마"
+image: "https://images.unsplash.com/photo-1614633220797-1ea97e3e69c4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHw1fHxwb3N0cGFydHVtJTIwbW9tJTIwd2VpZ2h0JTIwbG9zc3xlbnwxfDB8fHwxNzgyNTUzMTYxfDA&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "woman in black tank top kissing woman in white dress"
+imageCredit: "Photo by Helen Thomas on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=I_RVkGSq83A"

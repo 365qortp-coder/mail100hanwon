@@ -14,6 +14,8 @@ keywords:
   - "공진단 적합 대상"
   - "한방 보약"
   - "매일백세한의원"
+image: "https://img.youtube.com/vi/v0t5yevY06Q/maxresdefault.jpg"
+imageAlt: "공진단이란 효능성분어떤 분께 맞는지 한눈에 정리 intro v0t5ye 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=v0t5yevY06Q"

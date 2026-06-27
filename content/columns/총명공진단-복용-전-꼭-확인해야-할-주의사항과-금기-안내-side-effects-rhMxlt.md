@@ -12,6 +12,9 @@ keywords:
   - "공진단 부작용"
   - "한방 집중력 주의사항"
   - "총명공진단 복용 전"
+image: "https://images.unsplash.com/photo-1584017911766-d451b3d0e843?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHw1fHxtZWRpY2luZSUyMGNhdXRpb24lMjBoZWFsdGh8ZW58MXwwfHx8MTc4MjU1MzExNXww&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "white and orange medication pill"
+imageCredit: "Photo by Michał Parzuchowski on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=rhMxltq0apY"

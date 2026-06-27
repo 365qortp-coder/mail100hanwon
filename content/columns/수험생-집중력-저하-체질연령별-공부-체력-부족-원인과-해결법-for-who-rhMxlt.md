@@ -14,6 +14,9 @@ keywords:
   - "청소년 한방"
   - "공부 체력 한의원"
   - "수험생 체질"
+image: "https://images.unsplash.com/photo-1534644107580-3a4dbd494a95?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHwxfHxzdHVkZW50JTIwc3R1ZHlpbmclMjBleGFtJTIwY29uY2VudHJhdGlvbnxlbnwxfDB8fHwxNzgyNTUzMTEwfDA&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "person using pencil"
+imageCredit: "Photo by Ben Mullins on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=rhMxltq0apY"

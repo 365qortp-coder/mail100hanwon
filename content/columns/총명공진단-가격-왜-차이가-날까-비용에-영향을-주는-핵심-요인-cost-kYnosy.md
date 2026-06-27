@@ -14,6 +14,9 @@ keywords:
   - "총명공진단 처방"
   - "매일백세한의원"
   - "한방 집중력 개선"
+image: "https://images.unsplash.com/photo-1763721369891-a68bf2d38e51?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHwxfHxwcmVtaXVtJTIwc3VwcGxlbWVudCUyMHdlbGxuZXNzfGVufDF8MHx8fDE3ODI1NTMxNzh8MA&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "Cellucore box rests on a textured rock."
+imageCredit: "Photo by Zemos on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=kYnosy_Gebc"

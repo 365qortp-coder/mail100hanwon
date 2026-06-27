@@ -14,6 +14,8 @@ keywords:
   - "흑염소 효능"
   - "흑염소 주의사항"
   - "손발 차가운 체질"
+image: "https://img.youtube.com/vi/_t-GCauCH7g/maxresdefault.jpg"
+imageAlt: "흑염소 먹으면 안 되는 체질 따로 있다 기본 안내 intro _t 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=_t-GCauCH7g"

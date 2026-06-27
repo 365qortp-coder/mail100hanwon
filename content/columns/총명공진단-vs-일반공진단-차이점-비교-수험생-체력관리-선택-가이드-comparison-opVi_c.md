@@ -16,6 +16,9 @@ keywords:
   - "소아 공진단"
   - "집중력 한약"
   - "한방 피로회복"
+image: "https://images.unsplash.com/photo-1610484826625-ac2be7f1c8c1?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHw1fHxzdHVkZW50JTIwc3R1ZHlpbmclMjBleGFtJTIwY29uY2VudHJhdGlvbnxlbnwxfDB8fHwxNzgyNTUzMTEwfDA&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "woman in red and white hoodie wearing black headphones"
+imageCredit: "Photo by Compare Fibre on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=opVi_cKoLxc"

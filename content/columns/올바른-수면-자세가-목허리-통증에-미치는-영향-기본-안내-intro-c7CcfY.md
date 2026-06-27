@@ -14,6 +14,8 @@ keywords:
   - "수면 자세 교정"
   - "한방 통증치료"
   - "매일백세한의원"
+image: "https://img.youtube.com/vi/c7CcfYQ6HF4/maxresdefault.jpg"
+imageAlt: "올바른 수면 자세가 목허리 통증에 미치는 영향 기본 안내 intro c7CcfY 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=c7CcfYQ6HF4"

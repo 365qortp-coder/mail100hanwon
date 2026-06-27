@@ -12,6 +12,8 @@ keywords:
   - "두통 원인"
   - "한방 두통 치료"
   - "매일백세한의원"
+image: "https://img.youtube.com/vi/LgIQ2A6PJSg/maxresdefault.jpg"
+imageAlt: "두통 완화에 도움되는 4가지 운동 거북목굽은 등 증상 기본 안내 intro LgIQ2A 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=LgIQ2A6PJSg"

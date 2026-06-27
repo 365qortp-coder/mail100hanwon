@@ -14,6 +14,9 @@ keywords:
   - "협착증 복용 방법"
   - "허리 협착증 한방 치료"
   - "매일백세한의원"
+image: "https://images.unsplash.com/photo-1584735935682-2f2b69dff9d2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHwzfHxleGVyY2lzZSUyMHdvcmtvdXQlMjBmaXRuZXNzfGVufDF8MHx8fDE3ODI1NTMxNzR8MA&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "orange and black usb cable on brown wooden surface"
+imageCredit: "Photo by Kelly Sikkema on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=ET1NCKCVlto"

@@ -14,6 +14,8 @@ keywords:
   - "기력 저하"
   - "면역력"
   - "한방 건강"
+image: "https://img.youtube.com/vi/Wa4OKD5-dE0/maxresdefault.jpg"
+imageAlt: "흑염소와 공진단 어떤 분께 맞을까 기본 안내 intro Wa4OKD 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=Wa4OKD5-dE0"

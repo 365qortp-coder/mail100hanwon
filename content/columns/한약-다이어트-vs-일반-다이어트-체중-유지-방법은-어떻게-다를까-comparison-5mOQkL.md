@@ -14,6 +14,9 @@ keywords:
   - "한방 다이어트"
   - "체중 감량 유지"
   - "다이어트 방법 선택"
+image: "https://images.unsplash.com/photo-1547592180-85f173990554?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHw1fHxoZWFsdGh5JTIwZm9vZCUyMGNob2ljZSUyMG51dHJpdGlvbnxlbnwxfDB8fHwxNzgyNTUzMjAxfDA&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "vegetable salad"
+imageCredit: "Photo by Ella Olsson on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=5mOQkLwYyWU"

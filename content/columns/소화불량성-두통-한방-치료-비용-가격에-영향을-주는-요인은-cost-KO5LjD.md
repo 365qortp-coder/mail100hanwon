@@ -14,6 +14,9 @@ keywords:
   - "한방 두통 치료"
   - "소화 두통 원인"
   - "한의원 두통 비용"
+image: "https://images.unsplash.com/photo-1583782037617-2cd6aa8658f4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHw1fHxoZWFkYWNoZSUyMG1pZ3JhaW5lJTIwcGFpbnxlbnwxfDB8fHwxNzgyNTUzMTM0fDA&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "woman in black long sleeve shirt covering her face"
+imageCredit: "Photo by Ivan Aleksic on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=KO5LjDLM2MI"

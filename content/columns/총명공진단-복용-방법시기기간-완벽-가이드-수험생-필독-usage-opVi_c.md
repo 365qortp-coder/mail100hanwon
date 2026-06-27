@@ -14,6 +14,9 @@ keywords:
   - "스트레스 수험생"
   - "총명공진단 효능"
   - "매일백세한의원"
+image: "https://images.unsplash.com/photo-1630983358494-96012d838b84?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHw0fHxzdHVkZW50JTIwc3R1ZHlpbmclMjBleGFtJTIwY29uY2VudHJhdGlvbnxlbnwxfDB8fHwxNzgyNTUzMTEwfDA&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "woman in black framed eyeglasses holding pen"
+imageCredit: "Photo by Greg Rosenke on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=opVi_cKoLxc"

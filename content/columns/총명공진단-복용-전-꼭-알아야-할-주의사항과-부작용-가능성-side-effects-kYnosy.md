@@ -14,6 +14,9 @@ keywords:
   - "청소년 공진단 주의사항"
   - "총명공진단 복용 전"
   - "한의원 공진단"
+image: "https://images.unsplash.com/photo-1607619056574-7b8d3ee536b2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHwyfHxtZWRpY2luZSUyMGNhdXRpb24lMjBoZWFsdGh8ZW58MXwwfHx8MTc4MjU1MzExNXww&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "white blue and orange medication pill"
+imageCredit: "Photo by Myriam Zilles on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=kYnosy_Gebc"

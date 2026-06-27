@@ -14,6 +14,8 @@ keywords:
   - "허리통증"
   - "올바른 수면 자세"
   - "한방 통증치료"
+image: "https://img.youtube.com/vi/yZccrn-9cYc/maxresdefault.jpg"
+imageAlt: "잠자리 자세가 목허리 통증을 만든다 올바른 수면 자세 기본 안내 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=yZccrn-9cYc"

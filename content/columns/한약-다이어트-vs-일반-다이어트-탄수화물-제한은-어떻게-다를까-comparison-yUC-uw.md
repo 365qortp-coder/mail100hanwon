@@ -14,6 +14,9 @@ keywords:
   - "살 안 빠질 때"
   - "체중 정체기"
   - "한방 다이어트"
+image: "https://images.unsplash.com/photo-1547592180-85f173990554?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHwzfHxoZWFsdGh5JTIwbWVhbCUyMGRpZXQlMjBmb29kfGVufDF8MHx8fDE3ODI1NTMxMzJ8MA&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "vegetable salad"
+imageCredit: "Photo by Ella Olsson on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=yUC-uw4bGCQ"

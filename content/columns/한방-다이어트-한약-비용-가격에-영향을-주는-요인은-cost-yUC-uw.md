@@ -11,6 +11,9 @@ keywords:
   - "다이어트 한약 비싼 이유"
   - "매일백세한의원"
   - "한방 다이어트"
+image: "https://images.unsplash.com/photo-1579104670164-6b25a9c497f0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHw1fHx3ZWxsbmVzcyUyMGludmVzdG1lbnQlMjBzdXBwbGVtZW50fGVufDF8MHx8fDE3ODI1NTMxOTN8MA&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "black dumbells and white-labeled bottle"
+imageCredit: "Photo by Tree of Life Seeds on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=yUC-uw4bGCQ"

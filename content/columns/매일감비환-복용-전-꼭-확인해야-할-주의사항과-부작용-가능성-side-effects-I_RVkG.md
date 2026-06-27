@@ -12,6 +12,8 @@ keywords:
   - "다이어트 한약 금기"
   - "다이어트 한약 복용 주의"
   - "매일백세한의원"
+image: "/photos/diet-product.webp"
+imageAlt: "매일감비환 복용 전 꼭 확인해야 할 주의사항과 부작용 가능성 side effects I_RVkG"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=I_RVkGSq83A"

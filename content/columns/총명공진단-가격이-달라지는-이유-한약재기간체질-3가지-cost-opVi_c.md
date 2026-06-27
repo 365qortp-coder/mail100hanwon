@@ -12,6 +12,9 @@ keywords:
   - "한방 수험생 처방"
   - "체력 저하 수험생"
   - "공진단 비싼 이유"
+image: "https://images.unsplash.com/photo-1646996712125-b986487e9f9e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHwxfHxsaXZlciUyMGhlYWx0aCUyMGRldG94fGVufDF8MHx8fDE3ODI0NDk5MDN8MA&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "a cup on a counter"
+imageCredit: "Photo by Dariya Kudlay on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=opVi_cKoLxc"

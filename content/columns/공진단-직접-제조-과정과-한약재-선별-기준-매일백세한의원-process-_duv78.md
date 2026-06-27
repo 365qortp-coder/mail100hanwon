@@ -14,6 +14,9 @@ keywords:
   - "공진단 품질"
   - "매일백세한의원 공진단"
   - "공진단 차이"
+image: "https://images.unsplash.com/photo-1586768835949-e593c97c8967?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHwyfHx0cmFkaXRpb25hbCUyMG1lZGljaW5lJTIwcHJlcGFyYXRpb258ZW58MXwwfHx8MTc4MjU1MzExN3ww&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "white ceramic bowl with brown liquid inside"
+imageCredit: "Photo by kian zhang on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=_duv78qTcDI"

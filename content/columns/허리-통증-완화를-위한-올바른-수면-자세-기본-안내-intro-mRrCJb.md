@@ -12,6 +12,8 @@ keywords:
   - "무릎 베개"
   - "수면 자세 교정"
   - "허리 통증 한방치료"
+image: "https://img.youtube.com/vi/mRrCJbViw-g/maxresdefault.jpg"
+imageAlt: "허리 통증 완화를 위한 올바른 수면 자세 기본 안내 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=mRrCJbViw-g"

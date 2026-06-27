@@ -12,6 +12,8 @@ keywords:
   - "그렐린 호르몬"
   - "한방 다이어트 안전성"
   - "매일백세한의원"
+image: "/photos/diet-product.webp"
+imageAlt: "매일감비환 복용 전 꼭 알아야 할 주의사항과 부작용 안내 side effects TN9"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=TN9-nZR083Y"

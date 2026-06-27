@@ -12,6 +12,9 @@ keywords:
   - "총명공진단 안전성"
   - "수험생 공진단"
   - "한방 보약 주의사항"
+image: "https://images.unsplash.com/photo-1587854692152-cbe660dbde88?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHw0fHxtZWRpY2luZSUyMGNhdXRpb24lMjBoZWFsdGh8ZW58MXwwfHx8MTc4MjU1MzExNXww&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "orange and white medication pill"
+imageCredit: "Photo by Christina Victoria Craft on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=opVi_cKoLxc"

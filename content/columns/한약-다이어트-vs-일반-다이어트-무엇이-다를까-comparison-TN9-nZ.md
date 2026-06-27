@@ -14,6 +14,9 @@ keywords:
   - "한의원 다이어트"
   - "폭식 원인"
   - "체중 감량"
+image: "https://images.unsplash.com/photo-1490818387583-1baba5e638af?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHw0fHxoZWFsdGh5JTIwZm9vZCUyMGNob2ljZSUyMG51dHJpdGlvbnxlbnwxfDB8fHwxNzgyNTUzMjAxfDA&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "variety of sliced fruits"
+imageCredit: "Photo by Brooke Lark on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=TN9-nZR083Y"

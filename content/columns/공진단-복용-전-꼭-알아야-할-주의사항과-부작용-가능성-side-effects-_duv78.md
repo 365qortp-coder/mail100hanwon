@@ -12,6 +12,9 @@ keywords:
   - "공진단 자율신경"
   - "한방 피로회복"
   - "기력저하 한방"
+image: "https://images.unsplash.com/photo-1471864190281-a93a3070b6de?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHwzfHxtZWRpY2luZSUyMGNhdXRpb24lMjBoZWFsdGh8ZW58MXwwfHx8MTc4MjU1MzExNXww&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "assorted medication tables and capsules"
+imageCredit: "Photo by freestocks on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=_duv78qTcDI"

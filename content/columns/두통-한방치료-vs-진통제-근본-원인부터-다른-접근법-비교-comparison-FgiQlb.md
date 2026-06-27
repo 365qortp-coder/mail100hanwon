@@ -14,6 +14,9 @@ keywords:
   - "두통 근본치료"
   - "두통 vs 진통제"
   - "한방 통증치료"
+image: "https://images.unsplash.com/photo-1688395208726-b5eafd543958?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHw0fHxoZWFkYWNoZSUyMG1pZ3JhaW5lJTIwcGFpbnxlbnwxfDB8fHwxNzgyNTUzMTM0fDA&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "a woman holding her head in her hands"
+imageCredit: "Photo by engin akyurt on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=FgiQlbAxz1Y"

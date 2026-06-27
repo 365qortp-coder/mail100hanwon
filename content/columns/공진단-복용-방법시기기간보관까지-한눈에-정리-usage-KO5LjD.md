@@ -12,6 +12,9 @@ keywords:
   - "한방 보약"
   - "매일백세한의원"
   - "공진단 처방"
+image: "https://images.unsplash.com/photo-1685913314208-49f7a29f34c8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHw0fHxsaXZlciUyMGhlYWx0aCUyMGRldG94fGVufDF8MHx8fDE3ODI0NDk5MDN8MA&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "a bottle of tea sitting on top of a wooden table"
+imageCredit: "Photo by Eir Health on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=KO5LjDLM2MI"

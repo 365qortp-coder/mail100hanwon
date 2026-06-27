@@ -16,6 +16,9 @@ keywords:
   - "목어깨통증"
   - "긴장성두통"
   - "한의원두통"
+image: "https://images.unsplash.com/photo-1628088061640-9924940abb99?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHwzfHxoZWFkYWNoZSUyMG1pZ3JhaW5lJTIwcGFpbnxlbnwxfDB8fHwxNzgyNTUzMTM0fDA&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "man in blue dress shirt"
+imageCredit: "Photo by Towfiqu barbhuiya on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=FgiQlbAxz1Y"

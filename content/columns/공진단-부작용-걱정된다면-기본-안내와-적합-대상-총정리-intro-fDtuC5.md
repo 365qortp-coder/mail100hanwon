@@ -14,6 +14,8 @@ keywords:
   - "매일백세한의원"
   - "한방 보약"
   - "공진단 효능"
+image: "https://img.youtube.com/vi/fDtuC5gJLW0/maxresdefault.jpg"
+imageAlt: "공진단 부작용 걱정된다면 기본 안내와 적합 대상 총정리 intro fDtuC5 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=fDtuC5gJLW0"

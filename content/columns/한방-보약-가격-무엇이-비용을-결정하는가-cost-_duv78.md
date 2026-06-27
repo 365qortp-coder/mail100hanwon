@@ -13,6 +13,9 @@ keywords:
   - "만성피로 한약"
   - "체질별 한약"
   - "한방 상담"
+image: "https://images.unsplash.com/photo-1690784261287-f32b7b79b29f?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHw1fHxoZWFsdGhjYXJlJTIwaW52ZXN0bWVudHxlbnwxfDB8fHwxNzgyNTUzMTk5fDA&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "a stethoscope with a red heart on top of it"
+imageCredit: "Photo by Marek Studzinski on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=_duv78qTcDI"

@@ -12,6 +12,9 @@ keywords:
   - "매일감비환 가격"
   - "다이어트 한약 비싼 이유"
   - "한방 체중감량 비용"
+image: "https://images.unsplash.com/photo-1766714071810-ec6f82f5ef70?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHwzfHx3ZWxsbmVzcyUyMGludmVzdG1lbnQlMjBzdXBwbGVtZW50fGVufDF8MHx8fDE3ODI1NTMxOTN8MA&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "Bottle of allume libido capsules on a pedestal."
+imageCredit: "Photo by Kaio Frizzera on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=I_RVkGSq83A"

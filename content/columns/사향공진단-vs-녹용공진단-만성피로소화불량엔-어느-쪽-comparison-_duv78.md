@@ -14,6 +14,9 @@ keywords:
   - "공진단 시판"
   - "피로회복 한약"
   - "브레인포그 한의원"
+image: "https://images.unsplash.com/photo-1641418598801-82e106285315?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHw1fHxkZWVyJTIwYW50bGVyJTIwdmVsdmV0JTIwc3VwcGxlbWVudHxlbnwxfDB8fHwxNzgyNTUzMTU3fDA&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "a deer with antlers standing in a grassy field"
+imageCredit: "Photo by Prazanthy Ramesh on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=_duv78qTcDI"

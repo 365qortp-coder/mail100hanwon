@@ -12,6 +12,9 @@ keywords:
   - "척추관협착증 안전"
   - "협착증 자가운동 주의"
   - "통증치료 한의원"
+image: "https://images.unsplash.com/photo-1554284126-aa88f22d8b74?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHw1fHxleGVyY2lzZSUyMHdvcmtvdXQlMjBmaXRuZXNzfGVufDF8MHx8fDE3ODI1NTMxNzR8MA&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "three person lifting barbels"
+imageCredit: "Photo by Sven Mieke on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=ET1NCKCVlto"

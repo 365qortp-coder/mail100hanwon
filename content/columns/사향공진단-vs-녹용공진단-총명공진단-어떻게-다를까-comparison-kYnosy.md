@@ -14,6 +14,9 @@ keywords:
   - "스트레스 한약"
   - "공진단 선택"
   - "직접제조 공진단"
+image: "https://images.unsplash.com/photo-1570422593863-bd38ef7ce050?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHwxfHxkZWVyJTIwYW50bGVyJTIwdmVsdmV0JTIwc3VwcGxlbWVudHxlbnwxfDB8fHwxNzgyNTUzMTU3fDA&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "brown moose on grass near hedge"
+imageCredit: "Photo by Nick Fewings on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=kYnosy_Gebc"

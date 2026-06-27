@@ -14,6 +14,9 @@ keywords:
   - "한방 통증치료"
   - "무릎 통증 치료 주의"
   - "달리기 무릎 부작용"
+image: "https://images.unsplash.com/photo-1609113160023-4e31f3765fd7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHwxfHxrbmVlJTIwcGFpbiUyMGpvaW50fGVufDF8MHx8fDE3ODI1NTMxNDF8MA&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "person holding black knit cap"
+imageCredit: "Photo by Terry Shultz P.T. on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=p_lRxblP3BI"

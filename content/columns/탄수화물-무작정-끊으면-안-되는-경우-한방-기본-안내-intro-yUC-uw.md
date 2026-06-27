@@ -12,6 +12,8 @@ keywords:
   - "매일감비환"
   - "다이어트 무기력"
   - "탄수화물 다이어트 주의사항"
+image: "https://img.youtube.com/vi/yUC-uw4bGCQ/maxresdefault.jpg"
+imageAlt: "탄수화물 무작정 끊으면 안 되는 경우 한방 기본 안내 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=yUC-uw4bGCQ"

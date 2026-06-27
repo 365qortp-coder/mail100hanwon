@@ -16,6 +16,9 @@ keywords:
   - "한방통증치료"
   - "수술없이협착증"
   - "중랑구한의원"
+image: "https://images.unsplash.com/photo-1566616213894-2d4e1baee5d8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHwxfHxlbGRlcmx5JTIwam9pbnR8ZW58MXwwfHx8MTc4MjU1MzIxMHww&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "smiling woman"
+imageCredit: "Photo by Ravi Patel on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=ET1NCKCVlto"

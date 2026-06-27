@@ -16,6 +16,9 @@ keywords:
   - "매일감비환"
   - "체중감량유지"
   - "안정화기간"
+image: "https://images.unsplash.com/photo-1758513359379-a1ccce73b09e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHw0fHxwb3N0cGFydHVtJTIwbW9tJTIwd2VpZ2h0JTIwbG9zc3xlbnwxfDB8fHwxNzgyNTUzMTYxfDA&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "Two women holding babies on white background"
+imageCredit: "Photo by Brooke Balentine on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=5mOQkLwYyWU"

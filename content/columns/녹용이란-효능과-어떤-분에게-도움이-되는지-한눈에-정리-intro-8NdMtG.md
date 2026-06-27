@@ -13,6 +13,8 @@ keywords:
   - "성장 보조"
   - "한방 보약"
   - "매일백세한의원"
+image: "https://img.youtube.com/vi/8NdMtGce2ac/maxresdefault.jpg"
+imageAlt: "녹용이란 효능과 어떤 분에게 도움이 되는지 한눈에 정리 intro 8NdMtG 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=8NdMtGce2ac"

@@ -14,6 +14,9 @@ keywords:
   - "공진단 제조 과정"
   - "매일백세한의원 공진단"
   - "한방 공진단"
+image: "https://images.unsplash.com/photo-1492552181161-62217fc3076d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHw0fHx0cmFkaXRpb25hbCUyMG1lZGljaW5lJTIwcHJlcGFyYXRpb258ZW58MXwwfHx8MTc4MjU1MzExN3ww&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "high angle photo of person pouring liquid from bottle inside mortar and pestle"
+imageCredit: "Photo by Katherine Hanlon on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=TN9-nZR083Y"

@@ -12,6 +12,9 @@ keywords:
   - "체질 다이어트"
   - "다이어트 한약 기간"
   - "한의원 다이어트 비용"
+image: "https://images.unsplash.com/photo-1663175980112-d16082f07eeb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHw0fHx3ZWxsbmVzcyUyMGludmVzdG1lbnQlMjBzdXBwbGVtZW50fGVufDF8MHx8fDE3ODI1NTMxOTN8MA&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "diagram"
+imageCredit: "Photo by TUMERI on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=5mOQkLwYyWU"

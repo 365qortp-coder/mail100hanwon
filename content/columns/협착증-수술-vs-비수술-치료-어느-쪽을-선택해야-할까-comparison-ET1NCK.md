@@ -14,6 +14,9 @@ keywords:
   - "협착증 한의원"
   - "수술 없이 협착증"
   - "매일백세한의원"
+image: "https://images.unsplash.com/photo-1650897492414-8661563845a7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHwxfHxwYWluJTIwdHJlYXRtZW50JTIwb3B0aW9ufGVufDF8MHx8fDE3ODI1NTMyMTJ8MA&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "a person with a light in their head"
+imageCredit: "Photo by julien Tromeur on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=ET1NCKCVlto"

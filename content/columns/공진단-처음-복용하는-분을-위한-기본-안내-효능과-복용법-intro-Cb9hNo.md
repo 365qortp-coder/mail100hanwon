@@ -14,6 +14,8 @@ keywords:
   - "피로회복"
   - "두뇌 건강"
   - "매일백세한의원"
+image: "https://img.youtube.com/vi/Cb9hNoj23zU/maxresdefault.jpg"
+imageAlt: "공진단 처음 복용하는 분을 위한 기본 안내 효능과 복용법 intro Cb9hNo 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=Cb9hNoj23zU"

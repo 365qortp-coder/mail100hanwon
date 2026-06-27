@@ -14,6 +14,9 @@ keywords:
   - "한약재 선별"
   - "원내 제조"
   - "매일백세한의원 공진단"
+image: "https://images.unsplash.com/photo-1580913702955-6c3fcf6ddedc?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHwxfHx0cmFkaXRpb25hbCUyMG1lZGljaW5lJTIwcHJlcGFyYXRpb258ZW58MXwwfHx8MTc4MjU1MzExN3ww&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "white ceramic mug on white ceramic saucer beside clear glass jar"
+imageCredit: "Photo by 金 运 on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=I_RVkGSq83A"

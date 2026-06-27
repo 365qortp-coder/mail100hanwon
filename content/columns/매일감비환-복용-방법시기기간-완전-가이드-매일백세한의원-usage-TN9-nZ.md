@@ -14,6 +14,9 @@ keywords:
   - "한방 비만 치료"
   - "다이어트 한약 복용법"
   - "그렐린 호르몬 다이어트"
+image: "https://images.unsplash.com/photo-1607522154179-da1c051ed109?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHwyfHxsaXZlciUyMGhlYWx0aCUyMGRldG94fGVufDF8MHx8fDE3ODI0NDk5MDN8MA&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "sliced orange fruit and green leaves on brown wooden table"
+imageCredit: "Photo by Josh Millgate on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=TN9-nZR083Y"

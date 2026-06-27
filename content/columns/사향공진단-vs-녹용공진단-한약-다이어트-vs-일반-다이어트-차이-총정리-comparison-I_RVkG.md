@@ -14,6 +14,9 @@ keywords:
   - "매일감비환"
   - "한방 다이어트"
   - "다이어트 선택"
+image: "https://images.unsplash.com/photo-1594804177409-f0c1c638227c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHwzfHxkZWVyJTIwYW50bGVyJTIwdmVsdmV0JTIwc3VwcGxlbWVudHxlbnwxfDB8fHwxNzgyNTUzMTU3fDA&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "brown deer on green grass field during daytime"
+imageCredit: "Photo by Pushkaraj Deshpande on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=I_RVkGSq83A"

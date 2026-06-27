@@ -18,6 +18,9 @@ keywords:
   - "수면장애"
   - "자율신경"
   - "기력저하"
+image: "https://images.unsplash.com/photo-1647913097114-5975d965a1ff?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHwyfHxzZW5pb3IlMjBoZWFsdGglMjBlbGRlcmx5JTIwZW5lcmd5fGVufDF8MHx8fDE3ODI1NTMxMjd8MA&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "a couple of people that are walking across a bridge"
+imageCredit: "Photo by Richard Sagredo on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=_duv78qTcDI"

@@ -16,6 +16,8 @@ keywords:
   - "집중력 향상"
   - "수험생 공진단"
   - "어르신 보약"
+image: "https://img.youtube.com/vi/iRAdoNGDntQ/maxresdefault.jpg"
+imageAlt: "공진단 종류별 기본 안내 사양녹용총명공진단 차이와 적합 대상 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=iRAdoNGDntQ"

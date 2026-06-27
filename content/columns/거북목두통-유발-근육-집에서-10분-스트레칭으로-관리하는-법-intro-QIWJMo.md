@@ -14,6 +14,8 @@ keywords:
   - "거북목 교정"
   - "한방 통증치료"
   - "목 근육 강화"
+image: "https://img.youtube.com/vi/QIWJMok9Nso/maxresdefault.jpg"
+imageAlt: "거북목두통 유발 근육 집에서 10분 스트레칭으로 관리하는 법 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=QIWJMok9Nso"

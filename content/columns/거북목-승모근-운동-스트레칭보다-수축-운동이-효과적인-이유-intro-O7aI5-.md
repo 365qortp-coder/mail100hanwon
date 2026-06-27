@@ -12,6 +12,8 @@ keywords:
   - "목 통증"
   - "한의원 거북목"
   - "거북목 운동법"
+image: "https://img.youtube.com/vi/O7aI5-zqY4Q/maxresdefault.jpg"
+imageAlt: "거북목 승모근 운동 스트레칭보다 수축 운동이 효과적인 이유 intro O7aI5  관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=O7aI5-zqY4Q"

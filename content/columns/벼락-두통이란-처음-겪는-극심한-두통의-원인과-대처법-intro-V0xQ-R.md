@@ -14,6 +14,8 @@ keywords:
   - "두통 원인"
   - "한방 두통 치료"
   - "매일백세한의원"
+image: "https://img.youtube.com/vi/V0xQ-RA59b8/maxresdefault.jpg"
+imageAlt: "벼락 두통이란 처음 겪는 극심한 두통의 원인과 대처법 intro V0xQ 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=V0xQ-RA59b8"

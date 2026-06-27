@@ -14,6 +14,8 @@ keywords:
   - "위험한 두통"
   - "편마비 두통"
   - "한방 두통 상담"
+image: "https://img.youtube.com/vi/XMMsj1kSjEA/maxresdefault.jpg"
+imageAlt: "두통과 감각 이상이 함께 뇌경색뇌출혈 의심 증상 기본 안내 intro XMMsj1 관련 영상 썸네일"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=XMMsj1kSjEA"

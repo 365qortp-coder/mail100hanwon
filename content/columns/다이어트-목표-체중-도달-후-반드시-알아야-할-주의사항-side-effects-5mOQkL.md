@@ -14,6 +14,8 @@ keywords:
   - "매일감비환"
   - "체중 감량 후 관리"
   - "안정화 기간"
+image: "/photos/diet-product.webp"
+imageAlt: "다이어트 목표 체중 도달 후 반드시 알아야 할 주의사항 side effects 5mOQkL"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=5mOQkLwYyWU"

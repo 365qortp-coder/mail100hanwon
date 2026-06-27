@@ -14,6 +14,9 @@ keywords:
   - "한의원 무릎 치료 얼마"
   - "거위발건염 치료 비용"
   - "무릎 통증 치료 기간"
+image: "https://images.unsplash.com/photo-1707390588496-6c50ad954935?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHwzfHxrbmVlJTIwcGFpbiUyMGpvaW50fGVufDF8MHx8fDE3ODI1NTMxNDF8MA&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "a close up of a person with a tattoo on his arm"
+imageCredit: "Photo by Liana S on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=p_lRxblP3BI"

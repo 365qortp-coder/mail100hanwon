@@ -14,6 +14,9 @@ keywords:
   - "총명공진단 효과"
   - "한방 집중력 처방"
   - "수험생 공진단"
+image: "https://images.unsplash.com/photo-1607522154179-da1c051ed109?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHwyfHxsaXZlciUyMGhlYWx0aCUyMGRldG94fGVufDF8MHx8fDE3ODI0NDk5MDN8MA&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "sliced orange fruit and green leaves on brown wooden table"
+imageCredit: "Photo by Josh Millgate on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=rhMxltq0apY"

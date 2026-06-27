@@ -14,6 +14,9 @@ keywords:
   - "진통제 부작용"
   - "한의원 두통 치료"
   - "매일백세한의원"
+image: "https://images.unsplash.com/photo-1618498390344-445c804f2ac5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHwyfHxoZWFkYWNoZSUyMG1pZ3JhaW5lJTIwcGFpbnxlbnwxfDB8fHwxNzgyNTUzMTM0fDA&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "man in blue crew neck shirt covering his face"
+imageCredit: "Photo by Sander Sammy on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=FgiQlbAxz1Y"

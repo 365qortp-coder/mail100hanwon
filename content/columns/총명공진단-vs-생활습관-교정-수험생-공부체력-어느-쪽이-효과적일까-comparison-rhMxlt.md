@@ -14,6 +14,9 @@ keywords:
   - "수험생 집중력"
   - "한방 총명탕"
   - "공부 체력 만들기"
+image: "https://images.unsplash.com/photo-1514369118554-e20d93546b30?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHwzfHxzdHVkZW50JTIwc3R1ZHlpbmclMjBleGFtJTIwY29uY2VudHJhdGlvbnxlbnwxfDB8fHwxNzgyNTUzMTEwfDA&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "woman writing on book"
+imageCredit: "Photo by Kyle Gregory Devaras on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=rhMxltq0apY"

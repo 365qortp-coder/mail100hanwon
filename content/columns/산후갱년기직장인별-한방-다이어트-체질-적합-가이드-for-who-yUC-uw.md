@@ -15,6 +15,9 @@ keywords:
   - "30대다이어트"
   - "40대다이어트"
   - "50대다이어트"
+image: "https://images.unsplash.com/photo-1577563612200-a95560e2edec?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHwxfHxwb3N0cGFydHVtJTIwbW9tJTIwd2VpZ2h0JTIwbG9zc3xlbnwxfDB8fHwxNzgyNTUzMTYxfDA&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "pregnant woman touching her belly and carrying a digital bathrooms cale"
+imageCredit: "Photo by Volodymyr Hryshchenko on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=yUC-uw4bGCQ"

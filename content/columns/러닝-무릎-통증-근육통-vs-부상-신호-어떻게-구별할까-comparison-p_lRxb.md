@@ -14,6 +14,9 @@ keywords:
   - "무릎 통증 구별"
   - "달리기 무릎 통증"
   - "한방 통증치료"
+image: "https://images.unsplash.com/photo-1541534741688-6078c6bfb5c5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHwyfHxsZWFuJTIwbXVzY2xlJTIwZml0bmVzc3xlbnwxfDB8fHwxNzgyNTUzMTM5fDA&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "woman doing weight lifting"
+imageCredit: "Photo by John Arano on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=p_lRxblP3BI"

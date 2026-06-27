@@ -12,6 +12,9 @@ keywords:
   - "매일감비환 보관 방법"
   - "한의원 다이어트 약"
   - "비대면 진료 다이어트"
+image: "https://images.unsplash.com/photo-1685913314208-49f7a29f34c8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHw0fHxsaXZlciUyMGhlYWx0aCUyMGRldG94fGVufDF8MHx8fDE3ODI0NDk5MDN8MA&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "a bottle of tea sitting on top of a wooden table"
+imageCredit: "Photo by Eir Health on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=yUC-uw4bGCQ"

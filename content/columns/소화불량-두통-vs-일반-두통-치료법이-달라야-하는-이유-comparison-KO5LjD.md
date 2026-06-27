@@ -14,6 +14,9 @@ keywords:
   - "소화 두통 차이"
   - "두통 치료법 비교"
   - "횡격막 두통"
+image: "https://images.unsplash.com/photo-1618498390344-445c804f2ac5?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHwyfHxoZWFkYWNoZSUyMG1pZ3JhaW5lJTIwcGFpbnxlbnwxfDB8fHwxNzgyNTUzMTM0fDA&ixlib=rb-4.1.0&q=80&w=1080"
+imageAlt: "man in blue crew neck shirt covering his face"
+imageCredit: "Photo by Sander Sammy on Unsplash"
 source:
   type: youtube
   url: "https://www.youtube.com/watch?v=KO5LjDLM2MI"
