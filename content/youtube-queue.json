@@ -2,10 +2,6 @@
   "_comment": "Add YouTube video URLs/IDs here. The daily automation will pick one unprocessed video at a time and convert it into a column. After processing, the entry is moved to the 'processed' array with the resulting column slug.",
   "queue": [
     {
-      "url": "https://www.youtube.com/watch?v=v0t5yevY06Q",
-      "hint": "[gongjindan] 가짜 공진단 속지 마세요 진짜와 가짜 구별 방법"
-    },
-    {
       "url": "https://www.youtube.com/watch?v=8NdMtGce2ac",
       "hint": "[gongjindan] 성장 ⋅ 면역력 ⋅ 치매까지 한 번에 잡는 녹용의 힘"
     },
@@ -20,10 +16,6 @@
     {
       "url": "https://www.youtube.com/watch?v=djzJKoMYv58",
       "hint": "[gongjindan] 지팡이 없이 걷게 된 공진단의 놀라운 효과"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=yZccrn-9cYc",
-      "hint": "[pain] 허리 박살내는 수면 자세 절대 이렇게 자지 마세요"
     },
     {
       "url": "https://www.youtube.com/watch?v=mRrCJbViw-g",
@@ -432,6 +424,32 @@
           "slug": "벼락-두통이란-처음-겪는-분을-위한-기본-안내와-대처법-intro-V0xQ-R",
           "title": "벼락 두통이란? 처음 겪는 분을 위한 기본 안내와 대처법",
           "at": "2026-06-27T08:37:20.221Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=v0t5yevY06Q",
+      "hint": "[gongjindan] 가짜 공진단 속지 마세요 진짜와 가짜 구별 방법",
+      "videoId": "v0t5yevY06Q",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "공진단이란-처음-알아보는-분을-위한-기본-안내와-효능-intro-v0t5ye",
+          "title": "공진단이란? 처음 알아보는 분을 위한 기본 안내와 효능",
+          "at": "2026-06-27T09:19:56.499Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=yZccrn-9cYc",
+      "hint": "[pain] 허리 박살내는 수면 자세 절대 이렇게 자지 마세요",
+      "videoId": "yZccrn-9cYc",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "수면-자세가-목허리-디스크를-망친다-절대-피해야-할-3가지-자세-intro-yZccrn",
+          "title": "수면 자세가 목·허리 디스크를 망친다 – 절대 피해야 할 3가지 자세",
+          "at": "2026-06-27T09:20:59.485Z"
         }
       ]
     }
