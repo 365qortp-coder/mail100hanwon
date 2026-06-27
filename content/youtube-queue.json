@@ -2,10 +2,6 @@
   "_comment": "Add YouTube video URLs/IDs here. The daily automation will pick one unprocessed video at a time and convert it into a column. After processing, the entry is moved to the 'processed' array with the resulting column slug.",
   "queue": [
     {
-      "url": "https://www.youtube.com/watch?v=iRAdoNGDntQ",
-      "hint": "[gongjindan] 나에게 맞는 공진단은? 실패 없는 공진단 고르기"
-    },
-    {
       "url": "https://www.youtube.com/watch?v=v0t5yevY06Q",
       "hint": "[gongjindan] 가짜 공진단 속지 마세요 진짜와 가짜 구별 방법"
     },
@@ -24,10 +20,6 @@
     {
       "url": "https://www.youtube.com/watch?v=djzJKoMYv58",
       "hint": "[gongjindan] 지팡이 없이 걷게 된 공진단의 놀라운 효과"
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=V0xQ-RA59b8",
-      "hint": "[pain] 머릿속에 폭탄 터지면 무조건 119 불러야 해요"
     },
     {
       "url": "https://www.youtube.com/watch?v=yZccrn-9cYc",
@@ -414,6 +406,32 @@
           "slug": "두통과-감각-이상이-함께-나타날-때-뇌경색뇌출혈-응급-신호-기본-안내-intro-XMMsj1",
           "title": "두통과 감각 이상이 함께 나타날 때 – 뇌경색·뇌출혈 응급 신호 기본 안내",
           "at": "2026-06-26T09:30:00.687Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=iRAdoNGDntQ",
+      "hint": "[gongjindan] 나에게 맞는 공진단은? 실패 없는 공진단 고르기",
+      "videoId": "iRAdoNGDntQ",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "공진단-종류별-효능과-적합-대상-한눈에-정리-사양녹용총명공진단-intro-iRAdoN",
+          "title": "공진단 종류별 효능과 적합 대상 한눈에 정리 | 사양·녹용·총명공진단",
+          "at": "2026-06-27T08:37:11.831Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=V0xQ-RA59b8",
+      "hint": "[pain] 머릿속에 폭탄 터지면 무조건 119 불러야 해요",
+      "videoId": "V0xQ-RA59b8",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "벼락-두통이란-처음-겪는-분을-위한-기본-안내와-대처법-intro-V0xQ-R",
+          "title": "벼락 두통이란? 처음 겪는 분을 위한 기본 안내와 대처법",
+          "at": "2026-06-27T08:37:20.221Z"
         }
       ]
     }
