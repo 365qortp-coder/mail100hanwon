@@ -2,12 +2,6 @@
   "_comment": "Add YouTube video URLs/IDs here. The daily automation will pick one unprocessed video at a time and convert it into a column. After processing, the entry is moved to the 'processed' array with the resulting column slug.",
   "queue": [
     {
-      "url": "https://www.youtube.com/watch?v=ufitJpzTqJ8",
-      "videoId": "ufitJpzTqJ8",
-      "hint": "[diet] If your basal metabolic rate is low, stop dieting for now",
-      "angles": []
-    },
-    {
       "url": "https://www.youtube.com/watch?v=dQpPgZ7s5MI",
       "videoId": "dQpPgZ7s5MI",
       "hint": "[diet] Struggling to Lose Belly and Age-Related Fat? 6 Checkpoints",
@@ -1184,12 +1178,6 @@
       "angles": []
     },
     {
-      "url": "https://www.youtube.com/watch?v=KVd2aEGucDc",
-      "videoId": "KVd2aEGucDc",
-      "hint": "[gongjindan] ȿ��, ����, ����� (��¥ ����¹�)",
-      "angles": []
-    },
-    {
       "url": "https://www.youtube.com/watch?v=IeYxjK6AhUk",
       "videoId": "IeYxjK6AhUk",
       "hint": "[gongjindan] ������ ��� �鿪�� �ڵ����� �ö󰩴ϴ�",
@@ -1925,6 +1913,22 @@
           "at": "2026-06-27T09:20:59.485Z"
         }
       ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=ufitJpzTqJ8",
+      "videoId": "ufitJpzTqJ8",
+      "hint": "[diet] If your basal metabolic rate is low, stop dieting for now",
+      "angles": [],
+      "status": "no-transcript",
+      "at": "2026-06-28T09:00:20.186Z"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=KVd2aEGucDc",
+      "videoId": "KVd2aEGucDc",
+      "hint": "[gongjindan] ȿ��, ����, ����� (��¥ ����¹�)",
+      "angles": [],
+      "status": "no-transcript",
+      "at": "2026-06-28T09:00:21.874Z"
     }
   ]
 }
