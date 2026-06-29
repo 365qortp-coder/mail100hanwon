@@ -2,12 +2,6 @@
   "_comment": "Add YouTube video URLs/IDs here. The daily automation will pick one unprocessed video at a time and convert it into a column. After processing, the entry is moved to the 'processed' array with the resulting column slug.",
   "queue": [
     {
-      "url": "https://www.youtube.com/watch?v=dQpPgZ7s5MI",
-      "videoId": "dQpPgZ7s5MI",
-      "hint": "[diet] Struggling to Lose Belly and Age-Related Fat? 6 Checkpoints",
-      "angles": []
-    },
-    {
       "url": "https://www.youtube.com/watch?v=Rti_qlw6WDs",
       "videoId": "Rti_qlw6WDs",
       "hint": "[diet] ���ʴ�� 20�� ó�� ȸ���ϴ� 3���� ��",
@@ -1178,12 +1172,6 @@
       "angles": []
     },
     {
-      "url": "https://www.youtube.com/watch?v=IeYxjK6AhUk",
-      "videoId": "IeYxjK6AhUk",
-      "hint": "[gongjindan] ������ ��� �鿪�� �ڵ����� �ö󰩴ϴ�",
-      "angles": []
-    },
-    {
       "url": "https://www.youtube.com/watch?v=OoqZNUbwtp8",
       "videoId": "OoqZNUbwtp8",
       "hint": "[gongjindan] �鿪�� ��� �÷��ִ� Ȯ���� ���",
@@ -1929,6 +1917,22 @@
       "angles": [],
       "status": "no-transcript",
       "at": "2026-06-28T09:00:21.874Z"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=dQpPgZ7s5MI",
+      "videoId": "dQpPgZ7s5MI",
+      "hint": "[diet] Struggling to Lose Belly and Age-Related Fat? 6 Checkpoints",
+      "angles": [],
+      "status": "no-transcript",
+      "at": "2026-06-29T11:08:08.618Z"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=IeYxjK6AhUk",
+      "videoId": "IeYxjK6AhUk",
+      "hint": "[gongjindan] ������ ��� �鿪�� �ڵ����� �ö󰩴ϴ�",
+      "angles": [],
+      "status": "no-transcript",
+      "at": "2026-06-29T11:08:09.946Z"
     }
   ]
 }
