@@ -2,12 +2,6 @@
   "_comment": "Add YouTube video URLs/IDs here. The daily automation will pick one unprocessed video at a time and convert it into a column. After processing, the entry is moved to the 'processed' array with the resulting column slug.",
   "queue": [
     {
-      "url": "https://www.youtube.com/watch?v=Rti_qlw6WDs",
-      "videoId": "Rti_qlw6WDs",
-      "hint": "[diet] ���ʴ�� 20�� ó�� ȸ���ϴ� 3���� ��",
-      "angles": []
-    },
-    {
       "url": "https://www.youtube.com/watch?v=nYkVrZ2CCUo",
       "videoId": "nYkVrZ2CCUo",
       "hint": "[diet] 2 Eggs on an Empty Stomach - The Diet Cheat Code (How to Eat Them)",
@@ -1172,12 +1166,6 @@
       "angles": []
     },
     {
-      "url": "https://www.youtube.com/watch?v=OoqZNUbwtp8",
-      "videoId": "OoqZNUbwtp8",
-      "hint": "[gongjindan] �鿪�� ��� �÷��ִ� Ȯ���� ���",
-      "angles": []
-    },
-    {
       "url": "https://www.youtube.com/watch?v=6aaRQwJUlVM",
       "videoId": "6aaRQwJUlVM",
       "hint": "[gongjindan] ȫ�� ��õ / ������ �Ҿ��� ü�� / ���� ȫ������ ��",
@@ -1933,6 +1921,22 @@
       "angles": [],
       "status": "no-transcript",
       "at": "2026-06-29T11:08:09.946Z"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=Rti_qlw6WDs",
+      "videoId": "Rti_qlw6WDs",
+      "hint": "[diet] ���ʴ�� 20�� ó�� ȸ���ϴ� 3���� ��",
+      "angles": [],
+      "status": "no-transcript",
+      "at": "2026-06-30T09:44:46.770Z"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=OoqZNUbwtp8",
+      "videoId": "OoqZNUbwtp8",
+      "hint": "[gongjindan] �鿪�� ��� �÷��ִ� Ȯ���� ���",
+      "angles": [],
+      "status": "no-transcript",
+      "at": "2026-06-30T09:44:48.103Z"
     }
   ]
 }
