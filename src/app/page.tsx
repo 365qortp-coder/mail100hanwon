@@ -48,8 +48,7 @@ const products: Product[] = [
     subtitle: "다이어트 한약",
     desc: "체질에 맞춘 한방 다이어트. 무리한 절식 아닌 체지방 위주의 감량과 6개월 요요 관리까지.",
     image: "/photos/diet-product.webp",
-    href: "https://mail100diet.com/",
-    external: true,
+    href: "/diet",
   },
   {
     slug: "gongjindan",
