@@ -90,7 +90,19 @@ export default async function ColumnDetailPage({ params }: { params: Params }) {
           </p>
         </header>
 
-        {col.image && (
+        {col.source?.videoId && (
+          <div className="relative w-full aspect-video rounded-xl overflow-hidden mb-8 bg-black">
+            <iframe
+              src={`https://www.youtube.com/embed/${col.source.videoId}`}
+              title={col.title}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="absolute inset-0 w-full h-full"
+            />
+          </div>
+        )}
+
+        {!col.source?.videoId && col.image && (
           <div className="relative w-full aspect-video rounded-xl overflow-hidden mb-8 bg-[var(--border)]">
             <Image
               src={col.image}
@@ -115,7 +127,7 @@ export default async function ColumnDetailPage({ params }: { params: Params }) {
           dangerouslySetInnerHTML={{ __html: col.contentHtml }}
         />
 
-        {col.source?.url && (
+        {col.source?.url && !col.source?.videoId && (
           <div className="mt-8 p-4 rounded-lg bg-[var(--surface-muted)] border border-[var(--border)] text-sm">
             <p className="font-semibold mb-1">원본 영상</p>
             <a
