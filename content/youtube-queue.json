@@ -2,12 +2,6 @@
   "_comment": "Add YouTube video URLs/IDs here. The daily automation will pick one unprocessed video at a time and convert it into a column. After processing, the entry is moved to the 'processed' array with the resulting column slug.",
   "queue": [
     {
-      "url": "https://www.youtube.com/watch?v=CxEUqQwoRFE",
-      "videoId": "CxEUqQwoRFE",
-      "hint": "[diet] ���̾�Ʈ�Ѿ� �뺧���� ������ �ڵ����� �����¿�� ���",
-      "angles": []
-    },
-    {
       "url": "https://www.youtube.com/watch?v=H2oETM4F7H0",
       "videoId": "H2oETM4F7H0",
       "hint": "[diet] ���̾�Ʈ, �ᱹ �̰� �ϳ��� �ٲٸ� �˴ϴ� (���ʴ�緮 �츮�� ��)",
@@ -18,10 +12,6 @@
       "videoId": "RyXL-RGultg",
       "hint": "[diet] ���� �����ϰ� ����� �� �컩�¹�",
       "angles": []
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=Wa4OKD5-dE0",
-      "hint": "[gongjindan] 한의사가 직접 추천하는 어르신 기력 원탑은?"
     },
     {
       "url": "https://www.youtube.com/watch?v=_t-GCauCH7g",
@@ -800,6 +790,32 @@
           "slug": "매일감비환이란-처음-알아보는-분을-위한-기본-안내-intro-oHwYi8",
           "title": "매일감비환이란? 처음 알아보는 분을 위한 기본 안내",
           "at": "2026-06-30T11:50:05.792Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=CxEUqQwoRFE",
+      "videoId": "CxEUqQwoRFE",
+      "hint": "[diet] ���̾�Ʈ�Ѿ� �뺧���� ������ �ڵ����� �����¿�� ���",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "매일감비환이란-효능복용법적합-대상-한눈에-정리-intro-CxEUqQ",
+          "title": "매일감비환이란? 효능·복용법·적합 대상 한눈에 정리",
+          "at": "2026-07-01T09:49:39.860Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=Wa4OKD5-dE0",
+      "hint": "[gongjindan] 한의사가 직접 추천하는 어르신 기력 원탑은?",
+      "videoId": "Wa4OKD5-dE0",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "공진단이란-효능적합-대상처음-알아보는-분을-위한-기본-안내-intro-Wa4OKD",
+          "title": "공진단이란? 효능·적합 대상·처음 알아보는 분을 위한 기본 안내",
+          "at": "2026-07-01T09:49:50.720Z"
         }
       ]
     }
