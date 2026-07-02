@@ -1,0 +1,507 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>공진단 | 원장 직접 제조 · 사향·녹용·총명공진단 — 매일백세한의원</title>
+  <meta name="description" content="매일백세한의원 송원석 원장이 직접 제조하는 공진단. 19,000구+ 원내 직접 조제, 재처방률 72%. 사향공진단·녹용 2배 공진단·총명공진단. 비대면 전국 처방. 02-2234-0102.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Pretendard', '-apple-system', 'system-ui', 'sans-serif'],
+            serif: ['"Noto Serif KR"', 'serif'],
+          },
+          colors: {
+            brand: '#C0252D',
+            'brand-dark': '#8c1820',
+            'brand-light': '#fdecec',
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif; word-break: keep-all; -webkit-font-smoothing: antialiased; background: #ffffff; color: #0a0a0a; }
+    .font-serif { font-family: 'Noto Serif KR', serif; }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1), transform 0.75s cubic-bezier(0.16,1,0.3,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .faq-arrow { transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); display: inline-block; }
+    details[open] .faq-arrow { transform: rotate(180deg); }
+    .btn-primary { transition: all 0.4s cubic-bezier(0.16,1,0.3,1); }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 12px 32px rgba(192,37,45,0.28); }
+    .btn-primary:active { transform: scale(0.98); }
+    .btn-ghost { transition: all 0.35s cubic-bezier(0.16,1,0.3,1); }
+    .product-card { transition: box-shadow 0.35s cubic-bezier(0.16,1,0.3,1), transform 0.35s cubic-bezier(0.16,1,0.3,1); }
+    .product-card:hover { box-shadow: 0 20px 60px rgba(0,0,0,0.12); transform: translateY(-4px); }
+    @font-face { font-family:'SeoulHangang'; src:url('https://cdn.jsdelivr.net/gh/webfontworld/SeoulHangang@main/SeoulHangangM.woff2') format('woff2'); font-display:swap; }
+    @font-face { font-family:'GyeonggiCheonnyeon'; src:url('https://cdn.jsdelivr.net/gh/webfontworld/GyeonggiCheonnyeon@main/GyeonggiCheonnyeonBold.woff2') format('woff2'); font-weight:700; font-display:swap; }
+    .logo-wrap { display:flex; align-items:center; gap:8px; text-decoration:none; }
+    .logo-badge { display:flex; flex-direction:column; align-items:center; justify-content:center; background:#C0252D; color:white; font-family:'SeoulHangang','Pretendard',sans-serif; font-weight:700; font-size:13.5px; line-height:1.2; width:28px; height:36px; flex-shrink:0; border-radius:3px; }
+    .logo-name { font-family:'GyeonggiCheonnyeon','Noto Serif KR',serif; font-size:21px; font-weight:700; color:#0a0a0a; letter-spacing:-0.025em; line-height:1; white-space:nowrap; }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<header class="sticky top-0 z-40 w-full bg-white border-b border-black/[0.06]">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 h-14 flex items-center justify-between gap-4">
+    <a href="index.html" class="shrink-0" aria-label="매일백세한의원 홈">
+      <img src="assets/logo.png" alt="매일백세한의원" class="h-9 w-auto" loading="eager">
+    </a>
+    <nav class="hidden lg:flex items-center gap-0.5" aria-label="주 메뉴">
+      <a href="diet.html"       class="px-3.5 py-2 text-sm text-[#525252] hover:text-[#0a0a0a] font-medium rounded-lg hover:bg-black/[0.04] transition-colors">매일감비환</a>
+      <a href="gongjindan.html" class="px-3.5 py-2 text-sm font-bold text-brand rounded-lg bg-brand-light">공진단</a>
+      <a href="nmc.html"        class="px-3.5 py-2 text-sm text-[#525252] hover:text-[#0a0a0a] font-medium rounded-lg hover:bg-black/[0.04] transition-colors">무릎관절 NMC</a>
+      <a href="about.html"      class="px-3.5 py-2 text-sm text-[#525252] hover:text-[#0a0a0a] font-medium rounded-lg hover:bg-black/[0.04] transition-colors">원장 소개</a>
+    </nav>
+    <div class="flex items-center gap-2 shrink-0">
+      <a href="tel:0222340102" aria-label="전화" class="inline-flex lg:hidden items-center justify-center w-9 h-9 rounded-full bg-brand-light text-brand hover:bg-brand hover:text-white transition-colors">
+        <iconify-icon icon="solar:phone-linear" width="17"></iconify-icon>
+      </a>
+      <a href="tel:0222340102" class="hidden lg:inline-flex items-center gap-1.5 px-3.5 py-2 text-sm font-bold text-brand hover:bg-brand-light rounded-lg transition-colors">02-2234-0102</a>
+      <a href="https://pf.kakao.com/_JEzRK/chat" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-bold bg-[#FAE100] text-[#3C1E1E] rounded-lg hover:brightness-95 transition-all">
+        <iconify-icon icon="solar:chat-line-bold" width="15"></iconify-icon>
+        <span class="hidden sm:inline">카톡 상담</span>
+      </a>
+      <a href="https://docs.google.com/forms/d/1bY4A3UzxH1jkZQU6azXtrmVwtUxJwKYRRKDo5gLFqo0/viewform" target="_blank" rel="noopener" class="hidden md:inline-flex items-center px-4 py-2 text-sm font-semibold bg-[#0a0a0a] text-white rounded-lg hover:bg-[#2a2a2a] transition-colors">
+        비대면 신청
+      </a>
+    </div>
+  </div>
+  <div class="lg:hidden border-t border-black/[0.05] bg-white/98">
+    <div class="flex items-center gap-1.5 px-4 py-2.5 overflow-x-auto">
+      <a href="diet.html"       class="shrink-0 px-3 py-1.5 text-xs font-semibold text-[#525252] bg-[#F5F5F5] rounded-full border border-black/[0.07] whitespace-nowrap hover:border-black/20 transition-all">매일감비환</a>
+      <a href="gongjindan.html" class="shrink-0 px-3 py-1.5 text-xs font-bold text-brand bg-brand-light rounded-full border border-brand/20 whitespace-nowrap">공진단</a>
+      <a href="nmc.html"        class="shrink-0 px-3 py-1.5 text-xs font-semibold text-[#525252] bg-[#F5F5F5] rounded-full border border-black/[0.07] whitespace-nowrap hover:border-black/20 transition-all">무릎관절 NMC</a>
+      <a href="about.html"      class="shrink-0 px-3 py-1.5 text-xs font-semibold text-[#525252] bg-[#F5F5F5] rounded-full border border-black/[0.07] whitespace-nowrap hover:border-black/20 transition-all">원장 소개</a>
+    </div>
+  </div>
+</header>
+
+<!-- ── 01 HERO (dark) ── -->
+<section class="bg-[#111110] text-white overflow-hidden">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 lg:px-12 pt-16 pb-24 md:pt-20 md:pb-32 grid md:grid-cols-2 gap-12 md:gap-16 items-center">
+    <!-- Photo -->
+    <div class="reveal order-1 md:order-1">
+      <div class="relative aspect-[4/3] md:aspect-square rounded-3xl overflow-hidden bg-white/5">
+        <img src="assets/photos/gongjindan-hero.webp" alt="매일백세한의원 공진단 — 원장 직접 제조"
+             class="absolute inset-0 w-full h-full object-cover" loading="eager">
+      </div>
+    </div>
+    <!-- Text -->
+    <div class="reveal order-2 md:order-2">
+      <div class="flex items-center gap-3 mb-7">
+        <span class="h-px w-6 bg-brand"></span>
+        <span class="text-[11px] font-bold tracking-[0.2em] uppercase text-brand">공진단 · 매일백세한의원</span>
+      </div>
+      <h1 class="font-serif text-[2.5rem] md:text-[3.25rem] lg:text-[4rem] leading-[1.1] tracking-[-0.025em] text-white mb-6">
+        원장이 직접 만든<br>
+        <span class="text-brand">진짜 공진단</span>
+      </h1>
+      <p class="text-base md:text-lg text-white/60 leading-[1.75] max-w-[420px] mb-8">
+        사향·녹용·당귀·산수유를 한의원에서 직접 조제합니다. 원장이 직접 복용하고 가족에게도 처방하는 공진단. 비대면으로 전국 어디서나 받아보실 수 있습니다.
+      </p>
+      <!-- Mini stats -->
+      <div class="flex flex-wrap gap-3 mb-9">
+        <div class="border border-white/15 rounded-xl px-4 py-3 text-center">
+          <p class="text-xl font-extrabold text-brand">3,000회+</p>
+          <p class="text-xs text-white/40 mt-0.5">누적 처방</p>
+        </div>
+        <div class="border border-white/15 rounded-xl px-4 py-3 text-center">
+          <p class="text-xl font-extrabold text-brand">19,000구+</p>
+          <p class="text-xs text-white/40 mt-0.5">2025년 직접 조제</p>
+        </div>
+        <div class="border border-white/15 rounded-xl px-4 py-3 text-center">
+          <p class="text-xl font-extrabold text-brand">72%</p>
+          <p class="text-xs text-white/40 mt-0.5">재처방률</p>
+        </div>
+      </div>
+      <div class="flex flex-wrap gap-3">
+        <a href="https://docs.google.com/forms/d/1bY4A3UzxH1jkZQU6azXtrmVwtUxJwKYRRKDo5gLFqo0/viewform" target="_blank" rel="noopener"
+           class="btn-primary inline-flex items-center gap-2.5 px-7 py-3.5 bg-brand text-white text-sm font-bold rounded-full">
+          <iconify-icon icon="solar:document-medicine-linear" width="16"></iconify-icon>
+          비대면 진료 신청
+        </a>
+        <a href="tel:0222340102" class="btn-ghost inline-flex items-center gap-2 px-7 py-3.5 border border-white/20 text-white text-sm font-bold rounded-full hover:border-white/50 transition-colors">
+          <iconify-icon icon="solar:phone-linear" width="15"></iconify-icon>
+          전화 상담
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 02 TRUST STRIP ── -->
+<section class="bg-brand">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 py-8 md:py-10">
+    <div class="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-10">
+      <div class="border-l border-white/30 pl-4 first:border-l-0 first:pl-0 md:border-l md:pl-4">
+        <p class="text-2xl md:text-3xl font-extrabold text-white">3,000회+</p>
+        <p class="text-xs text-white/70 mt-1">누적 처방</p>
+      </div>
+      <div class="border-l border-white/30 pl-4">
+        <p class="text-2xl md:text-3xl font-extrabold text-white">19,000구+</p>
+        <p class="text-xs text-white/70 mt-1">2025년 직접 조제</p>
+      </div>
+      <div class="border-l border-white/30 pl-4">
+        <p class="text-2xl md:text-3xl font-extrabold text-white">72%</p>
+        <p class="text-xs text-white/70 mt-1">재처방률</p>
+      </div>
+      <div class="border-l border-white/30 pl-4">
+        <p class="text-2xl md:text-3xl font-extrabold text-white">전국</p>
+        <p class="text-xs text-white/70 mt-1">비대면 택배 처방</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 03 제품 라인업 ── -->
+<section class="bg-white">
+  <div class="max-w-6xl mx-auto px-5 md:px-8 py-16 md:py-24">
+    <div class="reveal text-center mb-12">
+      <p class="text-[10px] font-bold tracking-[0.2em] text-[#8C8A87] uppercase mb-3">Products</p>
+      <h2 class="font-serif text-3xl md:text-4xl font-bold text-[#0a0a0a] leading-snug">3가지 공진단 처방</h2>
+      <p class="text-sm text-[#525252] mt-3 max-w-lg mx-auto">복용 목적과 체질에 따라 처방이 달라집니다. 어느 것이 맞는지 상담 후 결정합니다.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5">
+      <!-- 사향공진단 -->
+      <div class="reveal product-card bg-[#111110] text-white rounded-3xl p-7 flex flex-col">
+        <p class="text-[10px] tracking-[0.2em] font-bold text-brand mb-3">PREMIUM</p>
+        <div class="w-10 h-10 rounded-lg bg-brand flex items-center justify-center mb-4">
+          <iconify-icon icon="solar:star-bold" width="18" class="text-white"></iconify-icon>
+        </div>
+        <h3 class="text-2xl font-extrabold mb-1">사향공진단</h3>
+        <p class="text-sm font-semibold text-white/50 mb-5">정통 처방 · 기력·뇌기능</p>
+        <div class="space-y-3 text-sm flex-1">
+          <div>
+            <dt class="text-[10px] font-bold text-white/30 mb-0.5">주요 성분</dt>
+            <dd class="text-white/80">천연 사향 100mg · 녹용 · 당귀 · 산수유</dd>
+          </div>
+          <div>
+            <dt class="text-[10px] font-bold text-white/30 mb-0.5">추천 대상</dt>
+            <dd class="text-white/80">만성피로·기력저하·뇌기능 회복·남성 스태미너</dd>
+          </div>
+          <div class="pt-3 border-t border-white/10">
+            <dt class="text-[10px] font-bold text-white/30 mb-0.5">가격</dt>
+            <dd class="font-bold text-brand">30구 135만 원 · 100구 350만 원</dd>
+          </div>
+        </div>
+        <div class="mt-5 pt-4 border-t border-white/10">
+          <a href="https://mail100gongjindan.imweb.me/" target="_blank" rel="noopener"
+             class="text-xs font-bold text-white/40 hover:text-white transition-colors">자세히 보기 →</a>
+        </div>
+      </div>
+      <!-- 녹용 2배 공진단 -->
+      <div class="reveal product-card bg-[#F8F6F2] rounded-3xl p-7 flex flex-col border border-black/[0.06]">
+        <p class="text-[10px] tracking-[0.2em] font-bold text-[#8C8A87] mb-3">POPULAR</p>
+        <div class="w-10 h-10 rounded-lg bg-brand-light flex items-center justify-center mb-4">
+          <iconify-icon icon="solar:leaf-bold" width="18" class="text-brand"></iconify-icon>
+        </div>
+        <h3 class="text-2xl font-extrabold text-[#0a0a0a] mb-1">녹용 2배 공진단</h3>
+        <p class="text-sm font-semibold text-[#8C8A87] mb-5">체력·면역력 · 합리적 선택</p>
+        <div class="space-y-3 text-sm flex-1">
+          <div>
+            <dt class="text-[10px] font-bold text-[#8C8A87] mb-0.5">주요 성분</dt>
+            <dd class="text-[#0a0a0a]">녹용 2배 · 목향 · 당귀 · 산수유</dd>
+          </div>
+          <div>
+            <dt class="text-[10px] font-bold text-[#8C8A87] mb-0.5">추천 대상</dt>
+            <dd class="text-[#0a0a0a]">체력·면역력 회복·수술 후·항암 후 회복</dd>
+          </div>
+          <div class="pt-3 border-t border-black/[0.06]">
+            <dt class="text-[10px] font-bold text-[#8C8A87] mb-0.5">가격</dt>
+            <dd class="font-bold text-brand">30구 42만 원 · 120구 120만 원</dd>
+          </div>
+        </div>
+        <div class="mt-5 pt-4 border-t border-black/[0.06]">
+          <a href="https://mail100gongjindan.imweb.me/" target="_blank" rel="noopener"
+             class="text-xs font-bold text-[#8C8A87] hover:text-[#0a0a0a] transition-colors">자세히 보기 →</a>
+        </div>
+      </div>
+      <!-- 총명공진단 -->
+      <div class="reveal product-card bg-[#F8F6F2] rounded-3xl p-7 flex flex-col border border-black/[0.06]">
+        <p class="text-[10px] tracking-[0.2em] font-bold text-[#8C8A87] mb-3">STUDY</p>
+        <div class="w-10 h-10 rounded-lg bg-brand-light flex items-center justify-center mb-4">
+          <iconify-icon icon="solar:book-2-bold" width="18" class="text-brand"></iconify-icon>
+        </div>
+        <h3 class="text-2xl font-extrabold text-[#0a0a0a] mb-1">총명공진단</h3>
+        <p class="text-sm font-semibold text-[#8C8A87] mb-5">수험생·고시생 전용</p>
+        <div class="space-y-3 text-sm flex-1">
+          <div>
+            <dt class="text-[10px] font-bold text-[#8C8A87] mb-0.5">주요 성분</dt>
+            <dd class="text-[#0a0a0a]">녹용 2배 · 원지 · 석창포 · 당귀 · 산수유</dd>
+          </div>
+          <div>
+            <dt class="text-[10px] font-bold text-[#8C8A87] mb-0.5">추천 대상</dt>
+            <dd class="text-[#0a0a0a]">수능·공무원·고시·면접 집중력·기억력·체력</dd>
+          </div>
+          <div class="pt-3 border-t border-black/[0.06]">
+            <dt class="text-[10px] font-bold text-[#8C8A87] mb-0.5">가격</dt>
+            <dd class="font-bold text-brand">30구 45만 원 · 90구 108만 원</dd>
+          </div>
+        </div>
+        <div class="mt-5 pt-4 border-t border-black/[0.06]">
+          <a href="https://mail100gongjindan.imweb.me/" target="_blank" rel="noopener"
+             class="text-xs font-bold text-[#8C8A87] hover:text-[#0a0a0a] transition-colors">자세히 보기 →</a>
+        </div>
+      </div>
+    </div>
+    <p class="text-xs text-[#8C8A87] mt-5 text-center">※ 가격은 표시 시점 기준이며 변경될 수 있습니다. 자세한 처방은 상담 시 안내드립니다.</p>
+  </div>
+</section>
+
+<!-- ── 04 원장 스토리 ── -->
+<section class="bg-[#F8F6F2]">
+  <div class="max-w-4xl mx-auto px-5 md:px-8 py-16 md:py-24">
+    <div class="reveal text-center mb-10">
+      <p class="text-[10px] font-bold tracking-[0.2em] text-[#8C8A87] uppercase mb-3">Story</p>
+      <h2 class="font-serif text-3xl md:text-4xl font-bold text-[#0a0a0a] leading-snug">"직접 빚고, 직접 복용하고,<br>우리 아이도 먹입니다"</h2>
+    </div>
+    <div class="reveal bg-white rounded-3xl border border-black/[0.06] p-8 md:p-10 shadow-sm">
+      <div class="grid md:grid-cols-[180px_1fr] gap-8 items-start">
+        <div class="relative aspect-[3/4] rounded-2xl overflow-hidden bg-[#F8F6F2] w-32 md:w-full mx-auto">
+          <img src="assets/photos/director.webp" alt="매일백세한의원 송원석 원장"
+               class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+        </div>
+        <div>
+          <p class="text-[10px] font-bold text-[#8C8A87] tracking-widest mb-4">송원석 원장 · 매일백세한의원</p>
+          <blockquote class="text-base md:text-lg leading-relaxed text-[#0a0a0a] space-y-4">
+            <p>아버지가 심방세동으로 응급 상황에 처했을 때, 제가 직접 공진단을 처방해 회복을 도왔습니다. 그 경험이 공진단에 대한 확신이 됐습니다.</p>
+            <p>사향은 유통 과정에서 가짜가 섞이는 일이 실제로 있습니다. 그래서 저는 유튜브 채널 <strong>'직접 만든 진짜 공진단'</strong>에 조제 전 과정과 진품 확인법을 직접 공개합니다.</p>
+            <p class="font-bold text-brand">가족에게 먹이는 기준으로 만듭니다.</p>
+          </blockquote>
+          <div class="mt-6 flex flex-wrap gap-2">
+            <a href="https://www.youtube.com/@%EC%A7%81%EC%A0%91%EB%A7%8C%EB%93%A0%EC%A7%84%EC%A7%9C%EA%B3%B5%EC%A7%84%EB%8B%A8" target="_blank" rel="noopener"
+               class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[#F8F6F2] border border-black/[0.08] text-sm font-semibold hover:border-black/20 transition-colors">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" class="text-red-600"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              직접 만든 진짜 공진단
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 05 총명공진단 특화 ── -->
+<section class="bg-white">
+  <div class="max-w-6xl mx-auto px-5 md:px-8 py-16 md:py-24">
+    <div class="reveal text-center mb-12">
+      <p class="text-[10px] font-bold tracking-[0.2em] text-[#8C8A87] uppercase mb-3">Chongmyeong</p>
+      <h2 class="font-serif text-3xl md:text-4xl font-bold text-[#0a0a0a] leading-snug">총명공진단<br>수험생·고시생을 위한 처방</h2>
+    </div>
+    <div class="grid md:grid-cols-2 gap-8 items-center">
+      <div class="reveal">
+        <div class="relative aspect-[4/3] rounded-3xl overflow-hidden bg-[#F8F6F2]">
+          <img src="assets/photos/chongmyeong-product.webp" alt="총명공진단"
+               class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+        </div>
+      </div>
+      <div class="reveal space-y-5">
+        <div class="flex gap-4 p-5 bg-[#F8F6F2] rounded-2xl border border-black/[0.05]">
+          <div class="w-8 h-8 rounded-lg bg-brand-light flex items-center justify-center shrink-0">
+            <iconify-icon icon="solar:brain-linear" width="16" class="text-brand"></iconify-icon>
+          </div>
+          <div>
+            <h3 class="font-bold text-[#0a0a0a] mb-1">집중력·기억력 강화</h3>
+            <p class="text-sm text-[#525252] leading-relaxed">원지·석창포가 더해져 두뇌 활동을 집중적으로 지원합니다. 장시간 학습에 필요한 정신 에너지를 유지합니다.</p>
+          </div>
+        </div>
+        <div class="flex gap-4 p-5 bg-[#F8F6F2] rounded-2xl border border-black/[0.05]">
+          <div class="w-8 h-8 rounded-lg bg-brand-light flex items-center justify-center shrink-0">
+            <iconify-icon icon="solar:battery-charge-linear" width="16" class="text-brand"></iconify-icon>
+          </div>
+          <div>
+            <h3 class="font-bold text-[#0a0a0a] mb-1">체력 유지</h3>
+            <p class="text-sm text-[#525252] leading-relaxed">녹용 2배 처방으로 수험 기간 중 면역력과 체력을 뒷받침합니다. 시험 직전 집중 복용에 적합합니다.</p>
+          </div>
+        </div>
+        <div class="flex gap-4 p-5 bg-[#F8F6F2] rounded-2xl border border-black/[0.05]">
+          <div class="w-8 h-8 rounded-lg bg-brand-light flex items-center justify-center shrink-0">
+            <iconify-icon icon="solar:delivery-linear" width="16" class="text-brand"></iconify-icon>
+          </div>
+          <div>
+            <h3 class="font-bold text-[#0a0a0a] mb-1">전국 비대면 처방</h3>
+            <p class="text-sm text-[#525252] leading-relaxed">기숙학원·지방 거주자도 카카오톡·전화 상담 후 택배로 수령 가능합니다. 수능 한 달 전 긴급 처방도 문의 가능합니다.</p>
+          </div>
+        </div>
+        <div class="pt-2">
+          <p class="text-sm font-bold text-[#0a0a0a] mb-2">가격</p>
+          <p class="text-brand font-extrabold text-xl">30구 45만 원 · 90구 108만 원</p>
+          <p class="text-xs text-[#8C8A87] mt-1">※ 가격은 변경될 수 있습니다. 상담 시 안내드립니다.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 06 imweb 링크 ── -->
+<section class="bg-[#111110] text-white">
+  <div class="max-w-4xl mx-auto px-5 md:px-8 py-14 md:py-20 text-center">
+    <p class="text-[10px] font-bold tracking-[0.2em] text-brand uppercase mb-4">More Info</p>
+    <h2 class="font-serif text-2xl md:text-3xl font-bold mb-3">가격 상세·제조 갤러리·주문 안내</h2>
+    <p class="text-sm text-white/50 mb-8 max-w-md mx-auto">공진단 제조 과정 사진, 인증서 샘플, 상세 가격표, 구매 안내는 공진단 전용 페이지에서 확인하실 수 있습니다.</p>
+    <a href="https://mail100gongjindan.imweb.me/" target="_blank" rel="noopener"
+       class="btn-primary inline-flex items-center gap-2 px-8 py-4 bg-white text-[#0a0a0a] font-bold rounded-full text-sm hover:bg-brand hover:text-white transition-colors">
+      공진단 상세 정보 보기 →
+    </a>
+  </div>
+</section>
+
+<!-- ── 07 FAQ ── -->
+<section class="bg-[#F8F6F2]">
+  <div class="max-w-4xl mx-auto px-5 md:px-8 py-16 md:py-24">
+    <div class="reveal text-center mb-10">
+      <p class="text-[10px] font-bold tracking-[0.2em] text-[#8C8A87] uppercase mb-3">FAQ</p>
+      <h2 class="font-serif text-3xl md:text-4xl font-bold text-[#0a0a0a]">자주 묻는 질문</h2>
+    </div>
+    <div class="space-y-3">
+      <details class="reveal group bg-white rounded-xl border border-black/[0.06] p-5 hover:border-black/15 transition-colors">
+        <summary class="cursor-pointer font-semibold flex items-start gap-2 list-none">
+          <span class="text-brand font-bold shrink-0">Q.</span>
+          <span class="flex-1 text-[#0a0a0a]">사향공진단·녹용 2배 공진단·총명공진단 차이가 뭔가요?</span>
+          <span class="faq-arrow text-[#8C8A87] shrink-0">▾</span>
+        </summary>
+        <p class="mt-3 text-sm text-[#525252] leading-relaxed pl-6">사향공진단은 천연 사향 100mg이 포함된 정통 처방으로 기력 상승과 뇌기능 회복에 효과적입니다. 녹용 2배 공진단은 사향 대신 녹용을 두 배로 늘려 체력·면역력 회복에 적합하며 가격 부담이 낮습니다. 총명공진단은 녹용 2배에 원지·석창포를 더한 수험생·고시생 전용 처방입니다. 어느 것이 맞는지는 복용 목적과 체질에 따라 달라지므로 상담이 필요합니다.</p>
+      </details>
+      <details class="reveal group bg-white rounded-xl border border-black/[0.06] p-5 hover:border-black/15 transition-colors">
+        <summary class="cursor-pointer font-semibold flex items-start gap-2 list-none">
+          <span class="text-brand font-bold shrink-0">Q.</span>
+          <span class="flex-1 text-[#0a0a0a]">공진단 가격은 얼마인가요?</span>
+          <span class="faq-arrow text-[#8C8A87] shrink-0">▾</span>
+        </summary>
+        <p class="mt-3 text-sm text-[#525252] leading-relaxed pl-6">사향공진단은 30구 135만 원, 100구 350만 원입니다. 녹용 2배 공진단은 30구 42만 원, 120구 120만 원, 총명공진단은 30구 45만 원, 90구 108만 원입니다. 처음엔 30구로 시작해 효과를 확인 후 연장하는 분들이 많습니다.</p>
+      </details>
+      <details class="reveal group bg-white rounded-xl border border-black/[0.06] p-5 hover:border-black/15 transition-colors">
+        <summary class="cursor-pointer font-semibold flex items-start gap-2 list-none">
+          <span class="text-brand font-bold shrink-0">Q.</span>
+          <span class="flex-1 text-[#0a0a0a]">시중 가짜 사향이 걱정됩니다</span>
+          <span class="faq-arrow text-[#8C8A87] shrink-0">▾</span>
+        </summary>
+        <p class="mt-3 text-sm text-[#525252] leading-relaxed pl-6">매일백세한의원은 유튜브 채널 '직접 만든 진짜 공진단'에서 사향 조제 전 과정과 진품 확인법을 공개합니다. 식약처 인증 정품 사향만 사용하며, 원장이 직접 제조합니다.</p>
+      </details>
+      <details class="reveal group bg-white rounded-xl border border-black/[0.06] p-5 hover:border-black/15 transition-colors">
+        <summary class="cursor-pointer font-semibold flex items-start gap-2 list-none">
+          <span class="text-brand font-bold shrink-0">Q.</span>
+          <span class="flex-1 text-[#0a0a0a]">비대면으로 처방받을 수 있나요?</span>
+          <span class="faq-arrow text-[#8C8A87] shrink-0">▾</span>
+        </summary>
+        <p class="mt-3 text-sm text-[#525252] leading-relaxed pl-6">네, 가능합니다. 카카오톡 또는 전화(02-2234-0102) 문의 → 구글 설문지 작성 → 원장 전화 상담 → 직접 제조 후 전국 택배 발송(영업일 2~5일). 재진 환자는 절차가 더 간소화됩니다.</p>
+      </details>
+      <details class="reveal group bg-white rounded-xl border border-black/[0.06] p-5 hover:border-black/15 transition-colors">
+        <summary class="cursor-pointer font-semibold flex items-start gap-2 list-none">
+          <span class="text-brand font-bold shrink-0">Q.</span>
+          <span class="flex-1 text-[#0a0a0a]">효과가 얼마나 빨리 나타나나요?</span>
+          <span class="faq-arrow text-[#8C8A87] shrink-0">▾</span>
+        </summary>
+        <p class="mt-3 text-sm text-[#525252] leading-relaxed pl-6">체질에 따라 다르지만 복용 후 1~2주 이내 수면의 질 개선이나 피로 감소를 먼저 느끼는 분들이 많습니다. 기력 회복은 보통 1개월 이상 복용 후 체감합니다. 재처방률 72%는 효과를 경험한 환자들이 반복 처방을 선택한 비율입니다.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ── 08 FINAL CTA ── -->
+<section class="bg-[#111110] text-white">
+  <div class="max-w-4xl mx-auto px-5 md:px-8 py-16 md:py-24 text-center">
+    <p class="text-[10px] font-bold tracking-[0.25em] text-brand uppercase mb-4">Contact</p>
+    <h2 class="font-serif text-3xl md:text-4xl font-bold mb-4 leading-snug">상담은 부담 없이,<br>처방은 체질 확인 후</h2>
+    <p class="text-white/60 mb-10 max-w-lg mx-auto text-base leading-relaxed">안 맞는 분께는 권하지 않습니다. 전화·카카오톡·비대면 신청 모두 가능합니다. 평일 09:30~18:30, 토요일 09:30~13:00.</p>
+    <div class="flex flex-wrap gap-3 justify-center">
+      <a href="https://docs.google.com/forms/d/1bY4A3UzxH1jkZQU6azXtrmVwtUxJwKYRRKDo5gLFqo0/viewform" target="_blank" rel="noopener"
+         class="btn-primary inline-flex items-center gap-2.5 px-8 py-4 bg-brand text-white font-bold rounded-full text-sm">
+        비대면 진료 신청
+      </a>
+      <a href="https://pf.kakao.com/_JEzRK/chat" target="_blank" rel="noopener"
+         class="btn-ghost inline-flex items-center gap-2 px-8 py-4 bg-[#FAE100] text-[#3C1E1E] font-bold rounded-full text-sm hover:brightness-95">
+        카카오톡 상담
+      </a>
+      <a href="tel:0222340102" class="btn-ghost inline-flex items-center gap-2 px-8 py-4 border border-white/20 text-white font-bold rounded-full text-sm hover:border-white/50 transition-colors">
+        <iconify-icon icon="solar:phone-linear" width="15"></iconify-icon>
+        02-2234-0102
+      </a>
+    </div>
+    <p class="mt-8 text-white/35 text-sm">서울 중랑구 공릉로 21 · 먹골역 도보 5분</p>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="bg-[#0a0a0a] border-t border-white/[0.06]">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 lg:px-12 py-12 md:py-14">
+    <div class="flex flex-col md:flex-row md:items-start justify-between gap-10">
+      <div class="md:max-w-[240px]">
+        <div class="logo-wrap mb-5">
+          <span class="logo-badge" style="height:44px; width:32px; font-size:14px;">매<br>일</span>
+          <span class="logo-name" style="color:white; font-size:24px;">백세한의원</span>
+        </div>
+        <address class="not-italic text-sm text-white/40 leading-[1.9]">
+          서울특별시 중랑구 공릉로 21<br>
+          먹골역 도보 5분 (7호선)<br>
+          <a href="tel:0222340102" class="hover:text-white transition-colors">02-2234-0102</a>
+        </address>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+        <div>
+          <p class="text-[10px] font-bold tracking-[0.18em] text-white/30 uppercase mb-4">진료</p>
+          <ul class="space-y-2.5">
+            <li><a href="diet.html"        class="text-sm text-white/55 hover:text-white transition-colors">매일감비환</a></li>
+            <li><a href="gongjindan.html"  class="text-sm text-white/55 hover:text-white transition-colors">공진단</a></li>
+            <li><a href="nmc.html"         class="text-sm text-white/55 hover:text-white transition-colors">무릎관절 NMC</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-[10px] font-bold tracking-[0.18em] text-white/30 uppercase mb-4">한의원</p>
+          <ul class="space-y-2.5">
+            <li><a href="about.html"   class="text-sm text-white/55 hover:text-white transition-colors">원장 소개</a></li>
+            <li><a href="index.html"   class="text-sm text-white/55 hover:text-white transition-colors">메인 페이지</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-[10px] font-bold tracking-[0.18em] text-white/30 uppercase mb-4">상담</p>
+          <ul class="space-y-2.5">
+            <li><a href="tel:0222340102" class="text-sm text-white/55 hover:text-white transition-colors">전화 02-2234-0102</a></li>
+            <li><a href="https://pf.kakao.com/_JEzRK/chat" target="_blank" rel="noopener" class="text-sm text-white/55 hover:text-white transition-colors">카카오톡 채널</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mt-12 pt-6 border-t border-white/[0.06] flex flex-col md:flex-row items-center justify-between gap-3">
+      <p class="text-xs text-white/25">&copy; 2026 매일백세한의원. 대표원장 송원석</p>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE BOTTOM BAR -->
+<div class="fixed bottom-0 inset-x-0 z-50 md:hidden bg-white/96 backdrop-blur-md border-t border-black/[0.08] px-4 py-3">
+  <div class="flex gap-2.5">
+    <a href="tel:0222340102" class="flex-1 inline-flex items-center justify-center gap-2 py-3 border-2 border-brand text-brand text-sm font-bold rounded-xl hover:bg-brand hover:text-white transition-all">
+      <iconify-icon icon="solar:phone-bold" width="16"></iconify-icon>
+      전화 상담
+    </a>
+    <a href="https://pf.kakao.com/_JEzRK/chat" target="_blank" rel="noopener" class="flex-1 inline-flex items-center justify-center gap-2 py-3 bg-brand text-white text-sm font-bold rounded-xl hover:bg-brand-dark transition-all">
+      <iconify-icon icon="solar:chat-line-bold" width="16"></iconify-icon>
+      카톡 상담
+    </a>
+  </div>
+</div>
+<div class="h-20 md:hidden" aria-hidden="true"></div>
+
+<script>
+  (function(){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.08, rootMargin: '0px 0px -48px 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
+  })();
+</script>
+</body>
+</html>

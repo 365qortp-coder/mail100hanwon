@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>송원석 원장 소개 — 매일백세한의원</title>
+  <meta name="description" content="매일백세한의원 대표원장 송원석. 대전대학교 한의과대학 출신. 매일감비환·공진단·총명공진단·무릎NMC 직접 처방. 개원 11년차, 누적 진료 82만건+. 02-2234-0102.">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Pretendard', '-apple-system', 'system-ui', 'sans-serif'],
+            serif: ['"Noto Serif KR"', 'serif'],
+          },
+          colors: {
+            brand: '#C0252D',
+            'brand-dark': '#8c1820',
+            'brand-light': '#fdecec',
+          },
+        },
+      },
+    }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, sans-serif; word-break: keep-all; -webkit-font-smoothing: antialiased; background: #ffffff; color: #0a0a0a; }
+    .font-serif { font-family: 'Noto Serif KR', serif; }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1), transform 0.75s cubic-bezier(0.16,1,0.3,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .btn-primary { transition: all 0.4s cubic-bezier(0.16,1,0.3,1); }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 12px 32px rgba(192,37,45,0.28); }
+    .btn-primary:active { transform: scale(0.98); }
+    .btn-ghost { transition: all 0.35s cubic-bezier(0.16,1,0.3,1); }
+    .yt-card { transition: border-color 0.3s cubic-bezier(0.16,1,0.3,1), transform 0.3s cubic-bezier(0.16,1,0.3,1); }
+    .yt-card:hover { border-color: rgba(0,0,0,0.18); transform: translateY(-2px); }
+    @font-face { font-family:'SeoulHangang'; src:url('https://cdn.jsdelivr.net/gh/webfontworld/SeoulHangang@main/SeoulHangangM.woff2') format('woff2'); font-display:swap; }
+    @font-face { font-family:'GyeonggiCheonnyeon'; src:url('https://cdn.jsdelivr.net/gh/webfontworld/GyeonggiCheonnyeon@main/GyeonggiCheonnyeonBold.woff2') format('woff2'); font-weight:700; font-display:swap; }
+    .logo-wrap { display:flex; align-items:center; gap:8px; text-decoration:none; }
+    .logo-badge { display:flex; flex-direction:column; align-items:center; justify-content:center; background:#C0252D; color:white; font-family:'SeoulHangang','Pretendard',sans-serif; font-weight:700; font-size:13.5px; line-height:1.2; width:28px; height:36px; flex-shrink:0; border-radius:3px; }
+    .logo-name { font-family:'GyeonggiCheonnyeon','Noto Serif KR',serif; font-size:21px; font-weight:700; color:#0a0a0a; letter-spacing:-0.025em; line-height:1; white-space:nowrap; }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<header class="sticky top-0 z-40 w-full bg-white border-b border-black/[0.06]">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 h-14 flex items-center justify-between gap-4">
+    <a href="index.html" class="shrink-0" aria-label="매일백세한의원 홈">
+      <img src="assets/logo.png" alt="매일백세한의원" class="h-9 w-auto" loading="eager">
+    </a>
+    <nav class="hidden lg:flex items-center gap-0.5" aria-label="주 메뉴">
+      <a href="diet.html"       class="px-3.5 py-2 text-sm text-[#525252] hover:text-[#0a0a0a] font-medium rounded-lg hover:bg-black/[0.04] transition-colors">매일감비환</a>
+      <a href="gongjindan.html" class="px-3.5 py-2 text-sm text-[#525252] hover:text-[#0a0a0a] font-medium rounded-lg hover:bg-black/[0.04] transition-colors">공진단</a>
+      <a href="nmc.html"        class="px-3.5 py-2 text-sm text-[#525252] hover:text-[#0a0a0a] font-medium rounded-lg hover:bg-black/[0.04] transition-colors">무릎관절 NMC</a>
+      <a href="about.html"      class="px-3.5 py-2 text-sm font-bold text-brand rounded-lg bg-brand-light">원장 소개</a>
+    </nav>
+    <div class="flex items-center gap-2 shrink-0">
+      <a href="tel:0222340102" aria-label="전화" class="inline-flex lg:hidden items-center justify-center w-9 h-9 rounded-full bg-brand-light text-brand hover:bg-brand hover:text-white transition-colors">
+        <iconify-icon icon="solar:phone-linear" width="17"></iconify-icon>
+      </a>
+      <a href="tel:0222340102" class="hidden lg:inline-flex items-center gap-1.5 px-3.5 py-2 text-sm font-bold text-brand hover:bg-brand-light rounded-lg transition-colors">02-2234-0102</a>
+      <a href="https://pf.kakao.com/_JEzRK/chat" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-bold bg-[#FAE100] text-[#3C1E1E] rounded-lg hover:brightness-95 transition-all">
+        <iconify-icon icon="solar:chat-line-bold" width="15"></iconify-icon>
+        <span class="hidden sm:inline">카톡 상담</span>
+      </a>
+      <a href="https://docs.google.com/forms/d/1g2IhZ3c4dqW5nhrYuZBgguIPKBULiZZWI_PgroqlseQ/viewform" target="_blank" rel="noopener" class="hidden md:inline-flex items-center px-4 py-2 text-sm font-semibold bg-[#0a0a0a] text-white rounded-lg hover:bg-[#2a2a2a] transition-colors">
+        비대면 신청
+      </a>
+    </div>
+  </div>
+  <div class="lg:hidden border-t border-black/[0.05] bg-white/98">
+    <div class="flex items-center gap-1.5 px-4 py-2.5 overflow-x-auto">
+      <a href="diet.html"       class="shrink-0 px-3 py-1.5 text-xs font-semibold text-[#525252] bg-[#F5F5F5] rounded-full border border-black/[0.07] whitespace-nowrap hover:border-black/20 transition-all">매일감비환</a>
+      <a href="gongjindan.html" class="shrink-0 px-3 py-1.5 text-xs font-semibold text-[#525252] bg-[#F5F5F5] rounded-full border border-black/[0.07] whitespace-nowrap hover:border-black/20 transition-all">공진단</a>
+      <a href="nmc.html"        class="shrink-0 px-3 py-1.5 text-xs font-semibold text-[#525252] bg-[#F5F5F5] rounded-full border border-black/[0.07] whitespace-nowrap hover:border-black/20 transition-all">무릎관절 NMC</a>
+      <a href="about.html"      class="shrink-0 px-3 py-1.5 text-xs font-bold text-brand bg-brand-light rounded-full border border-brand/20 whitespace-nowrap">원장 소개</a>
+    </div>
+  </div>
+</header>
+
+<!-- ── 01 HERO — Philosophy Quote ── -->
+<section class="bg-white overflow-hidden">
+  <div class="max-w-6xl mx-auto px-5 md:px-8 pt-16 pb-20 md:pt-24 md:pb-28">
+    <div class="reveal text-center max-w-3xl mx-auto">
+      <p class="text-[10px] font-bold tracking-[0.2em] text-[#8C8A87] uppercase mb-8">원장 소개 · 매일백세한의원</p>
+      <div class="relative mb-6">
+        <span class="absolute -top-4 left-1/2 -translate-x-1/2 font-serif text-7xl md:text-8xl text-brand/15 leading-none select-none">&ldquo;</span>
+        <h1 class="font-serif text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.25] tracking-[-0.025em] text-[#0a0a0a] pt-8">
+          직접 해보고<br>효과 있는 진료만<br>권해드립니다
+        </h1>
+      </div>
+      <p class="text-sm text-[#8C8A87] mt-4">— 송원석 원장 · 매일백세한의원 대표원장</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── 02 원장 프로필 ── -->
+<section class="bg-[#F8F6F2]">
+  <div class="max-w-6xl mx-auto px-5 md:px-8 py-16 md:py-24">
+    <div class="reveal grid md:grid-cols-[260px_1fr] gap-10 md:gap-14 items-start">
+      <!-- Photo -->
+      <div>
+        <div class="relative aspect-[3/4] rounded-3xl overflow-hidden bg-white border border-black/[0.05] shadow-sm w-48 md:w-full mx-auto">
+          <img src="assets/photos/director.webp" alt="매일백세한의원 송원석 원장"
+               class="absolute inset-0 w-full h-full object-cover" loading="eager">
+        </div>
+        <div class="mt-4 text-center md:text-left">
+          <p class="font-bold text-[#0a0a0a]">송원석</p>
+          <p class="text-sm text-[#525252]">매일백세한의원 대표원장</p>
+        </div>
+      </div>
+      <!-- Bio -->
+      <div>
+        <p class="text-[10px] font-bold tracking-[0.2em] text-[#8C8A87] uppercase mb-6">About Director</p>
+        <h2 class="font-serif text-2xl md:text-3xl font-bold text-[#0a0a0a] leading-snug mb-6">환자 한 분 한 분을<br>직접 상담합니다</h2>
+        <p class="text-base text-[#525252] leading-[1.8] mb-8">대전대학교 한의과대학을 졸업한 송원석 원장이 모든 환자분의 체질과 증상을 직접 확인한 뒤 한약을 처방합니다. 매일감비환·공진단·총명공진단·NMC 무릎 치료 모두 원장이 직접 처방하고 감독합니다.</p>
+
+        <!-- Key facts grid -->
+        <div class="grid sm:grid-cols-2 gap-3">
+          <div class="bg-white rounded-xl border border-black/[0.06] p-4">
+            <p class="text-[10px] font-bold text-[#8C8A87] mb-1">출신</p>
+            <p class="text-sm font-semibold text-[#0a0a0a]">대전대학교 한의과대학 (05학번)</p>
+          </div>
+          <div class="bg-white rounded-xl border border-black/[0.06] p-4">
+            <p class="text-[10px] font-bold text-[#8C8A87] mb-1">경력</p>
+            <p class="text-sm font-semibold text-[#0a0a0a]">개원 11년차 · 누적 진료 82만건+</p>
+          </div>
+          <div class="bg-white rounded-xl border border-black/[0.06] p-4">
+            <p class="text-[10px] font-bold text-[#8C8A87] mb-1">공진단</p>
+            <p class="text-sm font-semibold text-[#0a0a0a]">한의원 내 직접 조제 3만구+</p>
+          </div>
+          <div class="bg-white rounded-xl border border-black/[0.06] p-4">
+            <p class="text-[10px] font-bold text-[#8C8A87] mb-1">진료 방식</p>
+            <p class="text-sm font-semibold text-[#0a0a0a]">대면 + 비대면 (전국 처방 가능)</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 03 약력 ── -->
+<section class="bg-white">
+  <div class="max-w-4xl mx-auto px-5 md:px-8 py-16 md:py-24">
+    <div class="reveal text-center mb-10">
+      <p class="text-[10px] font-bold tracking-[0.2em] text-[#8C8A87] uppercase mb-3">Credentials</p>
+      <h2 class="font-serif text-3xl font-bold text-[#0a0a0a]">원장 약력</h2>
+    </div>
+    <div class="reveal space-y-3">
+      <div class="flex gap-4 p-5 bg-[#F8F6F2] rounded-xl border border-black/[0.05]">
+        <iconify-icon icon="solar:diploma-verified-linear" width="20" class="text-brand shrink-0 mt-0.5"></iconify-icon>
+        <p class="text-sm text-[#0a0a0a]">매일백세한의원 대표원장</p>
+      </div>
+      <div class="flex gap-4 p-5 bg-[#F8F6F2] rounded-xl border border-black/[0.05]">
+        <iconify-icon icon="solar:building-2-linear" width="20" class="text-[#8C8A87] shrink-0 mt-0.5"></iconify-icon>
+        <p class="text-sm text-[#0a0a0a]">전) 365백세한의원 대표</p>
+      </div>
+      <div class="flex gap-4 p-5 bg-[#F8F6F2] rounded-xl border border-black/[0.05]">
+        <iconify-icon icon="solar:book-bookmark-linear" width="20" class="text-[#8C8A87] shrink-0 mt-0.5"></iconify-icon>
+        <p class="text-sm text-[#0a0a0a]">전) 대한상한금궤학회 교육위원</p>
+      </div>
+      <div class="flex gap-4 p-5 bg-[#F8F6F2] rounded-xl border border-black/[0.05]">
+        <iconify-icon icon="solar:hospital-linear" width="20" class="text-[#8C8A87] shrink-0 mt-0.5"></iconify-icon>
+        <p class="text-sm text-[#0a0a0a]">전) 건강보험공단 등급판정의원</p>
+      </div>
+      <div class="flex gap-4 p-5 bg-[#F8F6F2] rounded-xl border border-black/[0.05]">
+        <iconify-icon icon="solar:users-group-rounded-linear" width="20" class="text-[#8C8A87] shrink-0 mt-0.5"></iconify-icon>
+        <p class="text-sm text-[#0a0a0a]">대한한방비만학회 회원</p>
+      </div>
+      <div class="flex gap-4 p-5 bg-[#F8F6F2] rounded-xl border border-black/[0.05]">
+        <iconify-icon icon="solar:heart-linear" width="20" class="text-[#8C8A87] shrink-0 mt-0.5"></iconify-icon>
+        <p class="text-sm text-[#0a0a0a]">열린의사회 회원 · 국경없는의사회 회원</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 04 진료 철학 ── -->
+<section class="bg-[#F8F6F2]">
+  <div class="max-w-4xl mx-auto px-5 md:px-8 py-16 md:py-24">
+    <div class="reveal text-center mb-10">
+      <p class="text-[10px] font-bold tracking-[0.2em] text-[#8C8A87] uppercase mb-3">Philosophy</p>
+      <h2 class="font-serif text-3xl font-bold text-[#0a0a0a]">진료 철학</h2>
+    </div>
+    <div class="reveal space-y-5">
+      <div class="bg-white rounded-2xl border border-black/[0.06] p-7 shadow-sm">
+        <div class="flex gap-4 items-start">
+          <div class="w-10 h-10 rounded-xl bg-brand-light flex items-center justify-center shrink-0">
+            <iconify-icon icon="solar:user-check-linear" width="18" class="text-brand"></iconify-icon>
+          </div>
+          <div>
+            <h3 class="font-bold text-[#0a0a0a] mb-2">체질 먼저, 처방은 그 다음</h3>
+            <p class="text-sm text-[#525252] leading-relaxed">한의학은 단순히 증상을 누르는 것이 아니라 환자의 체질을 이해하고 생활습관과 함께 조율하는 의학입니다. 다이어트 한약이든 공진단이든, 표준화된 처방을 그대로 내리기보다 환자 한 분의 체질·생활·목표를 함께 보고 처방합니다.</p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl border border-black/[0.06] p-7 shadow-sm">
+        <div class="flex gap-4 items-start">
+          <div class="w-10 h-10 rounded-xl bg-brand-light flex items-center justify-center shrink-0">
+            <iconify-icon icon="solar:stethoscope-linear" width="18" class="text-brand"></iconify-icon>
+          </div>
+          <div>
+            <h3 class="font-bold text-[#0a0a0a] mb-2">직접 해보고 권합니다</h3>
+            <p class="text-sm text-[#525252] leading-relaxed">매일감비환은 아내의 산후 체중 문제를 보며 직접 연구했고, 공진단은 아버지의 심방세동 회복에 직접 처방한 경험에서 확신을 얻었습니다. NMC 프로토콜은 원장 본인의 강직성 척추염 관리에서 시작됐습니다.</p>
+          </div>
+        </div>
+      </div>
+      <div class="bg-white rounded-2xl border border-black/[0.06] p-7 shadow-sm">
+        <div class="flex gap-4 items-start">
+          <div class="w-10 h-10 rounded-xl bg-brand-light flex items-center justify-center shrink-0">
+            <iconify-icon icon="solar:diploma-linear" width="18" class="text-brand"></iconify-icon>
+          </div>
+          <div>
+            <h3 class="font-bold text-[#0a0a0a] mb-2">비대면도 진료 품질은 같습니다</h3>
+            <p class="text-sm text-[#525252] leading-relaxed">비대면 진료를 적극 운영하지만, 안전한 처방을 위해 구글 설문지를 통한 자세한 체질·증상 확인과 원장님의 전화 상담을 반드시 거칩니다. 멀리 계셔도 진료의 질이 떨어지지 않도록 운영합니다.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 05 유튜브 채널 ── -->
+<section class="bg-white">
+  <div class="max-w-6xl mx-auto px-5 md:px-8 py-16 md:py-24">
+    <div class="reveal text-center mb-12">
+      <p class="text-[10px] font-bold tracking-[0.2em] text-[#8C8A87] uppercase mb-3">YouTube</p>
+      <h2 class="font-serif text-3xl font-bold text-[#0a0a0a]">유튜브 콘텐츠</h2>
+      <p class="text-sm text-[#525252] mt-3 max-w-md mx-auto">한방 의학 정보의 투명한 공유를 중요하게 생각합니다. 세 개의 채널을 통해 실제 진료 사례와 정보를 공개합니다.</p>
+    </div>
+    <div class="grid md:grid-cols-3 gap-5">
+      <a href="https://www.youtube.com/channel/UC6Mf-wiyKvWup51wgGzjE4A" target="_blank" rel="noopener"
+         class="reveal yt-card block bg-[#F8F6F2] rounded-2xl border border-black/[0.06] p-6 hover:no-underline">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="text-red-600"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </div>
+          <div>
+            <p class="text-[10px] font-bold text-[#8C8A87] uppercase">다이어트</p>
+          </div>
+        </div>
+        <h3 class="font-bold text-[#0a0a0a] mb-2">엄마들을 위한 다이어트</h3>
+        <p class="text-sm text-[#525252] leading-relaxed mb-4">기초대사량 회복·감비환 복용 후기·다이어트 팁을 공유하는 채널</p>
+        <span class="text-xs font-bold text-brand">채널 바로가기 →</span>
+      </a>
+      <a href="https://www.youtube.com/@%EC%A7%81%EC%A0%91%EB%A7%8C%EB%93%A0%EC%A7%84%EC%A7%9C%EA%B3%B5%EC%A7%84%EB%8B%A8" target="_blank" rel="noopener"
+         class="reveal yt-card block bg-[#F8F6F2] rounded-2xl border border-black/[0.06] p-6 hover:no-underline">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="text-red-600"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </div>
+          <div>
+            <p class="text-[10px] font-bold text-[#8C8A87] uppercase">공진단</p>
+          </div>
+        </div>
+        <h3 class="font-bold text-[#0a0a0a] mb-2">직접 만든 진짜 공진단</h3>
+        <p class="text-sm text-[#525252] leading-relaxed mb-4">사향 조제 전 과정·진품 확인법·공진단 복용 사례를 투명하게 공개하는 채널</p>
+        <span class="text-xs font-bold text-brand">채널 바로가기 →</span>
+      </a>
+      <a href="https://www.youtube.com/@%EB%A7%A4%EC%9D%BC%EB%B0%B1%EC%84%B8%ED%95%9C%EC%9D%98%EC%9B%90_%ED%86%B5%EC%A6%9D" target="_blank" rel="noopener"
+         class="reveal yt-card block bg-[#F8F6F2] rounded-2xl border border-black/[0.06] p-6 hover:no-underline">
+        <div class="flex items-center gap-3 mb-4">
+          <div class="w-10 h-10 rounded-full bg-red-100 flex items-center justify-center">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" class="text-red-600"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </div>
+          <div>
+            <p class="text-[10px] font-bold text-[#8C8A87] uppercase">통증</p>
+          </div>
+        </div>
+        <h3 class="font-bold text-[#0a0a0a] mb-2">매일백세한의원 통증</h3>
+        <p class="text-sm text-[#525252] leading-relaxed mb-4">무릎·통증 치료 사례와 NMC 프로토콜을 공유하는 채널</p>
+        <span class="text-xs font-bold text-brand">채널 바로가기 →</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── 06 한의원 외관 ── -->
+<section class="bg-[#F8F6F2]">
+  <div class="max-w-6xl mx-auto px-5 md:px-8 py-16 md:py-20">
+    <div class="reveal grid md:grid-cols-2 gap-10 items-center">
+      <div class="relative aspect-[4/3] rounded-3xl overflow-hidden bg-white border border-black/[0.06] shadow-sm">
+        <img src="assets/photos/clinic-exterior.webp" alt="매일백세한의원 외관"
+             class="absolute inset-0 w-full h-full object-cover" loading="lazy">
+      </div>
+      <div>
+        <p class="text-[10px] font-bold tracking-[0.2em] text-[#8C8A87] uppercase mb-4">Location</p>
+        <h2 class="font-serif text-2xl md:text-3xl font-bold text-[#0a0a0a] mb-6 leading-snug">서울 중랑구<br>먹골역 도보 5분</h2>
+        <div class="space-y-4">
+          <div class="flex gap-3 items-start">
+            <iconify-icon icon="solar:map-point-linear" width="18" class="text-brand mt-0.5 shrink-0"></iconify-icon>
+            <div>
+              <p class="font-bold text-[#0a0a0a] text-sm">주소</p>
+              <p class="text-sm text-[#525252]">서울특별시 중랑구 공릉로 21</p>
+            </div>
+          </div>
+          <div class="flex gap-3 items-start">
+            <iconify-icon icon="solar:tram-linear" width="18" class="text-brand mt-0.5 shrink-0"></iconify-icon>
+            <div>
+              <p class="font-bold text-[#0a0a0a] text-sm">교통</p>
+              <p class="text-sm text-[#525252]">먹골역 (7호선) 도보 5분<br>태릉입구역 (6·7호선) 도보 10분</p>
+            </div>
+          </div>
+          <div class="flex gap-3 items-start">
+            <iconify-icon icon="solar:clock-circle-linear" width="18" class="text-brand mt-0.5 shrink-0"></iconify-icon>
+            <div>
+              <p class="font-bold text-[#0a0a0a] text-sm">진료 시간</p>
+              <p class="text-sm text-[#525252]">평일 09:30~18:30 (점심 13:00~14:00)<br>토요일 09:30~13:00 · 일요일 휴진</p>
+            </div>
+          </div>
+          <div class="flex gap-3 items-start">
+            <iconify-icon icon="solar:phone-linear" width="18" class="text-brand mt-0.5 shrink-0"></iconify-icon>
+            <div>
+              <p class="font-bold text-[#0a0a0a] text-sm">전화</p>
+              <a href="tel:0222340102" class="text-sm text-brand font-bold hover:text-brand-dark transition-colors">02-2234-0102</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 07 진료 메뉴 ── -->
+<section class="bg-white">
+  <div class="max-w-6xl mx-auto px-5 md:px-8 py-16 md:py-24">
+    <div class="reveal text-center mb-12">
+      <p class="text-[10px] font-bold tracking-[0.2em] text-[#8C8A87] uppercase mb-3">Treatments</p>
+      <h2 class="font-serif text-3xl font-bold text-[#0a0a0a]">진료 항목</h2>
+    </div>
+    <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <a href="diet.html" class="reveal group block bg-[#F8F6F2] rounded-2xl border border-black/[0.06] p-6 hover:border-brand/30 hover:bg-brand-light transition-colors">
+        <div class="w-10 h-10 rounded-xl bg-white border border-black/[0.06] flex items-center justify-center mb-4 group-hover:border-brand/20 transition-colors">
+          <iconify-icon icon="solar:health-linear" width="18" class="text-brand"></iconify-icon>
+        </div>
+        <h3 class="font-bold text-[#0a0a0a] mb-2">매일감비환 다이어트</h3>
+        <p class="text-sm text-[#525252] leading-relaxed">기초대사량 회복에 특화된 한방 다이어트. 비대면 전국 처방.</p>
+        <p class="text-xs font-bold text-brand mt-3">자세히 보기 →</p>
+      </a>
+      <a href="gongjindan.html" class="reveal group block bg-[#F8F6F2] rounded-2xl border border-black/[0.06] p-6 hover:border-brand/30 hover:bg-brand-light transition-colors">
+        <div class="w-10 h-10 rounded-xl bg-white border border-black/[0.06] flex items-center justify-center mb-4 group-hover:border-brand/20 transition-colors">
+          <iconify-icon icon="solar:star-linear" width="18" class="text-brand"></iconify-icon>
+        </div>
+        <h3 class="font-bold text-[#0a0a0a] mb-2">공진단 · 총명공진단</h3>
+        <p class="text-sm text-[#525252] leading-relaxed">원장이 직접 제조하는 사향·녹용 공진단. 수험생·갱년기·기력회복.</p>
+        <p class="text-xs font-bold text-brand mt-3">자세히 보기 →</p>
+      </a>
+      <a href="nmc.html" class="reveal group block bg-[#F8F6F2] rounded-2xl border border-black/[0.06] p-6 hover:border-brand/30 hover:bg-brand-light transition-colors">
+        <div class="w-10 h-10 rounded-xl bg-white border border-black/[0.06] flex items-center justify-center mb-4 group-hover:border-brand/20 transition-colors">
+          <iconify-icon icon="solar:bone-linear" width="18" class="text-brand"></iconify-icon>
+        </div>
+        <h3 class="font-bold text-[#0a0a0a] mb-2">무릎관절 NMC</h3>
+        <p class="text-sm text-[#525252] leading-relaxed">염증 무력화→구조 재건 한방 프로토콜. 침·한약 병행 치료.</p>
+        <p class="text-xs font-bold text-brand mt-3">자세히 보기 →</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── 08 FINAL CTA ── -->
+<section class="bg-[#111110] text-white">
+  <div class="max-w-4xl mx-auto px-5 md:px-8 py-16 md:py-24 text-center">
+    <p class="text-[10px] font-bold tracking-[0.25em] text-brand uppercase mb-4">Contact</p>
+    <h2 class="font-serif text-3xl md:text-4xl font-bold mb-4 leading-snug">상담은 부담 없이,<br>처방은 체질 확인 후</h2>
+    <p class="text-white/60 mb-10 max-w-lg mx-auto text-base leading-relaxed">전화·카카오톡·비대면 신청 모두 가능합니다. 안 맞는 분께는 처방하지 않습니다. 평일 09:30~18:30, 토요일 09:30~13:00.</p>
+    <div class="flex flex-wrap gap-3 justify-center">
+      <a href="https://docs.google.com/forms/d/1g2IhZ3c4dqW5nhrYuZBgguIPKBULiZZWI_PgroqlseQ/viewform" target="_blank" rel="noopener"
+         class="btn-primary inline-flex items-center gap-2.5 px-8 py-4 bg-brand text-white font-bold rounded-full text-sm">
+        비대면 진료 신청
+      </a>
+      <a href="https://pf.kakao.com/_JEzRK/chat" target="_blank" rel="noopener"
+         class="btn-ghost inline-flex items-center gap-2 px-8 py-4 bg-[#FAE100] text-[#3C1E1E] font-bold rounded-full text-sm hover:brightness-95">
+        카카오톡 상담
+      </a>
+      <a href="tel:0222340102" class="btn-ghost inline-flex items-center gap-2 px-8 py-4 border border-white/20 text-white font-bold rounded-full text-sm hover:border-white/50 transition-colors">
+        <iconify-icon icon="solar:phone-linear" width="15"></iconify-icon>
+        02-2234-0102
+      </a>
+    </div>
+    <p class="mt-8 text-white/35 text-sm">서울 중랑구 공릉로 21 · 먹골역 도보 5분</p>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="bg-[#0a0a0a] border-t border-white/[0.06]">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 lg:px-12 py-12 md:py-14">
+    <div class="flex flex-col md:flex-row md:items-start justify-between gap-10">
+      <div class="md:max-w-[240px]">
+        <div class="logo-wrap mb-5">
+          <span class="logo-badge" style="height:44px; width:32px; font-size:14px;">매<br>일</span>
+          <span class="logo-name" style="color:white; font-size:24px;">백세한의원</span>
+        </div>
+        <address class="not-italic text-sm text-white/40 leading-[1.9]">
+          서울특별시 중랑구 공릉로 21<br>
+          먹골역 도보 5분 (7호선)<br>
+          <a href="tel:0222340102" class="hover:text-white transition-colors">02-2234-0102</a>
+        </address>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+        <div>
+          <p class="text-[10px] font-bold tracking-[0.18em] text-white/30 uppercase mb-4">진료</p>
+          <ul class="space-y-2.5">
+            <li><a href="diet.html"        class="text-sm text-white/55 hover:text-white transition-colors">매일감비환</a></li>
+            <li><a href="gongjindan.html"  class="text-sm text-white/55 hover:text-white transition-colors">공진단</a></li>
+            <li><a href="nmc.html"         class="text-sm text-white/55 hover:text-white transition-colors">무릎관절 NMC</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-[10px] font-bold tracking-[0.18em] text-white/30 uppercase mb-4">한의원</p>
+          <ul class="space-y-2.5">
+            <li><a href="about.html"   class="text-sm text-white/55 hover:text-white transition-colors">원장 소개</a></li>
+            <li><a href="index.html"   class="text-sm text-white/55 hover:text-white transition-colors">메인 페이지</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-[10px] font-bold tracking-[0.18em] text-white/30 uppercase mb-4">상담</p>
+          <ul class="space-y-2.5">
+            <li><a href="tel:0222340102" class="text-sm text-white/55 hover:text-white transition-colors">전화 02-2234-0102</a></li>
+            <li><a href="https://pf.kakao.com/_JEzRK/chat" target="_blank" rel="noopener" class="text-sm text-white/55 hover:text-white transition-colors">카카오톡 채널</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mt-12 pt-6 border-t border-white/[0.06]">
+      <p class="text-xs text-white/25">&copy; 2026 매일백세한의원. 대표원장 송원석</p>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE BOTTOM BAR -->
+<div class="fixed bottom-0 inset-x-0 z-50 md:hidden bg-white/96 backdrop-blur-md border-t border-black/[0.08] px-4 py-3">
+  <div class="flex gap-2.5">
+    <a href="tel:0222340102" class="flex-1 inline-flex items-center justify-center gap-2 py-3 border-2 border-brand text-brand text-sm font-bold rounded-xl hover:bg-brand hover:text-white transition-all">
+      <iconify-icon icon="solar:phone-bold" width="16"></iconify-icon>
+      전화 상담
+    </a>
+    <a href="https://pf.kakao.com/_JEzRK/chat" target="_blank" rel="noopener" class="flex-1 inline-flex items-center justify-center gap-2 py-3 bg-brand text-white text-sm font-bold rounded-xl hover:bg-brand-dark transition-all">
+      <iconify-icon icon="solar:chat-line-bold" width="16"></iconify-icon>
+      카톡 상담
+    </a>
+  </div>
+</div>
+<div class="h-20 md:hidden" aria-hidden="true"></div>
+
+<script>
+  (function(){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.08, rootMargin: '0px 0px -48px 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
+  })();
+</script>
+</body>
+</html>

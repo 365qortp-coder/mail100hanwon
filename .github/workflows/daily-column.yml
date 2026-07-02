@@ -38,20 +38,33 @@ jobs:
           COLUMNS_PER_RUN: "2"
         run: npm run generate:column
 
+      - name: Generate static HTML + sitemap
+        run: node scripts/generate-static-columns.mjs
+
       - name: Commit and push
         id: commit
         run: |
           git config user.name "Mail100han Bot"
           git config user.email "bot@mail100hanwon.co.kr"
           if [ -n "$(git status --porcelain)" ]; then
-            git add content/
-            git commit -m "chore(columns): auto-generate daily column"
+            git add content/ 디자인리뉴얼/columns/ 디자인리뉴얼/columns.html 디자인리뉴얼/sitemap.xml
+            git commit -m "chore(columns): auto-generate daily column + static HTML"
             git push
             echo "pushed=true" >> "$GITHUB_OUTPUT"
           else
             echo "No new content to commit."
             echo "pushed=false" >> "$GITHUB_OUTPUT"
           fi
+
+      - name: Deploy to Vercel
+        if: steps.commit.outputs.pushed == 'true'
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+        run: |
+          cd 디자인리뉴얼
+          npx vercel deploy --prod \
+            --token $VERCEL_TOKEN \
+            --scope team_NVkTbzTIDWtlDnZgFQ54CHNf
 
       - name: Notify Telegram (success)
         if: success() && steps.commit.outputs.pushed == 'true'
