@@ -2,12 +2,6 @@
   "_comment": "Add YouTube video URLs/IDs here. The daily automation will pick one unprocessed video at a time and convert it into a column. After processing, the entry is moved to the 'processed' array with the resulting column slug.",
   "queue": [
     {
-      "url": "https://www.youtube.com/watch?v=-3G1jReKopg",
-      "hint": "[diet] ko 다이어트 하려고 노력하는데도 살이 잘 안 빠진다. 운동도 해보고 식",
-      "videoId": "-3G1jReKopg",
-      "angles": []
-    },
-    {
       "url": "https://www.youtube.com/watch?v=-8HWY8FwXBs",
       "hint": "[diet] ko 제가 직접 올리브유를 먹어 보면서 느끼는게 제일 좋은 건 배가 고프",
       "videoId": "-8HWY8FwXBs",
@@ -843,6 +837,19 @@
           "slug": "공진단이란-효능과-어떤-분에게-적합한지-한방-기본-안내-intro-djzJKo",
           "title": "공진단이란? 효능과 어떤 분에게 적합한지 한방 기본 안내",
           "at": "2026-07-02T13:01:24.436Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=-3G1jReKopg",
+      "hint": "[diet] ko 다이어트 하려고 노력하는데도 살이 잘 안 빠진다. 운동도 해보고 식",
+      "videoId": "-3G1jReKopg",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "매일감비환이란-한방-다이어트-한약-효능과-적합-대상-기본-안내-intro--3G1jR",
+          "title": "매일감비환이란? 한방 다이어트 한약 효능과 적합 대상 기본 안내",
+          "at": "2026-07-02T13:10:43.132Z"
         }
       ]
     }

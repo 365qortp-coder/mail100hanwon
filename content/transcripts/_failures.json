@@ -1,9 +1,5 @@
 [
   {
-    "id": "RyXL-RGultg",
-    "hint": "[diet] ���� �����ϰ� ����� �� �컩�¹�"
-  },
-  {
     "id": "ufitJpzTqJ8",
     "hint": "[diet] If your basal metabolic rate is low, stop dieting for now"
   },
@@ -26,5 +22,9 @@
   {
     "id": "OoqZNUbwtp8",
     "hint": "[gongjindan] �鿪�� ��� �÷��ִ� Ȯ���� ���"
+  },
+  {
+    "id": "RyXL-RGultg",
+    "hint": "[diet] ���� �����ϰ� ����� �� �컩�¹�"
   }
 ]
