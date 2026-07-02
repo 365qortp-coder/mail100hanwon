@@ -3,12 +3,9 @@ import { clinic } from "@/data/clinic";
 import { Logo } from "@/components/Logo";
 
 const navItems = [
-  { href: "/treatments/diet", label: "매일감비환" },
-  { href: "/treatments/gongjindan", label: "공진단" },
-  { href: "/treatments/chongmyeong", label: "총명공진단" },
-  { href: "/treatments/pain", label: "통증치료" },
-  { href: "/online", label: "비대면 진료" },
-  { href: "/pricing", label: "비용 안내" },
+  { href: "/diet", label: "매일감비환" },
+  { href: "/gongjindan", label: "공진단" },
+  { href: "/nmc", label: "무릎관절 NMC" },
   { href: "/about", label: "원장 소개" },
   { href: "/columns", label: "건강 칼럼" },
 ];

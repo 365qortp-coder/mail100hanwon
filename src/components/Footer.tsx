@@ -52,28 +52,18 @@ export function Footer() {
             <h4 className="font-bold mb-3 text-white">진료 안내</h4>
             <ul className="text-sm text-white/70 space-y-2">
               <li>
-                <Link href="/treatments/diet" className="hover:text-white">
+                <Link href="/diet" className="hover:text-white">
                   매일감비환 다이어트
                 </Link>
               </li>
               <li>
-                <Link href="/treatments/gongjindan" className="hover:text-white">
+                <Link href="/gongjindan" className="hover:text-white">
                   공진단
                 </Link>
               </li>
               <li>
-                <Link href="/treatments/chongmyeong" className="hover:text-white">
-                  총명공진단
-                </Link>
-              </li>
-              <li>
-                <Link href="/treatments/pain" className="hover:text-white">
-                  통증 치료
-                </Link>
-              </li>
-              <li>
-                <Link href="/online" className="hover:text-white">
-                  비대면 진료
+                <Link href="/nmc" className="hover:text-white">
+                  무릎관절 NMC
                 </Link>
               </li>
               <li>

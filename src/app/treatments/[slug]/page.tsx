@@ -14,7 +14,7 @@ import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTAButtons } from "@/components/CTAButtons";
 import { KeyFactsBox } from "@/components/KeyFactsBox";
 import { treatments, getTreatment } from "@/data/treatments";
-import { pricing, formatPrice } from "@/data/pricing";
+import { pricing, gongjindanPricing, formatPrice } from "@/data/pricing";
 import { clinic } from "@/data/clinic";
 
 function ctaPropsFor(category: string) {
@@ -58,7 +58,8 @@ export default async function TreatmentPage({ params }: { params: Params }) {
   const t = getTreatment(slug);
   if (!t) return notFound();
 
-  const showPricing = t.category === "diet";
+  const showPricing = t.category === "diet" || t.category === "gongjindan";
+  const activePricing = t.category === "gongjindan" ? gongjindanPricing : pricing;
 
   return (
     <>
@@ -100,6 +101,28 @@ export default async function TreatmentPage({ params }: { params: Params }) {
           </div>
         </div>
       </section>
+
+      {/* 공진단 통계 */}
+      {t.category === "gongjindan" && (
+        <section className="border-b border-[var(--border)] bg-[var(--brand-primary-light)]">
+          <div className="mx-auto max-w-6xl px-4 py-8">
+            <dl className="grid grid-cols-3 gap-6 text-center">
+              <div>
+                <dt className="text-xs font-semibold text-[var(--brand-primary)] uppercase tracking-wide mb-1">누적 처방</dt>
+                <dd className="text-3xl font-bold">3,000<span className="text-lg font-semibold">회+</span></dd>
+              </div>
+              <div>
+                <dt className="text-xs font-semibold text-[var(--brand-primary)] uppercase tracking-wide mb-1">2025년 조제</dt>
+                <dd className="text-3xl font-bold">19,000<span className="text-lg font-semibold">구+</span></dd>
+              </div>
+              <div>
+                <dt className="text-xs font-semibold text-[var(--brand-primary)] uppercase tracking-wide mb-1">재처방률</dt>
+                <dd className="text-3xl font-bold">72<span className="text-lg font-semibold">%</span></dd>
+              </div>
+            </dl>
+          </div>
+        </section>
+      )}
 
       {/* 핵심 요약 */}
       <Section bg="white">
@@ -153,7 +176,7 @@ export default async function TreatmentPage({ params }: { params: Params }) {
           <>
             <h2 className="text-2xl font-bold mt-12 mb-5">비용 안내</h2>
             <div className="space-y-6">
-              {pricing.map((group) => (
+              {activePricing.map((group) => (
                 <div key={group.label}>
                   <h3 className="font-bold mb-3">{group.label}</h3>
                   <div className="overflow-x-auto rounded-xl border border-[var(--border)]">

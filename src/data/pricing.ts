@@ -27,6 +27,36 @@ export const pricing: PricingItem[] = [
   },
 ];
 
+export const gongjindanPricing: PricingItem[] = [
+  {
+    label: "사향공진단",
+    packages: [
+      { name: "30구 (약 1개월)", price: 1350000, unit: "원" },
+      { name: "60구 (약 2개월)", price: 2400000, unit: "원" },
+      { name: "100구", price: 3500000, unit: "원" },
+    ],
+    note: "천연 사향 100mg 포함. 기력 상승·남성 스태미너·뇌기능 회복.",
+  },
+  {
+    label: "녹용 2배 공진단",
+    packages: [
+      { name: "30구 (약 1개월)", price: 420000, unit: "원" },
+      { name: "60구 (약 2개월)", price: 780000, unit: "원" },
+      { name: "120구", price: 1200000, unit: "원" },
+    ],
+    note: "체력·면역력 회복, 수술 후·항암 후 회복에 적합.",
+  },
+  {
+    label: "총명공진단",
+    packages: [
+      { name: "30구 (약 1개월)", price: 450000, unit: "원" },
+      { name: "60구 (약 2개월)", price: 840000, unit: "원" },
+      { name: "90구 (약 3개월)", price: 1080000, unit: "원" },
+    ],
+    note: "수험생·고시생 대상. 원지·석창포 추가 처방.",
+  },
+];
+
 export function formatPrice(price: number) {
   return price.toLocaleString("ko-KR");
 }

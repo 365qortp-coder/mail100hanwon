@@ -1,13 +1,13 @@
 import type { Metadata, Viewport } from "next";
 import { Noto_Sans_KR, Noto_Serif_KR } from "next/font/google";
-import Script from "next/script";
 import "./globals.css";
 
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { FloatingCTA } from "@/components/FloatingCTA";
 import { clinic } from "@/data/clinic";
-import { clinicSchema, directorSchema, jsonLdScript } from "@/lib/schema";
+import { clinicSchema, directorSchema } from "@/lib/schema";
+import { JsonLd } from "@/components/JsonLd";
 
 const sans = Noto_Sans_KR({
   variable: "--font-pretendard",
@@ -121,12 +121,7 @@ export default function RootLayout({
       className={`${sans.variable} ${serif.variable} h-full antialiased`}
     >
       <head>
-        <Script
-          id="schema-clinic"
-          type="application/ld+json"
-          strategy="beforeInteractive"
-          dangerouslySetInnerHTML={jsonLdScript([clinicSchema(), directorSchema()])}
-        />
+        <JsonLd id="schema-clinic" data={[clinicSchema(), directorSchema()]} />
       </head>
       <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)]">
         <Header />

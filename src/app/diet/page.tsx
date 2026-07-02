@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
-import Script from "next/script";
-
 import { buildMetadata } from "@/lib/seo";
-import { faqSchema, jsonLdScript } from "@/lib/schema";
+import { faqSchema } from "@/lib/schema";
+import { JsonLd } from "@/components/JsonLd";
 import { CTAButtons } from "@/components/CTAButtons";
 import { clinic } from "@/data/clinic";
-import { pricing, formatPrice } from "@/data/pricing";
 import { getAllColumns } from "@/lib/columns";
 
 export const metadata: Metadata = buildMetadata({
   title: "매일감비환 | 40~60대 엄마 기초대사량 회복 다이어트 한약",
   description:
-    "굶을수록 살찌는 이유, 기초대사량입니다. 후기 평균 48일 4.5kg 감량, 체지방 위주 근육 유지. 갱년기·폐경 후·40~60대 전문. 마운자로 대신 선택 다수. 1달 11만원~, 비대면 전국 처방. 02-2234-0102.",
+    "40대~갱년기 엄마들을 위한 기초대사회복 다이어트 한약 매일감비환. 2026년 기준 7만건 이상 처방, 오프라인 내원 환자 89.9% 체지방 위주 감량. 후기 평균 48일 4.5kg. 1달 11만원~, 비대면 전국 처방. 02-2234-0102.",
   path: "/diet",
+  ogImage: "/photos/diet-product.webp",
   keywords: [
     "감비환",
     "매일감비환",
@@ -135,35 +135,23 @@ export default function DietPage() {
     .filter((c) => c.category === "다이어트")
     .slice(0, 3);
 
-  const dietPricing = pricing[0];
-  const longTermPricing = pricing[1];
-
   return (
     <>
-      <Script
-        id="schema-diet-faq"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={jsonLdScript(faqSchema(faqs))}
-      />
-      <Script
-        id="schema-diet-product"
-        type="application/ld+json"
-        dangerouslySetInnerHTML={jsonLdScript({
-          "@context": "https://schema.org",
-          "@type": "Product",
-          name: "매일감비환",
-          description:
-            "40~60대 엄마들의 기초대사량 회복 전문 한방 다이어트 한약. 체지방 위주 2~3달 감량 + 6개월 요요방지.",
-          brand: { "@type": "Brand", name: "매일백세한의원" },
-          offers: {
-            "@type": "Offer",
-            price: "110000",
-            priceCurrency: "KRW",
-            availability: "https://schema.org/InStock",
-            seller: { "@type": "Organization", name: clinic.name },
-          },
-        })}
-      />
+      <JsonLd id="schema-diet-faq" data={faqSchema(faqs)} />
+      <JsonLd id="schema-diet-product" data={{
+        "@context": "https://schema.org",
+        "@type": "Product",
+        name: "매일감비환",
+        description: "40대~갱년기 엄마들을 위한 기초대사회복 다이어트 한약. 2026년 7만건 이상 처방, 오프라인 내원 89.9% 체지방 위주 감량. 2~3달 감량 + 6개월 요요방지.",
+        brand: { "@type": "Brand", name: "매일백세한의원" },
+        offers: {
+          "@type": "Offer",
+          price: "110000",
+          priceCurrency: "KRW",
+          availability: "https://schema.org/InStock",
+          seller: { "@type": "Organization", name: clinic.name },
+        },
+      }} />
 
       {/* ── 01 HERO ── */}
       <section className="bg-gradient-to-br from-[var(--brand-primary-light)] to-white border-b border-[var(--border)]">
@@ -184,9 +172,9 @@ export default function DietPage() {
           {/* 수치 배지 */}
           <div className="flex flex-wrap gap-4 mb-10">
             {[
+              { num: "7만건+", label: "2026년 누적 처방" },
+              { num: "89.9%", label: "체지방 위주 감량" },
               { num: "4.5kg", label: "후기 평균 감량" },
-              { num: "48일", label: "후기 평균 기간" },
-              { num: "8건", label: "실제 후기" },
               { num: "11만원~", label: "1달 처방 시작" },
             ].map((b) => (
               <div
@@ -202,18 +190,78 @@ export default function DietPage() {
         </div>
       </section>
 
-      {/* ── 02 TRUST STRIP ── */}
+      {/* ── 02 원장 스토리 ── */}
+      <section className="bg-white border-t border-[var(--border)]">
+        <div className="mx-auto max-w-6xl px-4 py-14 md:py-20 grid md:grid-cols-[220px_1fr] gap-8 items-start">
+          <div className="relative aspect-[3/4] rounded-2xl overflow-hidden bg-[var(--surface-muted)] mx-auto w-44 md:w-full">
+            <Image
+              src="/photos/director.webp"
+              alt="매일백세한의원 송원석 원장"
+              fill
+              className="object-cover"
+              sizes="220px"
+            />
+          </div>
+          <div>
+            <p className="text-xs font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase mb-4">
+              Story · 송원석 원장
+            </p>
+            <h2 className="text-2xl md:text-3xl font-extrabold leading-tight mb-6">
+              아내가 산후에 살이 빠지지 않아서
+              <br />
+              <span className="text-[var(--brand-primary)]">직접 만들었습니다</span>
+            </h2>
+            <div className="space-y-4 text-base text-[var(--text-muted)] leading-relaxed max-w-xl">
+              <p>
+                출산 후 체중이 돌아오지 않는 아내를 보며 한방 다이어트 처방을 직접
+                연구하기 시작했습니다. 굶어서 빠지는 것이 아닌, 기초대사량을 회복해
+                체지방 위주로 빠지는 처방이 필요했습니다.
+              </p>
+              <p>
+                10년 넘게 처방하고 개선해온 결과가 매일감비환입니다.
+                효과 있는 진료만 권해드리겠다는 원칙을 지키기 위해,
+                체질이 맞지 않으면 처방하지 않습니다.
+              </p>
+            </div>
+            <div className="mt-6 flex items-center gap-3">
+              <a
+                href={clinic.youtube.diet}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-[var(--surface-muted)] border border-[var(--border)] text-sm font-semibold hover:border-[var(--brand-primary)] transition"
+              >
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="text-red-600" aria-hidden>
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+                엄마들을 위한 다이어트 채널
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 03 누적 통계 ── */}
       <section className="bg-black text-white">
-        <div className="mx-auto max-w-6xl px-4 py-10 md:py-12">
+        <div className="mx-auto max-w-6xl px-4 py-10 md:py-14">
           <p className="text-[11px] tracking-[0.25em] font-bold text-[var(--brand-primary)] uppercase mb-6 text-center">
-            실제 후기 데이터
+            40대~갱년기 엄마들의 기초대사회복 다이어트 · 2026년 기준
           </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-2xl mx-auto mb-8">
+            <div className="border border-white/10 rounded-2xl p-6 text-center">
+              <p className="text-5xl font-extrabold text-[var(--brand-primary)]">70,000<span className="text-2xl">건+</span></p>
+              <p className="text-sm text-white/60 mt-2">누적 처방 (2026년 기준)</p>
+            </div>
+            <div className="border border-white/10 rounded-2xl p-6 text-center">
+              <p className="text-5xl font-extrabold text-[var(--brand-primary)]">89.9<span className="text-2xl">%</span></p>
+              <p className="text-sm text-white/60 mt-2">체지방 위주 감량 <span className="text-white/40 text-xs">(오프라인 내원 기준)</span></p>
+            </div>
+          </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {[
-              { num: "4.5kg", label: "평균 감량" },
-              { num: "10일", label: "최단 효과 사례" },
+              { num: "4.5kg", label: "후기 평균 감량" },
+              { num: "48일", label: "후기 평균 기간" },
               { num: "8.7kg", label: "최대 감량 (갱년기)" },
-              { num: "다수", label: "마운자로 대신 선택" },
+              { num: "10일", label: "최단 효과 사례" },
             ].map((s) => (
               <div key={s.label} className="border-l-2 border-[var(--brand-primary)] pl-4">
                 <p className="text-xl md:text-2xl font-extrabold text-white">{s.num}</p>
@@ -224,7 +272,7 @@ export default function DietPage() {
         </div>
       </section>
 
-      {/* ── 03 대상자 ── */}
+      {/* ── 04 대상자 ── */}
       <section className="bg-white border-t border-[var(--border)]">
         <div className="mx-auto max-w-6xl px-4 py-16 md:py-24">
           <div className="text-center mb-12">
@@ -339,7 +387,54 @@ export default function DietPage() {
         </div>
       </section>
 
-      {/* ── 06 비교표 ── */}
+      {/* ── 06 8단계 용량 조절 안전성 ── */}
+      <section className="bg-[var(--surface-muted)] border-t border-[var(--border)]">
+        <div className="mx-auto max-w-4xl px-4 py-16 md:py-24">
+          <div className="text-center mb-10">
+            <p className="text-xs font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase mb-2">
+              Safety
+            </p>
+            <h2 className="text-2xl md:text-4xl font-extrabold leading-tight">
+              부작용 걱정?
+              <br />
+              <span className="text-[var(--brand-primary)]">복용량을 줄이면 됩니다</span>
+            </h2>
+            <p className="text-sm text-[var(--text-muted)] mt-3 max-w-xl mx-auto">
+              두통·울렁거림·불면 등 부작용은 내 몸이 감당할 수 있는 것보다 강하게 복용했을 때 생깁니다.
+              매일감비환은 1~8단계 알약 개수 조절로 본인에게 맞는 단계를 찾을 수 있습니다.
+            </p>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-5 mb-8">
+            <div className="bg-white rounded-2xl border border-[var(--border)] p-6">
+              <p className="text-xs font-bold text-[var(--brand-primary)] tracking-widest mb-3">1~8단계 조절</p>
+              <h3 className="font-extrabold text-lg mb-3">알약 개수로 미세 조정</h3>
+              <p className="text-sm text-[var(--text-muted)] leading-relaxed">
+                부작용이 생기면 한 단계 낮춰 알약 개수를 줄이면 해결됩니다.
+                상담 시 체질과 반응을 보면서 본인에게 딱 맞는 단계를 찾아드립니다.
+              </p>
+            </div>
+            <div className="bg-white rounded-2xl border border-[var(--border)] p-6">
+              <p className="text-xs font-bold text-[var(--brand-primary)] tracking-widest mb-3">간수치 안전 데이터</p>
+              <h3 className="font-extrabold text-lg mb-3">17,089명 처방 기준</h3>
+              <p className="text-sm text-[var(--text-muted)] leading-relaxed">
+                간수치 문제 발생률 <strong>0.3% 이내</strong>. BMJ 2015 연구에서도
+                마황 함유 한약의 간독성은 일반 의약품과 유사 수준임이 확인됐습니다.
+              </p>
+              <p className="text-xs text-[var(--text-muted)] mt-3">※ BMJ, 2015</p>
+            </div>
+          </div>
+
+          <div className="bg-[var(--brand-primary-light)] rounded-2xl border border-[var(--border)] p-6 text-center">
+            <p className="text-sm font-semibold text-[var(--brand-primary-dark)]">
+              마황(에페드린) 포함 사실을 투명하게 공개합니다.<br />
+              체질이 맞지 않으면 처방하지 않고, 복용 중 이상 반응이 있으면 즉시 단계를 낮춥니다.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ── 07 비교표 ── */}
       <section className="bg-[var(--surface-muted)] border-t border-[var(--border)]">
         <div className="mx-auto max-w-4xl px-4 py-16 md:py-24">
           <div className="text-center mb-10">
@@ -384,7 +479,7 @@ export default function DietPage() {
         </div>
       </section>
 
-      {/* ── 07 가격표 ── */}
+      {/* ── 08 가격표 (패키지 카드형) ── */}
       <section className="bg-white border-t border-[var(--border)]">
         <div className="mx-auto max-w-4xl px-4 py-16 md:py-24">
           <div className="text-center mb-10">
@@ -392,66 +487,47 @@ export default function DietPage() {
               Pricing
             </p>
             <h2 className="text-2xl md:text-4xl font-extrabold leading-tight">비용 안내</h2>
+            <p className="text-sm text-[var(--text-muted)] mt-3">기간이 길어질수록 가성비가 커져요</p>
           </div>
 
-          {/* 기본 플랜 */}
-          <h3 className="font-bold text-lg mb-3">{dietPricing.label}</h3>
-          <div className="overflow-x-auto rounded-xl border border-[var(--border)] mb-2">
-            <table className="w-full text-sm">
-              <thead className="bg-[var(--surface-muted)]">
-                <tr>
-                  <th className="text-left p-3 font-semibold">처방 구성</th>
-                  <th className="text-right p-3 font-semibold">비용</th>
-                </tr>
-              </thead>
-              <tbody>
-                {dietPricing.packages.map((pkg) => (
-                  <tr key={pkg.name} className="border-t border-[var(--border)]">
-                    <td className="p-3">{pkg.name}</td>
-                    <td className="p-3 text-right font-bold text-[var(--brand-primary-dark)]">
-                      {formatPrice(pkg.price)}{pkg.unit}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          {/* 추천 패키지 카드 */}
+          <div className="grid sm:grid-cols-2 gap-4 mb-6">
+            <div className="relative rounded-2xl border-2 border-[var(--brand-primary)] bg-[var(--brand-primary-light)] p-6">
+              <p className="absolute -top-3 left-4 bg-[var(--brand-primary)] text-white text-xs font-bold px-3 py-1 rounded-full">추천</p>
+              <p className="text-xs font-bold text-[var(--brand-primary)] tracking-widest mb-2">2달 감량 + 6개월 요요관리</p>
+              <p className="text-3xl font-extrabold text-[var(--brand-primary-dark)] mb-1">339,000원</p>
+              <p className="text-xs text-[var(--text-muted)]">감량 2달 + 요요방지 6개월 패키지</p>
+            </div>
+            <div className="relative rounded-2xl border-2 border-black bg-black text-white p-6">
+              <p className="text-xs font-bold text-[var(--brand-primary)] tracking-widest mb-2">3달 감량 + 6개월 요요관리</p>
+              <p className="text-3xl font-extrabold mb-1">479,000원</p>
+              <p className="text-xs text-white/50">체중 많이 빼야 하는 분 · 최대 효과</p>
+            </div>
           </div>
-          {dietPricing.note && (
-            <p className="text-xs text-[var(--text-muted)] mb-8">※ {dietPricing.note}</p>
-          )}
 
-          {/* 장기 처방 */}
-          <h3 className="font-bold text-lg mb-3">{longTermPricing.label} (재진 고객)</h3>
-          <div className="overflow-x-auto rounded-xl border border-[var(--border)] mb-2">
-            <table className="w-full text-sm">
-              <thead className="bg-[var(--surface-muted)]">
-                <tr>
-                  <th className="text-left p-3 font-semibold">처방 구성</th>
-                  <th className="text-right p-3 font-semibold">비용</th>
-                </tr>
-              </thead>
-              <tbody>
-                {longTermPricing.packages.map((pkg) => (
-                  <tr key={pkg.name} className="border-t border-[var(--border)]">
-                    <td className="p-3">{pkg.name}</td>
-                    <td className="p-3 text-right font-bold text-[var(--brand-primary-dark)]">
-                      {formatPrice(pkg.price)}{pkg.unit}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          {/* 단기 옵션 */}
+          <div className="rounded-xl border border-[var(--border)] bg-[var(--surface-muted)] p-5 mb-4">
+            <p className="text-xs font-bold text-[var(--text-muted)] mb-3">단기 옵션 (처음 시작하시는 분)</p>
+            <div className="grid grid-cols-3 gap-3 text-center text-sm">
+              <div>
+                <p className="font-bold">1달</p>
+                <p className="text-[var(--brand-primary)] font-extrabold">110,000원</p>
+              </div>
+              <div>
+                <p className="font-bold">2달</p>
+                <p className="text-[var(--brand-primary)] font-extrabold">209,000원</p>
+              </div>
+              <div>
+                <p className="font-bold">3달</p>
+                <p className="text-[var(--brand-primary)] font-extrabold">299,000원</p>
+              </div>
+            </div>
           </div>
-          {longTermPricing.note && (
-            <p className="text-xs text-[var(--text-muted)] mb-2">※ {longTermPricing.note}</p>
-          )}
-          <p className="text-xs text-[var(--text-muted)]">
+
+          <p className="text-xs text-[var(--text-muted)] mb-8">
             ※ 비용은 표시 시점 기준이며 변경될 수 있습니다. 자세한 처방은 상담 시 안내드립니다.
           </p>
-
-          <div className="mt-10">
-            <CTAButtons formUrl={clinic.contact.onlineFormDiet} formLabel="비대면 진료 신청" />
-          </div>
+          <CTAButtons formUrl={clinic.contact.onlineFormDiet} formLabel="비대면 진료 신청" />
         </div>
       </section>
 
@@ -557,7 +633,30 @@ export default function DietPage() {
         </section>
       )}
 
-      {/* ── 11 FINAL CTA ── */}
+      {/* ── 11 mail100diet.com 링크 배너 ── */}
+      <section className="bg-white border-t border-[var(--border)]">
+        <div className="mx-auto max-w-4xl px-4 py-12 text-center">
+          <p className="text-xs font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase mb-3">
+            More Info
+          </p>
+          <h2 className="text-xl md:text-2xl font-extrabold mb-2">
+            유튜브 후기·상세 복용법이 궁금하시면
+          </h2>
+          <p className="text-sm text-[var(--text-muted)] mb-6">
+            매일감비환 전용 홈페이지에서 실제 후기 영상, 복용 꿀팁, 다이어트 조언을 확인하세요.
+          </p>
+          <a
+            href="https://mail100diet.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 px-6 py-3.5 rounded-lg border-2 border-[var(--brand-primary)] text-[var(--brand-primary)] font-bold text-sm hover:bg-[var(--brand-primary)] hover:text-white transition"
+          >
+            매일감비환 전용 홈페이지 보기 →
+          </a>
+        </div>
+      </section>
+
+      {/* ── 12 FINAL CTA ── */}
       <section className="bg-black text-white">
         <div className="mx-auto max-w-4xl px-4 py-16 md:py-20 text-center">
           <p className="text-xs font-bold tracking-[0.2em] text-[var(--brand-primary)] uppercase mb-3">

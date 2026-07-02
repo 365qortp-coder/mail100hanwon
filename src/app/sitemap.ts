@@ -10,10 +10,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const staticPages: MetadataRoute.Sitemap = [
     { url: `${baseUrl}/`, lastModified: today, priority: 1.0, changeFrequency: "weekly" },
+    { url: `${baseUrl}/diet`, lastModified: today, priority: 0.95, changeFrequency: "monthly" },
+    { url: `${baseUrl}/gongjindan`, lastModified: today, priority: 0.95, changeFrequency: "monthly" },
+    { url: `${baseUrl}/gongjindan/sahyang`, lastModified: today, priority: 0.9, changeFrequency: "monthly" },
+    { url: `${baseUrl}/gongjindan/nokyong`, lastModified: today, priority: 0.9, changeFrequency: "monthly" },
+    { url: `${baseUrl}/gongjindan/chongmyeong`, lastModified: today, priority: 0.9, changeFrequency: "monthly" },
+    { url: `${baseUrl}/nmc`, lastModified: today, priority: 0.95, changeFrequency: "monthly" },
     { url: `${baseUrl}/about`, lastModified: today, priority: 0.9, changeFrequency: "monthly" },
     { url: `${baseUrl}/clinic`, lastModified: today, priority: 0.9, changeFrequency: "monthly" },
-    { url: `${baseUrl}/pricing`, lastModified: today, priority: 0.9, changeFrequency: "monthly" },
-    { url: `${baseUrl}/online`, lastModified: today, priority: 0.95, changeFrequency: "monthly" },
     { url: `${baseUrl}/faq`, lastModified: today, priority: 0.8, changeFrequency: "weekly" },
     { url: `${baseUrl}/columns`, lastModified: today, priority: 0.8, changeFrequency: "daily" },
     { url: `${baseUrl}/event/suneung`, lastModified: today, priority: 0.85, changeFrequency: "monthly" },

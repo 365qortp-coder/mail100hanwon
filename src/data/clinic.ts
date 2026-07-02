@@ -56,7 +56,7 @@ export const clinic = {
     phone: "02-2234-0102",
     phoneClean: "0222340102",
     phoneInternational: "+82-2-2234-0102",
-    kakao: "http://pf.kakao.com/_JEzRK/chat",
+    kakao: "https://pf.kakao.com/_JEzRK/chat",
     onlineForm:
       "https://docs.google.com/forms/d/1g2IhZ3c4dqW5nhrYuZBgguIPKBULiZZWI_PgroqlseQ/viewform",
     onlineFormDiet:

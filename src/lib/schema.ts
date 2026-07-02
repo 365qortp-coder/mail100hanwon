@@ -7,12 +7,12 @@ export function clinicSchema() {
     "@type": ["MedicalBusiness", "MedicalClinic", "LocalBusiness"],
     "@id": `${clinic.url}#clinic`,
     name: clinic.name,
-    alternateName: [clinic.brands.diet, clinic.brands.chongmyeong, clinic.brands.gongjindan],
+    alternateName: [clinic.brands.diet, clinic.brands.gongjindan, "매일백세", "NMC 무릎"],
     url: clinic.url,
     telephone: clinic.contact.phoneInternational,
     image: `${clinic.url}/og-default.png`,
     logo: `${clinic.url}/logo.png`,
-    description: `${clinic.name}은 서울 중랑구 공릉로에 위치한 한의원으로, 다이어트 한약(${clinic.brands.diet}), 공진단, 총명공진단, 통증 치료를 진행합니다. 대면 진료뿐 아니라 비대면 진료로 전국 어디서나 처방받을 수 있습니다.`,
+    description: `${clinic.name}은 서울 중랑구 공릉로에 위치한 한의원으로, 다이어트 한약(${clinic.brands.diet}), 공진단, 무릎관절 NMC 치료를 전문으로 합니다. 대면 진료뿐 아니라 비대면 진료로 전국 어디서나 처방받을 수 있습니다.`,
     medicalSpecialty: ["TraditionalChinese", "AlternativeMedicine"],
     priceRange: "₩₩",
     currenciesAccepted: "KRW",
@@ -60,6 +60,36 @@ export function clinicSchema() {
   };
 }
 
+export function websiteSchema() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": `${clinic.url}#website`,
+    name: clinic.name,
+    url: clinic.url,
+    publisher: { "@id": `${clinic.url}#clinic` },
+    potentialAction: {
+      "@type": "SearchAction",
+      target: `${clinic.url}/columns?q={search_term_string}`,
+      "query-input": "required name=search_term_string",
+    },
+  };
+}
+
+export function webPageSchema(p: { title: string; description: string; path: string }) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "WebPage",
+    "@id": `${clinic.url}${p.path}#webpage`,
+    url: `${clinic.url}${p.path}`,
+    name: p.title,
+    description: p.description,
+    isPartOf: { "@id": `${clinic.url}#website` },
+    about: { "@id": `${clinic.url}#clinic` },
+    inLanguage: "ko-KR",
+  };
+}
+
 export function directorSchema() {
   return {
     "@context": "https://schema.org",
@@ -70,6 +100,39 @@ export function directorSchema() {
     worksFor: { "@id": `${clinic.url}#clinic` },
     affiliation: clinic.name,
     description: clinic.director.description,
+  };
+}
+
+export function productSchema(p: {
+  name: string;
+  description: string;
+  image: string;
+  url: string;
+  offers: { name: string; price: number; priceCurrency?: string; description?: string }[];
+}) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: p.name,
+    description: p.description,
+    image: `${clinic.url}${p.image}`,
+    url: `${clinic.url}${p.url}`,
+    brand: {
+      "@type": "Brand",
+      name: clinic.name,
+    },
+    manufacturer: {
+      "@id": `${clinic.url}#clinic`,
+    },
+    offers: p.offers.map((o) => ({
+      "@type": "Offer",
+      name: o.name,
+      price: o.price,
+      priceCurrency: o.priceCurrency ?? "KRW",
+      availability: "https://schema.org/InStock",
+      seller: { "@id": `${clinic.url}#clinic` },
+      ...(o.description ? { description: o.description } : {}),
+    })),
   };
 }
 
