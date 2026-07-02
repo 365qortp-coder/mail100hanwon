@@ -62,7 +62,7 @@ jobs:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
         run: |
           cd 디자인리뉴얼
-          npx vercel deploy --prod \
+          npx vercel deploy --prod --yes \
             --token $VERCEL_TOKEN \
             --scope team_NVkTbzTIDWtlDnZgFQ54CHNf
 
