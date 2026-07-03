@@ -2,18 +2,6 @@
   "_comment": "Add YouTube video URLs/IDs here. The daily automation will pick one unprocessed video at a time and convert it into a column. After processing, the entry is moved to the 'processed' array with the resulting column slug.",
   "queue": [
     {
-      "url": "https://www.youtube.com/watch?v=-8HWY8FwXBs",
-      "hint": "[diet] ko 제가 직접 올리브유를 먹어 보면서 느끼는게 제일 좋은 건 배가 고프",
-      "videoId": "-8HWY8FwXBs",
-      "angles": []
-    },
-    {
-      "url": "https://www.youtube.com/watch?v=2NZ97bw5scE",
-      "hint": "[diet] ko 아침 식단으로 샐러드랑 치즈 중에 어떤 식단이 뱃살이 더 잘 빠질까",
-      "videoId": "2NZ97bw5scE",
-      "angles": []
-    },
-    {
       "url": "https://www.youtube.com/watch?v=4Cm3t1EFivs",
       "hint": "[diet] ko 아이들 다 재우고 나서 육패하고 나면 유독, 매운 떡볶이나 달달한",
       "videoId": "4Cm3t1EFivs",
@@ -850,6 +838,32 @@
           "slug": "매일감비환이란-한방-다이어트-한약-효능과-적합-대상-기본-안내-intro--3G1jR",
           "title": "매일감비환이란? 한방 다이어트 한약 효능과 적합 대상 기본 안내",
           "at": "2026-07-02T13:10:43.132Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=-8HWY8FwXBs",
+      "hint": "[diet] ko 제가 직접 올리브유를 먹어 보면서 느끼는게 제일 좋은 건 배가 고프",
+      "videoId": "-8HWY8FwXBs",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "공복-올리브유-다이어트-효능먹는-법주의사항-완전-정리-intro--8HWY8",
+          "title": "공복 올리브유 다이어트 효능·먹는 법·주의사항 완전 정리",
+          "at": "2026-07-03T09:20:49.725Z"
+        }
+      ]
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=2NZ97bw5scE",
+      "hint": "[diet] ko 아침 식단으로 샐러드랑 치즈 중에 어떤 식단이 뱃살이 더 잘 빠질까",
+      "videoId": "2NZ97bw5scE",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "매일감비환이란-처음-알아보는-분을-위한-기본-안내와-효능-intro-2NZ97b",
+          "title": "매일감비환이란? 처음 알아보는 분을 위한 기본 안내와 효능",
+          "at": "2026-07-03T09:21:56.055Z"
         }
       ]
     }
