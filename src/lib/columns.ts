@@ -99,3 +99,47 @@ export function getAllColumns(): ColumnMeta[] {
     .filter((m): m is ColumnMeta => m !== null)
     .sort((a, b) => (a.date < b.date ? 1 : -1));
 }
+
+// category → URL section 매핑
+export const CATEGORY_SECTION: Record<string, string> = {
+  "다이어트": "diet",
+  "공진단": "gongjindan",
+  "총명공진단": "gongjindan",
+  "통증치료": "nmc",
+};
+
+export type ColumnSection = "diet" | "gongjindan" | "nmc" | "columns";
+
+export function getColumnSection(category: string): ColumnSection {
+  return (CATEGORY_SECTION[category] as ColumnSection) ?? "columns";
+}
+
+export function getColumnUrl(col: ColumnMeta): string {
+  const section = getColumnSection(col.category);
+  if (section === "columns") return `/columns/${col.slug}`;
+  return `/${section}/columns/${col.slug}`;
+}
+
+export function getColumnsBySection(section: ColumnSection): ColumnMeta[] {
+  const all = getAllColumns();
+  if (section === "columns") {
+    return all.filter((c) => !CATEGORY_SECTION[c.category]);
+  }
+  const cats = Object.entries(CATEGORY_SECTION)
+    .filter(([, s]) => s === section)
+    .map(([cat]) => cat);
+  return all.filter((c) => cats.includes(c.category));
+}
+
+// 깨진 YouTube placeholder 이미지 대체
+const CATEGORY_FALLBACK_IMAGE: Record<string, string> = {
+  "다이어트": "/photos/diet-product.webp",
+  "공진단": "/photos/gongjindan-hero.webp",
+  "총명공진단": "/photos/chongmyeong-product.webp",
+  "통증치료": "/photos/pain.webp",
+};
+
+export function getColumnImage(col: ColumnMeta): string | undefined {
+  if (col.image && !col.image.includes("/vi/unknown/")) return col.image;
+  return CATEGORY_FALLBACK_IMAGE[col.category];
+}

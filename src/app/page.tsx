@@ -164,12 +164,12 @@ export default function HomePage() {
                 카카오톡 상담
               </a>
               <a
-                href={clinic.contact.onlineForm}
+                href={clinic.contact.naverBooking}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-[#0a0a0a]/20 text-[#0a0a0a] text-sm font-semibold hover:border-[var(--brand-primary)] hover:text-[var(--brand-primary)] transition-colors duration-300"
               >
-                비대면 진료 신청
+                네이버 예약하기
               </a>
             </div>
           </div>
@@ -206,8 +206,8 @@ export default function HomePage() {
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
             {[
-              { num: `${clinic.stats.yearsOpen}년`, sub: "2016년 개원", note: "장기 운영 한의원" },
-              { num: `${(clinic.stats.totalConsults / 10000).toFixed(0)}만건+`, sub: "누적 진료", note: "축적된 임상 경험" },
+              { num: `${clinic.stats.yearsOpen}년+`, sub: "2016년 개원", note: "장기 운영 한의원" },
+              { num: `${(clinic.stats.dietConsults / 10000).toFixed(0)}만+`, sub: "다이어트 누적 진료", note: "축적된 임상 경험" },
               { num: `${(clinic.stats.gongjindanUnits / 10000).toFixed(0)}만구+`, sub: "공진단 원내 제조", note: "직접 빚은 공진단" },
               { num: "전국", sub: "비대면 진료", note: "어디서나 처방 가능" },
             ].map((s, i) => (
@@ -324,7 +324,7 @@ export default function HomePage() {
               </p>
             </div>
           </div>
-          <YouTubeThumbnailGallery limit={18} />
+          <YouTubeThumbnailGallery limit={8} />
         </div>
       </section>
 
@@ -397,7 +397,7 @@ export default function HomePage() {
                 네이버 예약하기
               </a>
               <a
-                href={clinic.contact.naverBooking}
+                href="https://map.naver.com/p/entry/place/1632908709?lng=127.0777837&lat=37.6126932&placePath=%2Freview%3FadditionalHeight%3D76%26fromPanelNum%3D1%26locale%3Dko%26svcName%3Dmap_pcv5%26timestamp%3D202607021653&searchType=place&c=15.00,0,0,0,dh"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-[#0a0a0a]/15 text-[#0a0a0a] text-sm font-semibold hover:border-[var(--brand-primary)] hover:text-[var(--brand-primary)]"

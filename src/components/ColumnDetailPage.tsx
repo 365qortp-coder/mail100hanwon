@@ -1,66 +1,39 @@
-import type { Metadata } from "next";
-import { notFound, permanentRedirect } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import Script from "next/script";
-
-import { buildMetadata } from "@/lib/seo";
-import { articleSchema, jsonLdScript } from "@/lib/schema";
 import { Section } from "@/components/Section";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTAButtons } from "@/components/CTAButtons";
+import { articleSchema, jsonLdScript } from "@/lib/schema";
 import { clinic } from "@/data/clinic";
-import { getColumn, getColumnSlugs, getAllColumns, getColumnUrl, getColumnSection, getColumnImage } from "@/lib/columns";
+import { type Column, getColumnImage, getColumnUrl } from "@/lib/columns";
 
-type Params = Promise<{ slug: string }>;
+type SectionInfo = {
+  label: string;
+  href: string;
+  listHref: string;
+  listLabel: string;
+  ctaLabel: string;
+  formUrl?: string;
+};
 
-export function generateStaticParams() {
-  // 이 라우트는 "columns" 섹션(한방건강 등 기타)만 담당
-  return getColumnSlugs().map((slug) => ({ slug }));
-}
+type Props = {
+  col: Column;
+  related: Column["slug"] extends string ? import("@/lib/columns").ColumnMeta[] : never;
+  section: SectionInfo;
+};
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Params;
-}): Promise<Metadata> {
-  const { slug } = await params;
-  const col = await getColumn(slug);
-  if (!col) return {};
-
-  return buildMetadata({
-    title: col.title,
-    description: col.description,
-    path: `/columns/${col.slug}`,
-    keywords: col.keywords,
-    ogImage: col.image,
-  });
-}
-
-export default async function ColumnDetailPage({ params }: { params: Params }) {
-  const { slug } = await params;
-  const col = await getColumn(slug);
-  if (!col) return notFound();
-
-  // 카테고리별 전용 라우트로 301 영구 이전 (Korean URL → percent-encoded for HTTP header)
-  const correctUrl = getColumnUrl(col);
-  if (correctUrl !== `/columns/${col.slug}`) {
-    permanentRedirect(encodeURI(correctUrl));
-  }
-
+export function ColumnDetailPage({ col, related, section }: Props) {
   const img = getColumnImage(col);
-
-  const related = getAllColumns()
-    .filter((c) => c.slug !== col.slug && c.category === col.category)
-    .slice(0, 3);
 
   return (
     <>
       <div className="mx-auto max-w-3xl px-4">
         <Breadcrumb
           items={[
-            { name: "건강 칼럼", href: "/columns" },
-            { name: col.title, href: `/columns/${col.slug}` },
+            { name: section.label, href: section.href },
+            { name: section.listLabel, href: section.listHref },
+            { name: col.title, href: getColumnUrl(col) },
           ]}
         />
       </div>
@@ -76,7 +49,7 @@ export default async function ColumnDetailPage({ params }: { params: Params }) {
             date: col.date,
             modified: col.modified,
             image: img,
-            canonicalPath: `/columns/${col.slug}`,
+            canonicalPath: getColumnUrl(col),
           })
         )}
       />
@@ -89,12 +62,8 @@ export default async function ColumnDetailPage({ params }: { params: Params }) {
             </span>
             <time dateTime={col.date}>{col.date}</time>
           </div>
-          <h1 className="text-3xl md:text-4xl font-bold leading-tight mb-3">
-            {col.title}
-          </h1>
-          <p className="text-lg text-[var(--text-muted)] leading-relaxed">
-            {col.description}
-          </p>
+          <h1 className="text-3xl md:text-4xl font-bold leading-tight mb-3">{col.title}</h1>
+          <p className="text-lg text-[var(--text-muted)] leading-relaxed">{col.description}</p>
           <p className="mt-4 text-sm text-[var(--text-muted)]">
             작성: {clinic.director.name} {clinic.director.title} · {clinic.name}
           </p>
@@ -140,12 +109,8 @@ export default async function ColumnDetailPage({ params }: { params: Params }) {
         {col.source?.url && !col.source?.videoId && (
           <div className="mt-8 p-4 rounded-lg bg-[var(--surface-muted)] border border-[var(--border)] text-sm">
             <p className="font-semibold mb-1">원본 영상</p>
-            <a
-              href={col.source.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-[var(--brand-primary)] underline break-all"
-            >
+            <a href={col.source.url} target="_blank" rel="noopener noreferrer"
+              className="text-[var(--brand-primary)] underline break-all">
               {col.source.url}
             </a>
           </div>
@@ -155,14 +120,28 @@ export default async function ColumnDetailPage({ params }: { params: Params }) {
           <p className="mt-4 text-xs text-[var(--text-muted)]">{col.imageCredit}</p>
         )}
 
-        <div className="mt-10 p-6 rounded-xl bg-[var(--brand-primary-light)] border border-[var(--border)]">
+        {/* 서비스 페이지 역링크 */}
+        <div className="mt-10 p-5 rounded-xl bg-[var(--surface-muted)] border border-[var(--border)] flex items-center justify-between gap-4">
+          <div>
+            <p className="text-xs text-[var(--text-muted)] mb-1">관련 서비스</p>
+            <p className="font-bold">{section.ctaLabel}</p>
+          </div>
+          <Link
+            href={section.href}
+            className="shrink-0 px-4 py-2 rounded-lg bg-[var(--brand-primary)] text-white text-sm font-semibold hover:opacity-90 transition"
+          >
+            자세히 보기 →
+          </Link>
+        </div>
+
+        <div className="mt-6 p-6 rounded-xl bg-[var(--brand-primary-light)] border border-[var(--border)]">
           <h3 className="text-lg font-bold mb-3">상담·예약 안내</h3>
           <p className="text-sm mb-4 leading-relaxed">
             본 칼럼은 일반적인 한방 건강 정보를 담고 있으며, 개인 체질에 따라
             적합한 처방이 달라질 수 있습니다. 자세한 상담은 전화·카카오톡 또는
             비대면 진료 신청을 이용해 주세요.
           </p>
-          <CTAButtons compact />
+          <CTAButtons compact formUrl={section.formUrl} />
         </div>
 
         {related.length > 0 && (
@@ -172,7 +151,7 @@ export default async function ColumnDetailPage({ params }: { params: Params }) {
               {related.map((r) => (
                 <li key={r.slug}>
                   <Link
-                    href={`/columns/${r.slug}`}
+                    href={getColumnUrl(r)}
                     className="block p-3 rounded-md hover:bg-[var(--surface-muted)] transition"
                   >
                     <p className="font-semibold">{r.title}</p>

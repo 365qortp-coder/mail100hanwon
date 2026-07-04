@@ -183,7 +183,9 @@ export function articleSchema(p: {
   date: string;
   modified?: string;
   image?: string;
+  canonicalPath?: string;
 }) {
+  const path = p.canonicalPath ?? `/columns/${p.slug}`;
   return {
     "@context": "https://schema.org",
     "@type": "MedicalWebPage",
@@ -193,7 +195,7 @@ export function articleSchema(p: {
     dateModified: p.modified ?? p.date,
     author: { "@id": `${clinic.url}#director` },
     publisher: { "@id": `${clinic.url}#clinic` },
-    mainEntityOfPage: `${clinic.url}/columns/${p.slug}`,
+    mainEntityOfPage: `${clinic.url}${path}`,
     image: p.image ?? `${clinic.url}/og-default.png`,
   };
 }

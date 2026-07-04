@@ -6,7 +6,7 @@ import { faqSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/JsonLd";
 import { CTAButtons } from "@/components/CTAButtons";
 import { clinic } from "@/data/clinic";
-import { getAllColumns } from "@/lib/columns";
+import { getColumnsBySection, getColumnUrl, getColumnImage, type ColumnMeta } from "@/lib/columns";
 
 export const metadata: Metadata = buildMetadata({
   title: "매일감비환 | 40~60대 엄마 기초대사량 회복 다이어트 한약",
@@ -131,10 +131,6 @@ const targetGroups = [
 ];
 
 export default function DietPage() {
-  const dietColumns = getAllColumns()
-    .filter((c) => c.category === "다이어트")
-    .slice(0, 3);
-
   return (
     <>
       <JsonLd id="schema-diet-faq" data={faqSchema(faqs)} />
@@ -174,8 +170,8 @@ export default function DietPage() {
             {[
               { num: "7만건+", label: "2026년 누적 처방" },
               { num: "89.9%", label: "체지방 위주 감량" },
-              { num: "4.5kg", label: "후기 평균 감량" },
-              { num: "11만원~", label: "1달 처방 시작" },
+              { num: "7.2kg", label: "2달 평균 감량" },
+              { num: "11만원~", label: "1달 처방 시작가" },
             ].map((b) => (
               <div
                 key={b.label}
@@ -207,9 +203,12 @@ export default function DietPage() {
               Story · 송원석 원장
             </p>
             <h2 className="text-2xl md:text-3xl font-extrabold leading-tight mb-6">
-              아내가 산후에 살이 빠지지 않아서
+              처음엔 저도 직접 다이어트하려고
               <br />
-              <span className="text-[var(--brand-primary)]">직접 만들었습니다</span>
+              아내가 산후에 살이 빠지지 않다고 해서
+              <br />
+              엄마들을 위한 다이어트한약으로{" "}
+              <span className="text-[var(--brand-primary)]">더 좋게 만들었습니다</span>
             </h2>
             <div className="space-y-4 text-base text-[var(--text-muted)] leading-relaxed max-w-xl">
               <p>
@@ -258,10 +257,10 @@ export default function DietPage() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
             {[
-              { num: "4.5kg", label: "후기 평균 감량" },
+              { num: "7.2kg", label: "2달 평균 감량" },
               { num: "48일", label: "후기 평균 기간" },
-              { num: "8.7kg", label: "최대 감량 (갱년기)" },
-              { num: "10일", label: "최단 효과 사례" },
+              { num: "0.3%", label: "간수치 이상 발생률" },
+              { num: "전국", label: "비대면 택배 처방" },
             ].map((s) => (
               <div key={s.label} className="border-l-2 border-[var(--brand-primary)] pl-4">
                 <p className="text-xl md:text-2xl font-extrabold text-white">{s.num}</p>
@@ -589,51 +588,10 @@ export default function DietPage() {
         </div>
       </section>
 
-      {/* ── 10 관련 칼럼 ── */}
-      {dietColumns.length > 0 && (
-        <section className="bg-[var(--surface-muted)] border-t border-[var(--border)]">
-          <div className="mx-auto max-w-6xl px-4 py-16 md:py-20">
-            <div className="flex items-end justify-between mb-10 gap-4 flex-wrap">
-              <div>
-                <p className="text-xs font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase mb-2">
-                  Columns
-                </p>
-                <h2 className="text-2xl md:text-3xl font-extrabold leading-tight">
-                  다이어트 관련 칼럼
-                </h2>
-              </div>
-              <Link
-                href="/columns?category=다이어트"
-                className="text-sm font-bold text-[var(--brand-primary)] hover:underline"
-              >
-                전체 보기 →
-              </Link>
-            </div>
-            <div className="grid md:grid-cols-3 gap-5">
-              {dietColumns.map((c) => (
-                <Link
-                  key={c.slug}
-                  href={`/columns/${c.slug}`}
-                  className="block p-6 bg-white rounded-xl border border-[var(--border)] hover:border-[var(--brand-primary)] transition"
-                >
-                  <p className="text-[10px] tracking-widest text-[var(--text-muted)] font-bold mb-3">
-                    다이어트
-                  </p>
-                  <h3 className="text-lg font-extrabold mb-2 leading-snug line-clamp-2">
-                    {c.title}
-                  </h3>
-                  <p className="text-sm text-[var(--text-muted)] line-clamp-2 mb-4">
-                    {c.description}
-                  </p>
-                  <time className="text-xs text-[var(--text-muted)]">{c.date}</time>
-                </Link>
-              ))}
-            </div>
-          </div>
-        </section>
-      )}
+      {/* ── 10 다이어트 칼럼 ── */}
+      <DietColumnsSection />
 
-      {/* ── 11 mail100diet.com 링크 배너 ── */}
+      {/* ── 12 mail100diet.com 링크 배너 ── */}
       <section className="bg-white border-t border-[var(--border)]">
         <div className="mx-auto max-w-4xl px-4 py-12 text-center">
           <p className="text-xs font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase mb-3">
@@ -680,5 +638,44 @@ export default function DietPage() {
         </div>
       </section>
     </>
+  );
+}
+
+function DietColumnsSection() {
+  const cols = getColumnsBySection("diet").slice(0, 3);
+  if (!cols.length) return null;
+  return (
+    <section className="bg-[var(--surface-muted)] border-t border-[var(--border)]">
+      <div className="mx-auto max-w-4xl px-4 py-14">
+        <div className="flex items-end justify-between mb-8">
+          <div>
+            <p className="text-xs font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase mb-2">Column</p>
+            <h2 className="text-xl md:text-2xl font-extrabold">다이어트 칼럼</h2>
+          </div>
+          <Link href="/diet/columns" className="text-sm text-[var(--brand-primary)] font-semibold hover:underline">
+            전체 보기 →
+          </Link>
+        </div>
+        <div className="grid md:grid-cols-3 gap-4">
+          {cols.map((c: ColumnMeta) => {
+            const img = getColumnImage(c);
+            return (
+              <Link key={c.slug} href={getColumnUrl(c)}
+                className="block bg-white rounded-xl border border-[var(--border)] hover:border-[var(--brand-primary)] hover:shadow transition overflow-hidden">
+                {img && (
+                  <div className="relative aspect-video w-full bg-[var(--border)]">
+                    <Image src={img} alt={c.imageAlt ?? c.title} fill className="object-cover" sizes="33vw" unoptimized />
+                  </div>
+                )}
+                <div className="p-4">
+                  <p className="text-xs text-[var(--text-muted)] mb-1">{c.date}</p>
+                  <p className="font-bold text-sm line-clamp-2">{c.title}</p>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      </div>
+    </section>
   );
 }

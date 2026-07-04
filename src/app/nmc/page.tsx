@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Link from "next/link";
 import { buildMetadata } from "@/lib/seo";
 import { faqSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/JsonLd";
 import { clinic } from "@/data/clinic";
+import { getColumnsBySection, getColumnUrl, getColumnImage, type ColumnMeta } from "@/lib/columns";
 
 export const metadata: Metadata = buildMetadata({
   title: "무릎관절 NMC | 염증 제어·가동성 회복·구조 재건 한방 치료",
@@ -98,7 +100,7 @@ export default function NMCPage() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-lg border border-[var(--border)] text-[var(--foreground)] font-bold text-sm hover:border-[var(--brand-primary)] transition"
               >
-                자세한 내용 보기 →
+                무릎 자가진단 →
               </a>
             </div>
           </div>
@@ -274,7 +276,7 @@ export default function NMCPage() {
           <h2 className="text-2xl md:text-3xl font-extrabold mb-4">
             지금 내 무릎 상태,
             <br />
-            10문항으로 확인해보세요
+            14문항으로 확인해보세요
           </h2>
           <p className="text-sm text-[var(--text-muted)] mb-8 max-w-md mx-auto">
             WOMAC 기반 자가진단으로 염증 단계와 치료 방향을 파악할 수 있습니다.
@@ -293,7 +295,38 @@ export default function NMCPage() {
         </div>
       </section>
 
-      {/* 06 · FAQ */}
+      {/* 06 · 치료 흐름 */}
+      <section className="bg-[var(--surface-muted)] border-t border-[var(--border)]">
+        <div className="mx-auto max-w-4xl px-4 py-16 md:py-20">
+          <div className="text-center mb-10">
+            <p className="text-xs font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase mb-2">
+              Process
+            </p>
+            <h2 className="text-2xl md:text-3xl font-extrabold leading-tight">
+              치료 흐름
+            </h2>
+          </div>
+          <ol className="space-y-3">
+            {[
+              { step: "01", title: "초음파 진단", desc: "활막 두께·관절 삼출을 확인해 염증 정도를 객관적으로 파악합니다." },
+              { step: "02", title: "WOMAC 자가진단 검사", desc: "통증·강직·기능 3개 항목으로 현재 무릎 기능 수준을 수치화합니다." },
+              { step: "03", title: "N단계 → 염증 제어 (약 1.5개월)", desc: "침 주 2회 + 소염 한약으로 활막 염증을 제어합니다." },
+              { step: "04", title: "초음파 재측정 + WOMAC 재검사", desc: "염증 제어 확인 후 C단계로 전환 시점을 결정합니다." },
+              { step: "05", title: "C단계 → 구조 강화 (약 3개월)", desc: "침 주 1회 + 근골격 강화 한약 + 등척성 운동 처방으로 관절 부하를 분산합니다." },
+            ].map((item) => (
+              <li key={item.step} className="flex gap-4 p-4 bg-white rounded-lg border border-[var(--border)]">
+                <span className="text-lg font-bold text-[var(--brand-primary)] w-8 shrink-0">{item.step}</span>
+                <div>
+                  <p className="font-bold text-[var(--foreground)] mb-0.5">{item.title}</p>
+                  <p className="text-sm text-[var(--text-muted)] leading-relaxed">{item.desc}</p>
+                </div>
+              </li>
+            ))}
+          </ol>
+        </div>
+      </section>
+
+      {/* 07 · FAQ */}
       <section className="bg-[var(--surface-muted)] border-t border-[var(--border)]">
         <div className="mx-auto max-w-4xl px-4 py-16 md:py-20">
           <div className="text-center mb-10">
@@ -322,7 +355,10 @@ export default function NMCPage() {
         </div>
       </section>
 
-      {/* 07 · FINAL CTA */}
+      {/* 07 · 무릎 치료 칼럼 */}
+      <NmcColumnsSection />
+
+      {/* 08 · FINAL CTA */}
       <section className="bg-black text-white">
         <div className="mx-auto max-w-4xl px-4 py-16 md:py-20 text-center">
           <p className="text-xs font-bold tracking-[0.2em] text-[var(--brand-primary)] uppercase mb-3">
@@ -370,5 +406,44 @@ export default function NMCPage() {
         </div>
       </section>
     </>
+  );
+}
+
+function NmcColumnsSection() {
+  const cols = getColumnsBySection("nmc").slice(0, 3);
+  if (!cols.length) return null;
+  return (
+    <section className="bg-[var(--surface-muted)] border-t border-[var(--border)]">
+      <div className="mx-auto max-w-4xl px-4 py-14">
+        <div className="flex items-end justify-between mb-8">
+          <div>
+            <p className="text-xs font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase mb-2">Column</p>
+            <h2 className="text-xl md:text-2xl font-extrabold">무릎 치료 칼럼</h2>
+          </div>
+          <Link href="/nmc/columns" className="text-sm text-[var(--brand-primary)] font-semibold hover:underline">
+            전체 보기 →
+          </Link>
+        </div>
+        <div className="grid md:grid-cols-3 gap-4">
+          {cols.map((c: ColumnMeta) => {
+            const img = getColumnImage(c);
+            return (
+              <Link key={c.slug} href={getColumnUrl(c)}
+                className="block bg-white rounded-xl border border-[var(--border)] hover:border-[var(--brand-primary)] hover:shadow transition overflow-hidden">
+                {img && (
+                  <div className="relative aspect-video w-full bg-[var(--border)]">
+                    <Image src={img} alt={c.imageAlt ?? c.title} fill className="object-cover" sizes="33vw" unoptimized />
+                  </div>
+                )}
+                <div className="p-4">
+                  <p className="text-xs text-[var(--text-muted)] mb-1">{c.date}</p>
+                  <p className="font-bold text-sm line-clamp-2">{c.title}</p>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      </div>
+    </section>
   );
 }

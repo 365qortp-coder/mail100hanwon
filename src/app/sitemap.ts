@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { clinic } from "@/data/clinic";
 import { treatments } from "@/data/treatments";
 import { locations, stations } from "@/data/locations";
-import { getAllColumns } from "@/lib/columns";
+import { getAllColumns, getColumnUrl } from "@/lib/columns";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = clinic.url;
@@ -11,15 +11,18 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const staticPages: MetadataRoute.Sitemap = [
     { url: `${baseUrl}/`, lastModified: today, priority: 1.0, changeFrequency: "weekly" },
     { url: `${baseUrl}/diet`, lastModified: today, priority: 0.95, changeFrequency: "monthly" },
+    { url: `${baseUrl}/diet/columns`, lastModified: today, priority: 0.85, changeFrequency: "daily" },
     { url: `${baseUrl}/gongjindan`, lastModified: today, priority: 0.95, changeFrequency: "monthly" },
+    { url: `${baseUrl}/gongjindan/columns`, lastModified: today, priority: 0.85, changeFrequency: "daily" },
     { url: `${baseUrl}/gongjindan/sahyang`, lastModified: today, priority: 0.9, changeFrequency: "monthly" },
     { url: `${baseUrl}/gongjindan/nokyong`, lastModified: today, priority: 0.9, changeFrequency: "monthly" },
     { url: `${baseUrl}/gongjindan/chongmyeong`, lastModified: today, priority: 0.9, changeFrequency: "monthly" },
     { url: `${baseUrl}/nmc`, lastModified: today, priority: 0.95, changeFrequency: "monthly" },
+    { url: `${baseUrl}/nmc/columns`, lastModified: today, priority: 0.85, changeFrequency: "daily" },
     { url: `${baseUrl}/about`, lastModified: today, priority: 0.9, changeFrequency: "monthly" },
     { url: `${baseUrl}/clinic`, lastModified: today, priority: 0.9, changeFrequency: "monthly" },
     { url: `${baseUrl}/faq`, lastModified: today, priority: 0.8, changeFrequency: "weekly" },
-    { url: `${baseUrl}/columns`, lastModified: today, priority: 0.8, changeFrequency: "daily" },
+    { url: `${baseUrl}/columns`, lastModified: today, priority: 0.75, changeFrequency: "daily" },
     { url: `${baseUrl}/event/suneung`, lastModified: today, priority: 0.85, changeFrequency: "monthly" },
   ];
 
@@ -44,10 +47,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "monthly" as const,
   }));
 
+  // 카테고리별 올바른 URL로 생성
   const columnPages: MetadataRoute.Sitemap = getAllColumns().map((c) => ({
-    url: `${baseUrl}/columns/${c.slug}`,
+    url: `${baseUrl}${getColumnUrl(c)}`,
     lastModified: new Date(c.modified ?? c.date),
-    priority: 0.7,
+    priority: 0.8,
     changeFrequency: "monthly" as const,
   }));
 

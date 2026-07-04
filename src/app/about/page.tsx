@@ -112,6 +112,47 @@ export default function AboutPage() {
           </p>
         </div>
 
+        {/* 한의원 위치 */}
+        <div className="mt-12 border-t border-[var(--border)] pt-10">
+          <h3 className="text-xl font-bold mb-6">서울 중랑구 · 먹골역 도보 5분</h3>
+          <div className="grid sm:grid-cols-2 gap-3 text-sm">
+            {[
+              { label: "주소", value: "서울특별시 중랑구 공릉로 21" },
+              { label: "교통", value: "먹골역 (7호선) 도보 5분 · 태릉입구역 (6·7호선) 도보 10분" },
+              { label: "평일", value: "09:30 – 18:30 (점심 13:00 – 14:00)" },
+              { label: "토요일", value: "09:30 – 13:00 · 일요일 휴진" },
+              { label: "전화", value: clinic.contact.phone },
+            ].map((row) => (
+              <div key={row.label} className="p-3.5 rounded-xl bg-[var(--surface-muted)] border border-[var(--border)]">
+                <dt className="text-[10px] tracking-widest text-[var(--text-muted)] uppercase font-bold mb-1">{row.label}</dt>
+                <dd className="font-semibold text-[var(--foreground)]">{row.value}</dd>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* 진료 항목 */}
+        <div className="mt-10 border-t border-[var(--border)] pt-10">
+          <h3 className="text-xl font-bold mb-6">진료 항목</h3>
+          <div className="grid sm:grid-cols-3 gap-4">
+            {[
+              { title: "매일감비환 다이어트", desc: "기초대사량 회복에 특화된 한방 다이어트. 비대면 전국 처방.", href: "/diet" },
+              { title: "공진단 · 총명공진단", desc: "원장이 직접 제조하는 사향·녹용 공진단. 수험생·갱년기·기력회복.", href: "/gongjindan" },
+              { title: "무릎관절 NMC", desc: "염증 무력화→구조 재건 한방 프로토콜. 침·한약 병행 치료.", href: "/nmc" },
+            ].map((item) => (
+              <a
+                key={item.title}
+                href={item.href}
+                className="block p-5 rounded-xl border border-[var(--border)] bg-[var(--surface-muted)] hover:border-[var(--brand-primary)] hover:text-[var(--brand-primary)] transition"
+              >
+                <h4 className="font-bold mb-1 text-[var(--foreground)]">{item.title}</h4>
+                <p className="text-sm text-[var(--text-muted)] leading-relaxed mb-3">{item.desc}</p>
+                <span className="text-xs font-bold text-[var(--brand-primary)]">자세히 보기 →</span>
+              </a>
+            ))}
+          </div>
+        </div>
+
         <div className="mt-12">
           <CTAButtons />
         </div>

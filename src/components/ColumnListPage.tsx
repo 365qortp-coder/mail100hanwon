@@ -1,53 +1,39 @@
-import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
-
-import { buildMetadata } from "@/lib/seo";
 import { Section, SectionTitle } from "@/components/Section";
 import { Breadcrumb } from "@/components/Breadcrumb";
-import { getAllColumns, getColumnUrl, getColumnImage } from "@/lib/columns";
+import { type ColumnMeta, getColumnImage, getColumnUrl } from "@/lib/columns";
 
-export const metadata: Metadata = buildMetadata({
-  title: "건강 칼럼 전체",
-  description:
-    "매일백세한의원이 발행하는 건강 칼럼 전체 목록. 다이어트·공진단·무릎 치료·한방 건강 정보를 매일 업데이트합니다.",
-  path: "/columns",
-  keywords: ["매일백세한의원 칼럼", "다이어트 한약 정보", "공진단 정보", "한방 건강 칼럼"],
-});
+type Props = {
+  columns: ColumnMeta[];
+  section: {
+    label: string;
+    href: string;
+    listHref: string;
+    eyebrow: string;
+    title: string;
+    subtitle: string;
+  };
+};
 
-const SECTION_LINKS = [
-  { label: "다이어트 칼럼", href: "/diet/columns" },
-  { label: "공진단 칼럼", href: "/gongjindan/columns" },
-  { label: "무릎 치료 칼럼", href: "/nmc/columns" },
-];
-
-export default function ColumnsListPage() {
-  const columns = getAllColumns();
-
+export function ColumnListPage({ columns, section }: Props) {
   return (
     <>
       <div className="mx-auto max-w-6xl px-4">
-        <Breadcrumb items={[{ name: "건강 칼럼", href: "/columns" }]} />
+        <Breadcrumb
+          items={[
+            { name: section.label, href: section.href },
+            { name: "칼럼", href: section.listHref },
+          ]}
+        />
       </div>
 
       <Section bg="white">
         <SectionTitle
-          eyebrow="건강 칼럼"
-          title="매일백세한의원의 한방 건강 정보"
-          subtitle="송원석 원장이 직접 운영하는 유튜브 채널 영상을 글로 정리한 콘텐츠를 매일 업데이트합니다."
+          eyebrow={section.eyebrow}
+          title={section.title}
+          subtitle={section.subtitle}
         />
-
-        <div className="flex flex-wrap gap-3 mb-10">
-          {SECTION_LINKS.map((s) => (
-            <Link
-              key={s.href}
-              href={s.href}
-              className="px-4 py-1.5 text-sm rounded-full border border-[var(--brand-primary)] text-[var(--brand-primary)] font-semibold hover:bg-[var(--brand-primary)] hover:text-white transition"
-            >
-              {s.label}
-            </Link>
-          ))}
-        </div>
 
         {columns.length === 0 ? (
           <div className="text-center py-12 text-[var(--text-muted)]">

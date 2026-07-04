@@ -7,6 +7,7 @@ import { faqSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/JsonLd";
 import { CTAButtons } from "@/components/CTAButtons";
 import { clinic } from "@/data/clinic";
+import { getColumnsBySection, getColumnUrl, getColumnImage, type ColumnMeta } from "@/lib/columns";
 
 export const metadata: Metadata = buildMetadata({
   title: "공진단 | 원장 직접 제조 · 사향공진단·녹용 2배·총명공진단",
@@ -344,7 +345,10 @@ export default function GongjindanPage() {
         </div>
       </section>
 
-      {/* 07 · FINAL CTA */}
+      {/* 07 · 공진단 칼럼 */}
+      <GongjindanColumnsSection />
+
+      {/* 08 · FINAL CTA */}
       <section className="bg-black text-white">
         <div className="mx-auto max-w-4xl px-4 py-16 md:py-20 text-center">
           <p className="text-xs font-bold tracking-[0.2em] text-[var(--brand-primary)] uppercase mb-3">
@@ -367,5 +371,44 @@ export default function GongjindanPage() {
         </div>
       </section>
     </>
+  );
+}
+
+function GongjindanColumnsSection() {
+  const cols = getColumnsBySection("gongjindan").slice(0, 3);
+  if (!cols.length) return null;
+  return (
+    <section className="bg-[var(--surface-muted)] border-t border-[var(--border)]">
+      <div className="mx-auto max-w-4xl px-4 py-14">
+        <div className="flex items-end justify-between mb-8">
+          <div>
+            <p className="text-xs font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase mb-2">Column</p>
+            <h2 className="text-xl md:text-2xl font-extrabold">공진단 칼럼</h2>
+          </div>
+          <Link href="/gongjindan/columns" className="text-sm text-[var(--brand-primary)] font-semibold hover:underline">
+            전체 보기 →
+          </Link>
+        </div>
+        <div className="grid md:grid-cols-3 gap-4">
+          {cols.map((c: ColumnMeta) => {
+            const img = getColumnImage(c);
+            return (
+              <Link key={c.slug} href={getColumnUrl(c)}
+                className="block bg-white rounded-xl border border-[var(--border)] hover:border-[var(--brand-primary)] hover:shadow transition overflow-hidden">
+                {img && (
+                  <div className="relative aspect-video w-full bg-[var(--border)]">
+                    <Image src={img} alt={c.imageAlt ?? c.title} fill className="object-cover" sizes="33vw" unoptimized />
+                  </div>
+                )}
+                <div className="p-4">
+                  <p className="text-xs text-[var(--text-muted)] mb-1">{c.date}</p>
+                  <p className="font-bold text-sm line-clamp-2">{c.title}</p>
+                </div>
+              </Link>
+            );
+          })}
+        </div>
+      </div>
+    </section>
   );
 }

@@ -18,10 +18,11 @@ export const clinic = {
     ],
   },
   stats: {
-    yearsOpen: 11,
+    yearsOpen: 10,
     yearOpened: 2016,
-    gongjindanUnits: 30000,
+    gongjindanUnits: 40000,
     totalConsults: 820000,
+    dietConsults: 100000,
   },
   philosophy: {
     umbrella: "직접 해보고 효과 있는 진료만 권해드립니다",
