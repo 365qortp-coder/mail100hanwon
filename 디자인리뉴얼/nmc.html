@@ -49,6 +49,93 @@
     .logo-badge { display:flex; flex-direction:column; align-items:center; justify-content:center; background:#C0252D; color:white; font-family:'SeoulHangang','Pretendard',sans-serif; font-weight:700; font-size:13.5px; line-height:1.2; width:28px; height:36px; flex-shrink:0; border-radius:3px; }
     .logo-name { font-family:'GyeonggiCheonnyeon','Noto Serif KR',serif; font-size:21px; font-weight:700; color:#0a0a0a; letter-spacing:-0.025em; line-height:1; white-space:nowrap; }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["MedicalBusiness", "MedicalClinic", "LocalBusiness"],
+        "@id": "https://mail100hanwon.co.kr#clinic",
+        "name": "매일백세한의원",
+        "url": "https://mail100hanwon.co.kr",
+        "telephone": "+82-2-2234-0102",
+        "description": "매일백세한의원은 서울 중랑구 공릉로에 위치한 한의원으로, 무릎관절 NMC 치료, 다이어트 한약, 공진단을 전문으로 합니다.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "공릉로 21",
+          "addressLocality": "중랑구",
+          "addressRegion": "서울특별시",
+          "addressCountry": "KR"
+        },
+        "geo": {"@type": "GeoCoordinates", "latitude": 37.6094, "longitude": 127.0763},
+        "openingHoursSpecification": [
+          {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:30", "closes": "18:30"},
+          {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:30", "closes": "13:00"}
+        ],
+        "sameAs": ["https://www.youtube.com/@%EB%A7%A4%EC%9D%BC%EB%B0%B1%EC%84%B8%ED%95%9C%EC%9D%98%EC%9B%90_%ED%86%B5%EC%A6%9D"]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://mail100hanwon.co.kr#website",
+        "name": "매일백세한의원",
+        "url": "https://mail100hanwon.co.kr",
+        "publisher": {"@id": "https://mail100hanwon.co.kr#clinic"}
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://mail100hanwon.co.kr/nmc.html#webpage",
+        "url": "https://mail100hanwon.co.kr/nmc.html",
+        "name": "NMC 무릎관절 치료 | 매일백세한의원",
+        "description": "수술 없이 무릎을 고치는 NMC 치료. 염증 제어(N)→가동성 회복(M)→구조 강화(C) 단계적 접근. 매일백세한의원 서울 중랑구.",
+        "isPartOf": {"@id": "https://mail100hanwon.co.kr#website"},
+        "about": {"@id": "https://mail100hanwon.co.kr#clinic"},
+        "inLanguage": "ko-KR"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "매일백세한의원", "item": "https://mail100hanwon.co.kr"},
+          {"@type": "ListItem", "position": 2, "name": "NMC 무릎관절", "item": "https://mail100hanwon.co.kr/nmc.html"}
+        ]
+      },
+      {
+        "@type": "MedicalTherapy",
+        "@id": "https://mail100hanwon.co.kr/nmc.html#therapy",
+        "name": "NMC 무릎관절 치료",
+        "alternateName": "NMC",
+        "description": "N(염증 제어)·M(가동성 목표)·C(구조 강화) 3단계로 접근하는 무릎관절 한방 치료. 수술 없이 관절 기능 회복을 목표로 합니다.",
+        "medicalSpecialty": {"@type": "MedicalSpecialty", "name": "한방 관절 치료"},
+        "relevantSpecialty": "TraditionalChinese",
+        "recognizingAuthority": {"@id": "https://mail100hanwon.co.kr#clinic"}
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "NMC 치료는 어떤 원리인가요?",
+            "acceptedAnswer": {"@type": "Answer", "text": "NMC는 N(염증 제어)→M(가동성 목표)→C(구조 강화) 3단계로 무릎을 회복시키는 치료입니다. 한약·침·뜸·물리요법을 단계별로 조합해 수술 없이 기능 회복을 유도합니다."}
+          },
+          {
+            "@type": "Question",
+            "name": "수술 없이 무릎을 치료할 수 있나요?",
+            "acceptedAnswer": {"@type": "Answer", "text": "네. 초기~중등도 무릎 관절 문제는 NMC 치료로 수술 없이 기능 회복이 가능합니다. 손상 정도가 심한 경우 원장이 치료 적합성을 먼저 확인해 드립니다."}
+          },
+          {
+            "@type": "Question",
+            "name": "무릎 연골손상이 심해도 효과가 있나요?",
+            "acceptedAnswer": {"@type": "Answer", "text": "연골 손상 등급에 따라 접근 방식이 달라집니다. 내원 시 원장이 직접 상태를 확인하고 치료 가능 여부와 예상 경과를 설명해 드립니다."}
+          },
+          {
+            "@type": "Question",
+            "name": "치료 기간은 얼마나 되나요?",
+            "acceptedAnswer": {"@type": "Answer", "text": "염증 제어 집중 기간 약 1.5개월, 가동성·구조 강화 기간 약 3개월을 기본으로 합니다. 증상에 따라 기간이 달라질 수 있습니다."}
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
@@ -251,7 +338,7 @@
   <div class="max-w-4xl mx-auto px-5 md:px-8 py-16 md:py-20 text-center">
     <div class="reveal">
       <p class="text-[10px] font-bold tracking-[0.2em] text-[#8C8A87] uppercase mb-4">Self Check</p>
-      <h2 class="font-serif text-3xl md:text-4xl font-bold text-[#0a0a0a] mb-4 leading-snug">지금 내 무릎 상태,<br>10문항으로 확인해보세요</h2>
+      <h2 class="font-serif text-3xl md:text-4xl font-bold text-[#0a0a0a] mb-4 leading-snug">지금 내 무릎 상태,<br>14문항으로 확인해보세요</h2>
       <p class="text-sm text-[#525252] mb-8 max-w-md mx-auto leading-relaxed">WOMAC 기반 자가진단으로 염증 단계와 치료 방향을 파악할 수 있습니다. 진단 결과는 참고용이며, 정확한 치료 방향은 내원 상담을 통해 확인합니다.</p>
       <a href="https://maeilbaeksae-knee.vercel.app/cheongnyeomdan_landing" target="_blank" rel="noopener"
          class="btn-primary inline-flex items-center gap-2.5 px-8 py-4 bg-brand text-white font-bold rounded-full text-sm">

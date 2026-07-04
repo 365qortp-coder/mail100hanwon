@@ -35,7 +35,7 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           UNSPLASH_ACCESS_KEY: ${{ secrets.UNSPLASH_ACCESS_KEY }}
-          COLUMNS_PER_RUN: "2"
+          COLUMNS_PER_RUN: "1"
         run: npm run generate:column
 
       - name: Generate static HTML + sitemap

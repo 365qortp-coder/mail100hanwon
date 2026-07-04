@@ -47,6 +47,73 @@
     .logo-badge { display:flex; flex-direction:column; align-items:center; justify-content:center; background:#C0252D; color:white; font-family:'SeoulHangang','Pretendard',sans-serif; font-weight:700; font-size:13.5px; line-height:1.2; width:28px; height:36px; flex-shrink:0; border-radius:3px; }
     .logo-name { font-family:'GyeonggiCheonnyeon','Noto Serif KR',serif; font-size:21px; font-weight:700; color:#0a0a0a; letter-spacing:-0.025em; line-height:1; white-space:nowrap; }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["MedicalBusiness", "MedicalClinic", "LocalBusiness"],
+        "@id": "https://mail100hanwon.co.kr#clinic",
+        "name": "매일백세한의원",
+        "url": "https://mail100hanwon.co.kr",
+        "telephone": "+82-2-2234-0102",
+        "description": "매일백세한의원은 서울 중랑구 공릉로에 위치한 한의원으로, 다이어트 한약(매일감비환), 공진단, 무릎관절 NMC 치료를 전문으로 합니다.",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "공릉로 21",
+          "addressLocality": "중랑구",
+          "addressRegion": "서울특별시",
+          "addressCountry": "KR"
+        },
+        "geo": {"@type": "GeoCoordinates", "latitude": 37.6094, "longitude": 127.0763},
+        "openingHoursSpecification": [
+          {"@type": "OpeningHoursSpecification", "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"], "opens": "09:30", "closes": "18:30"},
+          {"@type": "OpeningHoursSpecification", "dayOfWeek": "Saturday", "opens": "09:30", "closes": "13:00"}
+        ],
+        "sameAs": [
+          "https://www.youtube.com/channel/UC6Mf-wiyKvWup51wgGzjE4A",
+          "https://www.youtube.com/@%EC%A7%81%EC%A0%91%EB%A7%8C%EB%93%A0%EC%A7%84%EC%A7%9C%EA%B3%B5%EC%A7%84%EB%8B%A8",
+          "https://www.youtube.com/@%EB%A7%A4%EC%9D%BC%EB%B0%B1%EC%84%B8%ED%95%9C%EC%9D%98%EC%9B%90_%ED%86%B5%EC%A6%9D"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://mail100hanwon.co.kr#website",
+        "name": "매일백세한의원",
+        "url": "https://mail100hanwon.co.kr",
+        "publisher": {"@id": "https://mail100hanwon.co.kr#clinic"}
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://mail100hanwon.co.kr/about.html#webpage",
+        "url": "https://mail100hanwon.co.kr/about.html",
+        "name": "원장 소개 | 매일백세한의원 송원석",
+        "description": "매일백세한의원 대표원장 송원석. 대전대학교 한의과대학 출신(05학번). 한방 다이어트·공진단·무릎관절 NMC 치료 전문.",
+        "isPartOf": {"@id": "https://mail100hanwon.co.kr#website"},
+        "about": {"@id": "https://mail100hanwon.co.kr#clinic"},
+        "inLanguage": "ko-KR"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "매일백세한의원", "item": "https://mail100hanwon.co.kr"},
+          {"@type": "ListItem", "position": 2, "name": "원장 소개", "item": "https://mail100hanwon.co.kr/about.html"}
+        ]
+      },
+      {
+        "@type": "Person",
+        "@id": "https://mail100hanwon.co.kr#director",
+        "name": "송원석",
+        "jobTitle": "대표원장",
+        "worksFor": {"@id": "https://mail100hanwon.co.kr#clinic"},
+        "affiliation": "매일백세한의원",
+        "alumniOf": "대전대학교 한의과대학",
+        "description": "매일백세한의원 대표원장 송원석. 대전대학교 한의과대학 출신(05학번)으로, 한방 다이어트(매일감비환)·공진단·무릎관절 NMC 진료를 직접 처방합니다. 처음부터 끝까지 원장이 직접 책임집니다.",
+        "knowsAbout": ["한방 다이어트", "공진단", "무릎관절 한방 치료", "NMC 치료", "비대면 한방 진료"]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 

@@ -234,8 +234,38 @@ function headHtml({ title, description, keywords, root = '../', slug = '' }) {
   </style>`;
 }
 
+// ── 관련 칼럼 섹션 HTML ───────────────────────────────────────────
+function relatedColumnsHtml(col, allCols) {
+  const related = allCols
+    .filter(c => c.slug !== col.slug && c.meta.category === col.meta.category)
+    .slice(0, 3);
+  if (related.length === 0) return '';
+
+  const root = '../../';
+  const cards = related.map(c => {
+    const imgUrl = (c.meta.image && !c.meta.image.includes('unknown'))
+      ? c.meta.image
+      : `https://picsum.photos/seed/${c.slug.slice(0, 8)}/400/225`;
+    return `<a href="${root}columns/${c.slug}/index.html"
+        class="flex gap-3 items-start p-3 rounded-xl border border-black/[0.07] hover:border-black/20 hover:bg-[#FAFAFA] transition-all duration-200 group">
+      <img src="${imgUrl}" alt="${c.meta.title}" class="w-20 h-14 object-cover rounded-lg shrink-0 bg-[#F0EDE6]" loading="lazy">
+      <div class="min-w-0">
+        <p class="text-[10px] text-[#C8392B] font-bold tracking-wider uppercase mb-1">${c.meta.category || ''}</p>
+        <p class="text-sm font-semibold text-[#0a0a0a] line-clamp-2 leading-snug group-hover:text-[#C8392B] transition-colors">${c.meta.title}</p>
+      </div>
+    </a>`;
+  }).join('\n      ');
+
+  return `<div class="mt-10 pt-8 border-t border-black/[0.07]">
+    <h3 class="text-sm font-bold text-[#0a0a0a] mb-4">관련 칼럼</h3>
+    <div class="space-y-3">
+      ${cards}
+    </div>
+  </div>`;
+}
+
 // ── 개별 칼럼 페이지 생성 ─────────────────────────────────────────
-function generateColumnPage(col) {
+function generateColumnPage(col, allCols = []) {
   const { meta, body } = col;
   const slug = col.slug;
   const contentHtml = mdToHtml(body);
@@ -335,6 +365,8 @@ ${navHtml(2)}
         </a>
       </div>
     </div>
+
+    ${relatedColumnsHtml(col, allCols)}
 
     <!-- Back link -->
     <div class="mt-10">
@@ -510,7 +542,7 @@ function run() {
   for (const col of cols) {
     const dir = path.join(OUT_DIR, col.slug);
     if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
-    fs.writeFileSync(path.join(dir, 'index.html'), generateColumnPage(col), 'utf-8');
+    fs.writeFileSync(path.join(dir, 'index.html'), generateColumnPage(col, cols), 'utf-8');
     count++;
   }
 

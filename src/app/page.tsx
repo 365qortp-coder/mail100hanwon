@@ -603,10 +603,10 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Reveal animation */}
+      {/* Reveal animation — sn-js 클래스 먼저 추가해야 숨김 CSS가 적용됨 */}
       <script
         dangerouslySetInnerHTML={{
-          __html: `(function(){var o=new IntersectionObserver(function(e){e.forEach(function(i){if(i.isIntersecting){i.target.classList.add('sn-visible');o.unobserve(i.target)}})},{threshold:0.08,rootMargin:'0px 0px -32px 0px'});document.querySelectorAll('.sn-reveal').forEach(function(el){o.observe(el)})})()`,
+          __html: `(function(){document.documentElement.classList.add('sn-js');var o=new IntersectionObserver(function(e){e.forEach(function(i){if(i.isIntersecting){i.target.classList.add('sn-visible');o.unobserve(i.target)}})},{threshold:0.08,rootMargin:'0px 0px -32px 0px'});document.querySelectorAll('.sn-reveal').forEach(function(el){o.observe(el)})})()`,
         }}
       />
     </>

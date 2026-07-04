@@ -99,13 +99,17 @@ html { scroll-behavior: smooth; }
 }
 
 /* ── Supanova Reveal Animation ── */
+/* JS 없을 때는 무조건 보임 (progressive enhancement) */
 .sn-reveal {
-  opacity: 0;
-  transform: translateY(1.5rem);
-  filter: blur(4px);
   transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
               transform 0.7s cubic-bezier(0.16, 1, 0.3, 1),
               filter 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+/* JS가 sn-js 클래스를 html에 추가한 이후에만 숨김 처리 */
+.sn-js .sn-reveal {
+  opacity: 0;
+  transform: translateY(1.5rem);
+  filter: blur(4px);
 }
 .sn-reveal.sn-visible {
   opacity: 1;
