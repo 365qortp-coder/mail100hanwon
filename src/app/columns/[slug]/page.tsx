@@ -10,13 +10,13 @@ import { Section } from "@/components/Section";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTAButtons } from "@/components/CTAButtons";
 import { clinic } from "@/data/clinic";
-import { getColumn, getColumnSlugs, getAllColumns, getColumnUrl, getColumnSection, getColumnImage } from "@/lib/columns";
+import { getColumn, getColumnsBySection, getAllColumns, getColumnUrl, getColumnSection, getColumnImage } from "@/lib/columns";
 
 type Params = Promise<{ slug: string }>;
 
 export function generateStaticParams() {
-  // 이 라우트는 "columns" 섹션(한방건강 등 기타)만 담당
-  return getColumnSlugs().map((slug) => ({ slug }));
+  // "columns" 섹션(기타 건강)만 정적 생성 — diet/gongjindan/nmc는 동적으로 처리 후 301
+  return getColumnsBySection("columns").map((c) => ({ slug: c.slug }));
 }
 
 export async function generateMetadata({
