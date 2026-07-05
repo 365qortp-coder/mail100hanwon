@@ -2,12 +2,6 @@
   "_comment": "Add YouTube video URLs/IDs here. The daily automation will pick one unprocessed video at a time and convert it into a column. After processing, the entry is moved to the 'processed' array with the resulting column slug.",
   "queue": [
     {
-      "url": "https://www.youtube.com/watch?v=RyXL-RGultg",
-      "videoId": "RyXL-RGultg",
-      "hint": "[diet] ���� �����ϰ� ����� �� �컩�¹�",
-      "angles": []
-    },
-    {
       "url": "https://www.youtube.com/watch?v=djzJKoMYv58",
       "hint": "[gongjindan] 지팡이 없이 걷게 된 공진단의 놀라운 효과"
     },
@@ -842,6 +836,14 @@
       "angles": [],
       "status": "no-transcript",
       "at": "2026-07-04T08:38:26.440Z"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=RyXL-RGultg",
+      "videoId": "RyXL-RGultg",
+      "hint": "[diet] ���� �����ϰ� ����� �� �컩�¹�",
+      "angles": [],
+      "status": "no-transcript",
+      "at": "2026-07-05T08:54:17.123Z"
     }
   ]
 }
