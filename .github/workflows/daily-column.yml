@@ -1,9 +1,9 @@
 name: Daily Column Generation
 
 on:
-  schedule:
-    # 매일 한국시간 오후 3시 (UTC 06:00)
-    - cron: "0 6 * * *"
+  # 자동 발행 일시 중지 (2026-07-06). 재개하려면 아래 schedule 주석 해제.
+  # schedule:
+  #   - cron: "0 6 * * *"  # 매일 한국시간 오후 3시 (UTC 06:00)
   workflow_dispatch:
 
 permissions:
