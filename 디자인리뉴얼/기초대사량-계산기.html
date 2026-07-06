@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>기초대사량 계산기 | 성별·나이·활동량별 BMR·TDEE 계산 — 매일백세한의원</title>
+  <meta name="description" content="Mifflin-St Jeor 공식 기반 무료 기초대사량(BMR) 계산기. 성별·연령대별 평균 비교, 활동대사량(TDEE)까지 한 번에 확인하세요.">
+  <link rel="canonical" href="https://mail100hanwon.co.kr/기초대사량-계산기">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.min.css">
+  <script src="https://code.iconify.design/iconify-icon/2.3.0/iconify-icon.min.js"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Pretendard','-apple-system','system-ui','sans-serif'], serif: ['"Noto Serif KR"','serif'] },
+          colors: { brand:'#C0252D', 'brand-dark':'#8c1820', 'brand-light':'#fdecec' },
+        },
+      },
+    }
+  </script>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, 'Apple SD Gothic Neo', system-ui, sans-serif;
+      word-break: keep-all; -webkit-font-smoothing: antialiased; background: #ffffff; color: #0a0a0a;
+    }
+    .font-serif { font-family: 'Noto Serif KR', serif; }
+    .reveal { opacity: 0; transform: translateY(28px); transition: opacity 0.75s cubic-bezier(0.16,1,0.3,1), transform 0.75s cubic-bezier(0.16,1,0.3,1); }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .faq-arrow { transition: transform 0.3s cubic-bezier(0.16,1,0.3,1); display: inline-block; }
+    details[open] .faq-arrow { transform: rotate(180deg); }
+    .btn-primary { transition: all 0.4s cubic-bezier(0.16,1,0.3,1); }
+    .btn-primary:hover { transform: translateY(-1px); box-shadow: 0 12px 32px rgba(192,37,45,0.28); }
+    .btn-primary:active { transform: scale(0.98); }
+    .btn-ghost { transition: all 0.35s cubic-bezier(0.16,1,0.3,1); }
+    .btn-ghost:active { transform: scale(0.98); }
+    @font-face { font-family:'SeoulHangang'; src:url('https://cdn.jsdelivr.net/gh/webfontworld/SeoulHangang@main/SeoulHangangM.woff2') format('woff2'); font-display:swap; }
+    @font-face { font-family:'GyeonggiCheonnyeon'; src:url('https://cdn.jsdelivr.net/gh/webfontworld/GyeonggiCheonnyeon@main/GyeonggiCheonnyeonBold.woff2') format('woff2'); font-weight:700; font-display:swap; }
+    .logo-wrap { display:flex; align-items:center; gap:8px; text-decoration:none; }
+    .logo-badge { display:flex; flex-direction:column; align-items:center; justify-content:center; background:#C0252D; color:white; font-family:'SeoulHangang','Pretendard',sans-serif; font-weight:700; font-size:13.5px; line-height:1.2; width:28px; height:36px; flex-shrink:0; border-radius:3px; }
+    .logo-name { font-family:'GyeonggiCheonnyeon','Noto Serif KR',serif; font-size:21px; font-weight:700; color:#0a0a0a; letter-spacing:-0.025em; line-height:1; white-space:nowrap; }
+    input[type=number]::-webkit-inner-spin-button, input[type=number]::-webkit-outer-spin-button { opacity: 1; }
+    .seg-btn.active { background:#0a0a0a; color:#fff; }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["MedicalBusiness", "MedicalClinic", "LocalBusiness"],
+        "@id": "https://mail100hanwon.co.kr#clinic",
+        "name": "매일백세한의원",
+        "url": "https://mail100hanwon.co.kr",
+        "telephone": "+82-2-2234-0102",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "공릉로 21",
+          "addressLocality": "중랑구",
+          "addressRegion": "서울특별시",
+          "addressCountry": "KR"
+        },
+        "geo": {"@type": "GeoCoordinates", "latitude": 37.6094, "longitude": 127.0763}
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://mail100hanwon.co.kr#website",
+        "name": "매일백세한의원",
+        "url": "https://mail100hanwon.co.kr",
+        "publisher": {"@id": "https://mail100hanwon.co.kr#clinic"}
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://mail100hanwon.co.kr/기초대사량-계산기#webpage",
+        "url": "https://mail100hanwon.co.kr/기초대사량-계산기",
+        "name": "기초대사량 계산기 | 매일백세한의원",
+        "description": "Mifflin-St Jeor 공식 기반 무료 기초대사량(BMR) 계산기. 성별·연령대별 평균 비교, 활동대사량(TDEE)까지 확인.",
+        "isPartOf": {"@id": "https://mail100hanwon.co.kr#website"},
+        "about": {"@id": "https://mail100hanwon.co.kr#clinic"},
+        "inLanguage": "ko-KR"
+      },
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "매일백세한의원", "item": "https://mail100hanwon.co.kr"},
+          {"@type": "ListItem", "position": 2, "name": "기초대사량 계산기", "item": "https://mail100hanwon.co.kr/기초대사량-계산기"}
+        ]
+      },
+      {
+        "@type": "SoftwareApplication",
+        "name": "기초대사량 계산기",
+        "applicationCategory": "HealthApplication",
+        "operatingSystem": "Web",
+        "url": "https://mail100hanwon.co.kr/기초대사량-계산기",
+        "offers": {"@type": "Offer", "price": "0", "priceCurrency": "KRW"},
+        "provider": {"@id": "https://mail100hanwon.co.kr#clinic"}
+      },
+      {
+        "@type": "HowTo",
+        "name": "기초대사량(BMR) 계산하는 법",
+        "step": [
+          {"@type": "HowToStep", "name": "성별·나이·키·몸무게 입력", "text": "성별, 나이, 키(cm), 몸무게(kg)를 입력합니다."},
+          {"@type": "HowToStep", "name": "공식 적용", "text": "Mifflin-St Jeor 공식으로 남성은 10×체중+6.25×키−5×나이+5, 여성은 10×체중+6.25×키−5×나이−161을 계산합니다."},
+          {"@type": "HowToStep", "name": "결과 확인", "text": "계산된 기초대사량(kcal)과 동일 연령대 평균치를 비교해 확인합니다."}
+        ]
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {"@type": "Question", "name": "기초대사량이란 무엇인가요?", "acceptedAnswer": {"@type": "Answer", "text": "아무 활동을 하지 않아도 호흡, 체온 조절, 심장박동 등 생명 유지에 최소한으로 소모되는 에너지량입니다. 하루 전체 소모 칼로리의 약 60~70%를 차지합니다."}},
+          {"@type": "Question", "name": "기초대사량이 낮으면 어떻게 되나요?", "acceptedAnswer": {"@type": "Answer", "text": "같은 양을 먹어도 소모되는 열량이 적어 체지방으로 쌓이기 쉽습니다. 나이가 들수록, 근육량이 줄어들수록 기초대사량은 자연히 낮아지는 경향이 있습니다."}},
+          {"@type": "Question", "name": "계산기 결과와 인바디 측정값이 다른 이유는 무엇인가요?", "acceptedAnswer": {"@type": "Answer", "text": "이 계산기는 통계적 공식(Mifflin-St Jeor)으로 추정한 값이고, 인바디는 체성분을 직접 측정한 값이라 차이가 있을 수 있습니다. 체지방률을 알고 있다면 입력창에 추가로 입력해 Katch-McArdle 공식 기반의 더 정밀한 값을 확인할 수 있습니다."}},
+          {"@type": "Question", "name": "기초대사량을 높이려면 어떻게 해야 하나요?", "acceptedAnswer": {"@type": "Answer", "text": "근육량을 늘리는 저항 운동, 충분한 단백질 섭취, 무리한 절식을 피하는 것이 핵심입니다. 근육 1kg당 하루 약 13kcal를 추가로 소모합니다."}},
+          {"@type": "Question", "name": "기초대사량이 평균보다 낮게 나왔다면 어떻게 해야 하나요?", "acceptedAnswer": {"@type": "Answer", "text": "우선 근육량을 늘리는 생활습관 교정이 먼저입니다. 여러 방법을 시도해도 개선되지 않는다면 체질별 접근이 필요할 수 있어 전문 상담을 고려해볼 수 있습니다."}}
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<header class="sticky top-0 z-40 w-full bg-white border-b border-black/[0.06]">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 h-14 flex items-center justify-between gap-4">
+    <a href="index.html" class="shrink-0" aria-label="매일백세한의원 홈">
+      <img src="assets/logo.png" alt="매일백세한의원" class="h-9 w-auto" loading="eager">
+    </a>
+    <nav class="hidden lg:flex items-center gap-0.5" aria-label="주 메뉴">
+      <a href="diet.html"       class="px-3.5 py-2 text-sm text-[#525252] hover:text-[#0a0a0a] font-medium rounded-lg hover:bg-black/[0.04] transition-colors">매일감비환</a>
+      <a href="gongjindan.html" class="px-3.5 py-2 text-sm text-[#525252] hover:text-[#0a0a0a] font-medium rounded-lg hover:bg-black/[0.04] transition-colors">공진단</a>
+      <a href="nmc.html"        class="px-3.5 py-2 text-sm text-[#525252] hover:text-[#0a0a0a] font-medium rounded-lg hover:bg-black/[0.04] transition-colors">무릎관절 NMC</a>
+      <a href="about.html"      class="px-3.5 py-2 text-sm text-[#525252] hover:text-[#0a0a0a] font-medium rounded-lg hover:bg-black/[0.04] transition-colors">원장 소개</a>
+    </nav>
+    <div class="flex items-center gap-2 shrink-0">
+      <a href="tel:0222340102" aria-label="전화" class="inline-flex lg:hidden items-center justify-center w-9 h-9 rounded-full bg-brand-light text-brand hover:bg-brand hover:text-white transition-colors">
+        <iconify-icon icon="solar:phone-linear" width="17"></iconify-icon>
+      </a>
+      <a href="tel:0222340102" class="hidden lg:inline-flex items-center gap-1.5 px-3.5 py-2 text-sm font-bold text-brand hover:bg-brand-light rounded-lg transition-colors">02-2234-0102</a>
+      <a href="https://pf.kakao.com/_JEzRK/chat" target="_blank" rel="noopener" class="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-bold bg-[#FAE100] text-[#3C1E1E] rounded-lg hover:brightness-95 transition-all">
+        <iconify-icon icon="solar:chat-line-bold" width="15"></iconify-icon>
+        <span class="hidden sm:inline">카톡 상담</span>
+      </a>
+    </div>
+  </div>
+  <div class="lg:hidden border-t border-black/[0.05] bg-white/98">
+    <div class="flex items-center gap-1.5 px-4 py-2.5 overflow-x-auto">
+      <a href="diet.html"       class="shrink-0 px-3 py-1.5 text-xs font-semibold text-[#525252] bg-[#F5F5F5] rounded-full border border-black/[0.07] whitespace-nowrap">매일감비환</a>
+      <a href="gongjindan.html" class="shrink-0 px-3 py-1.5 text-xs font-semibold text-[#525252] bg-[#F5F5F5] rounded-full border border-black/[0.07] whitespace-nowrap">공진단</a>
+      <a href="nmc.html"        class="shrink-0 px-3 py-1.5 text-xs font-semibold text-[#525252] bg-[#F5F5F5] rounded-full border border-black/[0.07] whitespace-nowrap">무릎관절 NMC</a>
+      <a href="about.html"      class="shrink-0 px-3 py-1.5 text-xs font-semibold text-[#525252] bg-[#F5F5F5] rounded-full border border-black/[0.07] whitespace-nowrap">원장 소개</a>
+    </div>
+  </div>
+</header>
+
+<!-- ── 01 HERO + CALCULATOR ── -->
+<section class="bg-white overflow-hidden">
+  <div class="max-w-3xl mx-auto px-5 md:px-8 pt-14 pb-6 md:pt-20 text-center">
+    <div class="reveal flex items-center justify-center gap-3 mb-6">
+      <span class="h-px w-6 bg-brand"></span>
+      <span class="text-[11px] font-bold tracking-[0.2em] uppercase text-brand">무료 건강 계산기 · 매일백세한의원</span>
+      <span class="h-px w-6 bg-brand"></span>
+    </div>
+    <h1 class="reveal font-serif text-[2.1rem] md:text-[2.9rem] leading-[1.18] tracking-[-0.02em] text-[#0a0a0a] mb-4">
+      기초대사량 계산기
+    </h1>
+    <p class="reveal text-[#525252] text-base md:text-lg leading-[1.75] max-w-[46ch] mx-auto">
+      Mifflin-St Jeor 공식으로 내 기초대사량(BMR)과 활동대사량(TDEE)을 확인하고,<br class="hidden md:block">
+      같은 연령대 평균과 비교해보세요.
+    </p>
+  </div>
+
+  <div class="max-w-xl mx-auto px-5 md:px-8 pb-16 md:pb-20">
+    <div class="reveal bg-[#F8F6F2] border border-black/[0.06] rounded-[26px] p-6 md:p-9">
+      <!-- gender -->
+      <div class="mb-5">
+        <p class="text-xs font-bold text-[#8C8A87] mb-2.5">성별</p>
+        <div class="grid grid-cols-2 gap-2">
+          <button type="button" id="genderMale" class="seg-btn active py-3 rounded-xl border border-black/10 text-sm font-bold transition-colors">남성</button>
+          <button type="button" id="genderFemale" class="seg-btn py-3 rounded-xl border border-black/10 text-sm font-bold transition-colors">여성</button>
+        </div>
+      </div>
+      <!-- inputs -->
+      <div class="grid grid-cols-3 gap-3 mb-5">
+        <div>
+          <label class="text-xs font-bold text-[#8C8A87] mb-2 block">나이</label>
+          <input type="number" id="age" placeholder="40" class="w-full px-3 py-3 rounded-xl border border-black/10 text-sm font-semibold text-center focus:outline-none focus:border-brand">
+        </div>
+        <div>
+          <label class="text-xs font-bold text-[#8C8A87] mb-2 block">키(cm)</label>
+          <input type="number" id="height" placeholder="160" class="w-full px-3 py-3 rounded-xl border border-black/10 text-sm font-semibold text-center focus:outline-none focus:border-brand">
+        </div>
+        <div>
+          <label class="text-xs font-bold text-[#8C8A87] mb-2 block">몸무게(kg)</label>
+          <input type="number" id="weight" placeholder="60" class="w-full px-3 py-3 rounded-xl border border-black/10 text-sm font-semibold text-center focus:outline-none focus:border-brand">
+        </div>
+      </div>
+      <!-- advanced options -->
+      <details class="mb-6 group">
+        <summary class="cursor-pointer text-xs font-bold text-[#8C8A87] flex items-center gap-1.5 list-none">
+          더 정확하게 계산하기 (선택)
+          <span class="faq-arrow">▾</span>
+        </summary>
+        <div class="mt-4 grid grid-cols-2 gap-3">
+          <div>
+            <label class="text-xs font-bold text-[#8C8A87] mb-2 block">활동량</label>
+            <select id="activity" class="w-full px-3 py-3 rounded-xl border border-black/10 text-sm font-semibold focus:outline-none focus:border-brand bg-white">
+              <option value="0">선택 안 함</option>
+              <option value="1.2">거의 안 움직임 (좌식)</option>
+              <option value="1.375">가벼운 활동 (주 1~3회 운동)</option>
+              <option value="1.55">보통 활동 (주 3~5회 운동)</option>
+              <option value="1.725">활발한 활동 (주 6~7회 운동)</option>
+              <option value="1.9">매우 활발 (매일 강도 높은 활동)</option>
+            </select>
+          </div>
+          <div>
+            <label class="text-xs font-bold text-[#8C8A87] mb-2 block">체지방률(%) — 인바디 참고</label>
+            <input type="number" id="bodyFat" placeholder="예: 28" class="w-full px-3 py-3 rounded-xl border border-black/10 text-sm font-semibold text-center focus:outline-none focus:border-brand">
+          </div>
+        </div>
+      </details>
+
+      <button type="button" id="calcBtn" class="btn-primary w-full py-4 bg-brand text-white text-sm font-bold rounded-full">계산하기</button>
+
+      <!-- results -->
+      <div id="result" class="hidden mt-7 pt-7 border-t border-black/[0.08]">
+        <p class="text-xs font-bold text-[#8C8A87] mb-1" id="resultFormulaLabel">기초대사량 (Mifflin-St Jeor)</p>
+        <p class="font-serif text-4xl md:text-5xl font-bold text-[#0a0a0a] mb-2"><span id="bmrValue">0</span><span class="text-lg font-sans font-semibold text-[#8C8A87]"> kcal</span></p>
+        <p id="compareText" class="text-sm text-[#525252] leading-relaxed mb-4"></p>
+        <div id="tdeeBox" class="hidden bg-white rounded-xl border border-black/[0.06] px-4 py-3 mb-4">
+          <p class="text-xs font-bold text-[#8C8A87] mb-1">활동대사량(TDEE) — 하루 총 소모 칼로리</p>
+          <p class="font-serif text-2xl font-bold text-brand"><span id="tdeeValue">0</span> <span class="text-sm font-sans text-[#8C8A87]">kcal</span></p>
+        </div>
+        <div id="ctaBox" class="hidden bg-brand-light rounded-xl p-5 mt-2">
+          <p class="text-sm font-bold text-[#0a0a0a] mb-3">기초대사량이 낮으면 같은 양을 먹어도 살이 찌기 쉽습니다.<br>대사 회복이 먼저입니다.</p>
+          <a href="diet.html" onclick="if(window.gtag)gtag('event','bmr_result_cta_click',{label:'diet_from_calculator'});" class="btn-primary inline-flex items-center gap-2 px-6 py-3 bg-brand text-white text-sm font-bold rounded-full">
+            매일감비환 알아보기
+            <iconify-icon icon="solar:arrow-right-linear" width="14"></iconify-icon>
+          </a>
+        </div>
+      </div>
+    </div>
+    <p class="reveal text-xs text-[#8C8A87] text-center mt-4 leading-relaxed">
+      본 계산기는 통계 공식 기반 추정치로 참고용입니다. 정확한 체성분 측정은 인바디 검사를, 건강 상담은 전문의를 통해 받으시기 바랍니다.
+    </p>
+  </div>
+</section>
+
+<!-- ── 02 공식 설명 (정적 텍스트 — GEO 인용용) ── -->
+<section class="bg-[#FAFAFA] border-t border-black/[0.05]">
+  <div class="max-w-3xl mx-auto px-5 md:px-8 py-16 md:py-20">
+    <h2 class="reveal font-serif text-2xl md:text-3xl font-bold text-[#0a0a0a] mb-8">기초대사량 계산 공식</h2>
+    <div class="reveal grid md:grid-cols-2 gap-5">
+      <div class="bg-white rounded-2xl border border-black/[0.06] p-6">
+        <p class="text-xs font-bold text-brand mb-3 uppercase tracking-wide">Mifflin-St Jeor (본 계산기 기본값)</p>
+        <p class="text-sm text-[#525252] leading-[1.9] font-mono">
+          남성: 10×체중(kg) + 6.25×키(cm) − 5×나이 + 5<br>
+          여성: 10×체중(kg) + 6.25×키(cm) − 5×나이 − 161
+        </p>
+        <p class="text-xs text-[#8C8A87] mt-3">현재 임상영양학에서 가장 널리 쓰이는 표준 공식.</p>
+      </div>
+      <div class="bg-white rounded-2xl border border-black/[0.06] p-6">
+        <p class="text-xs font-bold text-[#8C8A87] mb-3 uppercase tracking-wide">해리스-베네딕트 (참고)</p>
+        <p class="text-sm text-[#525252] leading-[1.9] font-mono">
+          남성: 66.47 + 13.75×체중 + 5×키 − 6.76×나이<br>
+          여성: 655.1 + 9.56×체중 + 1.85×키 − 4.68×나이
+        </p>
+        <p class="text-xs text-[#8C8A87] mt-3">1990년 개정판. Mifflin-St Jeor보다 다소 높게 추정되는 경향.</p>
+      </div>
+    </div>
+    <div class="reveal bg-white rounded-2xl border border-black/[0.06] p-6 mt-5">
+      <p class="text-xs font-bold text-[#8C8A87] mb-3 uppercase tracking-wide">Katch-McArdle (체지방률을 아는 경우)</p>
+      <p class="text-sm text-[#525252] leading-[1.9] font-mono">
+        제지방량 = 체중 × (1 − 체지방률)<br>
+        기초대사량 = 370 + 21.6 × 제지방량
+      </p>
+      <p class="text-xs text-[#8C8A87] mt-3">체지방률을 반영해 근육량이 많거나 적은 체형에서 더 정확합니다. 인바디 결과지의 체지방률을 위 계산기에 입력하면 자동 적용됩니다.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ── 03 평균 기초대사량 표 ── -->
+<section class="bg-white border-t border-black/[0.05]">
+  <div class="max-w-3xl mx-auto px-5 md:px-8 py-16 md:py-20">
+    <h2 class="reveal font-serif text-2xl md:text-3xl font-bold text-[#0a0a0a] mb-2">성별·연령대별 평균 기초대사량</h2>
+    <p class="reveal text-sm text-[#525252] mb-8">평균 신장·체중 기준 참고치입니다. 개인 체성분에 따라 차이가 있을 수 있습니다.</p>
+    <div class="reveal grid md:grid-cols-2 gap-5">
+      <div class="bg-[#F8F6F2] rounded-2xl border border-black/[0.05] overflow-hidden">
+        <p class="text-sm font-bold text-[#0a0a0a] px-5 pt-5 pb-3">여성 평균 기초대사량</p>
+        <table class="w-full text-sm">
+          <tbody>
+            <tr class="border-t border-black/[0.06]"><td class="px-5 py-3 text-[#525252]">20대</td><td class="px-5 py-3 text-right font-bold text-[#0a0a0a]">약 1,360kcal</td></tr>
+            <tr class="border-t border-black/[0.06]"><td class="px-5 py-3 text-[#525252]">30대</td><td class="px-5 py-3 text-right font-bold text-[#0a0a0a]">약 1,320kcal</td></tr>
+            <tr class="border-t border-black/[0.06]"><td class="px-5 py-3 text-[#525252]">40대</td><td class="px-5 py-3 text-right font-bold text-[#0a0a0a]">약 1,280kcal</td></tr>
+            <tr class="border-t border-black/[0.06]"><td class="px-5 py-3 text-[#525252]">50대 이상</td><td class="px-5 py-3 text-right font-bold text-[#0a0a0a]">약 1,230kcal</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="bg-[#F8F6F2] rounded-2xl border border-black/[0.05] overflow-hidden">
+        <p class="text-sm font-bold text-[#0a0a0a] px-5 pt-5 pb-3">남성 평균 기초대사량</p>
+        <table class="w-full text-sm">
+          <tbody>
+            <tr class="border-t border-black/[0.06]"><td class="px-5 py-3 text-[#525252]">20대</td><td class="px-5 py-3 text-right font-bold text-[#0a0a0a]">약 1,730kcal</td></tr>
+            <tr class="border-t border-black/[0.06]"><td class="px-5 py-3 text-[#525252]">30대</td><td class="px-5 py-3 text-right font-bold text-[#0a0a0a]">약 1,680kcal</td></tr>
+            <tr class="border-t border-black/[0.06]"><td class="px-5 py-3 text-[#525252]">40대</td><td class="px-5 py-3 text-right font-bold text-[#0a0a0a]">약 1,630kcal</td></tr>
+            <tr class="border-t border-black/[0.06]"><td class="px-5 py-3 text-[#525252]">50대 이상</td><td class="px-5 py-3 text-right font-bold text-[#0a0a0a]">약 1,580kcal</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── 04 FAQ ── -->
+<section class="bg-[#F8F6F2] border-t border-black/[0.05]">
+  <div class="max-w-3xl mx-auto px-5 md:px-8 py-16 md:py-20">
+    <h2 class="reveal font-serif text-2xl md:text-3xl font-bold text-[#0a0a0a] mb-8">자주 묻는 질문</h2>
+    <div class="space-y-3">
+      <details class="reveal group bg-white rounded-xl border border-black/[0.06] p-5">
+        <summary class="cursor-pointer font-semibold flex items-start gap-2 list-none">
+          <span class="text-brand font-bold shrink-0">Q.</span>
+          <span class="flex-1 text-[#0a0a0a]">기초대사량이란 무엇인가요?</span>
+          <span class="faq-arrow text-[#8C8A87] shrink-0">▾</span>
+        </summary>
+        <p class="mt-3 text-sm text-[#525252] leading-relaxed pl-6">아무 활동을 하지 않아도 호흡, 체온 조절, 심장박동 등 생명 유지에 최소한으로 소모되는 에너지량입니다. 하루 전체 소모 칼로리의 약 60~70%를 차지합니다.</p>
+      </details>
+      <details class="reveal group bg-white rounded-xl border border-black/[0.06] p-5">
+        <summary class="cursor-pointer font-semibold flex items-start gap-2 list-none">
+          <span class="text-brand font-bold shrink-0">Q.</span>
+          <span class="flex-1 text-[#0a0a0a]">기초대사량이 낮으면 어떻게 되나요?</span>
+          <span class="faq-arrow text-[#8C8A87] shrink-0">▾</span>
+        </summary>
+        <p class="mt-3 text-sm text-[#525252] leading-relaxed pl-6">같은 양을 먹어도 소모되는 열량이 적어 체지방으로 쌓이기 쉽습니다. 나이가 들수록, 근육량이 줄어들수록 기초대사량은 자연히 낮아지는 경향이 있습니다.</p>
+      </details>
+      <details class="reveal group bg-white rounded-xl border border-black/[0.06] p-5">
+        <summary class="cursor-pointer font-semibold flex items-start gap-2 list-none">
+          <span class="text-brand font-bold shrink-0">Q.</span>
+          <span class="flex-1 text-[#0a0a0a]">계산기 결과와 인바디 측정값이 다른 이유는?</span>
+          <span class="faq-arrow text-[#8C8A87] shrink-0">▾</span>
+        </summary>
+        <p class="mt-3 text-sm text-[#525252] leading-relaxed pl-6">이 계산기는 통계적 공식(Mifflin-St Jeor)으로 추정한 값이고, 인바디는 체성분을 직접 측정한 값이라 차이가 있을 수 있습니다. 체지방률을 알고 있다면 위 계산기 "더 정확하게 계산하기"에 입력해 Katch-McArdle 공식 기반의 더 정밀한 값을 확인하세요.</p>
+      </details>
+      <details class="reveal group bg-white rounded-xl border border-black/[0.06] p-5">
+        <summary class="cursor-pointer font-semibold flex items-start gap-2 list-none">
+          <span class="text-brand font-bold shrink-0">Q.</span>
+          <span class="flex-1 text-[#0a0a0a]">기초대사량을 높이려면 어떻게 해야 하나요?</span>
+          <span class="faq-arrow text-[#8C8A87] shrink-0">▾</span>
+        </summary>
+        <p class="mt-3 text-sm text-[#525252] leading-relaxed pl-6">근육량을 늘리는 저항 운동, 충분한 단백질 섭취, 무리한 절식을 피하는 것이 핵심입니다. 근육 1kg당 하루 약 13kcal를 추가로 소모합니다. 자세한 방법은 <a href="columns/기초대사량-높이는법-한방관점/index.html" class="text-brand font-semibold underline">기초대사량 높이는 법(한방 관점)</a> 칼럼을 참고하세요.</p>
+      </details>
+      <details class="reveal group bg-white rounded-xl border border-black/[0.06] p-5">
+        <summary class="cursor-pointer font-semibold flex items-start gap-2 list-none">
+          <span class="text-brand font-bold shrink-0">Q.</span>
+          <span class="flex-1 text-[#0a0a0a]">기초대사량이 평균보다 낮게 나왔다면 어떻게 해야 하나요?</span>
+          <span class="faq-arrow text-[#8C8A87] shrink-0">▾</span>
+        </summary>
+        <p class="mt-3 text-sm text-[#525252] leading-relaxed pl-6">우선 근육량을 늘리는 생활습관 교정이 먼저입니다. 여러 방법을 시도해도 개선되지 않는다면 체질별 접근이 필요할 수 있어, <a href="diet.html" class="text-brand font-semibold underline">매일감비환 다이어트 한약</a> 상담을 고려해볼 수 있습니다.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ── 05 FINAL CTA ── -->
+<section class="bg-[#111110] text-white">
+  <div class="max-w-4xl mx-auto px-5 md:px-8 py-16 md:py-24 text-center">
+    <p class="text-[10px] font-bold tracking-[0.25em] text-brand uppercase mb-4">매일감비환</p>
+    <h2 class="font-serif text-3xl md:text-4xl font-bold mb-4 leading-snug">기초대사량 회복이 필요하다면,<br>매일감비환</h2>
+    <p class="text-white/60 mb-10 max-w-lg mx-auto text-base leading-relaxed">40~60대 엄마들의 기초대사량 회복에 특화된 다이어트 한약. 체지방 위주로 빼고 근육은 지키며, 비대면으로 전국 어디서나 처방받을 수 있습니다.</p>
+    <div class="flex flex-wrap gap-3 justify-center">
+      <a href="diet.html" class="btn-primary inline-flex items-center gap-2.5 px-8 py-4 bg-brand text-white font-bold rounded-full text-sm">
+        매일감비환 자세히 보기
+      </a>
+      <a href="tel:0222340102" class="btn-ghost inline-flex items-center gap-2 px-8 py-4 border border-white/20 text-white font-bold rounded-full text-sm hover:border-white/50 transition-colors">
+        <iconify-icon icon="solar:phone-linear" width="15"></iconify-icon>
+        02-2234-0102
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ── FOOTER ── -->
+<footer class="bg-[#0a0a0a] border-t border-white/[0.06]">
+  <div class="max-w-7xl mx-auto px-5 md:px-8 lg:px-12 py-12 md:py-14">
+    <div class="flex flex-col md:flex-row md:items-start justify-between gap-10">
+      <div class="md:max-w-[240px]">
+        <div class="logo-wrap mb-5">
+          <span class="logo-badge" style="height:44px; width:32px; font-size:14px;">매<br>일</span>
+          <span class="logo-name" style="color:white; font-size:24px;">백세한의원</span>
+        </div>
+        <address class="not-italic text-sm text-white/40 leading-[1.9]">
+          서울특별시 중랑구 공릉로 21<br>
+          먹골역 도보 5분 (7호선)<br>
+          <a href="tel:0222340102" class="hover:text-white transition-colors">02-2234-0102</a>
+        </address>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+        <div>
+          <p class="text-[10px] font-bold tracking-[0.18em] text-white/30 uppercase mb-4">진료</p>
+          <ul class="space-y-2.5">
+            <li><a href="diet.html"        class="text-sm text-white/55 hover:text-white transition-colors">매일감비환</a></li>
+            <li><a href="gongjindan.html"  class="text-sm text-white/55 hover:text-white transition-colors">공진단</a></li>
+            <li><a href="nmc.html"         class="text-sm text-white/55 hover:text-white transition-colors">무릎관절 NMC</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-[10px] font-bold tracking-[0.18em] text-white/30 uppercase mb-4">도구</p>
+          <ul class="space-y-2.5">
+            <li><a href="기초대사량-계산기.html" class="text-sm text-white/55 hover:text-white transition-colors">기초대사량 계산기</a></li>
+            <li><a href="about.html"   class="text-sm text-white/55 hover:text-white transition-colors">원장 소개</a></li>
+            <li><a href="index.html"   class="text-sm text-white/55 hover:text-white transition-colors">메인 페이지</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-[10px] font-bold tracking-[0.18em] text-white/30 uppercase mb-4">상담</p>
+          <ul class="space-y-2.5">
+            <li><a href="tel:0222340102" class="text-sm text-white/55 hover:text-white transition-colors">전화 02-2234-0102</a></li>
+            <li><a href="https://pf.kakao.com/_JEzRK/chat" target="_blank" rel="noopener" class="text-sm text-white/55 hover:text-white transition-colors">카카오톡 채널</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="mt-12 pt-6 border-t border-white/[0.06] flex flex-col md:flex-row items-center justify-between gap-3">
+      <p class="text-xs text-white/25 order-2 md:order-1">&copy; 2026 매일백세한의원. 대표원장 송원석</p>
+    </div>
+  </div>
+</footer>
+
+<!-- MOBILE BOTTOM BAR -->
+<div class="fixed bottom-0 inset-x-0 z-50 md:hidden bg-white/96 backdrop-blur-md border-t border-black/[0.08] px-4 py-3">
+  <div class="flex gap-2.5">
+    <a href="tel:0222340102" class="flex-1 inline-flex items-center justify-center gap-2 py-3 border-2 border-brand text-brand text-sm font-bold rounded-xl hover:bg-brand hover:text-white transition-all">
+      <iconify-icon icon="solar:phone-bold" width="16"></iconify-icon>
+      전화 상담
+    </a>
+    <a href="https://pf.kakao.com/_JEzRK/chat" target="_blank" rel="noopener" class="flex-1 inline-flex items-center justify-center gap-2 py-3 bg-brand text-white text-sm font-bold rounded-xl hover:bg-brand-dark transition-all">
+      <iconify-icon icon="solar:chat-line-bold" width="16"></iconify-icon>
+      카톡 상담
+    </a>
+  </div>
+</div>
+<div class="h-20 md:hidden" aria-hidden="true"></div>
+
+<script>
+  (function(){
+    var obs = new IntersectionObserver(function(entries){
+      entries.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.08, rootMargin: '0px 0px -48px 0px' });
+    document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
+  })();
+
+  (function(){
+    var gender = 'male';
+    var maleBtn = document.getElementById('genderMale');
+    var femaleBtn = document.getElementById('genderFemale');
+    maleBtn.addEventListener('click', function(){ gender='male'; maleBtn.classList.add('active'); femaleBtn.classList.remove('active'); });
+    femaleBtn.addEventListener('click', function(){ gender='female'; femaleBtn.classList.add('active'); maleBtn.classList.remove('active'); });
+
+    var femaleAvg = [[29,1360],[39,1320],[49,1280],[999,1230]];
+    var maleAvg   = [[29,1730],[39,1680],[49,1630],[999,1580]];
+
+    function averageFor(gender, age){
+      var table = gender==='male' ? maleAvg : femaleAvg;
+      for (var i=0;i<table.length;i++){ if (age <= table[i][0]) return table[i][1]; }
+      return table[table.length-1][1];
+    }
+
+    document.getElementById('calcBtn').addEventListener('click', function(){
+      var age = parseFloat(document.getElementById('age').value);
+      var height = parseFloat(document.getElementById('height').value);
+      var weight = parseFloat(document.getElementById('weight').value);
+      var bodyFat = parseFloat(document.getElementById('bodyFat').value);
+      var activity = parseFloat(document.getElementById('activity').value);
+
+      if (!age || !height || !weight || age<=0 || height<=0 || weight<=0){
+        alert('나이, 키, 몸무게를 정확히 입력해주세요.');
+        return;
+      }
+
+      var bmr, label;
+      if (bodyFat && bodyFat > 0 && bodyFat < 70){
+        var lbm = weight * (1 - bodyFat/100);
+        bmr = 370 + 21.6 * lbm;
+        label = '기초대사량 (Katch-McArdle · 체지방률 반영)';
+      } else {
+        bmr = gender==='male'
+          ? 10*weight + 6.25*height - 5*age + 5
+          : 10*weight + 6.25*height - 5*age - 161;
+        label = '기초대사량 (Mifflin-St Jeor)';
+      }
+      bmr = Math.round(bmr);
+
+      var avg = averageFor(gender, age);
+      var diffPct = Math.round((bmr - avg) / avg * 100);
+      var compareText;
+      if (diffPct <= -5) {
+        compareText = '동일 연령대 ' + (gender==='male'?'남성':'여성') + ' 평균(' + avg + 'kcal)보다 ' + Math.abs(diffPct) + '% 낮습니다.';
+      } else if (diffPct >= 5) {
+        compareText = '동일 연령대 ' + (gender==='male'?'남성':'여성') + ' 평균(' + avg + 'kcal)보다 ' + diffPct + '% 높습니다.';
+      } else {
+        compareText = '동일 연령대 ' + (gender==='male'?'남성':'여성') + ' 평균(' + avg + 'kcal)과 비슷한 수준입니다.';
+      }
+
+      document.getElementById('resultFormulaLabel').textContent = label;
+      document.getElementById('bmrValue').textContent = bmr.toLocaleString();
+      document.getElementById('compareText').textContent = compareText;
+
+      var tdeeBox = document.getElementById('tdeeBox');
+      if (activity && activity > 0){
+        var tdee = Math.round(bmr * activity);
+        document.getElementById('tdeeValue').textContent = tdee.toLocaleString();
+        tdeeBox.classList.remove('hidden');
+      } else {
+        tdeeBox.classList.add('hidden');
+      }
+
+      var ctaBox = document.getElementById('ctaBox');
+      if (diffPct <= -5) { ctaBox.classList.remove('hidden'); } else { ctaBox.classList.add('hidden'); }
+
+      document.getElementById('result').classList.remove('hidden');
+      document.getElementById('result').scrollIntoView({behavior:'smooth', block:'nearest'});
+    });
+  })();
+</script>
+</body>
+</html>

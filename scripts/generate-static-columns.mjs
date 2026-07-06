@@ -14,6 +14,7 @@ const OUT_DIR = path.join(ROOT, '디자인리뉴얼', 'columns');
 
 // ── frontmatter 파서 ──────────────────────────────────────────────
 function parseFrontmatter(src) {
+  src = src.replace(/\r\n/g, '\n');
   const m = src.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
   if (!m) return { meta: {}, body: src };
   const meta = {};
@@ -256,11 +257,19 @@ function relatedColumnsHtml(col, allCols) {
     </a>`;
   }).join('\n      ');
 
+  const toolLink = col.meta.category === '다이어트'
+    ? `<a href="${root}기초대사량-계산기.html" class="inline-flex items-center gap-1.5 text-sm font-bold text-[#C8392B] mt-5 hover:underline">
+      내 기초대사량 계산해보기
+      <iconify-icon icon="solar:arrow-right-linear" width="14"></iconify-icon>
+    </a>`
+    : '';
+
   return `<div class="mt-10 pt-8 border-t border-black/[0.07]">
     <h3 class="text-sm font-bold text-[#0a0a0a] mb-4">관련 칼럼</h3>
     <div class="space-y-3">
       ${cards}
     </div>
+    ${toolLink}
   </div>`;
 }
 
@@ -502,6 +511,7 @@ function generateSitemap(cols) {
     { url: '/nmc',        changefreq: 'monthly', priority: '0.8', date: today },
     { url: '/about',      changefreq: 'monthly', priority: '0.7', date: today },
     { url: '/columns',    changefreq: 'weekly',  priority: '0.9', date: today },
+    { url: '/기초대사량-계산기', changefreq: 'monthly', priority: '0.8', date: today },
   ];
 
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
@@ -516,7 +526,7 @@ function generateSitemap(cols) {
 
   const sitemapPath = path.join(ROOT, '디자인리뉴얼', 'sitemap.xml');
   fs.writeFileSync(sitemapPath, xml, 'utf-8');
-  console.log(`🗺  sitemap.xml 업데이트: ${6 + cols.length}개 URL`);
+  console.log(`🗺  sitemap.xml 업데이트: ${7 + cols.length}개 URL`);
 }
 
 // ── 메인 실행 ─────────────────────────────────────────────────────
