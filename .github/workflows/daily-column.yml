@@ -56,16 +56,6 @@ jobs:
             echo "pushed=false" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Deploy to Vercel
-        if: steps.commit.outputs.pushed == 'true'
-        env:
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-        run: |
-          cd 디자인리뉴얼
-          npx vercel deploy --prod --yes \
-            --token $VERCEL_TOKEN \
-            --scope team_NVkTbzTIDWtlDnZgFQ54CHNf
-
       - name: Notify Telegram (success)
         if: success() && steps.commit.outputs.pushed == 'true'
         env:
