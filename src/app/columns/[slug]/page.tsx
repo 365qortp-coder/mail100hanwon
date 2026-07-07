@@ -10,13 +10,14 @@ import { Section } from "@/components/Section";
 import { Breadcrumb } from "@/components/Breadcrumb";
 import { CTAButtons } from "@/components/CTAButtons";
 import { clinic } from "@/data/clinic";
-import { getColumn, getColumnsBySection, getAllColumns, getColumnUrl, getColumnSection, getColumnImage } from "@/lib/columns";
+import { getColumn, getAllColumns, getColumnUrl, getColumnImage } from "@/lib/columns";
 
 type Params = Promise<{ slug: string }>;
 
 export function generateStaticParams() {
-  // "columns" 섹션(기타 건강)만 정적 생성 — diet/gongjindan/nmc는 동적으로 처리 후 301
-  return getColumnsBySection("columns").map((c) => ({ slug: c.slug }));
+  // 전체 슬러그를 정적 생성 — 카테고리가 있는 글의 301도 빌드 시점에 굽는다.
+  // (동적 렌더링에 맡기면 한글 경로의 x-next-cache-tags 헤더에서 프로덕션 500 발생)
+  return getAllColumns().map((c) => ({ slug: c.slug }));
 }
 
 export async function generateMetadata({
