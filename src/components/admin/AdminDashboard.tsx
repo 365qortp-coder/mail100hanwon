@@ -2,19 +2,30 @@
 
 import { useState } from "react";
 import type { ColumnMeta } from "@/lib/columns";
+import type { QueueStats, UpcomingItem } from "@/lib/contentQueue";
 import { ColumnsTab } from "./ColumnsTab";
 import { IndexingTab } from "./IndexingTab";
 import { GeoCheckTab } from "./GeoCheckTab";
+import { QueueTab } from "./QueueTab";
 
 const TABS = [
   { id: "columns", label: "칼럼 관리" },
+  { id: "queue", label: "발행 큐" },
   { id: "indexing", label: "색인 현황 확인" },
   { id: "geo", label: "사이트 점수 확인" },
 ] as const;
 
 type TabId = (typeof TABS)[number]["id"];
 
-export function AdminDashboard({ columns }: { columns: ColumnMeta[] }) {
+export function AdminDashboard({
+  columns,
+  queueStats,
+  upcoming,
+}: {
+  columns: ColumnMeta[];
+  queueStats: QueueStats;
+  upcoming: UpcomingItem[];
+}) {
   const [tab, setTab] = useState<TabId>("columns");
 
   async function handleLogout() {
@@ -51,6 +62,7 @@ export function AdminDashboard({ columns }: { columns: ColumnMeta[] }) {
       </div>
 
       {tab === "columns" && <ColumnsTab columns={columns} />}
+      {tab === "queue" && <QueueTab stats={queueStats} upcoming={upcoming} />}
       {tab === "indexing" && <IndexingTab columns={columns} />}
       {tab === "geo" && <GeoCheckTab />}
     </div>
