@@ -4,6 +4,11 @@ import matter from "gray-matter";
 import { remark } from "remark";
 import remarkHtml from "remark-html";
 import remarkGfm from "remark-gfm";
+import { CATEGORY_SECTION, getColumnSection, getColumnUrl } from "./columnUrl";
+import type { ColumnSection } from "./columnUrl";
+
+export { CATEGORY_SECTION, getColumnSection, getColumnUrl };
+export type { ColumnSection };
 
 const COLUMNS_DIR = path.join(process.cwd(), "content", "columns");
 
@@ -98,26 +103,6 @@ export function getAllColumns(): ColumnMeta[] {
     .map((slug) => getColumnMeta(slug))
     .filter((m): m is ColumnMeta => m !== null)
     .sort((a, b) => (a.date < b.date ? 1 : -1));
-}
-
-// category → URL section 매핑
-export const CATEGORY_SECTION: Record<string, string> = {
-  "다이어트": "diet",
-  "공진단": "gongjindan",
-  "총명공진단": "gongjindan",
-  "통증치료": "nmc",
-};
-
-export type ColumnSection = "diet" | "gongjindan" | "nmc" | "columns";
-
-export function getColumnSection(category: string): ColumnSection {
-  return (CATEGORY_SECTION[category] as ColumnSection) ?? "columns";
-}
-
-export function getColumnUrl(col: ColumnMeta): string {
-  const section = getColumnSection(col.category);
-  if (section === "columns") return `/columns/${col.slug}`;
-  return `/${section}/columns/${col.slug}`;
 }
 
 export function getColumnsBySection(section: ColumnSection): ColumnMeta[] {
