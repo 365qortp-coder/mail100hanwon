@@ -6,12 +6,6 @@
       "hint": "[gongjindan] 지팡이 없이 걷게 된 공진단의 놀라운 효과"
     },
     {
-      "url": "https://www.youtube.com/watch?v=-3G1jReKopg",
-      "hint": "[diet] ko 다이어트 하려고 노력하는데도 살이 잘 안 빠진다. 운동도 해보고 식",
-      "videoId": "-3G1jReKopg",
-      "angles": []
-    },
-    {
       "url": "https://www.youtube.com/watch?v=-8HWY8FwXBs",
       "hint": "[diet] ko 제가 직접 올리브유를 먹어 보면서 느끼는게 제일 좋은 건 배가 고프",
       "videoId": "-8HWY8FwXBs",
@@ -844,6 +838,19 @@
       "angles": [],
       "status": "no-transcript",
       "at": "2026-07-05T08:54:17.123Z"
+    },
+    {
+      "url": "https://www.youtube.com/watch?v=-3G1jReKopg",
+      "hint": "[diet] ko 다이어트 하려고 노력하는데도 살이 잘 안 빠진다. 운동도 해보고 식",
+      "videoId": "-3G1jReKopg",
+      "angles": [
+        {
+          "id": "intro",
+          "slug": "매일감비환이란-처음-알아보는-분을-위한-효능대상복용법-안내-intro--3G1jR",
+          "title": "매일감비환이란? 처음 알아보는 분을 위한 효능·대상·복용법 안내",
+          "at": "2026-07-09T09:21:56.069Z"
+        }
+      ]
     }
   ]
 }
