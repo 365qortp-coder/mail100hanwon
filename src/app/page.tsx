@@ -9,7 +9,7 @@ import { CTAButtons } from "@/components/CTAButtons";
 import { YouTubeThumbnailGallery } from "@/components/YouTubeThumbnailGallery";
 import { clinic } from "@/data/clinic";
 import { locations } from "@/data/locations";
-import { getAllColumns } from "@/lib/columns";
+import { getAllColumns, getColumnUrl } from "@/lib/columns";
 import { faqs } from "@/data/faq";
 
 export const metadata: Metadata = buildMetadata({
@@ -477,7 +477,7 @@ export default function HomePage() {
                   style={{ transitionDelay: `${i * 80}ms` }}
                 >
                   <Link
-                    href={`/columns/${c.slug}`}
+                    href={getColumnUrl(c)}
                     className="group block p-6 rounded-[calc(1.25rem-6px)] bg-white h-full hover:ring-2 hover:ring-[var(--brand-primary)]/20"
                     style={{ transition: "box-shadow 0.4s cubic-bezier(0.16,1,0.3,1)" }}
                   >
