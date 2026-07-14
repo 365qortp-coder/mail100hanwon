@@ -1,9 +1,9 @@
 name: Daily Column Generation
 
 on:
-  # 주 2회 발행 (2026-07-07~, 어뷰징 방지 위해 매일 발행에서 하향 조정)
-  schedule:
-    - cron: "0 6 * * 1,4"  # 매주 월·목 한국시간 오후 3시 (UTC 06:00)
+  # 자동 발행 중단 (2026-07-14, 사용자 결정) — 유튜브 다각도 양산 대신
+  # 핀셋포인트 fan-out 실측 기반 칼럼으로 전환 (HOMECOL-01). 수동 실행만 가능.
+  # 과거: 매일 발행(색인 실패 전례) → 주 2회 → 중단.
   workflow_dispatch:
 
 permissions:
