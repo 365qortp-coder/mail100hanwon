@@ -47,9 +47,9 @@ export default function sitemap(): MetadataRoute.Sitemap {
     changeFrequency: "monthly" as const,
   }));
 
-  // 카테고리별 올바른 URL로 생성
+  // 카테고리별 올바른 URL로 생성 — 한글 slug는 사이트맵 규격상 퍼센트 인코딩 (encodeURI는 /는 보존)
   const columnPages: MetadataRoute.Sitemap = getAllColumns().map((c) => ({
-    url: `${baseUrl}${getColumnUrl(c)}`,
+    url: `${baseUrl}${encodeURI(getColumnUrl(c))}`,
     lastModified: new Date(c.modified ?? c.date),
     priority: 0.8,
     changeFrequency: "monthly" as const,
