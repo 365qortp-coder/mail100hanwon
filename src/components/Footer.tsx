@@ -71,6 +71,11 @@ export function Footer() {
                   자주 묻는 질문
                 </Link>
               </li>
+              <li>
+                <a href="https://care.mail100hanwon.co.kr" rel="noopener" className="hover:text-white">
+                  건강칼럼 블로그
+                </a>
+              </li>
             </ul>
           </div>
         </div>
