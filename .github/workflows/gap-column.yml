@@ -1,0 +1,64 @@
+name: GEO Gap Column
+
+# HOMECOL-01 (2026-08-01) — 유튜브 다각도 양산(daily-column.yml, 2026-07-14 중단)의 대체.
+# 핀셋포인트가 실측한 "AI 팬아웃에서 우리가 빠진 하위 질의"를 주제로 칼럼을 쓴다.
+# 매일 돌지만 발행 여부는 스크립트가 주간 예산(본진 색인률 기반)으로 스스로 정한다 —
+# 색인이 따라오는 만큼만 쓰고, 한도에 닿으면 아무것도 커밋하지 않는다.
+on:
+  schedule:
+    - cron: "0 0 * * *" # 09:00 KST
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: gap-column
+  cancel-in-progress: false
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install deps
+        run: npm ci
+
+      - name: Generate column from measured gap
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+          PINCET_SECRET: ${{ secrets.PINCET_SECRET }}
+        run: node scripts/generate-gap-column.mjs
+
+      - name: Commit and push
+        id: commit
+        run: |
+          git config user.name "Mail100han Bot"
+          git config user.email "bot@mail100hanwon.co.kr"
+          if [ -n "$(git status --porcelain content/)" ]; then
+            git add content/
+            git commit -m "chore(columns): 실측 갭 기반 칼럼 자동 발행"
+            git push
+            echo "pushed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "발행 없음 (주간 한도 도달 또는 후보 없음)."
+            echo "pushed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Notify Telegram
+        if: steps.commit.outputs.pushed == 'true'
+        continue-on-error: true
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+        run: node scripts/notify-telegram.mjs
