@@ -128,6 +128,8 @@ export default function RootLayout({
         <main className="flex-1 w-full">{children}</main>
         <Footer />
         <FloatingCTA />
+        {/* 핀셋포인트 전환 추적(G4) — 채널별 유입→문의 측정. 개인정보 수집 없음(익명 세션·경로만). */}
+        <script async src="https://pincetpoint-geo.vercel.app/api/track.js?c=mail100hanwon" />
       </body>
     </html>
   );
