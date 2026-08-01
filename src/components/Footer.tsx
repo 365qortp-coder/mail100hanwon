@@ -76,6 +76,11 @@ export function Footer() {
                   건강칼럼 블로그
                 </a>
               </li>
+              <li>
+                <a href="https://hanbangwiki.kr" rel="noopener" className="hover:text-white">
+                  한방위키 · 한의학 정보 백과
+                </a>
+              </li>
             </ul>
           </div>
         </div>
