@@ -14,7 +14,7 @@ import { faqs } from "@/data/faq";
 
 export const metadata: Metadata = buildMetadata({
   title: `${clinic.name} | 매일감비환 다이어트·공진단·통증치료`,
-  description: `서울 중랑구 매일백세한의원 송원석 원장. 매일감비환 다이어트 한약, 공진단, 통증치료. 비대면 진료로 전국 어디서나 처방받으실 수 있습니다. 전화 02-2234-0102.`,
+  description: `서울 중랑구 매일백세한의원 송원석 원장. 매일감비환 다이어트 한약, 공진단, 통증치료. 비대면 진료로 전국 어디서나 처방받으실 수 있습니다. 전화 0507-1467-0195.`,
   path: "/",
   keywords: [
     "매일백세한의원",
@@ -112,7 +112,7 @@ const eyebrow = (label: string, center = false) => (
 
 export default function HomePage() {
   const latestColumns = getAllColumns().slice(0, 3);
-  const homePageDesc = `서울 중랑구 매일백세한의원 송원석 원장. 매일감비환 다이어트 한약, 공진단, 무릎관절 NMC. 비대면 진료로 전국 어디서나 처방받으실 수 있습니다. 전화 02-2234-0102.`;
+  const homePageDesc = `서울 중랑구 매일백세한의원 송원석 원장. 매일감비환 다이어트 한약, 공진단, 무릎관절 NMC. 비대면 진료로 전국 어디서나 처방받으실 수 있습니다. 전화 0507-1467-0195.`;
 
   return (
     <>

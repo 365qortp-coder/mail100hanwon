@@ -9,7 +9,7 @@ import { clinic } from "@/data/clinic";
 export const metadata: Metadata = buildMetadata({
   title: "총명공진단 | 수험생·고시생 집중력·기억력 · 가격·효능 총정리",
   description:
-    "매일백세한의원 총명공진단. 녹용 2배 + 원지·석창포 추가 처방. 30구 45만원, 90구 108만원. 수능·공무원·고시 수험생 집중력·기억력·체력 삼박자. 원장 직접 조제. 02-2234-0102.",
+    "매일백세한의원 총명공진단. 녹용 2배 + 원지·석창포 추가 처방. 30구 45만원, 90구 108만원. 수능·공무원·고시 수험생 집중력·기억력·체력 삼박자. 원장 직접 조제. 0507-1467-0195.",
   path: "/gongjindan/chongmyeong",
   ogImage: "/photos/chongmyeong-product.webp",
   keywords: [

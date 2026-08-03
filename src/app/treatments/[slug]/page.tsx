@@ -43,7 +43,7 @@ export async function generateMetadata({
   if (!t) return {};
 
   const title = `${t.name} | 매일백세한의원 송원석 원장`;
-  const description = `${t.summary} 전화 02-2234-0102, 비대면 진료 가능.`;
+  const description = `${t.summary} 전화 0507-1467-0195, 비대면 진료 가능.`;
 
   return buildMetadata({
     title,

@@ -10,7 +10,7 @@ import { getColumnsBySection, getColumnUrl, getColumnImage, type ColumnMeta } fr
 export const metadata: Metadata = buildMetadata({
   title: "무릎관절 NMC | 염증 제어·가동성 회복·구조 재건 한방 치료",
   description:
-    "매일백세한의원의 NMC 무릎 치료 프로토콜. N(염증 무력화)·M(가동성 회복)·C(구조 재건) 3단계. 침·한약 병행으로 무릎 통증의 근원을 다스립니다. 먹골역 도보 5분. 02-2234-0102.",
+    "매일백세한의원의 NMC 무릎 치료 프로토콜. N(염증 무력화)·M(가동성 회복)·C(구조 재건) 3단계. 침·한약 병행으로 무릎 통증의 근원을 다스립니다. 먹골역 도보 5분. 0507-1467-0195.",
   path: "/nmc",
   ogImage: "/photos/pain.webp",
   keywords: [
