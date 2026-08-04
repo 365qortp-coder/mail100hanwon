@@ -58,6 +58,37 @@ function fail(msg) {
   console.error(`✖ ${msg}`);
   process.exit(1);
 }
+
+const WIKI_LINKS_PER_COLUMN = 2;
+
+// 본문에 등장하는 한방위키 용어에 링크를 건다 (WIKI-LINK-01).
+// 실패해도 칼럼 발행은 그대로 진행한다 — 링크는 부가 기능이지 발행 조건이 아니다.
+async function addWikiLinks(markdown) {
+  let terms;
+  try {
+    const res = await fetch(`${API}/api/wiki/terms`, { signal: AbortSignal.timeout(10000) });
+    if (!res.ok) return markdown;
+    terms = (await res.json())?.terms;
+  } catch {
+    return markdown;
+  }
+  if (!Array.isArray(terms) || !terms.length) return markdown;
+
+  let out = markdown;
+  let linked = 0;
+  for (const t of terms) {
+    if (linked >= WIKI_LINKS_PER_COLUMN) break;
+    const title = String(t.title ?? "");
+    if (title.length < 2) continue;
+    // 이미 링크 안에 들어간 텍스트는 건드리지 않는다 (중첩 링크 방지)
+    const re = new RegExp(`(?<!\\[)${title.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}(?!\\])`);
+    if (!re.test(out)) continue;
+    out = out.replace(re, `[${title}](${t.url})`);
+    linked++;
+    console.log(`  ↳ 위키 링크: ${title} → ${t.url}`);
+  }
+  return out;
+}
 function skip(msg) {
   console.log(`↷ ${msg}`);
   process.exit(0);
@@ -217,6 +248,13 @@ async function main() {
   if (!parsed.title || parsed.body_markdown.length < 500) {
     fail(`생성 결과 형식 불량 (title=${parsed.title ? "O" : "X"}, body=${parsed.body_markdown.length}자) — 발행하지 않습니다.`);
   }
+
+  // WIKI-LINK-01 (2026-08-03): 본문에 등장하는 한방위키 용어 1~2개에 링크를 건다.
+  // 위키(hanbangwiki.kr)는 새 도메인이라 외부 링크가 거의 없어 구글이 URL을 발견조차 못 하고 있다
+  // (실측: 발행 12편 중 6편이 "Google에는 아직 알려지지 않은 URL"). 본진은 색인률이 가장 높아
+  // 구글이 자주 오는 사이트라, 여기서 거는 링크가 가장 빠른 발견 경로가 된다.
+  // 2개로 제한하는 이유: 매 칼럼에 링크가 쏟아지면 자연스러운 참고 링크가 아니라 링크 심기로 읽힌다.
+  parsed.body_markdown = await addWikiLinks(parsed.body_markdown);
 
   const category = ALLOWED_CATEGORIES.includes(parsed.category) ? parsed.category : "한방건강";
   const today = new Date().toISOString().slice(0, 10);
