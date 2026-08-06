@@ -3,7 +3,6 @@ import Link from "next/link";
 import { buildMetadata } from "@/lib/seo";
 import { faqSchema, breadcrumbSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/JsonLd";
-import { CTAButtons } from "@/components/CTAButtons";
 import { clinic } from "@/data/clinic";
 
 export const metadata: Metadata = buildMetadata({
@@ -55,6 +54,45 @@ const faqs = [
   },
 ];
 
+const eyebrow = (label: string, opts?: { center?: boolean; brand?: boolean }) => (
+  <div className={`inline-flex items-center gap-3 mb-6 ${opts?.center ? "justify-center" : ""}`}>
+    <span className={`h-px w-6 ${opts?.brand ? "bg-[var(--brand-primary)]" : "bg-black/20"}`} aria-hidden />
+    <span className={`text-[11px] font-bold tracking-[0.2em] uppercase ${opts?.brand ? "text-[var(--brand-primary)]" : "text-[#8C8A87]"}`}>
+      {label}
+    </span>
+    {opts?.center && <span className={`h-px w-6 ${opts?.brand ? "bg-[var(--brand-primary)]" : "bg-black/20"}`} aria-hidden />}
+  </div>
+);
+
+function ContactButtons({ formLabel, center }: { formLabel: string; center?: boolean }) {
+  return (
+    <div className={`flex flex-wrap gap-3 ${center ? "justify-center" : ""}`}>
+      <a
+        href={`tel:${clinic.contact.phoneClean}`}
+        className="rn-btn-primary inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-[var(--brand-primary)] text-white text-sm font-bold"
+      >
+        전화 상담
+      </a>
+      <a
+        href={clinic.contact.kakao}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full bg-[#FAE100] text-[#3C1E1E] text-sm font-bold hover:brightness-95 transition"
+      >
+        카카오톡 상담
+      </a>
+      <a
+        href={clinic.contact.onlineFormGongjindan}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="inline-flex items-center gap-2.5 px-7 py-3.5 rounded-full border border-white/20 text-white text-sm font-semibold hover:border-white/50 transition-colors"
+      >
+        {formLabel}
+      </a>
+    </div>
+  );
+}
+
 export default function SahyangPage() {
   return (
     <>
@@ -94,64 +132,65 @@ export default function SahyangPage() {
       }} />
 
       {/* 브레드크럼 */}
-      <nav className="mx-auto max-w-6xl px-4 pt-4 text-xs text-[var(--text-muted)] flex items-center gap-1.5">
-        <Link href="/" className="hover:text-[var(--brand-primary)]">홈</Link>
-        <span>/</span>
-        <Link href="/gongjindan" className="hover:text-[var(--brand-primary)]">공진단</Link>
-        <span>/</span>
-        <span className="text-[var(--foreground)] font-semibold">사향공진단</span>
+      <nav className="mx-auto max-w-5xl px-5 md:px-8 pt-6 text-xs text-[#8C8A87] flex items-center gap-1.5">
+        <Link href="/" className="hover:text-[var(--brand-primary)] transition-colors">홈</Link>
+        <span className="text-black/20">/</span>
+        <Link href="/gongjindan" className="hover:text-[var(--brand-primary)] transition-colors">공진단</Link>
+        <span className="text-black/20">/</span>
+        <span className="text-[#0a0a0a] font-semibold">사향공진단</span>
       </nav>
 
-      {/* 01 · HERO */}
-      <section className="bg-black text-white border-t border-white/10">
-        <div className="mx-auto max-w-4xl px-4 py-14 md:py-20">
-          <p className="text-xs font-bold tracking-[0.2em] text-[var(--brand-primary)] uppercase mb-4">
-            사향공진단 · 매일백세한의원
-          </p>
-          <h1 className="text-3xl md:text-5xl font-extrabold leading-tight mb-5">
+      {/* ── 01 · HERO ── */}
+      <section className="bg-[#111110] text-white mt-6 overflow-hidden">
+        <div className="mx-auto max-w-5xl px-5 md:px-8 py-20 md:py-28 sn-reveal">
+          {eyebrow("사향공진단 · 매일백세한의원", { brand: true })}
+          <h1 className="font-serif text-[2.25rem] md:text-[3.25rem] leading-[1.15] tracking-[-0.025em] mb-6">
             사향공진단 —<br />
             <span className="text-[var(--brand-primary)]">CITES 인증 정품 사향</span> 100mg
           </h1>
-          <p className="text-base md:text-lg text-white/70 leading-relaxed mb-8 max-w-2xl">
+          <p className="text-base md:text-lg text-white/60 leading-[1.8] mb-10 max-w-2xl">
             멸종위기종 국제거래 협약(CITES) 부속서 I에 등재된 천연 사향을 사용합니다.
             조제 전 과정을 유튜브에 공개하며, 송원석 원장이 직접 빚습니다.
           </p>
-          <div className="flex flex-wrap gap-4 mb-8">
+          <div className="flex flex-wrap gap-3 mb-10">
             {[
               { num: "100mg", label: "1구당 사향 함량" },
               { num: "CITES I", label: "정품 인증 등급" },
               { num: "30구~", label: "135만원부터" },
               { num: "72%", label: "재처방률" },
             ].map((b) => (
-              <div key={b.label} className="border border-white/20 rounded-xl px-4 py-3 text-center">
+              <div key={b.label} className="border border-white/[0.15] rounded-2xl px-4 py-3 text-center">
                 <p className="text-xl font-extrabold text-[var(--brand-primary)]">{b.num}</p>
-                <p className="text-xs text-white/60 mt-0.5">{b.label}</p>
+                <p className="text-xs text-white/40 mt-0.5">{b.label}</p>
               </div>
             ))}
           </div>
-          <CTAButtons formUrl={clinic.contact.onlineFormGongjindan} formLabel="사향공진단 상담 신청" />
+          <ContactButtons formLabel="사향공진단 상담 신청" />
         </div>
       </section>
 
-      {/* 02 · 사향이란 */}
-      <section className="bg-white border-t border-[var(--border)]">
-        <div className="mx-auto max-w-4xl px-4 py-16 md:py-24">
-          <div className="text-center mb-10">
-            <p className="text-xs font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase mb-2">Ingredient</p>
-            <h2 className="text-2xl md:text-4xl font-extrabold leading-tight">사향(麝香)이란 무엇인가</h2>
+      {/* ── 02 · 사향이란 ── */}
+      <section className="bg-white">
+        <div className="mx-auto max-w-5xl px-5 md:px-8 py-24 md:py-32">
+          <div className="text-center mb-14 sn-reveal">
+            {eyebrow("Ingredient", { center: true })}
+            <h2 className="font-serif text-3xl md:text-4xl leading-tight tracking-[-0.025em] text-[#0a0a0a]">
+              사향(麝香)이란 무엇인가
+            </h2>
           </div>
-          <div className="grid md:grid-cols-2 gap-8 mb-12">
-            <div className="bg-[var(--surface-muted)] rounded-2xl p-7">
-              <h3 className="text-lg font-extrabold mb-3">🦌 사향노루의 분비물</h3>
-              <p className="text-sm text-[var(--text-muted)] leading-relaxed">
+
+          <div className="grid md:grid-cols-2 gap-5 mb-16">
+            <div className="sn-reveal rn-card bg-[#F8F6F2] rounded-[22px] border border-black/[0.06] p-8">
+              <h3 className="font-serif text-lg font-bold text-[#0a0a0a] mb-4 tracking-[-0.02em]">사향노루의 분비물</h3>
+              <p className="text-sm text-[#525252] leading-[1.8]">
                 사향(麝香)은 사향노루(Moschus moschiferus) 수컷의 향낭에서 채취하는 천연 동물성 약재입니다.
                 CITES(멸종위기에 처한 야생동식물의 국제거래에 관한 협약) 부속서 I에 등재된
                 최고 보호 등급 원료로, 정품 유통에는 엄격한 인증이 필요합니다.
               </p>
             </div>
-            <div className="bg-[var(--surface-muted)] rounded-2xl p-7">
-              <h3 className="text-lg font-extrabold mb-3">📜 동의보감 기록</h3>
-              <p className="text-sm text-[var(--text-muted)] leading-relaxed">
+            <div className="sn-reveal rn-card bg-[#F8F6F2] rounded-[22px] border border-black/[0.06] p-8" style={{ transitionDelay: "80ms" }}>
+              <h3 className="font-serif text-lg font-bold text-[#0a0a0a] mb-4 tracking-[-0.02em]">📜 동의보감 기록</h3>
+              <p className="text-sm text-[#525252] leading-[1.8]">
                 동의보감에 「사향은 중풍·간질을 치료하고, 심기(心氣)를 안정시키며,
                 기를 통하게 하고 막힌 것을 열어준다」고 기록되어 있습니다.
                 공진단의 군약(君藥, 핵심 성분)으로 전통 처방에서 수백 년간 사용되어 왔습니다.
@@ -159,8 +198,10 @@ export default function SahyangPage() {
             </div>
           </div>
 
-          <h3 className="text-xl font-extrabold mb-6">사향공진단 4가지 주요 성분</h3>
-          <div className="space-y-4">
+          <h3 className="font-serif text-xl md:text-2xl font-bold text-[#0a0a0a] tracking-[-0.025em] mb-7 sn-reveal">
+            사향공진단 4가지 주요 성분
+          </h3>
+          <div className="space-y-3">
             {[
               {
                 name: "사향(麝香) 100mg",
@@ -186,44 +227,65 @@ export default function SahyangPage() {
                 desc: "신장 기능 보강, 과도한 열 억제, 다른 약재의 균형 조절. 부작용 완충 역할.",
                 highlight: false,
               },
-            ].map((s) => (
-              <div key={s.name} className={`rounded-xl p-5 border ${s.highlight ? "bg-black text-white border-[var(--brand-primary)]" : "bg-[var(--surface-muted)] border-[var(--border)]"}`}>
-                <div className="flex items-start justify-between gap-4 mb-2">
-                  <h4 className="font-extrabold text-base">{s.name}</h4>
-                  <span className={`text-[10px] font-bold px-2 py-1 rounded shrink-0 ${s.highlight ? "bg-[var(--brand-primary)] text-white" : "bg-white text-[var(--text-muted)]"}`}>{s.role}</span>
+            ].map((s, i) => (
+              <div
+                key={s.name}
+                className={`sn-reveal rounded-[20px] p-6 border ${
+                  s.highlight
+                    ? "bg-[#0a0a0a] text-white border-[var(--brand-primary)]"
+                    : "bg-white border-black/[0.07]"
+                }`}
+                style={{ transitionDelay: `${i * 60}ms` }}
+              >
+                <div className="flex items-start justify-between gap-4 mb-2.5">
+                  <h4 className={`font-serif text-base md:text-lg font-bold tracking-[-0.02em] ${s.highlight ? "text-white" : "text-[#0a0a0a]"}`}>
+                    {s.name}
+                  </h4>
+                  <span className={`text-[10px] font-bold px-3 py-1 rounded-full shrink-0 ${
+                    s.highlight ? "bg-[var(--brand-primary)] text-white" : "bg-[#F5F5F5] text-[#8C8A87]"
+                  }`}>
+                    {s.role}
+                  </span>
                 </div>
-                <p className={`text-sm leading-relaxed ${s.highlight ? "text-white/70" : "text-[var(--text-muted)]"}`}>{s.desc}</p>
+                <p className={`text-sm leading-[1.8] ${s.highlight ? "text-white/60" : "text-[#525252]"}`}>{s.desc}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* 03 · 효능 & 추천 대상 */}
-      <section className="bg-[var(--surface-muted)] border-t border-[var(--border)]">
-        <div className="mx-auto max-w-4xl px-4 py-16 md:py-24">
-          <div className="text-center mb-10">
-            <p className="text-xs font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase mb-2">For You</p>
-            <h2 className="text-2xl md:text-4xl font-extrabold leading-tight">이런 분께 사향공진단을 권합니다</h2>
+      {/* ── 03 · 효능 & 추천 대상 ── */}
+      <section className="bg-[#FAFAFA] border-t border-black/[0.05]">
+        <div className="mx-auto max-w-5xl px-5 md:px-8 py-24 md:py-32">
+          <div className="text-center mb-14 sn-reveal">
+            {eyebrow("For You", { center: true })}
+            <h2 className="font-serif text-3xl md:text-4xl leading-tight tracking-[-0.025em] text-[#0a0a0a]">
+              이런 분께 사향공진단을 권합니다
+            </h2>
           </div>
-          <div className="grid sm:grid-cols-2 gap-4 mb-10">
+
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 mb-10">
             {[
-              { icon: "😮‍💨", title: "만성피로·기력저하", desc: "충분히 자도 피로가 풀리지 않고, 기력이 전반적으로 떨어진 분" },
-              { icon: "🧠", title: "뇌기능 회복", desc: "중풍 후 재활, 기억력 저하, 집중력 감소가 심한 분" },
-              { icon: "💪", title: "남성 활력·스태미너", desc: "남성 호르몬 저하로 인한 활력 감소, 스태미너 회복이 필요한 분" },
-              { icon: "🏥", title: "수술·항암 후 회복", desc: "큰 수술이나 항암 치료 후 원기 회복이 필요한 분" },
-              { icon: "🎁", title: "건강 선물", desc: "부모님, 배우자 등 소중한 분께 드리는 최고급 건강 선물" },
-              { icon: "👴", title: "어르신 원기보충", desc: "나이 들수록 줄어드는 기력을 보충하고 싶으신 어르신" },
-            ].map((t) => (
-              <div key={t.title} className="bg-white rounded-xl border border-[var(--border)] p-5">
-                <p className="text-2xl mb-2">{t.icon}</p>
-                <h3 className="font-bold mb-1">{t.title}</h3>
-                <p className="text-sm text-[var(--text-muted)]">{t.desc}</p>
+              { title: "만성피로·기력저하", desc: "충분히 자도 피로가 풀리지 않고, 기력이 전반적으로 떨어진 분" },
+              { title: "뇌기능 회복", desc: "중풍 후 재활, 기억력 저하, 집중력 감소가 심한 분" },
+              { title: "남성 활력·스태미너", desc: "남성 호르몬 저하로 인한 활력 감소, 스태미너 회복이 필요한 분" },
+              { title: "수술·항암 후 회복", desc: "큰 수술이나 항암 치료 후 원기 회복이 필요한 분" },
+              { title: "건강 선물", desc: "부모님, 배우자 등 소중한 분께 드리는 최고급 건강 선물" },
+              { title: "어르신 원기보충", desc: "나이 들수록 줄어드는 기력을 보충하고 싶으신 어르신" },
+            ].map((t, i) => (
+              <div
+                key={t.title}
+                className="sn-reveal rn-card bg-white rounded-[20px] border border-black/[0.07] hover:border-black/[0.14] p-7"
+                style={{ transitionDelay: `${(i % 3) * 65}ms` }}
+              >
+                <h3 className="font-semibold text-[#0a0a0a] text-[15px] leading-snug mb-2.5">{t.title}</h3>
+                <p className="text-sm text-[#525252] leading-[1.75]">{t.desc}</p>
               </div>
             ))}
           </div>
-          <div className="bg-[var(--brand-primary-light)] border border-[var(--brand-primary)] rounded-xl p-5">
-            <p className="text-sm font-semibold text-[var(--brand-primary-dark)]">
+
+          <div className="sn-reveal rounded-[20px] border border-[var(--brand-primary)]/30 bg-[var(--brand-primary-light)] p-6 md:p-7">
+            <p className="text-sm font-semibold text-[var(--brand-primary-dark)] leading-[1.8]">
               ⚠️ 체질에 따라 맞지 않을 수 있습니다. 평소 얼굴이 붉거나 열이 많은 분, 임산부는 반드시 상담 후 복용하세요.
               체질 확인 없이 처방하지 않습니다.
             </p>
@@ -231,42 +293,44 @@ export default function SahyangPage() {
         </div>
       </section>
 
-      {/* 04 · 가격 */}
-      <section className="bg-white border-t border-[var(--border)]">
-        <div className="mx-auto max-w-4xl px-4 py-16 md:py-20">
-          <div className="text-center mb-10">
-            <p className="text-xs font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase mb-2">Pricing</p>
-            <h2 className="text-2xl md:text-4xl font-extrabold leading-tight">사향공진단 가격</h2>
+      {/* ── 04 · 가격 ── */}
+      <section className="bg-white border-t border-black/[0.05]">
+        <div className="mx-auto max-w-5xl px-5 md:px-8 py-24 md:py-28">
+          <div className="text-center mb-14 sn-reveal">
+            {eyebrow("Pricing", { center: true })}
+            <h2 className="font-serif text-3xl md:text-4xl leading-tight tracking-[-0.025em] text-[#0a0a0a]">
+              사향공진단 가격
+            </h2>
           </div>
           <div className="grid sm:grid-cols-2 gap-5 mb-6">
-            <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface-muted)] p-7">
-              <p className="text-xs font-bold text-[var(--text-muted)] mb-2">처음 시작 · 효과 확인용</p>
-              <p className="text-4xl font-extrabold text-[var(--brand-primary-dark)] mb-1">135만원</p>
-              <p className="text-sm text-[var(--text-muted)]">사향공진단 30구</p>
+            <div className="sn-reveal rn-card rounded-[22px] border border-black/[0.07] bg-[#F8F6F2] p-8">
+              <p className="text-[11px] font-bold tracking-[0.14em] uppercase text-[#8C8A87] mb-4">처음 시작 · 효과 확인용</p>
+              <p className="font-serif text-4xl md:text-5xl font-bold text-[var(--brand-primary-dark)] tracking-[-0.03em] mb-2">135만원</p>
+              <p className="text-sm text-[#525252]">사향공진단 30구</p>
             </div>
-            <div className="rounded-2xl border-2 border-black bg-black text-white p-7">
-              <p className="text-xs font-bold text-[var(--brand-primary)] mb-2">3개월+ 꾸준한 복용 · 최대 효과</p>
-              <p className="text-4xl font-extrabold mb-1">350만원</p>
-              <p className="text-sm text-white/60">사향공진단 100구</p>
+            <div className="sn-reveal rn-card rounded-[22px] border border-white/10 bg-[#0a0a0a] text-white p-8" style={{ transitionDelay: "80ms" }}>
+              <p className="text-[11px] font-bold tracking-[0.14em] uppercase text-[var(--brand-primary)] mb-4">3개월+ 꾸준한 복용 · 최대 효과</p>
+              <p className="font-serif text-4xl md:text-5xl font-bold tracking-[-0.03em] mb-2">350만원</p>
+              <p className="text-sm text-white/50">사향공진단 100구</p>
             </div>
           </div>
-          <p className="text-xs text-[var(--text-muted)] text-center">
+          <p className="text-xs text-[#8C8A87] text-center">
             ※ 가격은 표시 시점 기준이며 변경될 수 있습니다. 처방은 상담 후 결정됩니다.
           </p>
         </div>
       </section>
 
-      {/* 05 · E-E-A-T 원장 자격 */}
-      <section className="bg-[var(--surface-muted)] border-t border-[var(--border)]">
-        <div className="mx-auto max-w-4xl px-4 py-14">
-          <div className="bg-white rounded-2xl border border-[var(--border)] p-7 flex flex-col sm:flex-row gap-6 items-start">
+      {/* ── 05 · E-E-A-T 원장 자격 ── */}
+      <section className="bg-[#F8F6F2] border-t border-black/[0.05]">
+        <div className="mx-auto max-w-5xl px-5 md:px-8 py-20 md:py-24">
+          <div className="sn-reveal bg-white rounded-[22px] border border-black/[0.07] p-8 md:p-10 flex flex-col sm:flex-row gap-8 items-start">
             <div className="shrink-0">
-              <div className="w-16 h-16 rounded-full bg-black flex items-center justify-center text-white font-extrabold text-xl">송</div>
+              <div className="w-16 h-16 rounded-full bg-[#0a0a0a] flex items-center justify-center text-white font-serif font-bold text-xl">송</div>
             </div>
             <div>
-              <p className="font-extrabold text-lg mb-1">송원석 원장 · 매일백세한의원</p>
-              <p className="text-sm text-[var(--text-muted)] mb-4">대전대학교 한의과대학 졸업(05학번) · 한의사 면허</p>
-              <ul className="text-sm space-y-1.5 text-[var(--foreground)]">
+              <p className="font-serif text-lg md:text-xl font-bold text-[#0a0a0a] tracking-[-0.02em] mb-1.5">송원석 원장 · 매일백세한의원</p>
+              <p className="text-sm text-[#8C8A87] mb-6">대전대학교 한의과대학 졸업(05학번) · 한의사 면허</p>
+              <ul className="text-sm space-y-2.5 text-[#525252] leading-[1.7]">
                 <li>✔ 공진단 연간 19,000구+ 원내 직접 조제 (2025년 기준)</li>
                 <li>✔ 조제 전 과정 유튜브 공개 — "직접 만든 진짜 공진단" 채널 운영</li>
                 <li>✔ 아버지 심방세동 회복에 직접 공진단 처방한 경험</li>
@@ -277,7 +341,7 @@ export default function SahyangPage() {
                 href={clinic.youtube.gongjindan}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 mt-5 px-4 py-2 rounded-lg bg-[var(--surface-muted)] border border-[var(--border)] text-sm font-semibold hover:border-[var(--brand-primary)] transition"
+                className="inline-flex items-center gap-2 mt-7 px-5 py-2.5 rounded-full bg-[#F8F6F2] border border-black/[0.08] text-sm font-semibold text-[#0a0a0a] hover:border-black/25 transition-colors duration-300"
               >
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor" className="text-red-600" aria-hidden><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
                 사향 조제 과정 유튜브 보기
@@ -287,52 +351,64 @@ export default function SahyangPage() {
         </div>
       </section>
 
-      {/* 06 · FAQ */}
-      <section className="bg-white border-t border-[var(--border)]">
-        <div className="mx-auto max-w-4xl px-4 py-16 md:py-20">
-          <div className="text-center mb-10">
-            <p className="text-xs font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase mb-2">FAQ</p>
-            <h2 className="text-2xl md:text-3xl font-extrabold">사향공진단 자주 묻는 질문</h2>
+      {/* ── 06 · FAQ ── */}
+      <section className="bg-white border-t border-black/[0.05]">
+        <div className="mx-auto max-w-3xl px-5 md:px-8 py-24 md:py-28">
+          <div className="text-center mb-14 sn-reveal">
+            {eyebrow("FAQ", { center: true })}
+            <h2 className="font-serif text-3xl md:text-4xl leading-tight tracking-[-0.025em] text-[#0a0a0a]">
+              사향공진단 자주 묻는 질문
+            </h2>
           </div>
-          <div className="space-y-3">
+          <div className="space-y-3 sn-reveal" style={{ transitionDelay: "80ms" }}>
             {faqs.map((f, i) => (
-              <details key={i} className="group rounded-lg border border-[var(--border)] bg-[var(--surface-muted)] p-5 hover:border-[var(--brand-primary)] transition">
-                <summary className="cursor-pointer font-semibold flex items-start gap-2 list-none">
-                  <span className="text-[var(--brand-primary)] font-bold shrink-0">Q.</span>
-                  <span className="flex-1">{f.q}</span>
-                  <span className="text-[var(--text-muted)] group-open:rotate-180 transition shrink-0">▾</span>
+              <details
+                key={i}
+                className="group rounded-2xl border border-black/[0.07] bg-white p-5 md:p-6 hover:border-black/[0.18] transition-colors duration-300"
+              >
+                <summary className="cursor-pointer flex items-start gap-3 list-none select-none">
+                  <span className="text-[#0F0D0A] font-bold shrink-0 text-sm pt-0.5">Q.</span>
+                  <span className="flex-1 font-semibold text-[#0a0a0a] text-sm md:text-[15px] leading-snug">{f.q}</span>
+                  <span
+                    className="text-[#888] shrink-0 text-xs mt-1 group-open:rotate-180"
+                    style={{ transition: "transform 0.3s cubic-bezier(0.16,1,0.3,1)" }}
+                    aria-hidden
+                  >
+                    ▾
+                  </span>
                 </summary>
-                <p className="mt-3 text-sm text-[var(--text-muted)] leading-relaxed pl-6">{f.a}</p>
+                <p className="mt-4 text-sm text-[#525252] leading-[1.8] pl-7">{f.a}</p>
               </details>
             ))}
           </div>
-          <div className="mt-8 text-center">
-            <Link href="/gongjindan" className="text-sm font-bold text-[var(--brand-primary)] hover:underline">
-              ← 공진단 전체 라인업 보기 (녹용 2배 공진단 · 총명공진단)
+          <div className="mt-10 text-center sn-reveal">
+            <Link href="/gongjindan" className="rn-arrow inline-flex items-center gap-2 text-sm font-bold text-[#0F0D0A]">
+              <span aria-hidden>←</span> 공진단 전체 라인업 보기 (녹용 2배 공진단 · 총명공진단)
             </Link>
           </div>
         </div>
       </section>
 
-      {/* 07 · CTA */}
-      <section className="bg-black text-white">
-        <div className="mx-auto max-w-4xl px-4 py-16 md:py-20 text-center">
-          <p className="text-xs font-bold tracking-[0.2em] text-[var(--brand-primary)] uppercase mb-3">Contact</p>
-          <h2 className="text-2xl md:text-4xl font-extrabold mb-4">
+      {/* ── 07 · CTA ── */}
+      <section className="bg-[#0a0a0a] text-white overflow-hidden">
+        <div className="mx-auto max-w-5xl px-5 md:px-8 py-24 md:py-32 text-center sn-reveal">
+          {eyebrow("Contact", { center: true, brand: true })}
+          <h2 className="font-serif text-3xl md:text-5xl leading-[1.15] tracking-[-0.025em] mb-6">
             체질 맞는 분께만 권합니다
           </h2>
-          <p className="text-white/70 mb-8 max-w-xl mx-auto">
+          <p className="text-white/45 mb-12 max-w-xl mx-auto text-base leading-[1.8]">
             사향공진단이 모든 분께 맞는 건 아닙니다. 상담 후 맞지 않으면 다른 처방을 안내드립니다.
             전화·카카오톡·비대면 신청 모두 가능합니다.
           </p>
-          <div className="max-w-xl mx-auto">
-            <CTAButtons formUrl={clinic.contact.onlineFormGongjindan} formLabel="사향공진단 상담 신청" />
-          </div>
-          <p className="mt-6 text-white/50 text-sm">
+          <ContactButtons formLabel="사향공진단 상담 신청" center />
+          <p className="mt-10 text-white/35 text-sm">
             서울 중랑구 공릉로 21 · 먹골역 도보 5분 · {clinic.contact.phone}
           </p>
         </div>
       </section>
+
+      {/* Reveal animation */}
+
     </>
   );
 }

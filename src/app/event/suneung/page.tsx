@@ -37,7 +37,7 @@ export default function SuneungPage() {
           <p className="text-xs font-semibold tracking-widest text-[var(--brand-accent)] uppercase mb-2">
             수능 시즌 한정 안내
           </p>
-          <h1 className="text-3xl md:text-5xl font-bold leading-tight">
+          <h1 className="font-serif text-3xl md:text-5xl font-bold tracking-[-0.025em] leading-tight">
             수능 수험생을 위한
             <br />
             <span className="text-[var(--brand-primary)]">총명공진단</span>

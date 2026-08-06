@@ -53,17 +53,20 @@ export default async function StationPage({ params }: { params: Params }) {
         />
       </div>
 
-      <section className="bg-gradient-to-br from-[var(--brand-primary-light)] to-white">
-        <div className="mx-auto max-w-6xl px-4 py-12 md:py-16">
-          <p className="text-xs font-semibold tracking-widest text-[var(--brand-primary)] uppercase mb-2">
-            지하철 인근 한의원
-          </p>
-          <h1 className="text-3xl md:text-5xl font-bold leading-tight">
+      <section className="bg-[#FAFAFA] border-b border-black/[0.05]">
+        <div className="mx-auto max-w-6xl px-5 md:px-8 py-16 md:py-24">
+          <div className="inline-flex items-center gap-3 mb-6">
+            <span className="h-px w-6 bg-[var(--brand-primary)]" aria-hidden />
+            <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-[var(--brand-primary)]">
+              지하철 인근 한의원
+            </span>
+          </div>
+          <h1 className="font-serif text-[2.25rem] md:text-[3.25rem] tracking-[-0.025em] leading-[1.14] text-[#0a0a0a]">
             {st.fullName} 한의원
             <br />
             <span className="text-[var(--brand-primary)]">매일백세한의원</span>
           </h1>
-          <p className="mt-5 text-lg text-[var(--text-muted)] max-w-2xl leading-relaxed">
+          <p className="mt-6 text-base md:text-lg text-[#525252] max-w-2xl leading-[1.8]">
             {st.description}
           </p>
           <div className="mt-8 max-w-2xl">
@@ -83,25 +86,25 @@ export default async function StationPage({ params }: { params: Params }) {
           ]}
         />
 
-        <h2 className="text-2xl font-bold mt-12 mb-5">
+        <h2 className="font-serif text-3xl tracking-[-0.025em] text-[#0a0a0a] mt-14 mb-6">
           {st.name} 인근에서 가장 가까운 한의원
         </h2>
-        <p className="text-[var(--foreground)] leading-relaxed">
+        <p className="text-[#525252] leading-[1.8]">
           매일백세한의원은 {clinic.address.full}에 있는 한의원입니다.
           {" "}{st.fullName} 인근에서 다이어트 한약(매일감비환), 공진단, 총명공진단,
           통증 치료를 받으실 수 있습니다.
         </p>
 
-        <h2 className="text-2xl font-bold mt-12 mb-5">진료 항목</h2>
+        <h2 className="font-serif text-3xl tracking-[-0.025em] text-[#0a0a0a] mt-14 mb-6">진료 항목</h2>
         <div className="grid md:grid-cols-2 gap-4">
           {treatments.map((t) => (
             <Link
               key={t.slug}
               href={`/treatments/${t.slug}`}
-              className="block p-5 rounded-xl bg-[var(--surface-muted)] border border-[var(--border)] hover:border-[var(--brand-primary)] transition"
+              className="rn-card block p-6 rounded-[20px] bg-white border border-black/[0.07] hover:border-black/20"
             >
-              <h3 className="font-bold mb-1.5">{t.name}</h3>
-              <p className="text-sm text-[var(--text-muted)] line-clamp-2">
+              <h3 className="font-bold text-[#0a0a0a] mb-2">{t.name}</h3>
+              <p className="text-sm text-[#525252] leading-[1.7] line-clamp-2">
                 {t.summary}
               </p>
             </Link>

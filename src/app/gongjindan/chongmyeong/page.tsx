@@ -108,7 +108,7 @@ export default function ChongmyeongPage() {
           <p className="text-xs font-bold tracking-[0.2em] text-[var(--brand-primary)] uppercase mb-4">
             총명공진단 · 매일백세한의원
           </p>
-          <h1 className="text-3xl md:text-5xl font-extrabold leading-tight mb-5">
+          <h1 className="font-serif text-3xl md:text-5xl font-bold tracking-[-0.025em] leading-tight mb-5">
             총명공진단 —<br />
             <span className="text-[var(--brand-primary)]">수험생·고시생</span> 집중력·기억력·체력
           </h1>
@@ -138,7 +138,7 @@ export default function ChongmyeongPage() {
         <div className="mx-auto max-w-4xl px-4 py-16 md:py-24">
           <div className="text-center mb-10">
             <p className="text-xs font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase mb-2">Ingredient</p>
-            <h2 className="text-2xl md:text-4xl font-extrabold leading-tight">총명공진단 5가지 성분</h2>
+            <h2 className="font-serif text-2xl md:text-4xl font-bold tracking-[-0.025em] leading-tight">총명공진단 5가지 성분</h2>
             <p className="text-sm text-[var(--text-muted)] mt-3">녹용 2배 공진단 기본 구성 + 두뇌 특화 성분 2종 추가</p>
           </div>
 
@@ -167,17 +167,16 @@ export default function ChongmyeongPage() {
         <div className="mx-auto max-w-4xl px-4 py-16 md:py-24">
           <div className="text-center mb-10">
             <p className="text-xs font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase mb-2">For You</p>
-            <h2 className="text-2xl md:text-4xl font-extrabold">이런 분께 총명공진단을 권합니다</h2>
+            <h2 className="font-serif text-2xl md:text-4xl font-bold tracking-[-0.025em]">이런 분께 총명공진단을 권합니다</h2>
           </div>
           <div className="grid sm:grid-cols-2 gap-4">
             {[
-              { icon: "📚", title: "수능 수험생", desc: "수능 3개월 전부터 복용해 집중력·기억력·체력을 끌어올리고 싶은 고3·재수생" },
-              { icon: "📝", title: "공무원·고시 준비생", desc: "장기간 수험 생활로 뇌가 지치고 집중력이 떨어진 공시생·고시생" },
-              { icon: "🧑‍💻", title: "직장인 자격증 준비", desc: "직장 생활과 병행하며 자격증 공부하는 분들의 두뇌 피로 회복" },
-              { icon: "🎓", title: "대학원생·연구직", desc: "논문 작성, 연구 집중 등 고강도 뇌 활동이 필요한 분" },
+              { title: "수능 수험생", desc: "수능 3개월 전부터 복용해 집중력·기억력·체력을 끌어올리고 싶은 고3·재수생" },
+              { title: "공무원·고시 준비생", desc: "장기간 수험 생활로 뇌가 지치고 집중력이 떨어진 공시생·고시생" },
+              { title: "직장인 자격증 준비", desc: "직장 생활과 병행하며 자격증 공부하는 분들의 두뇌 피로 회복" },
+              { title: "대학원생·연구직", desc: "논문 작성, 연구 집중 등 고강도 뇌 활동이 필요한 분" },
             ].map((t) => (
               <div key={t.title} className="bg-white rounded-xl border border-[var(--border)] p-5">
-                <p className="text-2xl mb-2">{t.icon}</p>
                 <h3 className="font-bold mb-1">{t.title}</h3>
                 <p className="text-sm text-[var(--text-muted)]">{t.desc}</p>
               </div>
@@ -191,7 +190,7 @@ export default function ChongmyeongPage() {
         <div className="mx-auto max-w-4xl px-4 py-16 md:py-20">
           <div className="text-center mb-10">
             <p className="text-xs font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase mb-2">Pricing</p>
-            <h2 className="text-2xl md:text-4xl font-extrabold">총명공진단 가격</h2>
+            <h2 className="font-serif text-2xl md:text-4xl font-bold tracking-[-0.025em]">총명공진단 가격</h2>
           </div>
           <div className="grid sm:grid-cols-2 gap-5 mb-6">
             <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface-muted)] p-7">
@@ -216,7 +215,7 @@ export default function ChongmyeongPage() {
         <div className="mx-auto max-w-4xl px-4 py-16 md:py-20">
           <div className="text-center mb-10">
             <p className="text-xs font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase mb-2">FAQ</p>
-            <h2 className="text-2xl md:text-3xl font-extrabold">총명공진단 자주 묻는 질문</h2>
+            <h2 className="font-serif text-2xl md:text-3xl font-bold tracking-[-0.025em]">총명공진단 자주 묻는 질문</h2>
           </div>
           <div className="space-y-3">
             {faqs.map((f, i) => (
@@ -242,7 +241,7 @@ export default function ChongmyeongPage() {
       <section className="bg-black text-white">
         <div className="mx-auto max-w-4xl px-4 py-16 md:py-20 text-center">
           <p className="text-xs font-bold tracking-[0.2em] text-[var(--brand-primary)] uppercase mb-3">Contact</p>
-          <h2 className="text-2xl md:text-4xl font-extrabold mb-4">
+          <h2 className="font-serif text-2xl md:text-4xl font-bold tracking-[-0.025em] mb-4">
             수험 시즌 시작 전 상담하세요
           </h2>
           <p className="text-white/70 mb-8 max-w-xl mx-auto">

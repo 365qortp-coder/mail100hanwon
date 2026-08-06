@@ -24,6 +24,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${baseUrl}/faq`, lastModified: today, priority: 0.8, changeFrequency: "weekly" },
     { url: `${baseUrl}/columns`, lastModified: today, priority: 0.75, changeFrequency: "daily" },
     { url: `${baseUrl}/event/suneung`, lastModified: today, priority: 0.85, changeFrequency: "monthly" },
+    { url: `${baseUrl}/bmr`, lastModified: today, priority: 0.8, changeFrequency: "monthly" },
   ];
 
   const treatmentPages: MetadataRoute.Sitemap = treatments.map((t) => ({

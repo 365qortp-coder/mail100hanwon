@@ -40,9 +40,9 @@ export default function ClinicPage() {
           ]}
         />
 
-        <div className="mt-8">
-          <h3 className="text-xl font-bold mb-3">지도</h3>
-          <div className="aspect-[16/9] w-full rounded-xl overflow-hidden border border-[var(--border)] bg-[var(--surface-muted)]">
+        <div className="mt-10">
+          <h3 className="font-serif text-2xl tracking-[-0.025em] text-[#0a0a0a] mb-4">지도</h3>
+          <div className="aspect-[16/9] w-full rounded-[20px] overflow-hidden border border-black/[0.07] bg-[#FAFAFA]">
             <iframe
               src={`https://maps.google.com/maps?q=${mapQuery}&output=embed`}
               width="100%"
@@ -55,12 +55,12 @@ export default function ClinicPage() {
           </div>
         </div>
 
-        <div className="mt-10 grid md:grid-cols-2 gap-6">
-          <div className="p-6 rounded-xl bg-[var(--brand-primary-light)] border border-[var(--border)]">
-            <h3 className="text-lg font-bold text-[var(--brand-primary-dark)] mb-3">
+        <div className="mt-10 grid md:grid-cols-2 gap-5">
+          <div className="p-6 md:p-7 rounded-[20px] bg-[#F8F6F2] border border-black/[0.07]">
+            <h3 className="font-serif text-xl tracking-[-0.02em] text-[#0a0a0a] mb-4">
               대중교통 이용
             </h3>
-            <ul className="space-y-2 text-sm">
+            <ul className="space-y-2 text-sm text-[#525252] leading-[1.7]">
               <li>
                 <b>7호선 먹골역</b> 1번/2번 출구 도보 5분
               </li>
@@ -72,11 +72,11 @@ export default function ClinicPage() {
               </li>
             </ul>
           </div>
-          <div className="p-6 rounded-xl bg-[var(--brand-accent-light)] border border-[var(--border)]">
-            <h3 className="text-lg font-bold text-[var(--foreground)] mb-3">
+          <div className="p-6 md:p-7 rounded-[20px] bg-[#FAFAFA] border border-black/[0.07]">
+            <h3 className="font-serif text-xl tracking-[-0.02em] text-[#0a0a0a] mb-4">
               자가용 이용
             </h3>
-            <p className="text-sm">
+            <p className="text-sm text-[#525252] leading-[1.7]">
               내비게이션에 <b>{clinic.address.full}</b>로 검색하시면 됩니다.
               인근 주차 안내는 전화로 문의해주세요.
             </p>

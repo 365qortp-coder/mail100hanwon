@@ -92,7 +92,7 @@ export default async function TreatmentPage({ params }: { params: Params }) {
             {t.category === "chongmyeong" && "수험생 · 시험"}
             {t.category === "pain" && "통증 치료"}
           </p>
-          <h1 className="text-3xl md:text-5xl font-bold leading-tight">{t.name}</h1>
+          <h1 className="font-serif text-3xl md:text-5xl font-bold tracking-[-0.025em] leading-tight">{t.name}</h1>
           <p className="mt-5 text-lg text-[var(--text-muted)] max-w-2xl leading-relaxed">
             {t.intro}
           </p>
@@ -143,7 +143,7 @@ export default async function TreatmentPage({ params }: { params: Params }) {
         />
 
         {/* 특징 */}
-        <h2 className="text-2xl font-bold mt-12 mb-5">{t.shortName}의 특징</h2>
+        <h2 className="font-serif text-2xl font-bold tracking-[-0.025em] mt-12 mb-5">{t.shortName}의 특징</h2>
         <div className="grid sm:grid-cols-2 gap-4">
           {t.features.map((f) => (
             <div
@@ -159,7 +159,7 @@ export default async function TreatmentPage({ params }: { params: Params }) {
         </div>
 
         {/* 절차 */}
-        <h2 className="text-2xl font-bold mt-12 mb-5">진료 절차</h2>
+        <h2 className="font-serif text-2xl font-bold tracking-[-0.025em] mt-12 mb-5">진료 절차</h2>
         <ol className="space-y-3">
           {t.process.map((step, i) => (
             <li key={i} className="flex gap-4 p-4 bg-white rounded-lg border border-[var(--border)]">
@@ -174,7 +174,7 @@ export default async function TreatmentPage({ params }: { params: Params }) {
         {/* 비용 */}
         {showPricing && (
           <>
-            <h2 className="text-2xl font-bold mt-12 mb-5">비용 안내</h2>
+            <h2 className="font-serif text-2xl font-bold tracking-[-0.025em] mt-12 mb-5">비용 안내</h2>
             <div className="space-y-6">
               {activePricing.map((group) => (
                 <div key={group.label}>
@@ -212,7 +212,7 @@ export default async function TreatmentPage({ params }: { params: Params }) {
         )}
 
         {/* FAQ */}
-        <h2 className="text-2xl font-bold mt-12 mb-5">자주 묻는 질문</h2>
+        <h2 className="font-serif text-2xl font-bold tracking-[-0.025em] mt-12 mb-5">자주 묻는 질문</h2>
         <div className="space-y-3">
           {t.faq.map((f, i) => (
             <details
@@ -231,7 +231,7 @@ export default async function TreatmentPage({ params }: { params: Params }) {
         </div>
 
         {/* 다른 진료 */}
-        <h2 className="text-2xl font-bold mt-12 mb-5">다른 진료 보기</h2>
+        <h2 className="font-serif text-2xl font-bold tracking-[-0.025em] mt-12 mb-5">다른 진료 보기</h2>
         <div className="grid sm:grid-cols-3 gap-3">
           {treatments
             .filter((other) => other.slug !== t.slug)

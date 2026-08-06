@@ -5,7 +5,6 @@ import type { Metadata } from "next";
 import { buildMetadata } from "@/lib/seo";
 import { clinicSchema, directorSchema, websiteSchema, webPageSchema, faqSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/JsonLd";
-import { CTAButtons } from "@/components/CTAButtons";
 import { YouTubeThumbnailGallery } from "@/components/YouTubeThumbnailGallery";
 import { clinic } from "@/data/clinic";
 import { locations } from "@/data/locations";
@@ -38,7 +37,6 @@ type Product = {
   image: string;
   imagePosition?: string;
   href: string;
-  external?: boolean;
   dark?: boolean;
 };
 
@@ -69,9 +67,24 @@ const products: Product[] = [
     subtitle: "한방 무릎 치료 프로토콜",
     desc: "염증 무력화(N)·가동성 회복(M)·구조 재건(C). 침·한약 병행으로 무릎 통증의 근원을 다스립니다.",
     image: "/photos/pain.webp",
-    imagePosition: "object-[center_20%]",
+    imagePosition: "object-[center_25%]",
     href: "/nmc",
   },
+];
+
+const personaIcons = [
+  // activity
+  <svg key="i1" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg>,
+  // shield-check
+  <svg key="i2" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M20 13c0 5-3.5 7.5-7.66 8.95a1 1 0 0 1-.67-.01C7.5 20.5 4 18 4 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1 1 0 0 1 1.52 0C14.5 3.81 17 5 19 5a1 1 0 0 1 1 1z" /><path d="m9 12 2 2 4-4" /></svg>,
+  // smartphone
+  <svg key="i3" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><rect width="14" height="20" x="5" y="2" rx="2" ry="2" /><path d="M12 18h.01" /></svg>,
+  // user
+  <svg key="i4" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" /></svg>,
+  // heart
+  <svg key="i5" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.51 4.05 3 5.5l7 7Z" /></svg>,
+  // pill
+  <svg key="i6" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" aria-hidden><path d="m10.5 20.5 10-10a4.95 4.95 0 1 0-7-7l-10 10a4.95 4.95 0 1 0 7 7Z" /><path d="m8.5 8.5 7 7" /></svg>,
 ];
 
 const personas = [
@@ -101,14 +114,17 @@ const personas = [
   },
 ];
 
-const eyebrow = (label: string, center = false) => (
-  <div className={`inline-flex items-center gap-2.5 mb-6 ${center ? "justify-center" : ""}`}>
-    <span className="h-px w-5 bg-[var(--brand-primary)]" aria-hidden />
-    <span className="text-[11px] font-bold tracking-[0.18em] uppercase text-[var(--brand-primary)]">
-      {label}
-    </span>
-  </div>
-);
+const eyebrow = (label: string, opts?: { center?: boolean; brand?: boolean; dark?: boolean }) => {
+  const line = opts?.dark ? "bg-white/20" : opts?.brand ? "bg-[var(--brand-primary)]" : "bg-black/20";
+  const text = opts?.dark ? "text-white/35" : opts?.brand ? "text-[var(--brand-primary)]" : "text-[#8C8A87]";
+  return (
+    <div className={`inline-flex items-center gap-3 mb-6 ${opts?.center ? "justify-center" : ""}`}>
+      <span className={`h-px w-6 ${line}`} aria-hidden />
+      <span className={`text-[11px] font-bold tracking-[0.2em] uppercase ${text}`}>{label}</span>
+      {opts?.center && <span className={`h-px w-6 ${line}`} aria-hidden />}
+    </div>
+  );
+};
 
 export default function HomePage() {
   const latestColumns = getAllColumns().slice(0, 3);
@@ -123,18 +139,13 @@ export default function HomePage() {
       <JsonLd id="ld-faq" data={faqSchema(faqs)} />
 
       {/* ── 01 · HERO ── */}
-      <section className="bg-[#FDFBF7]">
-        <div className="mx-auto max-w-7xl px-5 md:px-10 lg:px-16 pt-16 pb-24 md:pt-20 md:pb-32 grid md:grid-cols-[1fr_400px] lg:grid-cols-[1fr_460px] gap-10 md:gap-14 items-end">
+      <section className="bg-white overflow-hidden">
+        <div className="mx-auto max-w-7xl px-5 md:px-8 lg:px-12 pt-20 pb-28 md:pt-24 md:pb-36 grid md:grid-cols-2 gap-12 md:gap-16 items-center">
           {/* Left — headline */}
           <div className="sn-reveal">
-            <div className="inline-flex items-center gap-2.5 mb-8">
-              <span className="h-px w-5 bg-[var(--brand-primary)]" aria-hidden />
-              <span className="text-[11px] font-bold tracking-[0.18em] uppercase text-[var(--brand-primary)]">
-                서울 중랑구 매일백세한의원
-              </span>
-            </div>
+            {eyebrow("서울 중랑구 매일백세한의원", { brand: true })}
 
-            <h1 className="font-serif text-[2.75rem] md:text-[3.8rem] lg:text-[5rem] leading-[1.06] tracking-[-0.02em] text-[#0a0a0a] mb-8">
+            <h1 className="font-serif text-[2.4rem] md:text-[2.6rem] lg:text-[3.25rem] xl:text-[4rem] leading-[1.07] tracking-[-0.025em] text-[#0a0a0a] mb-7">
               직접 해보고
               <br />
               <span className="text-[var(--brand-primary)]">효과 있는 진료만</span>
@@ -142,55 +153,33 @@ export default function HomePage() {
               권해드립니다
             </h1>
 
-            <p className="text-base md:text-[1.05rem] text-[var(--text-muted)] leading-relaxed max-w-[420px] mb-10">
+            <p className="text-base md:text-[1.05rem] text-[#525252] leading-[1.75] max-w-[420px]">
               다이어트·공진단·통증 모두 송원석 원장이 체질을 직접 확인한 뒤
               처방합니다. 비대면 진료로 전국 어디서나 받아보실 수 있습니다.
             </p>
-
-            {/* Hero CTA — pill buttons */}
-            <div className="flex flex-wrap gap-3">
-              <a
-                href={`tel:${clinic.contact.phoneClean}`}
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[var(--brand-primary)] text-white text-sm font-semibold hover:bg-[var(--brand-primary-dark)] transition-colors duration-300"
-              >
-                전화 상담 →
-              </a>
-              <a
-                href={clinic.contact.kakao}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full bg-[#FAE100] text-[#3C1E1E] text-sm font-semibold hover:brightness-95 transition"
-              >
-                카카오톡 상담
-              </a>
-              <a
-                href={clinic.contact.naverBooking}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-full border border-[#0a0a0a]/20 text-[#0a0a0a] text-sm font-semibold hover:border-[var(--brand-primary)] hover:text-[var(--brand-primary)] transition-colors duration-300"
-              >
-                네이버 예약하기
-              </a>
-            </div>
           </div>
 
-          {/* Right — director photo */}
-          <div className="order-first md:order-last sn-reveal" style={{ transitionDelay: "80ms" }}>
-            <div className="p-1.5 bg-black/[0.04] ring-1 ring-black/[0.06] rounded-[1.75rem]">
-              <div className="relative aspect-[3/4] rounded-[calc(1.75rem-6px)] overflow-hidden bg-[#E8E3D9] shadow-[inset_0_1px_1px_rgba(255,255,255,0.85)]">
-                <Image
-                  src="/photos/director.webp"
-                  alt={`${clinic.director.name} ${clinic.director.title}`}
-                  fill
-                  priority
-                  className="object-cover"
-                  sizes="(max-width: 768px) 80vw, 460px"
-                />
+          {/* Right — director photo with floating badges */}
+          <div className="order-first md:order-last sn-reveal" style={{ transitionDelay: "90ms" }}>
+            <div className="relative">
+              <div className="rounded-[28px] bg-black/[0.04] p-2 ring-1 ring-black/[0.06]">
+                <div className="relative aspect-[3/4] rounded-[22px] overflow-hidden bg-[#E8E3D9] shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)]">
+                  <Image
+                    src="/photos/director.webp"
+                    alt={`${clinic.director.name} ${clinic.director.title}`}
+                    fill
+                    priority
+                    className="object-cover"
+                    sizes="(max-width: 768px) 80vw, 460px"
+                  />
+                </div>
               </div>
+
             </div>
-            <p className="mt-4 text-sm font-semibold text-[#0a0a0a] flex items-center gap-2">
-              {clinic.director.name}
-              <span className="text-xs text-[var(--text-muted)] font-normal border border-[#0a0a0a]/12 rounded-full px-2.5 py-0.5">
+
+            <p className="mt-8 text-sm font-bold text-[#0a0a0a] flex items-center gap-2 pl-2">
+              {clinic.director.name} 원장
+              <span className="text-xs text-[#525252] font-normal border border-black/[0.1] rounded-full px-3 py-0.5">
                 {clinic.director.title}
               </span>
             </p>
@@ -199,9 +188,9 @@ export default function HomePage() {
       </section>
 
       {/* ── 02 · STATS ── */}
-      <section className="bg-[#0a0a0a]">
-        <div className="mx-auto max-w-7xl px-5 md:px-10 lg:px-16 py-16 md:py-20">
-          <p className="text-[11px] tracking-[0.25em] font-bold text-[var(--brand-primary)] uppercase mb-10">
+      <section className="bg-[#0a0a0a] overflow-hidden">
+        <div className="mx-auto max-w-7xl px-5 md:px-8 lg:px-12 py-16 md:py-20">
+          <p className="text-[10px] tracking-[0.28em] font-bold text-white/35 uppercase mb-10">
             By the Numbers
           </p>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-12">
@@ -212,9 +201,9 @@ export default function HomePage() {
               { num: "전국", sub: "비대면 진료", note: "어디서나 처방 가능" },
             ].map((s, i) => (
               <div key={s.sub} className="sn-reveal" style={{ transitionDelay: `${i * 60}ms` }}>
-                <p className="font-serif text-4xl md:text-5xl text-white tracking-tight mb-2">{s.num}</p>
-                <p className="text-sm font-semibold text-white/70 mb-1">{s.sub}</p>
-                <p className="text-xs text-white/35">{s.note}</p>
+                <p className="font-serif text-5xl md:text-6xl text-white tracking-tight mb-2">{s.num}</p>
+                <p className="text-sm font-semibold text-white/60 mb-1">{s.sub}</p>
+                <p className="text-xs text-white/30 leading-relaxed">{s.note}</p>
               </div>
             ))}
           </div>
@@ -222,165 +211,114 @@ export default function HomePage() {
       </section>
 
       {/* ── 03 · PRODUCTS ── */}
-      <section className="bg-[#FDFBF7]">
-        <div className="mx-auto max-w-7xl px-5 md:px-10 lg:px-16 py-20 md:py-28 lg:py-32">
-          <div className="flex flex-wrap items-end justify-between gap-6 mb-14 sn-reveal">
+      <section className="bg-[#FAFAFA]">
+        <div className="mx-auto max-w-7xl px-5 md:px-8 lg:px-12 py-24 md:py-32">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-16 sn-reveal">
             <div>
               {eyebrow("Our Practice")}
-              <h2 className="font-serif text-3xl md:text-4xl lg:text-[2.75rem] leading-tight tracking-tight text-[#0a0a0a]">
+              <h2 className="font-serif text-3xl md:text-4xl lg:text-[2.6rem] leading-tight tracking-[-0.025em] text-[#0a0a0a]">
                 매일백세한의원의
                 <br />
-                3가지 시그니처 진료
+                3가지 집중 진료
               </h2>
             </div>
-            <p className="text-sm text-[var(--text-muted)] max-w-xs leading-relaxed">
+            <p className="text-sm text-[#525252] max-w-[280px] leading-[1.75]">
               체질·생활습관·목표에 맞춘 맞춤형 한방 진료.
               <br />
               다이어트·공진단·통증 모두 한 곳에서.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-4 md:gap-5">
-            {products.map((p, i) => {
-              const inner = (
-                <>
-                  <div className={`relative aspect-[4/3] overflow-hidden rounded-[calc(1.25rem-6px)] ${p.dark ? "bg-[#0a0a0a]" : "bg-[#E8E3D9]"}`}>
+          <div className="grid md:grid-cols-3 gap-5">
+            {products.map((p, i) => (
+              <div key={p.slug} className="sn-reveal" style={{ transitionDelay: `${i * 85}ms` }}>
+                <Link
+                  href={p.href}
+                  className={`rn-card group block rounded-[22px] overflow-hidden border ${
+                    p.dark
+                      ? "bg-[#0a0a0a] border-white/[0.06] hover:border-white/20"
+                      : "bg-white border-black/[0.07] hover:border-black/20"
+                  }`}
+                >
+                  <div className={`relative aspect-[4/3] overflow-hidden ${p.dark ? "bg-[#161616]" : "bg-[#EBE7DF]"}`}>
                     <Image
                       src={p.image}
                       alt={p.title}
                       fill
-                      className={`object-cover ${p.imagePosition ?? ""} group-hover:scale-[1.04]`}
-                      style={{ transition: "transform 0.7s cubic-bezier(0.16,1,0.3,1)" }}
+                      className={`rn-zoom object-cover ${p.imagePosition ?? ""}`}
                       sizes="(max-width: 768px) 100vw, 33vw"
                       loading={i === 0 ? "eager" : "lazy"}
                     />
-                    {p.dark && (
-                      <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-black/10" />
-                    )}
                   </div>
-                  <div className="p-6 md:p-7">
-                    <p className="text-[10px] tracking-[0.2em] font-bold text-[var(--text-muted)] mb-3">
+                  <div className="p-7">
+                    <p className={`text-[10px] tracking-[0.22em] font-bold uppercase mb-3 ${p.dark ? "text-white/35" : "text-[#888]"}`}>
                       {p.badge}
                     </p>
-                    <h3 className="font-serif text-xl md:text-2xl font-bold mb-1.5 text-[#0a0a0a]">
+                    <h3 className={`font-serif text-[1.35rem] font-bold mb-1.5 ${p.dark ? "text-white" : "text-[#0a0a0a]"}`}>
                       {p.title}
                     </h3>
-                    <p className="text-sm font-semibold text-[var(--text-muted)] mb-3">{p.subtitle}</p>
-                    <p className="text-sm leading-relaxed text-[var(--text-muted)] mb-5">{p.desc}</p>
-                    <span className="inline-flex items-center gap-2 text-sm font-bold text-[var(--brand-primary)] group-hover:gap-3"
-                      style={{ transition: "gap 0.4s cubic-bezier(0.16,1,0.3,1)" }}>
+                    <p className={`text-sm font-semibold mb-3 ${p.dark ? "text-white/50" : "text-[#525252]"}`}>{p.subtitle}</p>
+                    <p className={`text-sm leading-[1.75] mb-6 ${p.dark ? "text-white/40" : "text-[#525252]"}`}>{p.desc}</p>
+                    <span className={`rn-arrow inline-flex items-center gap-2 text-sm font-bold ${p.dark ? "text-white/70" : "text-[#0F0D0A]"}`}>
                       자세히 보기 <span aria-hidden>→</span>
                     </span>
                   </div>
-                </>
-              );
-
-              return (
-                <div
-                  key={p.slug}
-                  className="sn-reveal p-1.5 bg-black/[0.04] ring-1 ring-black/[0.06] rounded-[1.25rem]"
-                  style={{ transitionDelay: `${i * 80}ms` }}
-                >
-                  {p.external ? (
-                    <a
-                      href={p.href}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="group block rounded-[calc(1.25rem-6px)] overflow-hidden bg-white hover:ring-2 hover:ring-[var(--brand-primary)]/30"
-                      style={{ transition: "box-shadow 0.5s cubic-bezier(0.16,1,0.3,1)" }}
-                    >
-                      {inner}
-                    </a>
-                  ) : (
-                    <Link
-                      href={p.href}
-                      className="group block rounded-[calc(1.25rem-6px)] overflow-hidden bg-white hover:ring-2 hover:ring-[var(--brand-primary)]/30"
-                      style={{ transition: "box-shadow 0.5s cubic-bezier(0.16,1,0.3,1)" }}
-                    >
-                      {inner}
-                    </Link>
-                  )}
-                </div>
-              );
-            })}
+                </Link>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* ── 04 · YOUTUBE ── */}
-      <section className="bg-[#F4F0E8] border-t border-black/[0.05]">
-        <div className="mx-auto max-w-7xl px-5 md:px-10 lg:px-16 py-20 md:py-28">
-          <div className="flex flex-wrap items-end justify-between gap-6 mb-12 sn-reveal">
-            <div>
-              {eyebrow("YouTube")}
-              <h2 className="font-serif text-3xl md:text-4xl leading-tight tracking-tight text-[#0a0a0a]">
-                글로 다 못 담는 이야기는
-                <br />
-                영상으로 보시면 됩니다
-              </h2>
-              <p className="text-sm text-[var(--text-muted)] mt-3 max-w-md leading-relaxed">
-                다이어트·공진단 제조·통증 치료까지, 송원석 원장이
-                실제 진료실에서 다루는 한방 이야기.
-              </p>
-            </div>
-          </div>
-          <YouTubeThumbnailGallery limit={8} />
-        </div>
-      </section>
-
-      {/* ── 05 · ABOUT ── */}
-      <section className="bg-[#FDFBF7] border-t border-black/[0.05]">
-        <div className="mx-auto max-w-7xl px-5 md:px-10 lg:px-16 py-20 md:py-28 grid md:grid-cols-2 gap-10 md:gap-16 items-center">
-          {/* Clinic image — double-bezel */}
-          <div className="sn-reveal p-1.5 bg-black/[0.04] ring-1 ring-black/[0.06] rounded-[1.75rem] order-2 md:order-1">
-            <div className="relative aspect-[4/3] rounded-[calc(1.75rem-6px)] overflow-hidden bg-[#E8E3D9] shadow-[inset_0_1px_1px_rgba(255,255,255,0.85)]">
-              <Image
-                src="/photos/clinic-exterior.webp"
-                alt="매일백세한의원 외관 - 서울 중랑구 공릉로 21"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-                loading="lazy"
-              />
+      {/* ── 04 · ABOUT ── */}
+      <section className="bg-white border-t border-black/[0.05]">
+        <div className="mx-auto max-w-7xl px-5 md:px-8 lg:px-12 py-24 md:py-32 grid md:grid-cols-2 gap-12 md:gap-20 items-center">
+          <div className="sn-reveal order-2 md:order-1">
+            <div className="rounded-[24px] bg-black/[0.04] p-2 ring-1 ring-black/[0.06]">
+              <div className="relative aspect-[4/3] rounded-[18px] overflow-hidden bg-[#E8E3D9] shadow-[inset_0_1px_1px_rgba(255,255,255,0.7)]">
+                <Image
+                  src="/photos/clinic-exterior.webp"
+                  alt="매일백세한의원 외관 - 서울 중랑구 공릉로 21"
+                  fill
+                  className="object-cover"
+                  sizes="(max-width: 768px) 100vw, 50vw"
+                  loading="lazy"
+                />
+              </div>
             </div>
           </div>
 
-          {/* Text */}
           <div className="order-1 md:order-2 sn-reveal" style={{ transitionDelay: "80ms" }}>
             {eyebrow("About")}
-            <h2 className="font-serif text-3xl md:text-4xl leading-tight tracking-tight text-[#0a0a0a] mb-5">
-              내원도 비대면도,
+            <h2 className="font-serif text-3xl md:text-4xl leading-tight tracking-[-0.025em] text-[#0a0a0a] mb-5">
+              야간·주말·공휴일 진료,
               <br />
-              한 곳에서 받는 한방 진료
+              비대면 처방까지 <span className="whitespace-nowrap">한 곳에서</span>
             </h2>
-            <p className="text-base text-[var(--text-muted)] leading-relaxed mb-8">
+            <p className="text-base text-[#525252] leading-[1.8] mb-8">
               서울 중랑구 공릉로 21, 먹골역 도보 5분 거리의 매일백세한의원입니다.
               2·3층 한 건물에 진료실과 물리치료실이 있어 다이어트·공진단·통증 치료를
               한자리에서 받으실 수 있습니다. 야간·토·일·공휴일 진료로 직장인·학부모도
               편하게 오십니다.
             </p>
 
-            <div className="grid grid-cols-2 gap-3 text-sm mb-8">
+            <div className="grid grid-cols-2 gap-3 mb-8">
               {[
                 { label: "평일", value: clinic.hours.weekday },
                 { label: "토요일", value: clinic.hours.saturday },
                 { label: "전화", value: clinic.contact.phone, href: `tel:${clinic.contact.phoneClean}` },
                 { label: "교통", value: "먹골역 도보 5분" },
               ].map((row) => (
-                <div
-                  key={row.label}
-                  className="p-3.5 rounded-xl bg-[#F4F0E8] border border-black/[0.06]"
-                >
-                  <dt className="text-[10px] tracking-widest text-[var(--text-muted)] uppercase font-bold mb-1">
-                    {row.label}
-                  </dt>
-                  <dd className="font-semibold text-[#0a0a0a] text-sm">
+                <div key={row.label} className="p-4 rounded-2xl bg-[#F5F5F5] border border-black/[0.05]">
+                  <dt className="text-[10px] tracking-widest text-[#888] uppercase font-bold mb-1.5">{row.label}</dt>
+                  <dd className="font-bold text-[#0a0a0a] text-sm">
                     {row.href ? (
-                      <a href={row.href} className="hover:text-[var(--brand-primary)]"
-                        style={{ transition: "color 0.3s cubic-bezier(0.16,1,0.3,1)" }}>
+                      <a href={row.href} className="hover:text-[#525252] transition-colors duration-200">
                         {row.value}
                       </a>
-                    ) : row.value}
+                    ) : (
+                      row.value
+                    )}
                   </dd>
                 </div>
               ))}
@@ -391,8 +329,7 @@ export default function HomePage() {
                 href={clinic.contact.naverBooking}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[#03C75A] text-white text-sm font-semibold"
-                style={{ transition: "all 0.5s cubic-bezier(0.16,1,0.3,1)" }}
+                className="rn-btn-primary inline-flex items-center gap-2 px-5 py-3 rounded-full bg-[#03C75A] text-white text-sm font-bold"
               >
                 네이버 예약하기
               </a>
@@ -400,8 +337,7 @@ export default function HomePage() {
                 href="https://map.naver.com/p/entry/place/1632908709?lng=127.0777837&lat=37.6126932&placePath=%2Freview%3FadditionalHeight%3D76%26fromPanelNum%3D1%26locale%3Dko%26svcName%3Dmap_pcv5%26timestamp%3D202607021653&searchType=place&c=15.00,0,0,0,dh"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-[#0a0a0a]/15 text-[#0a0a0a] text-sm font-semibold hover:border-[var(--brand-primary)] hover:text-[var(--brand-primary)]"
-                style={{ transition: "all 0.5s cubic-bezier(0.16,1,0.3,1)" }}
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-full border border-black/[0.13] text-[#0a0a0a] text-sm font-semibold hover:border-black/25 transition-colors duration-300"
               >
                 네이버 리뷰 보기
               </a>
@@ -410,21 +346,44 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ── 06 · PERSONAS ── */}
-      <section className="bg-[#0a0a0a]">
-        <div className="mx-auto max-w-7xl px-5 md:px-10 lg:px-16 py-20 md:py-28 lg:py-32">
-          <div className="text-center mb-14 sn-reveal">
-            <div className="inline-flex items-center gap-2.5 mb-6 justify-center">
-              <span className="h-px w-5 bg-[var(--brand-primary)]" aria-hidden />
-              <span className="text-[11px] font-bold tracking-[0.18em] uppercase text-[var(--brand-primary)]">
-                For You
-              </span>
-              <span className="h-px w-5 bg-[var(--brand-primary)]" aria-hidden />
+      {/* ── 05 · YOUTUBE ── */}
+      <section className="bg-[#F5F2EC] border-t border-black/[0.05]">
+        <div className="mx-auto max-w-7xl px-5 md:px-8 lg:px-12 py-24 md:py-32">
+          <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-14 sn-reveal">
+            <div>
+              {eyebrow("YouTube")}
+              <h2 className="font-serif text-3xl md:text-4xl leading-tight tracking-[-0.025em] text-[#0a0a0a]">
+                글로 다 못 담는 이야기는
+                <br />
+                영상으로 보시면 됩니다
+              </h2>
+              <p className="text-sm text-[#525252] mt-3 max-w-md leading-[1.75]">
+                다이어트·공진단 제조·통증 치료까지, 송원석 원장이
+                실제 진료실에서 다루는 한방 이야기.
+              </p>
             </div>
-            <h2 className="font-serif text-3xl md:text-4xl lg:text-[2.75rem] text-white leading-tight tracking-tight">
+            <a
+              href={clinic.youtube.diet}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="rn-arrow inline-flex items-center gap-2 text-sm font-bold text-[#0F0D0A] shrink-0"
+            >
+              채널 바로가기 <span aria-hidden>→</span>
+            </a>
+          </div>
+          <YouTubeThumbnailGallery limit={8} />
+        </div>
+      </section>
+
+      {/* ── 06 · PERSONAS ── */}
+      <section className="bg-[#F8F6F2] border-t border-black/[0.05]">
+        <div className="mx-auto max-w-7xl px-5 md:px-8 lg:px-12 py-24 md:py-32">
+          <div className="text-center mb-16 sn-reveal">
+            {eyebrow("For You", { center: true })}
+            <h2 className="font-serif text-3xl md:text-4xl lg:text-[2.6rem] text-[#0F0D0A] leading-tight tracking-[-0.025em]">
               이런 분들이 매일백세를 찾으십니다
             </h2>
-            <p className="text-sm text-white/40 mt-4 max-w-md mx-auto leading-relaxed">
+            <p className="text-sm text-[#5C5A57] mt-4 max-w-md mx-auto leading-[1.75]">
               해당되신다면 상담 한 번 받아보세요. 안 맞으면 권하지 않습니다.
             </p>
           </div>
@@ -433,16 +392,17 @@ export default function HomePage() {
             {personas.map((p, i) => (
               <div
                 key={p.title}
-                className="sn-reveal p-1.5 bg-white/[0.04] ring-1 ring-white/[0.08] rounded-[1.25rem]"
-                style={{ transitionDelay: `${i * 60}ms` }}
+                className="sn-reveal group bg-white border border-black/[0.07] rounded-[20px] p-7 hover:border-black/[0.14] hover:shadow-lg hover:shadow-black/[0.04] transition-all duration-300"
+                style={{ transitionDelay: `${(i % 3) * 65}ms` }}
               >
-                <div className="p-6 rounded-[calc(1.25rem-6px)] bg-white/[0.02] h-full flex flex-col">
-                  <p className="text-[11px] font-bold tracking-[0.18em] text-[var(--brand-primary)] mb-4">
-                    {String(i + 1).padStart(2, "0")}
-                  </p>
-                  <h3 className="font-semibold text-white leading-snug mb-3">{p.title}</h3>
-                  <p className="text-sm text-white/45 leading-relaxed flex-1">{p.desc}</p>
+                <div className="w-11 h-11 bg-black/[0.05] rounded-xl flex items-center justify-center mb-5 text-[#5C5A57]">
+                  {personaIcons[i]}
                 </div>
+                <p className="text-[11px] font-bold tracking-[0.2em] text-[#8C8A87] mb-3">
+                  {String(i + 1).padStart(2, "0")}
+                </p>
+                <h3 className="font-semibold text-[#0F0D0A] text-[15px] leading-snug mb-3">{p.title}</h3>
+                <p className="text-sm text-[#5C5A57] leading-[1.75]">{p.desc}</p>
               </div>
             ))}
           </div>
@@ -451,47 +411,38 @@ export default function HomePage() {
 
       {/* ── 07 · COLUMNS ── */}
       {latestColumns.length > 0 && (
-        <section className="bg-[#FDFBF7] border-t border-black/[0.05]">
-          <div className="mx-auto max-w-7xl px-5 md:px-10 lg:px-16 py-20 md:py-28">
-            <div className="flex items-end justify-between gap-6 flex-wrap mb-12 sn-reveal">
+        <section className="bg-white border-t border-black/[0.05]">
+          <div className="mx-auto max-w-7xl px-5 md:px-8 lg:px-12 py-24 md:py-32">
+            <div className="flex items-end justify-between gap-6 flex-wrap mb-14 sn-reveal">
               <div>
                 {eyebrow("Columns")}
-                <h2 className="font-serif text-3xl md:text-4xl leading-tight tracking-tight text-[#0a0a0a]">
-                  매일 올라오는 한방 건강 정보
+                <h2 className="font-serif text-3xl md:text-4xl leading-tight tracking-[-0.025em] text-[#0a0a0a]">
+                  매일 올라오는 <span className="whitespace-nowrap">한방 건강 정보</span>
                 </h2>
               </div>
               <Link
                 href="/columns"
-                className="inline-flex items-center gap-2 text-sm font-bold text-[var(--brand-primary)] hover:gap-3"
-                style={{ transition: "gap 0.4s cubic-bezier(0.16,1,0.3,1)" }}
+                className="rn-arrow inline-flex items-center gap-2 text-sm font-bold text-[#0F0D0A] shrink-0"
               >
-                전체 보기 →
+                전체 보기 <span aria-hidden>→</span>
               </Link>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-4 md:gap-5">
+            <div className="grid md:grid-cols-3 gap-5">
               {latestColumns.map((c, i) => (
-                <div
-                  key={c.slug}
-                  className="sn-reveal p-1.5 bg-black/[0.04] ring-1 ring-black/[0.06] rounded-[1.25rem]"
-                  style={{ transitionDelay: `${i * 80}ms` }}
-                >
+                <div key={c.slug} className="sn-reveal" style={{ transitionDelay: `${i * 85}ms` }}>
                   <Link
                     href={getColumnUrl(c)}
-                    className="group block p-6 rounded-[calc(1.25rem-6px)] bg-white h-full hover:ring-2 hover:ring-[var(--brand-primary)]/20"
-                    style={{ transition: "box-shadow 0.4s cubic-bezier(0.16,1,0.3,1)" }}
+                    className="rn-card group block rounded-[22px] overflow-hidden border border-black/[0.07] hover:border-[var(--brand-primary)]/25 bg-white h-full"
                   >
-                    <p className="text-[10px] tracking-widest text-[var(--text-muted)] font-bold mb-4 uppercase">
-                      {c.category}
-                    </p>
-                    <h3 className="text-base font-bold mb-2 leading-snug line-clamp-2 text-[#0a0a0a] group-hover:text-[var(--brand-primary)]"
-                      style={{ transition: "color 0.3s cubic-bezier(0.16,1,0.3,1)" }}>
-                      {c.title}
-                    </h3>
-                    <p className="text-sm text-[var(--text-muted)] line-clamp-2 mb-5 leading-relaxed">
-                      {c.description}
-                    </p>
-                    <time className="text-xs text-[var(--text-muted)]/60">{c.date}</time>
+                    <div className="p-6">
+                      <p className="text-[10px] tracking-widest text-[#888] font-bold mb-4 uppercase">{c.category}</p>
+                      <h3 className="text-[15px] font-bold mb-2 leading-snug line-clamp-2 text-[#0a0a0a] group-hover:text-[var(--brand-primary)] transition-colors duration-200">
+                        {c.title}
+                      </h3>
+                      <p className="text-sm text-[#525252] line-clamp-2 mb-5 leading-[1.7]">{c.description}</p>
+                      <time className="text-xs text-[#888]">{c.date}</time>
+                    </div>
                   </Link>
                 </div>
               ))}
@@ -501,114 +452,123 @@ export default function HomePage() {
       )}
 
       {/* ── 08 · LOCATIONS ── */}
-      <section className="bg-[#F4F0E8] border-t border-black/[0.05]">
-        <div className="mx-auto max-w-7xl px-5 md:px-10 lg:px-16 py-16 md:py-20">
+      <section className="bg-[#F5F2EC] border-t border-black/[0.05]">
+        <div className="mx-auto max-w-7xl px-5 md:px-8 lg:px-12 py-16 md:py-20">
           <div className="text-center mb-10 sn-reveal">
-            <div className="inline-flex items-center gap-2.5 mb-5 justify-center">
-              <span className="h-px w-5 bg-[var(--brand-primary)]" aria-hidden />
-              <span className="text-[11px] font-bold tracking-[0.18em] uppercase text-[var(--brand-primary)]">Locations</span>
-              <span className="h-px w-5 bg-[var(--brand-primary)]" aria-hidden />
-            </div>
-            <h2 className="font-serif text-2xl md:text-3xl leading-tight tracking-tight text-[#0a0a0a] mb-3">
+            {eyebrow("Locations", { center: true })}
+            <h2 className="font-serif text-2xl md:text-3xl leading-tight tracking-[-0.025em] text-[#0a0a0a] mb-3">
               어느 지역에서 오시나요?
             </h2>
-            <p className="text-sm text-[var(--text-muted)] max-w-lg mx-auto leading-relaxed">
+            <p className="text-sm text-[#525252] max-w-lg mx-auto leading-[1.75]">
               중랑·노원·동대문·광진·성북·남양주·구리·의정부에서 직접 찾아오시고,
               그 외 지역은 비대면 진료로 전국 어디서나 처방받으십니다.
             </p>
           </div>
 
-          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2">
+          <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-2 sn-reveal" style={{ transitionDelay: "80ms" }}>
             {locations.slice(0, 18).map((loc) => (
               <Link
                 key={loc.slug}
                 href={`/locations/${loc.slug}`}
-                className="px-3 py-2.5 bg-white rounded-xl border border-black/[0.07] hover:border-[var(--brand-primary)] hover:text-[var(--brand-primary)] text-center text-sm font-medium text-[#0a0a0a]"
-                style={{ transition: "all 0.4s cubic-bezier(0.16,1,0.3,1)" }}
+                className="rn-pill px-3 py-3 bg-white rounded-xl border border-black/[0.08] text-center text-sm font-semibold text-[#0a0a0a]"
               >
                 {loc.name}
               </Link>
             ))}
+            <a
+              href={clinic.contact.onlineForm}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="px-3 py-3 bg-[#0F0D0A] text-white rounded-xl border border-black text-center text-sm font-bold hover:bg-[#2a2a2a] transition-colors duration-300"
+            >
+              전국 비대면
+            </a>
           </div>
         </div>
       </section>
 
       {/* ── 09 · FAQ ── */}
-      <section className="bg-[#FDFBF7] border-t border-black/[0.05]">
-        <div className="mx-auto max-w-4xl px-5 md:px-10 py-20 md:py-24">
-          <div className="text-center mb-12 sn-reveal">
-            <div className="inline-flex items-center gap-2.5 mb-5 justify-center">
-              <span className="h-px w-5 bg-[var(--brand-primary)]" aria-hidden />
-              <span className="text-[11px] font-bold tracking-[0.18em] uppercase text-[var(--brand-primary)]">FAQ</span>
-              <span className="h-px w-5 bg-[var(--brand-primary)]" aria-hidden />
-            </div>
-            <h2 className="font-serif text-3xl md:text-4xl leading-tight tracking-tight text-[#0a0a0a]">
+      <section className="bg-white border-t border-black/[0.05]">
+        <div className="mx-auto max-w-3xl px-5 md:px-8 py-24 md:py-28">
+          <div className="text-center mb-14 sn-reveal">
+            {eyebrow("FAQ", { center: true })}
+            <h2 className="font-serif text-3xl md:text-4xl leading-tight tracking-[-0.025em] text-[#0a0a0a]">
               자주 묻는 질문
             </h2>
           </div>
 
-          <div className="space-y-3">
+          <div className="space-y-3 sn-reveal" style={{ transitionDelay: "80ms" }}>
             {faqs.slice(0, 5).map((f, i) => (
               <details
                 key={i}
-                className="group rounded-2xl border border-black/[0.07] bg-white p-5 hover:border-[var(--brand-primary)]/40"
-                style={{ transition: "border-color 0.3s cubic-bezier(0.16,1,0.3,1)" }}
+                className="group rounded-2xl border border-black/[0.07] bg-white p-5 md:p-6 hover:border-black/[0.18] transition-colors duration-300"
               >
-                <summary className="cursor-pointer font-semibold flex items-start gap-3 list-none text-[#0a0a0a]">
-                  <span className="text-[var(--brand-primary)] font-bold shrink-0 text-sm pt-0.5">Q.</span>
-                  <span className="flex-1 text-sm md:text-base leading-snug">{f.q}</span>
-                  <span className="text-[var(--text-muted)] shrink-0 text-xs mt-1 group-open:rotate-180"
-                    style={{ transition: "transform 0.3s cubic-bezier(0.16,1,0.3,1)" }}>
+                <summary className="cursor-pointer flex items-start gap-3 list-none select-none">
+                  <span className="text-[#0F0D0A] font-bold shrink-0 text-sm pt-0.5">Q.</span>
+                  <span className="flex-1 font-semibold text-[#0a0a0a] text-sm md:text-[15px] leading-snug">{f.q}</span>
+                  <span
+                    className="text-[#888] shrink-0 text-xs mt-1 group-open:rotate-180"
+                    style={{ transition: "transform 0.3s cubic-bezier(0.16,1,0.3,1)" }}
+                    aria-hidden
+                  >
                     ▾
                   </span>
                 </summary>
-                <p className="mt-4 text-sm text-[var(--text-muted)] leading-relaxed pl-7">{f.a}</p>
+                <p className="mt-4 text-sm text-[#525252] leading-[1.8] pl-7">{f.a}</p>
               </details>
             ))}
           </div>
 
-          <div className="mt-8 text-center">
-            <Link
-              href="/faq"
-              className="inline-flex items-center gap-2 text-sm font-bold text-[var(--brand-primary)] hover:gap-3"
-              style={{ transition: "gap 0.4s cubic-bezier(0.16,1,0.3,1)" }}
-            >
-              전체 FAQ 보기 →
+          <div className="mt-8 text-center sn-reveal" style={{ transitionDelay: "120ms" }}>
+            <Link href="/faq" className="rn-arrow inline-flex items-center gap-2 text-sm font-bold text-[#0F0D0A]">
+              전체 FAQ 보기 <span aria-hidden>→</span>
             </Link>
           </div>
         </div>
       </section>
 
       {/* ── 10 · FINAL CTA ── */}
-      <section className="bg-[#0a0a0a]">
-        <div className="mx-auto max-w-7xl px-5 md:px-10 lg:px-16 py-24 md:py-32 text-center sn-reveal">
-          <div className="inline-flex items-center gap-2.5 mb-8 justify-center">
-            <span className="h-px w-5 bg-[var(--brand-primary)]" aria-hidden />
-            <span className="text-[11px] font-bold tracking-[0.18em] uppercase text-[var(--brand-primary)]">Contact</span>
-            <span className="h-px w-5 bg-[var(--brand-primary)]" aria-hidden />
-          </div>
-          <h2 className="font-serif text-4xl md:text-6xl lg:text-[4.5rem] text-white leading-[1.06] tracking-tight mb-6">
+      <section id="contact" className="bg-[#0a0a0a] overflow-hidden scroll-mt-24">
+        <div className="mx-auto max-w-7xl px-5 md:px-8 lg:px-12 py-28 md:py-36 text-center sn-reveal">
+          {eyebrow("Contact", { center: true, dark: true })}
+          <h2 className="font-serif text-4xl md:text-6xl lg:text-[4.75rem] text-white leading-[1.06] tracking-[-0.025em] mb-6">
             상담은 부담 없이,
             <br />
-            <span className="text-[var(--brand-primary)]">처방은 책임 있게</span>
+            <span className="text-white/70">처방은 책임 있게</span>
           </h2>
-          <p className="text-white/40 mb-12 max-w-md mx-auto text-base leading-relaxed">
-            전화·카카오톡·비대면 신청 모두 가능합니다.
+          <p className="text-white/40 mb-14 max-w-md mx-auto text-base leading-[1.8]">
+            전화·카카오톡·네이버 예약 모두 가능합니다.
             <br />
-            평일 09:30–18:30, 토요일 09:30–13:00.
+            평일 {clinic.hours.weekday}, 토요일 {clinic.hours.saturday}.
           </p>
-          <div className="max-w-xl mx-auto">
-            <CTAButtons />
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
+            <a
+              href={`tel:${clinic.contact.phoneClean}`}
+              className="rn-btn-primary w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-[var(--brand-primary)] text-white text-[15px] font-bold rounded-full"
+            >
+              {clinic.contact.phone} 전화 상담
+            </a>
+            <a
+              href={clinic.contact.kakao}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-[#FAE100] text-[#3C1E1E] text-[15px] font-bold rounded-full hover:brightness-95 transition"
+            >
+              카카오톡으로 문의하기
+            </a>
+            <a
+              href={clinic.contact.naverBooking}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 bg-[#03C75A] text-white text-[15px] font-bold rounded-full hover:brightness-95 transition"
+            >
+              네이버 예약하기
+            </a>
           </div>
         </div>
       </section>
 
-      {/* Reveal animation — sn-js 클래스 먼저 추가해야 숨김 CSS가 적용됨 */}
-      <script
-        dangerouslySetInnerHTML={{
-          __html: `(function(){document.documentElement.classList.add('sn-js');var o=new IntersectionObserver(function(e){e.forEach(function(i){if(i.isIntersecting){i.target.classList.add('sn-visible');o.unobserve(i.target)}})},{threshold:0.08,rootMargin:'0px 0px -32px 0px'});document.querySelectorAll('.sn-reveal').forEach(function(el){o.observe(el)})})()`,
-        }}
-      />
+
     </>
   );
 }

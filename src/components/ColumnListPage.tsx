@@ -47,29 +47,31 @@ export function ColumnListPage({ columns, section }: Props) {
                 <Link
                   key={c.slug}
                   href={getColumnUrl(c)}
-                  className="block bg-[var(--surface-muted)] rounded-xl border border-[var(--border)] hover:border-[var(--brand-primary)] hover:shadow transition overflow-hidden"
+                  className="rn-card group block bg-white rounded-[20px] border border-black/[0.07] hover:border-black/20 overflow-hidden"
                 >
                   {img && (
-                    <div className="relative aspect-video w-full bg-[var(--border)]">
+                    <div className="relative aspect-video w-full overflow-hidden bg-[#EBE7DF]">
                       <Image
                         src={img}
                         alt={c.imageAlt ?? c.title}
                         fill
-                        className="object-cover"
+                        className="rn-zoom object-cover"
                         sizes="(max-width: 768px) 100vw, 50vw"
                         unoptimized
                       />
                     </div>
                   )}
-                  <div className="p-5">
-                    <div className="flex items-center gap-2 text-xs text-[var(--text-muted)] mb-2">
-                      <span className="px-2 py-0.5 rounded bg-[var(--brand-primary-light)] text-[var(--brand-primary-dark)] font-semibold">
+                  <div className="p-6">
+                    <div className="flex items-center gap-2 text-xs text-[#888] mb-3">
+                      <span className="px-2.5 py-0.5 rounded-full bg-[#F5F5F5] text-[#525252] font-bold">
                         {c.category}
                       </span>
                       <time dateTime={c.date}>{c.date}</time>
                     </div>
-                    <h3 className="text-lg font-bold mb-2 line-clamp-2">{c.title}</h3>
-                    <p className="text-sm text-[var(--text-muted)] line-clamp-2">{c.description}</p>
+                    <h3 className="text-[17px] font-bold leading-snug mb-2 line-clamp-2 text-[#0a0a0a] group-hover:text-[var(--brand-primary)] transition-colors duration-200">
+                      {c.title}
+                    </h3>
+                    <p className="text-sm text-[#525252] leading-[1.7] line-clamp-2">{c.description}</p>
                   </div>
                 </Link>
               );

@@ -54,20 +54,23 @@ export default async function LocationPage({ params }: { params: Params }) {
       </div>
 
       {/* HERO */}
-      <section className="bg-gradient-to-br from-[var(--brand-primary-light)] to-white">
-        <div className="mx-auto max-w-6xl px-4 py-12 md:py-16">
-          <p className="text-xs font-semibold tracking-widest text-[var(--brand-primary)] uppercase mb-2">
-            {loc.type === "district" && "구 · 자치구"}
-            {loc.type === "neighborhood" && "동 · 동네"}
-            {loc.type === "city" && "시 · 인근 지역"}
-            {loc.type === "station" && "지하철역"}
-          </p>
-          <h1 className="text-3xl md:text-5xl font-bold leading-tight">
+      <section className="bg-[#FAFAFA] border-b border-black/[0.05]">
+        <div className="mx-auto max-w-6xl px-5 md:px-8 py-16 md:py-24">
+          <div className="inline-flex items-center gap-3 mb-6">
+            <span className="h-px w-6 bg-[var(--brand-primary)]" aria-hidden />
+            <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-[var(--brand-primary)]">
+              {loc.type === "district" && "구 · 자치구"}
+              {loc.type === "neighborhood" && "동 · 동네"}
+              {loc.type === "city" && "시 · 인근 지역"}
+              {loc.type === "station" && "지하철역"}
+            </span>
+          </div>
+          <h1 className="font-serif text-[2.25rem] md:text-[3.25rem] tracking-[-0.025em] leading-[1.14] text-[#0a0a0a]">
             {loc.fullName} 한의원
             <br />
             <span className="text-[var(--brand-primary)]">매일백세한의원</span>
           </h1>
-          <p className="mt-5 text-lg text-[var(--text-muted)] max-w-2xl leading-relaxed">
+          <p className="mt-6 text-base md:text-lg text-[#525252] max-w-2xl leading-[1.8]">
             {loc.description}
           </p>
           <div className="mt-8 max-w-2xl">
@@ -88,7 +91,7 @@ export default async function LocationPage({ params }: { params: Params }) {
           ]}
         />
 
-        <h2 className="text-2xl font-bold mt-12 mb-5">
+        <h2 className="font-serif text-3xl tracking-[-0.025em] text-[#0a0a0a] mt-14 mb-6">
           {loc.name}에서 매일백세한의원을 찾으시는 이유
         </h2>
         <div className="prose max-w-none text-[var(--foreground)] leading-relaxed">
@@ -126,27 +129,27 @@ export default async function LocationPage({ params }: { params: Params }) {
         </div>
 
         {/* 진료 안내 */}
-        <h2 className="text-2xl font-bold mt-12 mb-5">진료 항목 안내</h2>
+        <h2 className="font-serif text-3xl tracking-[-0.025em] text-[#0a0a0a] mt-14 mb-6">진료 항목 안내</h2>
         <div className="grid md:grid-cols-2 gap-4">
           {treatments.map((t) => (
             <Link
               key={t.slug}
               href={`/treatments/${t.slug}`}
-              className="block p-5 rounded-xl bg-[var(--surface-muted)] border border-[var(--border)] hover:border-[var(--brand-primary)] transition"
+              className="rn-card block p-6 rounded-[20px] bg-white border border-black/[0.07] hover:border-black/20"
             >
-              <h3 className="font-bold mb-1.5">{t.name}</h3>
-              <p className="text-sm text-[var(--text-muted)] line-clamp-2">
+              <h3 className="font-bold text-[#0a0a0a] mb-2">{t.name}</h3>
+              <p className="text-sm text-[#525252] leading-[1.7] line-clamp-2">
                 {t.summary}
               </p>
-              <p className="text-xs font-semibold text-[var(--brand-primary)] mt-2">
-                자세히 보기 →
-              </p>
+              <span className="rn-arrow inline-flex items-center gap-2 text-xs font-bold text-[#0F0D0A] mt-3">
+                자세히 보기 <span aria-hidden>→</span>
+              </span>
             </Link>
           ))}
         </div>
 
         {/* 다른 지역 */}
-        <h2 className="text-2xl font-bold mt-12 mb-5">다른 지역에서 오시는 분</h2>
+        <h2 className="font-serif text-3xl tracking-[-0.025em] text-[#0a0a0a] mt-14 mb-6">다른 지역에서 오시는 분</h2>
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2">
           {locations
             .filter((other) => other.slug !== loc.slug)
@@ -155,7 +158,7 @@ export default async function LocationPage({ params }: { params: Params }) {
               <Link
                 key={other.slug}
                 href={`/locations/${other.slug}`}
-                className="px-3 py-2 text-sm bg-white rounded-md border border-[var(--border)] hover:border-[var(--brand-primary)] text-center transition"
+                className="rn-pill px-3 py-3 text-sm font-semibold text-[#0a0a0a] bg-white rounded-xl border border-black/[0.08] text-center"
               >
                 {other.name}
               </Link>

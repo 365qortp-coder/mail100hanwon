@@ -121,3 +121,54 @@ html { scroll-behavior: smooth; }
   0%, 100% { transform: translateY(0); }
   50%       { transform: translateY(-10px); }
 }
+
+/* ── 디자인리뉴얼 기준 공통 (DESIGN-BASELINE.md) ── */
+
+/* Subtle grain noise — 전 페이지 고정 오버레이 */
+.grain::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  z-index: 60;
+  pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.025'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 128px 128px;
+  opacity: 0.4;
+}
+
+/* Product / column card — hover lift */
+.rn-card {
+  transition:
+    border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.rn-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.08);
+}
+
+/* Image zoom inside card */
+.rn-zoom { transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+.rn-card:hover .rn-zoom { transform: scale(1.05); }
+
+/* Primary CTA hover */
+.rn-btn-primary { transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+.rn-btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 32px rgba(192, 37, 45, 0.28);
+}
+.rn-btn-primary:active { transform: scale(0.98); }
+
+/* Arrow slide link */
+.rn-arrow { transition: gap 0.4s cubic-bezier(0.16, 1, 0.3, 1); }
+.rn-arrow:hover { gap: 0.75rem; }
+
+/* Location pill */
+.rn-pill { transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+.rn-pill:hover {
+  border-color: rgba(0, 0, 0, 0.22);
+  background: #F0EDE8;
+  color: #0F0D0A;
+}

@@ -108,7 +108,7 @@ export default function NokyongPage() {
           <p className="text-xs font-bold tracking-[0.2em] text-[var(--brand-primary)] uppercase mb-4">
             녹용 2배 공진단 · 매일백세한의원
           </p>
-          <h1 className="text-3xl md:text-5xl font-extrabold leading-tight mb-5">
+          <h1 className="font-serif text-3xl md:text-5xl font-bold tracking-[-0.025em] leading-tight mb-5">
             녹용 2배 공진단 —<br />
             <span className="text-[var(--brand-primary)]">체력·면역력 회복</span> 특화
           </h1>
@@ -139,12 +139,12 @@ export default function NokyongPage() {
         <div className="mx-auto max-w-4xl px-4 py-16 md:py-24">
           <div className="text-center mb-10">
             <p className="text-xs font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase mb-2">Ingredient</p>
-            <h2 className="text-2xl md:text-4xl font-extrabold leading-tight">녹용(鹿茸)이란 무엇인가</h2>
+            <h2 className="font-serif text-2xl md:text-4xl font-bold tracking-[-0.025em] leading-tight">녹용(鹿茸)이란 무엇인가</h2>
           </div>
 
           <div className="grid md:grid-cols-2 gap-6 mb-12">
             <div className="bg-[var(--surface-muted)] rounded-2xl p-7">
-              <h3 className="text-lg font-extrabold mb-3">🦌 어린 사슴 뿔의 성장 인자</h3>
+              <h3 className="font-serif text-lg font-bold tracking-[-0.02em] mb-3">어린 사슴 뿔의 성장 인자</h3>
               <p className="text-sm text-[var(--text-muted)] leading-relaxed">
                 녹용은 아직 굳지 않은 어린 사슴 뿔 끝 부분입니다.
                 성장 인자(IGF-1)가 가장 활성화된 상태로, 조혈 기능·세포 재생·면역 활성화에 도움을 줍니다.
@@ -152,7 +152,7 @@ export default function NokyongPage() {
               </p>
             </div>
             <div className="bg-[var(--surface-muted)] rounded-2xl p-7">
-              <h3 className="text-lg font-extrabold mb-3">🔬 2배 함량의 의미</h3>
+              <h3 className="font-serif text-lg font-bold tracking-[-0.02em] mb-3">2배 함량의 의미</h3>
               <p className="text-sm text-[var(--text-muted)] leading-relaxed">
                 일반 공진단 대비 녹용 함량을 2배로 늘린 처방입니다.
                 사향공진단의 사향이 하는 뇌순환·기력 상승 역할을 녹용의 조혈·면역 강화 효과로
@@ -161,7 +161,7 @@ export default function NokyongPage() {
             </div>
           </div>
 
-          <h3 className="text-xl font-extrabold mb-6">녹용 2배 공진단 성분 구성</h3>
+          <h3 className="font-serif text-xl font-bold tracking-[-0.02em] mb-6">녹용 2배 공진단 성분 구성</h3>
           <div className="space-y-4">
             {[
               { name: "녹용(鹿茸) 2배", role: "군약(君藥)", desc: "조혈 작용, 면역력 강화, 원기 보충, 세포 재생 촉진. 일반 공진단의 2배 함량." },
@@ -186,19 +186,18 @@ export default function NokyongPage() {
         <div className="mx-auto max-w-4xl px-4 py-16 md:py-24">
           <div className="text-center mb-10">
             <p className="text-xs font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase mb-2">For You</p>
-            <h2 className="text-2xl md:text-4xl font-extrabold">이런 분께 녹용 2배 공진단을 권합니다</h2>
+            <h2 className="font-serif text-2xl md:text-4xl font-bold tracking-[-0.025em]">이런 분께 녹용 2배 공진단을 권합니다</h2>
           </div>
           <div className="grid sm:grid-cols-2 gap-4">
             {[
-              { icon: "🏥", title: "수술 후·항암 후 회복", desc: "큰 수술이나 항암 치료 후 체력·면역력 회복이 필요한 분" },
-              { icon: "🩸", title: "빈혈·조혈 기능 저하", desc: "혈색이 나쁘고, 쉽게 피로하며 빈혈 경향이 있는 분" },
-              { icon: "🌡️", title: "면역력 저하", desc: "감기를 자주 달고 살거나, 면역 기능이 전반적으로 약한 분" },
-              { icon: "👵", title: "어르신·갱년기 체력저하", desc: "나이 들며 급격히 체력이 떨어진 어르신, 갱년기 여성" },
-              { icon: "💊", title: "사향이 맞지 않는 분", desc: "평소 열이 많아 사향공진단이 부담스러운 분께 더 적합" },
-              { icon: "💰", title: "합리적 가격 원하는 분", desc: "사향공진단보다 저렴하게 꾸준히 복용하고 싶은 분" },
+              { title: "수술 후·항암 후 회복", desc: "큰 수술이나 항암 치료 후 체력·면역력 회복이 필요한 분" },
+              { title: "빈혈·조혈 기능 저하", desc: "혈색이 나쁘고, 쉽게 피로하며 빈혈 경향이 있는 분" },
+              { title: "면역력 저하", desc: "감기를 자주 달고 살거나, 면역 기능이 전반적으로 약한 분" },
+              { title: "어르신·갱년기 체력저하", desc: "나이 들며 급격히 체력이 떨어진 어르신, 갱년기 여성" },
+              { title: "사향이 맞지 않는 분", desc: "평소 열이 많아 사향공진단이 부담스러운 분께 더 적합" },
+              { title: "합리적 가격 원하는 분", desc: "사향공진단보다 저렴하게 꾸준히 복용하고 싶은 분" },
             ].map((t) => (
               <div key={t.title} className="bg-white rounded-xl border border-[var(--border)] p-5">
-                <p className="text-2xl mb-2">{t.icon}</p>
                 <h3 className="font-bold mb-1">{t.title}</h3>
                 <p className="text-sm text-[var(--text-muted)]">{t.desc}</p>
               </div>
@@ -212,7 +211,7 @@ export default function NokyongPage() {
         <div className="mx-auto max-w-4xl px-4 py-16 md:py-20">
           <div className="text-center mb-10">
             <p className="text-xs font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase mb-2">Pricing</p>
-            <h2 className="text-2xl md:text-4xl font-extrabold">녹용 2배 공진단 가격</h2>
+            <h2 className="font-serif text-2xl md:text-4xl font-bold tracking-[-0.025em]">녹용 2배 공진단 가격</h2>
           </div>
           <div className="grid sm:grid-cols-2 gap-5 mb-6">
             <div className="rounded-2xl border border-[var(--border)] bg-[var(--surface-muted)] p-7">
@@ -263,7 +262,7 @@ export default function NokyongPage() {
         <div className="mx-auto max-w-4xl px-4 py-16 md:py-20">
           <div className="text-center mb-10">
             <p className="text-xs font-bold tracking-[0.2em] text-[var(--text-muted)] uppercase mb-2">FAQ</p>
-            <h2 className="text-2xl md:text-3xl font-extrabold">녹용 2배 공진단 자주 묻는 질문</h2>
+            <h2 className="font-serif text-2xl md:text-3xl font-bold tracking-[-0.025em]">녹용 2배 공진단 자주 묻는 질문</h2>
           </div>
           <div className="space-y-3">
             {faqs.map((f, i) => (
@@ -289,7 +288,7 @@ export default function NokyongPage() {
       <section className="bg-black text-white">
         <div className="mx-auto max-w-4xl px-4 py-16 md:py-20 text-center">
           <p className="text-xs font-bold tracking-[0.2em] text-[var(--brand-primary)] uppercase mb-3">Contact</p>
-          <h2 className="text-2xl md:text-4xl font-extrabold mb-4">
+          <h2 className="font-serif text-2xl md:text-4xl font-bold tracking-[-0.025em] mb-4">
             체질 확인 후 처방합니다
           </h2>
           <p className="text-white/70 mb-8 max-w-xl mx-auto">

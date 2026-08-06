@@ -1,97 +1,34 @@
-"use client";
-
-import { usePathname } from "next/navigation";
 import { clinic } from "@/data/clinic";
 
-const GONGJINDAN_PATHS = [
-  "/treatments/gongjindan",
-  "/treatments/chongmyeong",
-  "/event/suneung",
-];
-const PAIN_PATHS = ["/treatments/pain"];
-
-type ThirdCTA =
-  | { kind: "form"; url: string; label: string }
-  | { kind: "naver"; url: string };
-
-function pickThirdCTA(pathname: string | null): ThirdCTA {
-  if (pathname && PAIN_PATHS.some((p) => pathname.startsWith(p))) {
-    return { kind: "naver", url: clinic.contact.naverBooking };
-  }
-  if (pathname && GONGJINDAN_PATHS.some((p) => pathname.startsWith(p))) {
-    return {
-      kind: "form",
-      url: clinic.contact.onlineFormGongjindan,
-      label: "비대면\n신청",
-    };
-  }
-  return {
-    kind: "form",
-    url: clinic.contact.onlineForm,
-    label: "비대면\n신청",
-  };
-}
-
 export function FloatingCTA() {
-  const pathname = usePathname();
-  const third = pickThirdCTA(pathname);
   return (
-    <div className="fixed bottom-4 right-4 z-50 flex flex-col gap-2 md:bottom-6 md:right-6">
-      <a
-        href={`tel:${clinic.contact.phoneClean}`}
-        aria-label="전화 상담"
-        className="cta-pulse w-14 h-14 md:w-16 md:h-16 rounded-full bg-[var(--brand-primary)] text-white flex items-center justify-center shadow-lg hover:bg-[var(--brand-primary-dark)] transition"
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="22"
-          height="22"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="2.2"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-        >
-          <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
-        </svg>
-      </a>
-      <a
-        href={clinic.contact.kakao}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label="카카오톡 상담"
-        className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#FAE100] text-[#3C1E1E] flex items-center justify-center shadow-lg hover:brightness-95 transition"
-      >
-        <span className="text-xs font-extrabold">카톡</span>
-      </a>
-      {third.kind === "naver" ? (
-        <a
-          href={third.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="네이버 예약"
-          className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-[#03C75A] text-white flex items-center justify-center shadow-lg hover:brightness-95 transition"
-        >
-          <span className="text-xs font-bold leading-tight text-center">
-            네이버
-            <br />
-            예약
-          </span>
-        </a>
-      ) : (
-        <a
-          href={third.url}
-          target="_blank"
-          rel="noopener noreferrer"
-          aria-label="비대면 진료 신청"
-          className="w-14 h-14 md:w-16 md:h-16 rounded-full bg-black text-white flex items-center justify-center shadow-lg hover:bg-[var(--brand-primary)] transition"
-        >
-          <span className="text-xs font-bold leading-tight text-center whitespace-pre-line">
-            {third.label}
-          </span>
-        </a>
-      )}
-    </div>
+    <>
+      <div className="fixed bottom-0 inset-x-0 z-50 md:hidden bg-white/95 backdrop-blur-md border-t border-black/[0.08] px-4 py-3">
+        <div className="flex gap-2.5">
+          <a
+            href={`tel:${clinic.contact.phoneClean}`}
+            className="flex-1 inline-flex items-center justify-center gap-2 py-3 border-2 border-[var(--brand-primary)] text-[var(--brand-primary)] text-sm font-bold rounded-xl hover:bg-[var(--brand-primary)] hover:text-white transition-all duration-200"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+              <path d="M19.95 21c-2.1 0-4.17-.46-6.2-1.37a17.2 17.2 0 0 1-5.4-3.98 17.2 17.2 0 0 1-3.98-5.4C3.46 8.22 3 6.15 3 4.05c0-.3.1-.55.3-.75.2-.2.45-.3.75-.3H8.1c.23 0 .44.08.62.24.18.16.29.35.32.57l.65 3.5c.03.27 .02.49-.05.68-.07.18-.17.34-.32.47L6.9 10.9c.33.62.73 1.21 1.19 1.79.46.57.97 1.12 1.52 1.65.52.52 1.06 1 1.63 1.44.57.44 1.17.85 1.81 1.21l2.35-2.35c.15-.15.34-.26.58-.34.24-.07.47-.09.7-.06l3.45.7c.23.07.42.19.57.36.15.17.22.37.22.6v4.05c0 .3-.1.55-.3.75-.2.2-.45.3-.75.3z"/>
+            </svg>
+            전화 상담
+          </a>
+          <a
+            href={clinic.contact.kakao}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex-1 inline-flex items-center justify-center gap-2 py-3 bg-[var(--brand-primary)] text-white text-sm font-bold rounded-xl hover:bg-[var(--brand-primary-dark)] transition-all duration-200"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden>
+              <path d="M12 3C6.48 3 2 6.58 2 11c0 2.83 1.84 5.32 4.62 6.78l-.94 3.43c-.08.3.25.55.51.39L10.4 19c.53.06 1.06.1 1.6.1 5.52 0 10-3.58 10-8s-4.48-8.1-10-8.1z"/>
+            </svg>
+            카톡 상담
+          </a>
+        </div>
+      </div>
+      {/* 모바일 하단 바에 가리지 않도록 여백 확보 */}
+      <div className="h-20 md:hidden" aria-hidden="true" />
+    </>
   );
 }

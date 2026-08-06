@@ -17,7 +17,7 @@ export function Section({ children, className = "", id, bg = "white" }: Props) {
 
   return (
     <section id={id} className={`${bgClass} ${className}`}>
-      <div className="mx-auto max-w-6xl px-4 py-12 md:py-16">{children}</div>
+      <div className="mx-auto max-w-6xl px-5 md:px-8 py-16 md:py-24">{children}</div>
     </section>
   );
 }
@@ -35,17 +35,21 @@ export function SectionTitle({
 }) {
   const alignClass = align === "center" ? "text-center mx-auto" : "";
   return (
-    <div className={`max-w-3xl mb-8 ${alignClass}`}>
+    <div className={`max-w-3xl mb-10 ${alignClass}`}>
       {eyebrow && (
-        <p className="text-xs md:text-sm font-semibold tracking-widest text-[var(--brand-primary)] uppercase mb-2">
-          {eyebrow}
-        </p>
+        <div className="inline-flex items-center gap-3 mb-5">
+          <span className="h-px w-6 bg-black/20" aria-hidden />
+          <span className="text-[11px] font-bold tracking-[0.2em] uppercase text-[#8C8A87]">
+            {eyebrow}
+          </span>
+          {align === "center" && <span className="h-px w-6 bg-black/20" aria-hidden />}
+        </div>
       )}
-      <h2 className="text-2xl md:text-3xl font-bold text-[var(--foreground)] leading-snug">
+      <h2 className="font-serif text-3xl md:text-4xl tracking-[-0.025em] text-[#0a0a0a] leading-tight">
         {title}
       </h2>
       {subtitle && (
-        <p className="mt-3 text-base md:text-lg text-[var(--text-muted)] leading-relaxed">
+        <p className="mt-4 text-base text-[#525252] leading-[1.75]">
           {subtitle}
         </p>
       )}

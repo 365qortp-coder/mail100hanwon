@@ -46,10 +46,10 @@ export default function FAQPage() {
           subtitle="비대면 진료, 매일감비환, 공진단, 총명공진단 관련 자주 묻는 질문을 모았습니다."
         />
 
-        <div className="space-y-10">
+        <div className="space-y-12">
           {categories.map((cat) => (
             <div key={cat}>
-              <h2 className="text-xl font-bold mb-4 text-[var(--brand-primary-dark)]">
+              <h2 className="font-serif text-2xl tracking-[-0.025em] text-[#0a0a0a] mb-5">
                 {cat}
               </h2>
               <div className="space-y-3">
@@ -58,13 +58,22 @@ export default function FAQPage() {
                   .map((f, i) => (
                     <details
                       key={i}
-                      className="group rounded-lg border border-[var(--border)] bg-white p-4 hover:border-[var(--brand-primary)] transition"
+                      className="group rounded-2xl border border-black/[0.07] bg-white p-5 md:p-6 hover:border-black/[0.18] transition-colors duration-300"
                     >
-                      <summary className="cursor-pointer font-semibold flex items-start gap-2">
-                        <span className="text-[var(--brand-primary)]">Q.</span>
-                        <span className="flex-1">{f.q}</span>
+                      <summary className="cursor-pointer flex items-start gap-3 list-none select-none">
+                        <span className="text-[#0F0D0A] font-bold shrink-0 text-sm pt-0.5">Q.</span>
+                        <span className="flex-1 font-semibold text-[#0a0a0a] text-sm md:text-[15px] leading-snug">
+                          {f.q}
+                        </span>
+                        <span
+                          className="text-[#888] shrink-0 text-xs mt-1 group-open:rotate-180"
+                          style={{ transition: "transform 0.3s cubic-bezier(0.16,1,0.3,1)" }}
+                          aria-hidden
+                        >
+                          ▾
+                        </span>
                       </summary>
-                      <p className="mt-3 text-sm text-[var(--text-muted)] leading-relaxed pl-6">
+                      <p className="mt-4 text-sm text-[#525252] leading-[1.8] pl-7">
                         {f.a}
                       </p>
                     </details>

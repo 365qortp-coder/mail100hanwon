@@ -4,7 +4,7 @@ import "./globals.css";
 
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
-import { FloatingCTA } from "@/components/FloatingCTA";
+import { RevealObserver } from "@/components/RevealObserver";
 import { clinic } from "@/data/clinic";
 import { clinicSchema, directorSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/JsonLd";
@@ -119,15 +119,22 @@ export default function RootLayout({
     <html
       lang="ko"
       className={`${sans.variable} ${serif.variable} h-full antialiased`}
+      suppressHydrationWarning
     >
       <head>
         <JsonLd id="schema-clinic" data={[clinicSchema(), directorSchema()]} />
+        {/* 첫 페인트 전에 sn-js를 붙여 reveal 요소의 깜빡임을 방지 */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `document.documentElement.classList.add('sn-js')`,
+          }}
+        />
       </head>
-      <body className="min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)]">
+      <body className="grain min-h-full flex flex-col bg-[var(--background)] text-[var(--foreground)]">
         <Header />
         <main className="flex-1 w-full">{children}</main>
         <Footer />
-        <FloatingCTA />
+        <RevealObserver />
         {/* 핀셋포인트 전환 추적(G4) — 채널별 유입→문의 측정. 개인정보 수집 없음(익명 세션·경로만). */}
         <script async src="https://pincetpoint-geo.vercel.app/api/track.js?c=mail100hanwon" />
       </body>
