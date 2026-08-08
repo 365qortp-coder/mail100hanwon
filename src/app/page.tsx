@@ -144,14 +144,13 @@ export default function HomePage() {
       <HeroZoom />
 
       {/* 01B · 한 줄 소개 — AI가 답을 만들 때 상단 문단을 쓴다.
-          지역·진료과목·비대면을 한 문단에 모아둔다 (GEO) */}
+          눈에 띄게 둘 필요는 없다. 크기·색은 검색·AI 인용에 영향이 없다.
+          (다만 배경색과 같은 색이나 1px처럼 숨기면 '숨긴 텍스트'로 감점된다) */}
       <section className="bg-white">
-        <div className="mx-auto max-w-3xl px-5 md:px-8 py-14 md:py-16 text-center sn-reveal">
-          <p className="text-[17px] md:text-[19px] leading-[1.85] text-[#3a3a3a]">
-            <strong className="font-semibold text-[#0a0a0a]">매일백세한의원</strong>은 서울 중랑구에서
-            다이어트 한약(매일감비환)·공진단·무릎관절 NMC를 진료합니다.
-            송원석 원장이 체질을 직접 확인한 뒤 처방하며,
-            <strong className="font-semibold text-[#0a0a0a]"> 비대면 진료로 전국 어디서나</strong> 받아보실 수 있습니다.
+        <div className="mx-auto max-w-[760px] px-5 md:px-8 py-9 md:py-11 text-center sn-reveal">
+          <p className="text-[13px] md:text-[14px] leading-[1.9] text-[#8C8A87]">
+            매일백세한의원은 서울 중랑구에서 다이어트 한약(매일감비환)·공진단· 청염단(NMC Protocol)을 처방합니다.
+            송원석 원장이 직접 확인한 한약을 처방하며, 비대면 진료로 전국 어디서나 받아보실 수 있습니다.
           </p>
         </div>
       </section>
