@@ -42,3 +42,7 @@ next-env.d.ts
 
 .vercel
 .env*
+
+# 디자인 검사 결과물 (site-design 에이전트)
+_designcheck-hero/
+_sdcheck/

@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>매일백세한의원 — 히어로 미리보기</title>
+<!--
+  줌아웃 인트로 + 스크롤 카드 전환 — mail100hanwon 홈 적용안 미리보기
+
+  · 이 파일은 눈으로 확인하기 위한 미리보기다. 배포되지 않는다(Next.js는 src/·public/만 낸다).
+  · 확인 후 src/app/page.tsx 의 01 HERO 구간으로 옮긴다.
+  · 움직임(타이밍·이징·스케일)은 스펙 실측값 그대로.
+    색·모서리·글자 크기는 이 사이트 기준(DESIGN-BASELINE.md)을 따랐다.
+
+  띄우는 법: mail100hanwon 폴더에서 python -m http.server 8080
+             → http://localhost:8080/_preview/hero-preview.html
+-->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@400;500&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="../public/photos/director-interview.webp">
+<style>
+  :root{
+    /* 이 사이트 기준값 (DESIGN-BASELINE.md) — 스펙 기본값이 아니라 이쪽이 이긴다 */
+    --brand:      #c0252d;
+    --brand-soft: #f2a7a5;   /* 다크 위 eyebrow용 밝은 변형 */
+    --dark:       #0a0a0a;
+    --ivory:      #F8F6F2;   /* 카드 밖 여백 — 이 사이트 아이보리 */
+    --radius-card: 22px;
+
+    /* 인물 초점 — 받은 사진에서 실측 (얼굴 가로 45% · 세로 24%) */
+    --focus-x: 45%;
+    --focus-y: 24%;
+
+    /* 움직임 — 스펙 실측값. 건드리지 말 것 */
+    --ease-copy: cubic-bezier(0, .55, .45, 1);
+
+    --sans: 'Noto Sans KR', system-ui, sans-serif;
+    --serif: 'Noto Serif KR', serif;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0}
+  body{font-family:var(--sans); background:#fff; color:var(--dark); word-break:keep-all}
+
+  /* ── 골격 ───────────────────────────────────────────── */
+  .hero-track{position:relative; height:160vh}
+  .hero-stage{position:sticky; top:0; height:100vh; overflow:hidden; background:var(--ivory)}
+
+  /* 위쪽 그늘 — 로고·전화번호가 밝은 벽 위에 놓여 대비 1.5:1까지 떨어졌다.
+     이건 눈으로는 "좀 흐리네" 정도로만 보여서 계산으로 잡은 자리다. */
+  .hero-stage::before{
+    content:''; position:absolute; top:0; left:0; right:0; height:170px; z-index:4;
+    background:linear-gradient(to bottom, rgba(10,10,10,.34), transparent);
+    pointer-events:none;
+  }
+
+  /* ── 사진 프레임 (스크롤하면 카드로 줄어든다) ───────── */
+  .photo-frame{
+    position:absolute; inset:0; overflow:hidden;
+    transform-origin:50% 50%;
+    will-change:transform, border-radius, filter;
+  }
+  .photo{position:absolute; inset:0}
+  .photo img{
+    width:100%; height:100%; display:block;
+    object-fit:cover;
+    object-position:var(--focus-x) var(--focus-y);
+    transform:scale(1.18);
+    animation:zoomout 1.8s ease-out .1s both;
+  }
+  @keyframes zoomout{ from{transform:scale(1.18)} to{transform:scale(1)} }
+
+  /* 비네트 — 밝은 실내 사진이라 이게 없으면 흰 글자가 벽에 묻힌다.
+     이 사진은 왼쪽에 밝은 책장이 있어 카피가 놓이는 아래 1/3을 더 눌러야 했다. */
+  .photo::after{
+    content:''; position:absolute; inset:0; pointer-events:none;
+    background:linear-gradient(to top,
+      rgba(10,10,10,.46) 0%,
+      rgba(10,10,10,.20) 28%,
+      transparent 56%);
+  }
+
+  /* ── 1막 카피 ───────────────────────────────────────── */
+  /* 카피는 아래 1/3에 둔다 — 인물 얼굴을 가리지 않고, 비네트가 짙은 구역이라
+     밝은 실내 사진 위에서도 흰 글자가 살아난다. (사진 한복판에 두면 몸통과 겹친다) */
+  .hero-copy{
+    position:absolute; inset:0; z-index:5;
+    display:flex; flex-direction:column; align-items:center; justify-content:flex-end;
+    text-align:center; padding:0 24px 16vh;
+    color:#fff; will-change:transform, opacity;
+  }
+  .line{overflow:hidden}              /* 줄 단위로 떠오르게 하는 래퍼 */
+  .line > span{display:block; animation:fadeup 1.0s var(--ease-copy) both}
+  @keyframes fadeup{ from{transform:translateY(48px); opacity:0} to{transform:none; opacity:1} }
+
+  .hero-main{
+    font-family:var(--serif); font-weight:500;
+    font-size:clamp(30px, 5.2vw, 60px); line-height:1.18; letter-spacing:-.025em;
+    text-shadow:0 2px 18px rgba(0,0,0,.72), 0 1px 3px rgba(0,0,0,.5);
+  }
+  .hero-main .line > span{animation-delay:.1s}
+  .hero-main .line > span.l2{animation-delay:.2s}
+  .hero-sub{
+    margin-top:18px;
+    font-size:clamp(14px, 1.6vw, 19px); font-weight:400; line-height:1.7;
+    color:rgba(255,255,255,.9); text-shadow:0 1px 10px rgba(0,0,0,.7), 0 1px 2px rgba(0,0,0,.5);
+  }
+  .hero-sub .line > span{animation-delay:.32s}
+
+  .scroll-hint{
+    position:absolute; left:50%; bottom:28px; transform:translateX(-50%);
+    z-index:5; color:rgba(255,255,255,.72);
+    font-size:11px; font-weight:700; letter-spacing:.22em;
+    display:flex; flex-direction:column; align-items:center; gap:8px;
+    /* both가 아니라 backwards다. both면 애니메이션이 끝난 뒤에도 opacity를 붙들고 있어,
+       스크롤로 걷어내려는 지시(인라인 opacity)를 이겨서 끝까지 SCROLL이 남는다. */
+    animation:fadeup 1.0s var(--ease-copy) .55s backwards;
+  }
+  .scroll-hint i{display:block; width:1px; height:34px; background:linear-gradient(to bottom, rgba(255,255,255,.7), transparent)}
+
+  /* ── 2막 메시지 (어두워진 카드 위) ──────────────────── */
+  .reveal-copy{
+    position:absolute; inset:0; z-index:6;
+    display:flex; flex-direction:column; align-items:center; justify-content:center;
+    text-align:center; padding:0 24px;
+    opacity:0; pointer-events:none; color:#fff;
+    will-change:transform, opacity;
+  }
+  .eyebrow{
+    display:flex; align-items:center; gap:10px; margin-bottom:20px;
+    font-size:11px; font-weight:700; letter-spacing:.2em; text-transform:uppercase;
+    color:var(--brand-soft);
+  }
+  .eyebrow::before{content:''; width:24px; height:1px; background:currentColor; opacity:.7}
+  .reveal-title{
+    font-family:var(--serif); font-weight:500;
+    font-size:clamp(24px, 3.4vw, 40px); line-height:1.3; letter-spacing:-.025em;
+    text-shadow:0 2px 20px rgba(0,0,0,.5);
+  }
+  .reveal-sign{
+    margin-top:18px; font-size:13px; font-weight:600; letter-spacing:.02em;
+    color:rgba(255,255,255,.86);
+  }
+  .reveal-body{
+    margin-top:16px; max-width:420px;
+    font-size:clamp(13px, 1.4vw, 17px); line-height:1.8;
+    color:rgba(255,255,255,.85); text-shadow:0 1px 12px rgba(0,0,0,.45);
+  }
+
+  /* ── 상단 로고 ──────────────────────────────────────── */
+  /* 헤더 — 사진 위에서는 투명(흰 글자), 히어로를 지나면 흰 배경으로 바뀐다.
+     계속 투명하면 아래 흰 섹션에서 메뉴가 사라지고,
+     처음부터 흰 띠면 전체 화면 사진에 줄이 그어진 것처럼 보인다. */
+  .brandbar{
+    position:fixed; top:0; left:0; right:0; z-index:20;
+    transition:background .3s, box-shadow .3s;
+    padding:22px 28px; display:flex; align-items:center; justify-content:space-between;
+    animation:fadeup 1.0s var(--ease-copy) .1s both;
+  }
+  .brandbar .logo{font-family:var(--serif); font-size:19px; font-weight:500; color:#fff; letter-spacing:-.02em; transition:color .3s}
+
+  .brandbar.solid{background:rgba(255,255,255,.96); backdrop-filter:blur(10px);
+                  box-shadow:0 1px 0 rgba(0,0,0,.07)}
+  .brandbar.solid .logo{color:var(--dark)}
+  .brandbar.solid .gnb a{color:#3a3a3a; text-shadow:none}
+  .gnb{display:flex; gap:26px}
+  .gnb a{font-size:14px; font-weight:500; color:rgba(255,255,255,.92); text-decoration:none;
+         text-shadow:0 1px 6px rgba(0,0,0,.5); transition:opacity .2s, color .3s}
+  .gnb a:hover{opacity:.7}
+  /* 실사이트 헤더 버튼과 같은 모양 — 검정 배경 + 흰 글자 + 모서리 8px */
+  .navcta{font-size:14px; font-weight:600; color:#fff; text-decoration:none;
+          background:var(--dark); border-radius:8px; padding:9px 17px;
+          transition:background .2s}
+  .navcta:hover{background:#2a2a2a}
+  @media (max-width:900px){ .gnb{display:none} }
+
+  /* ── 아래에 이어질 내용(자리 확인용) ────────────────── */
+  .after{padding:96px 24px; text-align:center; color:#525252}
+  .after p{font-size:15px}
+
+  /* ── 모바일 ─────────────────────────────────────────── */
+  @media (max-width:640px){
+    .hero-track{height:145vh}
+    :root{--focus-y:22%}
+    .photo::after{background:linear-gradient(to top,
+      rgba(10,10,10,.54) 0%, rgba(10,10,10,.24) 36%, transparent 60%)}
+    .reveal-body{max-width:264px}   /* 카드 밖으로 새지 않게 */
+    .brandbar{padding:18px 20px}
+  }
+
+  /* ── 움직임 줄이기 설정 — 즉시 완료 + 스냅 ──────────── */
+  @media (prefers-reduced-motion: reduce){
+    .photo img{animation:none; transform:none}
+    .line > span, .brandbar, .scroll-hint{animation:none}
+  }
+</style>
+</head>
+<body>
+
+<div class="brandbar">
+      <span class="logo">매일백세한의원</span>
+      <nav class="gnb">
+        <a href="#">매일감비환</a>
+        <a href="#">공진단</a>
+        <a href="#">무릎관절 NMC</a>
+        <a href="#">원장 소개</a>
+        <a href="#">건강 칼럼</a>
+      </nav>
+  <a class="navcta" href="#">상담문의</a>
+</div>
+
+<div class="hero-track" id="track">
+  <div class="hero-stage">
+
+    <div class="photo-frame" id="frame">
+      <div class="photo" id="photo">
+        <img src="../public/photos/director-interview.webp" alt="송원석 원장 진료 상담 장면" fetchpriority="high">
+      </div>
+    </div>
+
+
+    <!-- 2막 -->
+    <div class="reveal-copy" id="reveal">
+      <p class="eyebrow">CONSULTATION FIRST</p>
+      <h2 class="reveal-title">비대면 진료도<br>똑같이 진료합니다</h2>
+      <p class="reveal-body">꼼꼼하게 상담한 뒤 처방합니다.</p>
+      <p class="reveal-sign">송원석 원장</p>
+    </div>
+
+    <!-- 1막 -->
+    <div class="hero-copy" id="copy">
+      <!-- 두 줄로 나눠 둔다. 한 줄로 두면 좁은 화면에서 "진료만"만 떨어져 균형이 무너진다.
+           줄마다 래퍼가 있어야 줄 단위로 떠오른다(스펙 2장). -->
+      <h1 class="hero-main">
+        <span class="line"><span>직접 해보고,</span></span>
+        <span class="line"><span class="l2">효과 있는 진료만</span></span>
+      </h1>
+      <p class="hero-sub"><span class="line"><span>정확하게 진단하고 끝까지 치료합니다.</span></span></p>
+    </div>
+
+    <div class="scroll-hint" id="hint"><span>SCROLL</span><i></i></div>
+  </div>
+</div>
+
+<div class="after">
+  <p>↑ 여기까지가 히어로입니다. 아래로 지금의 홈 내용(STATS·제품·대사량 훅…)이 이어집니다.</p>
+</div>
+
+<script>
+(function(){
+  var track  = document.getElementById('track');
+  var frame  = document.getElementById('frame');
+  var photo  = document.getElementById('photo');
+  var copy   = document.getElementById('copy');
+  var reveal = document.getElementById('reveal');
+  var hint   = document.getElementById('hint');
+  var bar    = document.querySelector('.brandbar');
+
+  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var clamp  = function(v,a,b){ return v<a?a:(v>b?b:v); };
+  // 스크롤 진행도를 부드럽게 (easeInOutQuad)
+  var ease   = function(p){ return p<.5 ? 2*p*p : 1-Math.pow(-2*p+2,2)/2; };
+
+  var ticking = false;
+  function onScroll(){
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(update);
+  }
+
+  function update(){
+    ticking = false;
+    var span = track.offsetHeight - innerHeight;
+    var p = clamp(-track.getBoundingClientRect().top / (span || 1), 0, 1);
+    // 움직임 줄이기 설정이면 중간값 없이 딱딱 넘긴다
+    var e = reduce ? (p > .5 ? 1 : 0) : ease(p);
+
+    // 사진은 끝까지 화면을 꽉 채운다. 2막 글자를 살릴 만큼만 어둡게 눌러준다.
+    frame.style.filter = 'brightness(' + (1 - 0.38 * e) + ')';
+
+    // 1막 카피 — p 0~0.3에서 위로 빠지며 사라진다
+    var k = clamp(p / 0.3, 0, 1);
+    copy.style.transform     = 'translateY(' + (-40 * k) + 'px)';
+    copy.style.opacity       = String(1 - k);
+    copy.style.pointerEvents = k > 0.9 ? 'none' : '';
+    // SCROLL 힌트도 같이 걷는다. 남겨두면 끝까지 "더 내리라"고 말하는 꼴이 된다
+    hint.style.opacity = String(1 - k);
+
+    // 헤더 — 히어로를 거의 다 지나면 흰 배경으로
+    bar.classList.toggle('solid', p > 0.97);
+
+    // 2막 메시지 — p 0.45~0.9에서 떠오른다
+    var q = clamp((p - 0.38) / 0.42, 0, 1);
+    reveal.style.transform = 'translateY(' + (28 * (1 - q)) + 'px)';
+    reveal.style.opacity   = String(q);
+  }
+
+  addEventListener('scroll', onScroll, { passive: true });
+  addEventListener('resize', onScroll, { passive: true });
+  update();
+})();
+</script>
+</body>
+</html>

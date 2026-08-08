@@ -172,3 +172,174 @@ html { scroll-behavior: smooth; }
   background: #F0EDE8;
   color: #0F0D0A;
 }
+
+/* ══════════════════════════════════════════════════════════════
+   히어로 — 줌인 시작 + 스크롤 2막 전환 (홈 전용)
+   규칙: C:\claude\홈페이지\홈페이지디자인\규칙\히어로-줌인트로.md
+   움직임 값은 그 문서가, 색·글꼴은 이 사이트 기준이 정한다.
+   ══════════════════════════════════════════════════════════════ */
+.hz-track {
+  position: relative; height: 160vh;
+  /* 헤더 뒤로 끌어올린다. 안 하면 사진 위에 흰 띠가 생긴다 */
+  margin-top: calc(var(--hdr-h, 56px) * -1);
+}
+.hz-stage { position: sticky; top: 0; height: 100vh; overflow: hidden; background: #0a0a0a; }
+/* 1막 카피가 헤더에 가리지 않게 위쪽 여백을 헤더만큼 준다 */
+.hz-copy, .hz-reveal { padding-top: var(--hdr-h, 56px); }
+
+/* 위쪽 그늘 — 헤더 글자가 밝은 배경에 묻히는 걸 막는다 */
+.hz-stage::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 170px; z-index: 4;
+  background: linear-gradient(to bottom, rgba(0,0,0,.34), transparent);
+  pointer-events: none;
+}
+
+.hz-frame { position: absolute; inset: 0; overflow: hidden; will-change: filter; }
+.hz-photo { position: absolute; inset: 0; }
+.hz-photo img {
+  object-fit: cover; object-position: 45% 24%;
+  transform: scale(1.18);
+  animation: hz-zoom 1.8s ease-out .1s both;
+}
+@keyframes hz-zoom { to { transform: scale(1); } }
+
+/* 비네트 3단 — 2단으로는 카피 구역이 덜 눌려 글자가 묻힌다 */
+.hz-photo::after {
+  content: ''; position: absolute; inset: 0; pointer-events: none;
+  background: linear-gradient(to top, rgba(0,0,0,.46) 0%, rgba(0,0,0,.20) 28%, transparent 56%);
+}
+
+/* 1막 — 카피는 아래 1/3. 한복판에 두면 인물과 겹친다 */
+.hz-copy {
+  position: absolute; inset: 0; z-index: 5;
+  display: flex; flex-direction: column; align-items: center; justify-content: flex-end;
+  text-align: center; padding: 0 24px 16vh; color: #fff;
+  will-change: transform, opacity;
+}
+.hz-line { overflow: hidden; }
+.hz-line > span { display: block; animation: hz-fadeup 1s cubic-bezier(0,.55,.45,1) both; }
+@keyframes hz-fadeup { from { transform: translateY(48px); opacity: 0; } to { transform: none; opacity: 1; } }
+
+.hz-main {
+  font-family: var(--font-serif), serif; font-weight: 500;
+  font-size: clamp(30px, 5.2vw, 60px); line-height: 1.18; letter-spacing: -.025em;
+  text-shadow: 0 2px 18px rgba(0,0,0,.72), 0 1px 3px rgba(0,0,0,.5);
+}
+.hz-main .hz-line > span { animation-delay: .1s; }
+.hz-main .hz-line > span.hz-l2 { animation-delay: .2s; }
+.hz-sub {
+  margin-top: 18px; font-size: clamp(14px, 1.6vw, 19px); line-height: 1.7;
+  color: rgba(255,255,255,.92);
+  text-shadow: 0 1px 10px rgba(0,0,0,.7), 0 1px 2px rgba(0,0,0,.5);
+}
+.hz-sub .hz-line > span { animation-delay: .32s; }
+
+/* 지역 라벨 — 원래 홈 히어로에 있던 eyebrow를 되살린 것.
+   AI 인용(GEO)은 첫 화면 텍스트 비중이 커서 지역·진료과목이 여기 있어야 한다. */
+.hz-place {
+  margin-bottom: 16px; font-size: 12px; font-weight: 700;
+  letter-spacing: .16em; color: rgba(255,255,255,.9);
+  text-shadow: 0 1px 8px rgba(0,0,0,.7);
+  animation: hz-fadeup 1s cubic-bezier(0,.55,.45,1) .05s both;
+}
+/* 진료과목 — 검색·AI가 잡을 키워드를 화면에 실제로 보이게 둔다 */
+.hz-tags {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
+  margin-top: 20px; list-style: none; padding: 0;
+  animation: hz-fadeup 1s cubic-bezier(0,.55,.45,1) .44s both;
+}
+.hz-tags li {
+  font-size: 13px; font-weight: 600; color: #fff;
+  background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.34);
+  border-radius: 999px; padding: 6px 14px; backdrop-filter: blur(4px);
+}
+@media (max-width: 640px) {
+  .hz-place { font-size: 11px; margin-bottom: 12px; }
+  .hz-tags { gap: 6px; margin-top: 16px; }
+  .hz-tags li { font-size: 12px; padding: 5px 11px; }
+}
+
+.hz-hint {
+  position: absolute; left: 50%; bottom: 28px; transform: translateX(-50%); z-index: 5;
+  color: rgba(255,255,255,.72); font-size: 11px; font-weight: 700; letter-spacing: .22em;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+  /* both가 아니라 backwards. both면 스크롤로 걷어내려는 지시를 이겨 끝까지 남는다 */
+  animation: hz-fadeup 1s cubic-bezier(0,.55,.45,1) .55s backwards;
+}
+.hz-hint i { display: block; width: 1px; height: 34px;
+  background: linear-gradient(to bottom, rgba(255,255,255,.7), transparent); }
+
+/* 2막 */
+.hz-reveal {
+  position: absolute; inset: 0; z-index: 6;
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; padding: 0 24px; pointer-events: none; color: #fff;
+  will-change: transform, opacity;
+  /* 기본은 '보이는 상태'로 둔다. JS를 돌리지 않는 크롤러(네이버·일부 AI 봇)도 이 글을 읽는다.
+     브라우저에서는 아래 규칙으로 즉시 감춰지고 스크롤에 따라 떠오른다. */
+  opacity: 1;
+}
+@media (scripting: enabled) { .hz-reveal { opacity: 0; } }
+.hz-eyebrow {
+  display: flex; align-items: center; gap: 10px; margin-bottom: 20px;
+  font-size: 11px; font-weight: 700; letter-spacing: .2em; text-transform: uppercase;
+  color: #f2a7a5;   /* 주색의 밝은 변형 — 다크 위에서 원본 레드는 탁하다 */
+}
+.hz-eyebrow::before { content: ''; width: 24px; height: 1px; background: currentColor; opacity: .7; }
+.hz-title {
+  font-family: var(--font-serif), serif; font-weight: 500;
+  font-size: clamp(24px, 3.4vw, 40px); line-height: 1.3; letter-spacing: -.025em;
+  text-shadow: 0 2px 20px rgba(0,0,0,.5);
+}
+.hz-body {
+  margin-top: 16px; max-width: 420px; font-size: clamp(13px, 1.4vw, 17px); line-height: 1.8;
+  color: rgba(255,255,255,.85); text-shadow: 0 1px 12px rgba(0,0,0,.45);
+}
+.hz-sign { margin-top: 18px; font-size: 13px; font-weight: 600; color: rgba(255,255,255,.86); }
+
+@media (max-width: 640px) {
+  .hz-track { height: 145vh; }
+  .hz-photo img { object-position: 45% 22%; }
+  .hz-photo::after {
+    background: linear-gradient(to top, rgba(0,0,0,.54) 0%, rgba(0,0,0,.24) 28%, transparent 60%);
+  }
+  .hz-body { max-width: 264px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hz-photo img { animation: none; transform: none; }
+  .hz-line > span, /* 지역 라벨 — 원래 홈 히어로에 있던 eyebrow를 되살린 것.
+   AI 인용(GEO)은 첫 화면 텍스트 비중이 커서 지역·진료과목이 여기 있어야 한다. */
+.hz-place {
+  margin-bottom: 16px; font-size: 12px; font-weight: 700;
+  letter-spacing: .16em; color: rgba(255,255,255,.9);
+  text-shadow: 0 1px 8px rgba(0,0,0,.7);
+  animation: hz-fadeup 1s cubic-bezier(0,.55,.45,1) .05s both;
+}
+/* 진료과목 — 검색·AI가 잡을 키워드를 화면에 실제로 보이게 둔다 */
+.hz-tags {
+  display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;
+  margin-top: 20px; list-style: none; padding: 0;
+  animation: hz-fadeup 1s cubic-bezier(0,.55,.45,1) .44s both;
+}
+.hz-tags li {
+  font-size: 13px; font-weight: 600; color: #fff;
+  background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.34);
+  border-radius: 999px; padding: 6px 14px; backdrop-filter: blur(4px);
+}
+@media (max-width: 640px) {
+  .hz-place { font-size: 11px; margin-bottom: 12px; }
+  .hz-tags { gap: 6px; margin-top: 16px; }
+  .hz-tags li { font-size: 12px; padding: 5px 11px; }
+}
+
+.hz-hint { animation: none; }
+}
+
+/* 헤더 — 사진 위에 있을 때(투명 상태). 로고는 흰색으로 뒤집는다 */
+.hdr-ghost { background: transparent !important; border-color: transparent !important; }
+/* 로고는 원본 색 그대로 둔다.
+   · 흰색으로 뒤집으면(brightness(0) invert(1)) 빨간 '매일' 배지가 빈 네모가 된다
+   · 흰 판을 깔면 사진 위에 흰 상자가 얹힌 것처럼 보인다
+   → 배경 없이 두고, 사진에서 떠 보이도록 옅은 그림자만 준다 */
+.hdr-logo-plate img { filter: drop-shadow(0 1px 3px rgba(255,255,255,.9)) drop-shadow(0 2px 10px rgba(255,255,255,.6)); }

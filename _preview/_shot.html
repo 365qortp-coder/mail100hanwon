@@ -1,0 +1,42 @@
+<!DOCTYPE html><html lang="ko"><head><meta charset="UTF-8"><title>히어로 스크롤 지점 캡처</title>
+<!--
+  움직이는 히어로는 스크롤 중간을 찍어야 판단이 된다. 헤드리스 크롬은 스크롤을 못 하므로
+  아이프레임 안에 넣고 그 안에서 스크롤을 옮긴 뒤 바깥을 찍는다.
+
+  chrome --headless=new --window-size=1280,800 --virtual-time-budget=9000
+    --screenshot=out.png "http://localhost:8933/_preview/_shot.html?p=hero-preview.html&y=0.5&w=1280&h=800"
+-->
+<style>html,body{margin:0;background:#fff;overflow:hidden}iframe{border:0;display:block}</style>
+</head><body>
+<iframe id="f"></iframe>
+<script>
+var q = new URLSearchParams(location.search);
+var w = +(q.get('w') || 1280), h = +(q.get('h') || 800);
+var y = parseFloat(q.get('y') || '0');       // 0=시작 · 0.5=중간 · 1=끝
+var f = document.getElementById('f');
+f.style.width = w + 'px'; f.style.height = h + 'px';
+f.src = q.get('p');
+f.addEventListener('load', function(){
+  var win = f.contentWindow, doc = f.contentDocument;
+  function place(){
+    // 페이지 전체가 아니라 '히어로 구간' 안에서의 위치라야 한다.
+    // 전체 기준으로 재면 뒤에 붙은 내용 때문에 y=1이 히어로 끝을 지나쳐 버린다.
+    var track = doc.getElementById('track');
+    var max = track
+      ? track.offsetHeight - win.innerHeight
+      : doc.documentElement.scrollHeight - win.innerHeight;
+    win.scrollTo(0, Math.round(max * y));
+    win.dispatchEvent(new Event('scroll'));
+  }
+  // hide=copy — 글자를 숨긴 화면. 글자 뒤 배경 밝기를 재려면 이게 필요하다.
+  // (글자가 보이는 화면에서 재면 흰 글자 자체가 '가장 밝은 배경'으로 잡힌다)
+  if (q.get('hide') === 'copy') {
+    var st = doc.createElement('style');
+    st.textContent = '.hero-copy,.reveal-copy,.scroll-hint,.brandbar{visibility:hidden!important}';
+    doc.head.appendChild(st);
+  }
+  place();
+  setTimeout(place, 900);      // 사진·글꼴이 자리 잡은 뒤 한 번 더
+});
+</script>
+</body></html>

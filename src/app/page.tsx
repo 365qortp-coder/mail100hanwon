@@ -6,6 +6,7 @@ import { buildMetadata } from "@/lib/seo";
 import { clinicSchema, directorSchema, websiteSchema, webPageSchema, faqSchema } from "@/lib/schema";
 import { JsonLd } from "@/components/JsonLd";
 import { YouTubeThumbnailGallery } from "@/components/YouTubeThumbnailGallery";
+import { HeroZoom } from "@/components/HeroZoom";
 import { clinic } from "@/data/clinic";
 import { locations } from "@/data/locations";
 import { getAllColumns, getColumnUrl } from "@/lib/columns";
@@ -138,52 +139,20 @@ export default function HomePage() {
       <JsonLd id="ld-webpage" data={webPageSchema({ title: `${clinic.name} | 매일감비환 다이어트·공진단·무릎관절 NMC`, description: homePageDesc, path: "/" })} />
       <JsonLd id="ld-faq" data={faqSchema(faqs)} />
 
-      {/* ── 01 · HERO ── */}
-      <section className="bg-white overflow-hidden">
-        <div className="mx-auto max-w-7xl px-5 md:px-8 lg:px-12 pt-20 pb-28 md:pt-24 md:pb-36 grid md:grid-cols-2 gap-12 md:gap-16 items-center">
-          {/* Left — headline */}
-          <div className="sn-reveal">
-            {eyebrow("서울 중랑구 매일백세한의원", { brand: true })}
+      {/* ── 01 · HERO — 줌인 시작 + 스크롤 2막 전환 ── */}
+      {/* 규칙: C:\claude\홈페이지\홈페이지디자인\규칙\히어로-줌인트로.md */}
+      <HeroZoom />
 
-            <h1 className="font-serif text-[2.4rem] md:text-[2.6rem] lg:text-[3.25rem] xl:text-[4rem] leading-[1.07] tracking-[-0.025em] text-[#0a0a0a] mb-7">
-              직접 해보고
-              <br />
-              <span className="text-[var(--brand-primary)]">효과 있는 진료만</span>
-              <br />
-              권해드립니다
-            </h1>
-
-            <p className="text-base md:text-[1.05rem] text-[#525252] leading-[1.75] max-w-[420px]">
-              다이어트·공진단·통증 모두 송원석 원장이 체질을 직접 확인한 뒤
-              처방합니다. 비대면 진료로 전국 어디서나 받아보실 수 있습니다.
-            </p>
-          </div>
-
-          {/* Right — director photo with floating badges */}
-          <div className="order-first md:order-last sn-reveal" style={{ transitionDelay: "90ms" }}>
-            <div className="relative">
-              <div className="rounded-[28px] bg-black/[0.04] p-2 ring-1 ring-black/[0.06]">
-                <div className="relative aspect-[3/4] rounded-[22px] overflow-hidden bg-[#E8E3D9] shadow-[inset_0_1px_1px_rgba(255,255,255,0.8)]">
-                  <Image
-                    src="/photos/director.webp"
-                    alt={`${clinic.director.name} ${clinic.director.title}`}
-                    fill
-                    priority
-                    className="object-cover"
-                    sizes="(max-width: 768px) 80vw, 460px"
-                  />
-                </div>
-              </div>
-
-            </div>
-
-            <p className="mt-8 text-sm font-bold text-[#0a0a0a] flex items-center gap-2 pl-2">
-              {clinic.director.name} 원장
-              <span className="text-xs text-[#525252] font-normal border border-black/[0.1] rounded-full px-3 py-0.5">
-                {clinic.director.title}
-              </span>
-            </p>
-          </div>
+      {/* 01B · 한 줄 소개 — AI가 답을 만들 때 상단 문단을 쓴다.
+          지역·진료과목·비대면을 한 문단에 모아둔다 (GEO) */}
+      <section className="bg-white">
+        <div className="mx-auto max-w-3xl px-5 md:px-8 py-14 md:py-16 text-center sn-reveal">
+          <p className="text-[17px] md:text-[19px] leading-[1.85] text-[#3a3a3a]">
+            <strong className="font-semibold text-[#0a0a0a]">매일백세한의원</strong>은 서울 중랑구에서
+            다이어트 한약(매일감비환)·공진단·무릎관절 NMC를 진료합니다.
+            송원석 원장이 체질을 직접 확인한 뒤 처방하며,
+            <strong className="font-semibold text-[#0a0a0a]"> 비대면 진료로 전국 어디서나</strong> 받아보실 수 있습니다.
+          </p>
         </div>
       </section>
 
