@@ -140,7 +140,7 @@ export default function HomePage() {
       <JsonLd id="ld-faq" data={faqSchema(faqs)} />
 
       {/* ── 01 · HERO — 줌인 시작 + 스크롤 2막 전환 ── */}
-      {/* 규칙: C:\claude\홈페이지\홈페이지디자인\규칙\히어로-줌인트로.md */}
+      {/* 규칙: hero-zoom-intro 스킬 (구 홈페이지 규칙문서는 2026-08-22 삭제) */}
       <HeroZoom />
 
       {/* 01B · 한 줄 소개 — AI가 답을 만들 때 상단 문단을 쓴다.

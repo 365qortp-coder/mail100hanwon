@@ -6,7 +6,7 @@ import { useEffect, useRef } from "react";
 /**
  * 홈 히어로 — 줌인 시작 + 스크롤 2막 전환.
  *
- * 규칙 전문: C:\claude\홈페이지\홈페이지디자인\규칙\히어로-줌인트로.md
+ * 규칙 전문: hero-zoom-intro 스킬 (구 홈페이지 규칙문서는 2026-08-22 삭제)
  * 스타일은 globals.css 의 .hz-* 규칙. 움직임 값은 그 규칙집이 정하고,
  * 색·글꼴은 이 사이트 기준(DESIGN-BASELINE.md)을 따른다.
  *

@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "generate:column": "node scripts/generate-column.mjs"
+    "generate:column": "node scripts/generate-gap-column.mjs",
+    "generate:column:옛방식-2026-07-14중단": "node scripts/generate-column.mjs"
   },
   "dependencies": {
     "@tailwindcss/typography": "^0.5.19",
