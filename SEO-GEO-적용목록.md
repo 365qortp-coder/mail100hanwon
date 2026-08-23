@@ -130,7 +130,7 @@ import { JsonLd } from "@/components/JsonLd";
 
 > **왜 자동 필터로 못 잡나** — "완치·보장" 같은 금칙어가 아니라 **문장 구조**로 위반한다. "…한 사례가 있습니다"에는 금칙어가 하나도 없다.
 
-**대체 방향** (판정은 `medical-ad-review`, 문장 재작성은 대화로)
+**대체 방향** (의료광고 판단·문장 재작성 모두 대화로 — 기준은 `.claude\의료광고-법조문-기록.md`)
 
 | 지금 | 이렇게 |
 |---|---|
@@ -248,7 +248,7 @@ export function SectionTitle({ eyebrow, title, subtitle, align = "left", as = "h
 | `gongjindan/sahyang/page.tsx:160, 338` | 재처방률 72% · "식약처 인증 정품 사향" |
 | `diet/page.tsx:482~514` | 마운자로·위고비 **vs** 매일감비환 비교표 |
 
-→ **`medical-ad-review` 검수 + 문장 재작성**이 필요하다. SEO 담당이 카피를 고치지 않는다.
+→ **의료광고 검수 + 문장 재작성**이 필요하다. SEO 담당이 카피를 고치지 않는다.
 
 ### 4-2. 협회에 물어야 할 것
 
@@ -287,7 +287,7 @@ python C:\claude\mail100hanwon\_도구\seocheck.py <내려받은폴더> --type a
 
 - **배포하지 않는다.** 수정·검증까지가 SEO 담당의 몫이다
 - **카피 문장을 직접 고치지 않는다** → 별도 작업으로 뺀다
-- **의료법 최종 판정을 하지 않는다** → `medical-ad-review`, 필요시 심의기관
+- **의료법 최종 판정을 하지 않는다** → 협회 심의기관
 - **실제 색인 여부·페이지 속도는 이 도구로 못 본다** → 구글 서치콘솔, PageSpeed Insights
 - **순위·AI 인용은 보장할 수 없다.** 보장하는 건 "읽을 수 있는 상태로 만든 것"까지다
 
@@ -303,7 +303,7 @@ python C:\claude\mail100hanwon\_도구\seocheck.py <내려받은폴더> --type a
 
 이번 주
 [ ] next/script → JsonLd 교체 (5개 파일)
-[ ] FAQ 답변 본문 재작성 (medical-ad-review 검수 동반)
+[ ] FAQ 답변 본문 재작성 (의료광고 검수 동반)
 [ ] Product → MedicalProcedure 교체 (/diet, /gongjindan)
 [ ] SectionTitle에 as="h1" 옵션 + 3개 페이지 적용
 [ ] 조직 표 url 추가 · description 길이 조정 · H4→H3
