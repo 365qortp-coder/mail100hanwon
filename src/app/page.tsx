@@ -152,6 +152,14 @@ export default function HomePage() {
             매일백세한의원은 서울 중랑구에서 다이어트 한약(매일감비환)·공진단· 청염단(NMC Protocol)을 처방합니다.
             송원석 원장이 직접 확인한 한약을 처방하며, 비대면 진료로 전국 어디서나 받아보실 수 있습니다.
           </p>
+          <a
+            href="https://blog.mail100hanwon.co.kr/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-5 inline-flex items-center gap-2 px-5 py-2.5 rounded-full border border-black/[0.13] text-[#0a0a0a] text-[13px] font-semibold hover:border-black/25 transition-colors duration-300"
+          >
+            매일백세한의원 공식블로그
+          </a>
         </div>
       </section>
 
