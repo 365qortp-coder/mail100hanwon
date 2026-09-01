@@ -46,11 +46,18 @@ function checkKey(req: NextRequest): NextResponse | null {
   return null;
 }
 
-/** 제목 → 주소용 이름. 기존 글들과 같은 "한글-대시" 방식. */
+/**
+ * 제목 → 주소용 이름. 기존 글들과 같은 "한글-대시" 방식.
+ *
+ * 한글을 \p{Script=Hangul}(유니코드 속성 표기)로 쓰지 않는 이유:
+ * 로컬에서는 되지만 배포본에서는 빌드 과정의 코드 변환을 거치면서 한글이
+ * 통째로 걸러져 slug가 "column-xxxxxx"로만 나오는 문제가 있었습니다.
+ * 글자 범위를 직접 적으면 어떤 변환을 거쳐도 안전합니다.
+ */
 function slugify(title: string): string {
   const base = title
     .toLowerCase()
-    .replace(/[^\p{Script=Hangul}a-z0-9\s-]/gu, "")
+    .replace(/[^가-힣ㄱ-ㅎㅏ-ㅣa-z0-9\s-]/g, "")
     .trim()
     .replace(/\s+/g, "-")
     .replace(/-+/g, "-")
