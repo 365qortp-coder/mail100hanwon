@@ -7,6 +7,11 @@ import { clinic } from "@/data/clinic";
 
 type Params = Promise<{ slug: string }>;
 
+// 목록에 없는 주소는 곧바로 404를 낸다.
+// 이게 없으면 Next가 동적 렌더링을 시도하는데, 한글 경로에서
+// x-next-cache-tags 헤더 문제로 500이 나 버린다.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   return getColumnsBySection("diet").map((c) => ({ slug: c.slug }));
 }

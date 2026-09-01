@@ -14,9 +14,14 @@ import { getColumn, getAllColumns, getColumnUrl, getColumnImage } from "@/lib/co
 
 type Params = Promise<{ slug: string }>;
 
+// 목록에 없는 주소는 곧바로 404를 낸다.
+// 이게 없으면 Next가 동적 렌더링을 시도하는데, 한글 경로에서
+// x-next-cache-tags 헤더 문제로 500이 나 버린다(아래 주석과 같은 원인).
+// → 없는 한글 주소·초안 주소가 전부 500이던 문제가 이걸로 막힌다.
+export const dynamicParams = false;
+
 export function generateStaticParams() {
   // 전체 슬러그를 정적 생성 — 카테고리가 있는 글의 301도 빌드 시점에 굽는다.
-  // (동적 렌더링에 맡기면 한글 경로의 x-next-cache-tags 헤더에서 프로덕션 500 발생)
   return getAllColumns().map((c) => ({ slug: c.slug }));
 }
 
