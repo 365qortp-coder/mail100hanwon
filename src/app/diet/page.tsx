@@ -47,7 +47,7 @@ const faqs = [
   },
   {
     q: "마운자로·위고비 주사 대신 감비환을 써도 되나요?",
-    a: "복용 방식과 관리 방법이 다릅니다. 감비환은 알약 개수로 복용량을 1~8단계까지 조절하고, 처방 기간도 감량기와 요요방지기를 나누어 설계합니다. 다만 마황이 들어가 있어 심혈관 질환이나 갑상선 기능 항진증 등이 있으면 맞지 않을 수 있습니다. 현재 사용 중인 약이 있다면 상담에서 알려 주시면 함께 검토합니다.",
+    a: "다른 치료와 견주어 어느 쪽이 낫다고 말씀드릴 수는 없습니다. 감비환이 어떤 방식인지만 말씀드리면, 알약 개수로 복용량을 1~8단계까지 조절하고 처방 기간도 감량기와 요요방지기를 나누어 설계합니다. 다만 마황이 들어가 있어 심혈관 질환이나 갑상선 기능 항진증 등이 있으면 맞지 않을 수 있습니다. 현재 사용 중이거나 중단한 약이 있다면 상담에서 알려 주시면 함께 검토합니다.",
   },
   {
     q: "비대면으로 처방받을 수 있나요?",
@@ -473,13 +473,17 @@ export default function DietPage() {
         </div>
       </section>
 
-      {/* ── 07 비교표 ── */}
+      {/* ── 07 처방 방식 정리 ──
+          2026-09-18: 여기 있던 "마운자로·위고비 vs 매일감비환" 비교표를 걷어냈다.
+          의료법 제56조는 다른 진료 방법과 비교하는 광고를 금지한다.
+          타사 제품의 부작용을 나란히 적고 우리 쪽이 낫다고 보이게 하는 구성은 그 한가운데다.
+          고객이 실제로 궁금해하는 것(주사 말고 다른 방법이 있나)은 우리 처방 방식을 그대로 보여 주는 것으로 답한다. */}
       <section className="bg-white border-t border-black/[0.05]">
         <div className="mx-auto max-w-4xl px-5 md:px-8 py-24 md:py-32">
           <div className="text-center mb-12 sn-reveal">
-            <Eyebrow label="Comparison" center />
+            <Eyebrow label="How it works" center />
             <h2 className="font-serif text-3xl md:text-4xl leading-tight tracking-[-0.025em] text-[#0a0a0a]">
-              마운자로·위고비 <span className="whitespace-nowrap">vs 매일감비환</span>
+              매일감비환은 <span className="whitespace-nowrap">어떤 방식인가</span>
             </h2>
           </div>
           <div className="sn-reveal overflow-x-auto rounded-[20px] border border-black/[0.07]">
@@ -487,31 +491,30 @@ export default function DietPage() {
               <thead className="bg-[#F8F6F2]">
                 <tr>
                   <th className="text-left p-4 font-bold text-[#8C8A87] text-[11px] tracking-[0.18em] uppercase">항목</th>
-                  <th className="text-center p-4 font-bold text-[var(--brand-primary)]">매일감비환</th>
-                  <th className="text-center p-4 font-bold text-[#8C8A87]">마운자로·위고비</th>
+                  <th className="text-left p-4 font-bold text-[var(--brand-primary)]">매일감비환</th>
                 </tr>
               </thead>
               <tbody>
                 {[
-                  { item: "방식", ours: "한약 복용", theirs: "주사 (주 1회)" },
-                  { item: "1달 비용", ours: "11만원~", theirs: "40~80만원" },
-                  { item: "부작용", ours: "적음 (복용량 조절)", theirs: "구역·구토·췌장염 보고" },
-                  { item: "근육 유지", ours: "체지방 위주 감량", theirs: "근육 손실 가능" },
-                  { item: "중단 후", ours: "요요방지 6개월 플랜", theirs: "요요 잦음" },
-                  { item: "비대면 처방", ours: "가능 (전국 택배)", theirs: "불가 (병원 내원 필수)" },
-                  { item: "복용 조절", ours: "본인이 조절 가능", theirs: "의사 처방 필수" },
+                  { item: "복용 형태", ours: "알약 (한약 환제)" },
+                  { item: "복용량 조절", ours: "1~8단계 — 알약 개수로 조절" },
+                  { item: "핵심 약재", ours: "마황 (에페드린) — 기저질환 확인이 먼저" },
+                  { item: "처방 설계", ours: "감량기 2~3개월 + 요요방지기 6개월" },
+                  { item: "1달 비용", ours: "11만원~" },
+                  { item: "처방 방법", ours: "비대면 가능 (설문 → 전화 상담 → 택배)" },
+                  { item: "반응이 있을 때", ours: "끊는 대신 한 단계 낮춰 다시 확인" },
+                  { item: "확인이 필요한 경우", ours: "심혈관 질환·갑상선 기능 항진증·임신·수유·복용 중인 약" },
                 ].map((row) => (
                   <tr key={row.item} className="border-t border-black/[0.05]">
-                    <td className="p-4 font-medium text-[#525252]">{row.item}</td>
-                    <td className="p-4 text-center font-bold text-[var(--brand-primary)]">{row.ours}</td>
-                    <td className="p-4 text-center text-[#525252]">{row.theirs}</td>
+                    <td className="p-4 font-medium text-[#525252] whitespace-nowrap">{row.item}</td>
+                    <td className="p-4 text-[#0a0a0a]">{row.ours}</td>
                   </tr>
                 ))}
               </tbody>
             </table>
           </div>
           <p className="text-xs text-[#8C8A87] mt-4 text-center">
-            ※ 마운자로·위고비 가격은 시중 참고가 기준이며, 개인차가 있습니다.
+            ※ 반응과 적합 여부는 개인차가 있으며, 복용 전 상담에서 확인합니다.
           </p>
         </div>
       </section>
