@@ -38,6 +38,11 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
           PINCET_SECRET: ${{ secrets.PINCET_SECRET }}
+          # KEYWORD-01 (2026-09-18): 네이버 실제 검색량으로 주제를 고른다.
+          # 키가 없으면 스크립트가 검색량 없이 갭 순서대로 진행한다(파이프라인은 안 멈춤).
+          NAVER_AD_CUSTOMER_ID: ${{ secrets.NAVER_AD_CUSTOMER_ID }}
+          NAVER_AD_ACCESS_LICENSE: ${{ secrets.NAVER_AD_ACCESS_LICENSE }}
+          NAVER_AD_SECRET_KEY: ${{ secrets.NAVER_AD_SECRET_KEY }}
         run: node scripts/generate-gap-column.mjs
 
       - name: Commit and push
