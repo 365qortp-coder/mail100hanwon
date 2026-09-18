@@ -1,17 +1,23 @@
 ---
-title: "공진단 복용 전 꼭 알아야 할 주의사항과 부작용 가능성"
-description: "공진단 복용을 고려 중이라면 사전에 금기사항과 주의점을 확인하는 것이 중요합니다. 소화기 상태, 자율신경 불균형 등 복용 전 체크해야 할 핵심 정보를 정리했습니다."
+title: "공진단 부작용과 먹으면 안 되는 사람"
+description: "공진단 복용 중 생길 수 있는 불편 반응과 그 이유, 복용을 미뤄야 하는 경우를 한의사 관점에서 정리했습니다."
 date: "2026-06-18"
+modified: "2026-09-18"
 category: "공진단"
 keywords:
   - "공진단 부작용"
   - "공진단 주의사항"
+  - "공진단 먹으면 안되는 사람"
   - "공진단 금기"
-  - "공진단 복용 주의"
-  - "공진단 소화"
-  - "공진단 자율신경"
-  - "한방 피로회복"
-  - "기력저하 한방"
+  - "공진단 소화불량"
+  - "진단 부작용"
+  - "진단 주의사항"
+  - "진단 금기"
+  - "진단 복용 주의"
+  - "진단 소화"
+  - "진단 자율신경"
+  - "방 피로회복"
+  - "력저하 한방"
 image: "https://images.unsplash.com/photo-1471864190281-a93a3070b6de?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHwzfHxtZWRpY2luZSUyMGNhdXRpb24lMjBoZWFsdGh8ZW58MXwwfHx8MTc4MjU1MzExNXww&ixlib=rb-4.1.0&q=80&w=1080"
 imageAlt: "assorted medication tables and capsules"
 imageCredit: "Photo by freestocks on Unsplash"
@@ -21,6 +27,8 @@ source:
   videoId: "_duv78qTcDI"
   angle: "side-effects"
 ---
+> **공진단에서 보고되는 불편은 대부분 소화기 쪽입니다.** 기름진 느낌, 속 더부룩함, 드물게 잠들기 어려움이 나타날 수 있고, 소화 기능이 약한 분일수록 그럴 가능성이 큽니다.
+
 ## 공진단 복용 전, 왜 주의사항을 먼저 확인해야 할까요?
 
 공진단은 기력 회복과 피로 개선을 목적으로 많은 분들이 찾는 한방 처방입니다. 하지만 아무리 좋은 한약이라도 개인의 신체 상태와 맞지 않으면 기대하는 효과를 얻기 어렵거나, 오히려 불편함이 생길 수 있습니다. 공진단을 복용하기 전에 자신의 건강 상태와 주의사항을 미리 파악해 두는 것이 안전하고 현명한 방법입니다.

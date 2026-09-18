@@ -1,17 +1,23 @@
 ---
-title: "공진단 복용 방법·시기·기간·보관 완전 가이드"
-description: "공진단 처방을 받기로 결정했다면 복용 방법, 복용 시기, 복용 기간, 보관 방법까지 꼼꼼히 알아야 효과를 제대로 누릴 수 있습니다. 매일백세한의원 송원석 원장이 알려드리는 실용 가이드입니다."
+title: "공진단 먹는법 — 언제, 어떻게, 얼마나"
+description: "공진단을 언제 먹어야 하는지, 씹어야 하는지, 얼마나 먹어야 하는지와 보관 방법까지 한 번에 정리했습니다."
 date: "2026-06-26"
+modified: "2026-09-18"
 category: "공진단"
 keywords:
+  - "공진단 먹는법"
   - "공진단 복용 방법"
   - "공진단 복용 시기"
+  - "공진단 보관"
   - "공진단 복용 기간"
-  - "공진단 보관 방법"
-  - "공진단 부작용"
-  - "공진단 효과"
-  - "한방 보약"
-  - "매일백세한의원"
+  - "진단 복용 방법"
+  - "진단 복용 시기"
+  - "진단 복용 기간"
+  - "진단 보관 방법"
+  - "진단 부작용"
+  - "진단 효과"
+  - "방 보약"
+  - "일백세한의원"
 image: "https://images.unsplash.com/photo-1607522154179-da1c051ed109?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHwyfHxsaXZlciUyMGhlYWx0aCUyMGRldG94fGVufDF8MHx8fDE3ODI0NDk5MDN8MA&ixlib=rb-4.1.0&q=80&w=1080"
 imageAlt: "sliced orange fruit and green leaves on brown wooden table"
 imageCredit: "Photo by Josh Millgate on Unsplash"
@@ -21,6 +27,8 @@ source:
   videoId: "fDtuC5gJLW0"
   angle: "usage"
 ---
+> **결론부터 말씀드리면, 공진단은 아침 공복에 한 알을 천천히 씹어 드시는 것이 기본입니다.** 속이 부담스러우면 반 알로 나눠 드시고, 보관은 냉장이 원칙입니다. 아래에서 시기·방법·기간·보관 순서로 자세히 설명드립니다.
+
 ## 공진단, 받아들고 나서 가장 먼저 확인해야 할 것
 
 공진단을 처방받기로 마음먹었다면, 이제부터는 '어떻게 먹느냐'가 효과를 좌우합니다. 아무리 좋은 처방이라도 복용 시기·방법·기간·보관이 어긋나면 기대했던 효과를 온전히 누리기 어렵습니다. 이 글에서는 매일백세한의원 송원석 원장의 임상 경험을 바탕으로, 공진단을 처음 복용하는 분들이 반드시 알아야 할 실용 정보를 두괄식으로 정리했습니다.
