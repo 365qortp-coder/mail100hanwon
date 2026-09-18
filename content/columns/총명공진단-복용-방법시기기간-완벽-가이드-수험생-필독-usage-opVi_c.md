@@ -1,9 +1,11 @@
 ---
-title: "총명공진단 복용 방법·시기·기간 완벽 가이드 — 수험생 필독"
-description: "총명공진단을 처방받기로 결정하셨다면 복용 시기, 방법, 기간, 보관법까지 꼼꼼히 알아두세요. 매일백세한의원이 수험생 맞춤 실용 가이드를 안내합니다."
+title: "총명공진단 먹는 법 — 시기·양·기간 한눈에"
+description: "총명공진단을 언제 얼마나 얼마 동안 먹는지, 시험 기간에는 어떻게 조절하는지, 보관과 함께 지킬 생활 관리까지 정리했습니다."
 date: "2026-06-21"
+modified: "2026-09-18"
 category: "총명공진단"
 keywords:
+  - "총명공진단 복용법"
   - "총명공진단 복용 방법"
   - "총명공진단 복용 시기"
   - "총명공진단 복용 기간"
@@ -13,7 +15,6 @@ keywords:
   - "집중력 한약"
   - "스트레스 수험생"
   - "총명공진단 효능"
-  - "매일백세한의원"
 image: "https://images.unsplash.com/photo-1630983358494-96012d838b84?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHw0fHxzdHVkZW50JTIwc3R1ZHlpbmclMjBleGFtJTIwY29uY2VudHJhdGlvbnxlbnwxfDB8fHwxNzgyNTUzMTEwfDA&ixlib=rb-4.1.0&q=80&w=1080"
 imageAlt: "woman in black framed eyeglasses holding pen"
 imageCredit: "Photo by Greg Rosenke on Unsplash"

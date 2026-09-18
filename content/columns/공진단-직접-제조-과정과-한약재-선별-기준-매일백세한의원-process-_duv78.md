@@ -1,9 +1,11 @@
 ---
-title: "공진단 직접 제조 과정과 한약재 선별 기준 — 매일백세한의원"
-description: "매일백세한의원이 사향·녹용·원지·석창포 등 정통 한약재를 직접 선별하고 원내에서 공진단을 제조하는 과정과 품질 인증 절차를 자세히 설명합니다. 한약재 차이가 궁금한 분께 추천합니다."
+title: "공진단 재료와 제조 과정 — 무엇을 확인해야 하나"
+description: "공진단에 들어가는 약재와 만드는 과정에서 무엇이 달라지는지, 약재를 고르는 기준은 무엇인지, 처방받기 전 확인할 점까지 정리했습니다."
 date: "2026-06-20"
+modified: "2026-09-18"
 category: "공진단"
 keywords:
+  - "공진단 재료"
   - "공진단 직접 제조"
   - "공진단 한약재"
   - "사향 공진단"
@@ -13,7 +15,6 @@ keywords:
   - "공진단 원내 제조"
   - "공진단 품질"
   - "매일백세한의원 공진단"
-  - "공진단 차이"
 image: "https://images.unsplash.com/photo-1586768835949-e593c97c8967?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHwyfHx0cmFkaXRpb25hbCUyMG1lZGljaW5lJTIwcHJlcGFyYXRpb258ZW58MXwwfHx8MTc4MjU1MzExN3ww&ixlib=rb-4.1.0&q=80&w=1080"
 imageAlt: "white ceramic bowl with brown liquid inside"
 imageCredit: "Photo by kian zhang on Unsplash"

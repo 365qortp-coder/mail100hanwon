@@ -1,9 +1,11 @@
 ---
-title: "러닝 무릎 통증, 복용·관리 실용 가이드 — 치료 시작 전 꼭 읽기"
-description: "러닝 후 무릎 바깥쪽 통증, 장경인대 증후군 등으로 한방 치료를 시작하신 분을 위한 복용 방법·시기·기간·보관·생활 관리 실용 가이드를 매일백세한의원이 정리했습니다."
+title: "무릎 통증, 달리기를 쉬어야 할 때와 아닌 때"
+description: "달리기 뒤 무릎이 아플 때 어디가 아픈지에 따라 무엇이 다른지, 쉬어야 하는 기준은 무엇인지, 다시 뛰기 전 확인할 점을 정리했습니다."
 date: "2026-06-09"
+modified: "2026-09-18"
 category: "통증치료"
 keywords:
+  - "무릎 통증"
   - "러닝 무릎 통증"
   - "장경인대 증후군"
   - "한방 통증치료"
@@ -13,9 +15,6 @@ keywords:
   - "보관 방법"
   - "도침 치료"
   - "충격파 치료"
-  - "거위발 건염"
-  - "무릎 한방치료"
-  - "매일백세한의원"
 image: "https://images.unsplash.com/photo-1609113160023-4e31f3765fd7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w5ODU5MDF8MHwxfHNlYXJjaHwxfHxrbmVlJTIwcGFpbiUyMGpvaW50fGVufDF8MHx8fDE3ODI1NTMxNDF8MA&ixlib=rb-4.1.0&q=80&w=1080"
 imageAlt: "person holding black knit cap"
 imageCredit: "Photo by Terry Shultz P.T. on Unsplash"
