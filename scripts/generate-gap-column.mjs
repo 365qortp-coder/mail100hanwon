@@ -189,14 +189,31 @@ async function main() {
     console.log("· 네이버 키 미설정 — 검색량 없이 갭 순서대로 진행합니다.");
   }
 
+  // TRACK-01 (2026-09-18): 두 트랙으로 나눈다.
+  //  · SEO 트랙 — 네이버에 실제 수요가 있는 주제(월 100회 이상). 검색 유입을 노린다.
+  //  · GEO 트랙 — 검색량은 없지만 AI가 그 질문을 받았을 때 우리가 빠지는 주제. 인용을 노린다.
+  //    (검색량으로만 자르면 GEO 갭이 통째로 버려진다. 핀셋포인트가 측정하는 값의 핵심이 그쪽이다.)
   const MIN_VOLUME = Number(process.env.MIN_SEARCH_VOLUME || 100);
-  const withDemand = ranked.filter((t) => (t.volume ?? 0) >= MIN_VOLUME);
-  if (naverEnabled() && !withDemand.length) {
-    skip(`검색 수요가 있는 주제가 없습니다 (후보 ${ranked.length}개 모두 월 ${MIN_VOLUME}회 미만) — 오늘은 쉽니다.`);
-  }
-  const pick = (withDemand.length ? withDemand : ranked)[0];
+  const seoTrack = ranked.filter((t) => (t.volume ?? 0) >= MIN_VOLUME);
+  const geoTrack = ranked
+    .filter((t) => (t.volume ?? 0) < MIN_VOLUME)
+    .sort((a, b) => (b.missRate ?? 0) - (a.missRate ?? 0) || (b.frequency ?? 0) - (a.frequency ?? 0));
+
+  // 최근 7일에 SEO 트랙으로만 썼다면 이번엔 GEO 트랙 차례 (한쪽만 쌓이지 않게 번갈아 간다)
+  const recentTracks = existing
+    .filter((c) => c.date && c.date >= weekAgo)
+    .map((c) => (fs.readFileSync(path.join(COLUMNS_DIR, c.file), "utf8").match(/^\s*track:\s*"?(\w+)"?/m)?.[1] ?? "seo"));
+  const geoTurn = geoTrack.length > 0 && (seoTrack.length === 0 || (recentTracks.length > 0 && recentTracks.every((t) => t === "seo")));
+
+  const pick = geoTurn ? geoTrack[0] : (seoTrack[0] ?? geoTrack[0]);
+  if (!pick) skip("쓸 만한 주제가 없습니다.");
+  pick.track = geoTurn || !(pick.volume >= MIN_VOLUME) ? "geo" : "seo";
+
+  console.log(`· 트랙: ${pick.track === "geo" ? "GEO(AI 인용 겨냥)" : "SEO(검색 유입 겨냥)"}  · 후보 SEO ${seoTrack.length} / GEO ${geoTrack.length}`);
   console.log(`· 주제: ${pick.topic}${pick.group ? ` (${pick.group})` : ""}`);
   if (pick.volume) console.log(`· 노리는 검색어: ${pick.keyword} (네이버 월 ${pick.volume.toLocaleString()}회)`);
+  if (pick.missRate != null) console.log(`· AI 미노출률: ${pick.missRate}% (최근 14일 ${pick.frequency ?? 0}회 등장)`);
+  if (pick.winners?.length) console.log(`· 지금 인용되는 곳: ${pick.winners.map((w) => w.domain + (w.isCompetitor ? "(경쟁)" : "")).join(", ")}`);
 
   // 4) 생성 — 탈잉 SEO 강의 7단계를 그대로 밟는다 (한 번에 쓰지 않는다)
   //    P1 검색 의도 분석 → P2 개요 검토 → P3 초안 → P4 4기준 검수 → P5 구조화 → P6 제목·설명 → P7 주소
@@ -229,8 +246,21 @@ async function main() {
     "- 없는 수치·연구·URL을 지어내지 않습니다.",
   ].join("\n");
 
-  const TOPIC_LINE = `이 글이 답해야 하는 질문: "${pick.topic}"` +
-    (pick.keyword ? `\n노리는 검색어: "${pick.keyword}" (네이버 월 ${pick.volume?.toLocaleString?.() ?? pick.volume}회)` : "");
+  const TOPIC_LINE = [
+    `이 글이 답해야 하는 질문: "${pick.topic}"`,
+    pick.keyword && pick.volume ? `노리는 검색어: "${pick.keyword}" (네이버 월 ${pick.volume.toLocaleString()}회)` : "",
+    // GEO 맥락 — AI가 이 질문을 받았을 때 우리를 인용하게 만드는 것이 목적이다
+    pick.seedPrompt ? `사람이 AI에게 실제로 한 질문: "${pick.seedPrompt}"` : "",
+    pick.missRate != null ? `현재 이 질의에서 우리 병원은 ${pick.missRate}%의 경우 언급되지 않습니다.` : "",
+    pick.winners?.length
+      ? `지금 그 자리에 인용되는 곳: ${pick.winners.map((w) => w.domain).join(", ")}. ` +
+        `그 글들보다 더 정확하고 구체적으로 답해야 인용 대상이 바뀝니다. 다만 그 사이트를 언급하거나 비교·비방하지 마세요.`
+      : "",
+    pick.track === "geo"
+      ? "이 글은 검색량보다 'AI 답변에 인용되는 것'이 목적입니다. 질문에 대한 답을 첫 문단에 한 문장으로 못 박고, " +
+        "자주 묻는 질문에 위 질문과 같은 표현을 그대로 한 번 넣으세요."
+      : "",
+  ].filter(Boolean).join("\n");
 
   // ── P1+P2: 검색 의도 분석 → 개요 → 스스로 걸러내기 ──────────────────
   console.log("· [1/3] 검색 의도 분석과 개요 (P1·P2)");
@@ -370,6 +400,9 @@ async function main() {
     "  type: geo-gap",
     `  query: ${JSON.stringify(pick.topic)}`,
     ...(pick.keyword ? [`  keyword: ${JSON.stringify(pick.keyword)}`, `  volume: ${pick.volume ?? 0}`] : []),
+    `  track: ${JSON.stringify(pick.track ?? "seo")}`,
+    ...(pick.missRate != null ? [`  missRate: ${pick.missRate}`] : []),
+    ...(pick.seedPrompt ? [`  seedPrompt: ${JSON.stringify(pick.seedPrompt)}`] : []),
     ...(pick.group ? [`  group: ${JSON.stringify(pick.group)}`] : []),
     "---",
     "",
