@@ -121,6 +121,28 @@ const tokens = (s) =>
     .split(/\s+/)
     .filter((t) => t.length >= 2);
 
+/**
+ * 한 주제에 글이 너무 몰렸는지 (2026-09-18)
+ *
+ * 왜: "총명공진단"은 네이버 월 850회인데 이미 글이 6편 있다. 여기에 한 편을 더하면
+ * 같은 검색어를 일곱 글이 나눠 갖는다(카니발라이제이션). 갭이 있어도 이 경우는 건너뛴다.
+ * 기준은 주제의 첫 낱말 — "총명공진단 효능"이면 "총명공진단".
+ */
+const MAX_PER_TOPIC = 5;
+function tooManyOnTopic(topic, existing) {
+  const head = (tokens(topic)[0] || "").replace(/\s+/g, "");
+  if (head.length < 3) return false;
+  const n = existing.filter((c) => {
+    const hay = [c.title, c.keyword, ...(c.keywords ?? [])].join(" ").toLowerCase().replace(/\s+/g, "");
+    return hay.includes(head);
+  }).length;
+  if (n >= MAX_PER_TOPIC) {
+    console.log(`  ↷ "${head}" 주제에 이미 ${n}편 — 더 늘리면 서로 검색어를 나눠 갖습니다. 건너뜁니다.`);
+    return true;
+  }
+  return false;
+}
+
 function alreadyCovered(topic, existing, keyword) {
   const t = new Set(tokens(topic));
   if (t.size === 0) return true;
@@ -173,10 +195,28 @@ async function main() {
   // 3) 아직 안 다룬 주제만 남기고, 네이버 실제 검색량으로 줄을 세운다
   //    (KEYWORD-01 2026-09-18: 갭이 있어도 아무도 검색하지 않는 질의면 쓰지 않는다.
   //     실측 예 — "공진단 부작용"은 네이버 월 20회, "공진단 먹는법"은 3,880회)
-  const fresh = topics.filter((t) => !alreadyCovered(t.topic, existing));
+  let fresh = topics.filter((t) => !alreadyCovered(t.topic, existing) && !tooManyOnTopic(t.topic, existing));
+
+  // KEYWORD-POOL-01 (2026-09-18): 핀셋 갭이 다 떨어지면 네이버 검색어 풀에서 이어받는다.
+  // 왜: AI 팬아웃 갭은 개수가 한정돼 있다. 2026-09-18에 12개가 전부 소진되어 발행이 멈췄다.
+  // 그렇다고 발행을 쉬면 "검색 수요는 큰데 우리 글이 없는 키워드"가 계속 비어 있게 된다.
+  // 풀은 scripts/data/seo-keywords.json — 네이버 키워드도구 실측이고, 새 조사 결과를 덧붙이면 된다.
+  if (!fresh.length) {
+    try {
+      const pool = JSON.parse(fs.readFileSync(path.join(__dirname, "data", "seo-keywords.json"), "utf8"));
+      fresh = pool
+        .filter((p) => !alreadyCovered(p.keyword, existing, p.keyword) && !tooManyOnTopic(p.keyword, existing))
+        .slice(0, 10)
+        .map((p) => ({ topic: p.keyword, group: p.group, keyword: p.keyword, volume: p.volume, missRate: null }));
+      if (fresh.length) console.log(`· 핀셋 갭이 비어 네이버 검색어 풀로 이어갑니다 (후보 ${fresh.length}개)`);
+    } catch {
+      /* 풀 파일이 없으면 그냥 넘어간다 */
+    }
+  }
   if (!fresh.length) skip("후보 주제가 모두 기존 칼럼과 겹칩니다.");
 
-  let ranked = fresh.map((t) => ({ ...t, volume: null, keyword: null }));
+  // 네이버 검색어 풀에서 온 후보는 이미 검색량을 들고 있다 — 덮어쓰지 않는다
+  let ranked = fresh.map((t) => ({ volume: null, keyword: null, ...t }));
   if (naverEnabled()) {
     const cands = new Map(); // 주제 -> 후보 검색어들
     for (const t of fresh) cands.set(t.topic, keywordCandidates(t.topic));
