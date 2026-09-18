@@ -16,6 +16,10 @@ const HARD = [
   { name: "부작용 없음 주장", re: /부작용\s*(이|은|는)?\s*없(이|음|습니다|다는|어요)/ },
   { name: "완치·보장", re: /(완치|100%\s*(효과|보장)|반드시\s*(낫|좋아))/ },
   { name: "최상급 표현", re: /(국내\s*최고|최고의\s*(병원|한의원|치료)|최상급|업계\s*1위|유일한\s*병원)/ },
+  // 2026-09-18 추가 — 랜딩에서 실제로 살아 있던 표현들. 숫자 단위만 다를 뿐 같은 금지선이다.
+  { name: "치료 결과 비율(체지방·감량 %)", re: /(\d+(\.\d+)?\s*%[^\n]{0,12}(체지방|감량)|(체지방|감량)[^\n]{0,12}\d+(\.\d+)?\s*%)/ },
+  { name: "후기 기반 통계·인용", re: /(후기\s*평균|실제\s*후기|후기에서|후기\s*영상)/ },
+  { name: "효과 체감 단정", re: /효과를\s*체감(한|하신|했)/ },
   { name: "전후 비교 언급", re: /(비포\s*애프터|전후\s*사진|before\s*&?\s*after)/i },
   { name: "타 의료기관 비교우위", re: /(다른\s*한의원|타\s*병원)(보다|에\s*비해)\s*(더|훨씬)?\s*(좋|우수|효과)/ },
 ];
@@ -27,13 +31,18 @@ const SOFT = [
 ];
 
 export function checkAd(text) {
+  // 걸린 것을 전부 돌려준다. 처음 한 건만 보여 주면 같은 종류가 여러 군데 있을 때
+  // 한 건만 고치고 끝낸 것으로 착각한다 (2026-09-18 실제로 그랬다).
   const hits = (list) =>
-    list
-      .map(({ name, re }) => {
-        const m = re.exec(text);
-        return m ? { name, sample: text.slice(Math.max(0, m.index - 30), m.index + 50).replace(/\s+/g, " ") } : null;
-      })
-      .filter(Boolean);
+    list.flatMap(({ name, re }) => {
+      const g = new RegExp(re.source, re.flags.includes("g") ? re.flags : re.flags + "g");
+      return [...String(text).matchAll(g)].slice(0, 5).map((m) => ({
+        name,
+        sample: String(text)
+          .slice(Math.max(0, m.index - 30), m.index + 50)
+          .replace(/\s+/g, " "),
+      }));
+    });
   return { violations: hits(HARD), warnings: hits(SOFT) };
 }
 
