@@ -106,7 +106,11 @@ function readExistingColumns() {
       const raw = fs.readFileSync(path.join(COLUMNS_DIR, f), "utf8").slice(0, 1200);
       const title = raw.match(/^title:\s*"?(.*?)"?\s*$/m)?.[1] ?? "";
       const date = raw.match(/^date:\s*"?(\d{4}-\d{2}-\d{2})"?/m)?.[1] ?? "";
-      return { file: f, title, date };
+      // DEDUPE-02 (2026-09-18): 제목만 비교하면 "매일감비환 복용 방법…"과 "감비환 복용법…"이
+      // 다른 글로 통과해 같은 검색어를 두 글이 나눠 가진다(실제로 발생). 노리는 검색어도 함께 본다.
+      const keyword = raw.match(/^\s*keyword:\s*"?(.*?)"?\s*$/m)?.[1] ?? "";
+      const kws = [...raw.matchAll(/^\s{2}- "(.+)"$/gm)].map((m) => m[1]);
+      return { file: f, title, date, keyword, keywords: kws };
     });
 }
 
@@ -117,10 +121,18 @@ const tokens = (s) =>
     .split(/\s+/)
     .filter((t) => t.length >= 2);
 
-function alreadyCovered(topic, existing) {
+function alreadyCovered(topic, existing, keyword) {
   const t = new Set(tokens(topic));
   if (t.size === 0) return true;
+  const norm = (s) => String(s || "").replace(/\s+/g, "").toLowerCase();
+  const target = norm(keyword);
   return existing.some((c) => {
+    // ① 이미 같은 검색어를 노린 글이 있으면 중복 (제목이 달라도)
+    if (target && target.length >= 3) {
+      if (norm(c.keyword) === target) return true;
+      if ((c.keywords ?? []).some((k) => norm(k) === target)) return true;
+    }
+    // ② 제목 토큰이 많이 겹쳐도 중복
     const overlap = tokens(c.title).filter((x) => t.has(x)).length;
     return overlap >= Math.min(3, Math.max(2, Math.floor(t.size * 0.6)));
   });
@@ -205,7 +217,12 @@ async function main() {
     .map((c) => (fs.readFileSync(path.join(COLUMNS_DIR, c.file), "utf8").match(/^\s*track:\s*"?(\w+)"?/m)?.[1] ?? "seo"));
   const geoTurn = geoTrack.length > 0 && (seoTrack.length === 0 || (recentTracks.length > 0 && recentTracks.every((t) => t === "seo")));
 
-  const pick = geoTurn ? geoTrack[0] : (seoTrack[0] ?? geoTrack[0]);
+  let pick = geoTurn ? geoTrack[0] : (seoTrack[0] ?? geoTrack[0]);
+  // 검색어가 정해진 뒤 한 번 더 — 같은 검색어를 이미 노린 글이 있으면 다음 후보로
+  const pool = (geoTurn ? geoTrack : [...seoTrack, ...geoTrack]).filter(
+    (t) => !alreadyCovered(t.topic, existing, t.keyword),
+  );
+  pick = pool[0] ?? pick;
   if (!pick) skip("쓸 만한 주제가 없습니다.");
   pick.track = geoTurn || !(pick.volume >= MIN_VOLUME) ? "geo" : "seo";
 

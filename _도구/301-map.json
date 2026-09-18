@@ -1258,5 +1258,25 @@
     "source": "/nmc/columns/허리-통증-완화를-위한-올바른-수면-자세-기본-안내-intro-mRrCJb",
     "destination": "/nmc/columns/올바른-수면-자세가-목허리-통증에-미치는-영향-기본-안내-intro-c7CcfY",
     "permanent": true
+  },
+  {
+    "source": "/columns/매일감비환-복용-방법시기기간보관까지-완전-가이드-usage-I_RVkG",
+    "destination": "/diet/columns/gambihwan-dosage-guide-5jxp",
+    "permanent": true
+  },
+  {
+    "source": "/diet/columns/매일감비환-복용-방법시기기간보관까지-완전-가이드-usage-I_RVkG",
+    "destination": "/diet/columns/gambihwan-dosage-guide-5jxp",
+    "permanent": true
+  },
+  {
+    "source": "/gongjindan/columns/매일감비환-복용-방법시기기간보관까지-완전-가이드-usage-I_RVkG",
+    "destination": "/diet/columns/gambihwan-dosage-guide-5jxp",
+    "permanent": true
+  },
+  {
+    "source": "/nmc/columns/매일감비환-복용-방법시기기간보관까지-완전-가이드-usage-I_RVkG",
+    "destination": "/diet/columns/gambihwan-dosage-guide-5jxp",
+    "permanent": true
   }
 ]
