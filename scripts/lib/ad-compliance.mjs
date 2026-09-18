@@ -22,7 +22,7 @@ const HARD = [
 
 /** 경고 — 발행은 하되 로그에 남긴다 */
 const SOFT = [
-  { name: "효능 단정", re: /(치료됩니다|낫습니다|없어집니다|사라집니다)/ },
+  { name: "효능 단정", re: /(치료됩니다|(?:완전히|깨끗이|저절로)\s*낫습니다|(?:증상|통증|병)(?:이|은)\s*(?:낫습니다|없어집니다|사라집니다))/ },  // "~하는 편이 낫습니다"(=더 좋다)는 효능 단정이 아니다 — 오탐이라 문맥을 붙였다(2026-09-18)
   { name: "재촉·과장", re: /(지금\s*바로\s*예약|서두르|놓치지\s*마)/ },
 ];
 
@@ -48,7 +48,10 @@ export function checkMeta({ title, description }) {
 }
 
 /** AI가 인용하기 좋은 구조인지 — 탈잉 강의의 세 가지 기준 */
-export function checkStructure(body) {
+export function checkStructure(rawBody) {
+  // 윈도우식 줄바꿈(캐리지 리턴이 섞인 파일)에서는 아래 정규식이 전부 빗나간다.
+  // 그래서 표가 있는 글도 "표가 없습니다"로, 모든 글이 "첫 문단이 깁니다"로 잡혔다 (2026-09-18 수정)
+  const body = String(rawBody).split("\r\n").join("\n");
   const notes = [];
   if (!/\n\|.*\|.*\n\|[\s:|-]+\|/.test(body)) notes.push("표가 없습니다 (비교·단계는 표로)");
   if (!/^##\s/m.test(body)) notes.push("## 소제목이 없습니다");
