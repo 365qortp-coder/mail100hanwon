@@ -561,6 +561,14 @@ ${transcript.slice(0, 12000)}`;
     .join("");
   const parsed = JSON.parse(text);
 
+  // GONGJINDAN-MOVE-01 (2026-11-09): 공진단·총명공진단은 이제 공진단 전용 사이트(gongjindan.io.kr)가 맡는다.
+  // 왜: 같은 주제 글이 두 사이트에 있으면 검색에서 서로 깎아 먹는다. 원장님 지시로 공진단 메인은 gongjindan.io.kr.
+  //   다른 채널 영상이 공진단 글로 쓰였으면 저장하지 않고 넘긴다.
+  if (["공진단", "총명공진단"].includes(parsed.category)) {
+    console.log(`  공진단 주제라 저장하지 않습니다 (gongjindan.io.kr 담당): ${parsed.title}`);
+    return { slug: null, title: parsed.title, skipped: true };
+  }
+
   const slug = slugFromTitle(parsed.title, videoId, angle.id);
   const filePath = path.join(COLUMNS_DIR, `${slug}.md`);
 
@@ -637,7 +645,10 @@ function pickWork(queue, n) {
     }
   }
 
-  const channels = ["diet", "gongjindan", "pain", "other"];
+  // GONGJINDAN-MOVE-01 (2026-11-09): 공진단·총명공진단은 이제 공진단 전용 사이트(gongjindan.io.kr)가 맡는다.
+  // 왜: 같은 주제 글이 두 사이트에 있으면 검색에서 서로 깎아 먹는다. 원장님 지시로 공진단 메인은 gongjindan.io.kr.
+  //   그래서 [gongjindan] 영상은 여기서 고르지 않는다. 큐에는 그대로 남겨 둔다.
+  const channels = ["diet", "pain", "other"];
   const work = [];
   for (const prio of [0, 1]) {
     let progress = true;
@@ -695,6 +706,12 @@ async function processWork(queue, item) {
     angle,
     hint: entry.hint || "",
   });
+  if (result.skipped) {
+    // 같은 각도로 다시 시도하지 않도록 쓴 것으로 표시만 해 둔다
+    markAngleUsed(entry, angle, result);
+    maybeMoveToProcessed(queue, entry);
+    return false;
+  }
   console.log(`  saved ${result.slug}`);
 
   if (!entry.videoId) entry.videoId = videoId;

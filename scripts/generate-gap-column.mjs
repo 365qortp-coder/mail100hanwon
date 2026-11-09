@@ -195,7 +195,12 @@ async function main() {
   // 3) 아직 안 다룬 주제만 남기고, 네이버 실제 검색량으로 줄을 세운다
   //    (KEYWORD-01 2026-09-18: 갭이 있어도 아무도 검색하지 않는 질의면 쓰지 않는다.
   //     실측 예 — "공진단 부작용"은 네이버 월 20회, "공진단 먹는법"은 3,880회)
-  let fresh = topics.filter((t) => !alreadyCovered(t.topic, existing) && !tooManyOnTopic(t.topic, existing));
+  // GONGJINDAN-MOVE-01 (2026-11-09): 공진단·총명공진단은 이제 공진단 전용 사이트(gongjindan.io.kr)가 맡는다.
+  // 왜: 같은 주제 글이 두 사이트에 있으면 검색에서 서로 깎아 먹는다. 원장님 지시로 공진단 메인은 gongjindan.io.kr.
+  const notGongjindan = (t) => !/공진단/.test(`${t.topic ?? ""} ${t.keyword ?? ""}`);
+  let fresh = topics
+    .filter(notGongjindan)
+    .filter((t) => !alreadyCovered(t.topic, existing) && !tooManyOnTopic(t.topic, existing));
 
   // KEYWORD-POOL-01 (2026-09-18): 핀셋 갭이 다 떨어지면 네이버 검색어 풀에서 이어받는다.
   // 왜: AI 팬아웃 갭은 개수가 한정돼 있다. 2026-09-18에 12개가 전부 소진되어 발행이 멈췄다.
@@ -205,6 +210,7 @@ async function main() {
     try {
       const pool = JSON.parse(fs.readFileSync(path.join(__dirname, "data", "seo-keywords.json"), "utf8"));
       fresh = pool
+        .filter((p) => !/공진단/.test(p.keyword ?? ""))
         .filter((p) => !alreadyCovered(p.keyword, existing, p.keyword) && !tooManyOnTopic(p.keyword, existing))
         .slice(0, 10)
         .map((p) => ({ topic: p.keyword, group: p.group, keyword: p.keyword, volume: p.volume, missRate: null }));
@@ -441,6 +447,9 @@ async function main() {
   // 2개로 제한하는 이유: 매 칼럼에 링크가 쏟아지면 자연스러운 참고 링크가 아니라 링크 심기로 읽힌다.
   parsed.body_markdown = await addWikiLinks(parsed.body_markdown);
 
+  if (["공진단", "총명공진단"].includes(parsed.category)) {
+    skip(`공진단 주제라 쓰지 않습니다 (gongjindan.io.kr 담당): ${parsed.title}`);
+  }
   const category = ALLOWED_CATEGORIES.includes(parsed.category) ? parsed.category : "한방건강";
   const today = new Date().toISOString().slice(0, 10);
   const slug = parsed.slug && parsed.slug.length >= 6 ? `${parsed.slug}-${Math.random().toString(36).slice(2, 6)}` : slugify(parsed.title);
