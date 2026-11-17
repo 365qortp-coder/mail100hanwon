@@ -537,7 +537,7 @@ export default function DietPage() {
               <p className="text-xs text-[#525252]">감량 2달 + 요요방지 6개월 패키지</p>
             </div>
             <div className="sn-reveal rn-card relative rounded-[20px] border border-black bg-[#0a0a0a] text-white p-7" style={{ transitionDelay: "70ms" }}>
-              <p className="text-[11px] font-bold text-[var(--brand-primary)] tracking-[0.18em] uppercase mb-3">3달 감량 + 6개월 요요관리</p>
+              <p className="text-[11px] font-bold text-[var(--brand-primary)] tracking-[0.18em] uppercase mb-3">3달 감량 + 9개월 요요관리</p>
               <p className="font-serif text-[2.5rem] leading-none tracking-tight mb-3">479,000<span className="text-xl">원</span></p>
               <p className="text-xs text-white/50">체중 많이 빼야 하는 분 · 최대 효과</p>
             </div>
